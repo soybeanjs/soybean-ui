@@ -456,19 +456,19 @@ token 名与 shadcn 完全同名且**不带前缀**，因此 shadcn 的片段、
 
 ### 5.1 theme key 归属表
 
-| UnoCSS theme key                                               | 归属                            | SoybeanUI 侧映射                                                                                                |
-| :------------------------------------------------------------- | :------------------------------ | :-------------------------------------------------------------------------------------------------------------- |
-| `colors`                                                       | **主题拥有**                    | 语义色 → `hsl(var(--{token}) / <alpha-value>)`；26 调色板 → 同名通道引用；5 条角色 ramp                         |
-| `borderRadius`                                                 | **主题拥有**                    | `2xs`…`4xl` 全 9 档 + `none` / `full` → `var(--radius-*)`，`DEFAULT` → `var(--radius)`                          |
-| `fontSize`                                                     | **主题扩展三档**                | Wind3 的 `xs`…`9xl` 保持它自己的元组；预设只额外声明 `4xs` / `3xs` / `2xs`（库内实际写的三档）                  |
-| `fontFamily`                                                   | **主题拥有**                    | `sans` / `serif` / `mono` / `heading` → `var(--font-*)`（`font-serif` 是独立类，对齐 shadcn）                   |
-| `spacing`                                                      | **主题拥有**（具名档 + 数字档） | 两条路都是 `calc(var(--spacing-unit) * k)`：18 具名档与数字系数 `0.25`…`64` **值同形**，`DEFAULT` → `md` 的系数 |
-| `zIndex`                                                       | **主题拥有**                    | `layout` / `base` / `toast` / `max` → `var(--z-*)`                                                              |
-| `lineWidth`                                                    | **主题拥有**                    | `DEFAULT` → `var(--border-width)`；`strong` → `var(--border-width-strong)`                                      |
-| `ringWidth`                                                    | **主题拥有**                    | `DEFAULT` → `var(--ring-width)`                                                                                 |
-| `boxShadow` / `duration` / `easing`                            | **保留 UnoCSS 默认**            | 阴影与动效是 UnoCSS 的档位（`shadow-sm                                                                          | md  | lg  | xl`、`duration-200`、`ease-out`），主题不改它们 |
-| `height` / `minHeight`                                         | **不映射**                      | 控件高度是 size 向量的高度列；`h-5`…`h-14` 精确覆盖控件区间，且随 `size` 缩放                                   |
-| 其余（`breakpoints` / `width` / `blur` / `letterSpacing` / …） | 保留 UnoCSS 默认                | 与主题决策无关                                                                                                  |
+| UnoCSS theme key                                               | 归属                            | SoybeanUI 侧映射                                                                                                              |
+| :------------------------------------------------------------- | :------------------------------ | :---------------------------------------------------------------------------------------------------------------------------- |
+| `colors`                                                       | **主题拥有**                    | 语义色 → `hsl(var(--{token}) / <alpha-value>)`；26 调色板 → 同名通道引用；5 条角色 ramp                                       |
+| `borderRadius`                                                 | **主题拥有**                    | `2xs`…`4xl` 全 9 档 + `none` / `full` → `var(--radius-*)`，`DEFAULT` → `var(--radius)`                                        |
+| `fontSize`                                                     | **主题扩展三档**                | Wind3 的 `xs`…`9xl` 保持它自己的元组；预设只额外声明 `4xs` / `3xs` / `2xs`（库内实际写的三档）                                |
+| `fontFamily`                                                   | **主题拥有**                    | `sans` / `serif` / `mono` / `heading` → `var(--font-*)`（`font-serif` 是独立类，对齐 shadcn）                                 |
+| `spacing`                                                      | **主题拥有**（具名档 + 数字档） | 两条路都是 `calc(var(--spacing-unit) * k)`：18 具名档与数字系数 `0.0625`…`64`（1/16 步长）**值同形**，`DEFAULT` → `md` 的系数 |
+| `zIndex`                                                       | **主题拥有**                    | `layout` / `base` / `toast` / `max` → `var(--z-*)`                                                                            |
+| `lineWidth`                                                    | **主题拥有**                    | `DEFAULT` → `var(--border-width)`；`strong` → `var(--border-width-strong)`                                                    |
+| `ringWidth`                                                    | **主题拥有**                    | `DEFAULT` → `var(--ring-width)`                                                                                               |
+| `boxShadow` / `duration` / `easing`                            | **保留 UnoCSS 默认**            | 阴影与动效是 UnoCSS 的档位（`shadow-sm                                                                                        | md  | lg  | xl`、`duration-200`、`ease-out`），主题不改它们 |
+| `height` / `minHeight`                                         | **不映射**                      | 控件高度是 size 向量的高度列；`h-5`…`h-14` 精确覆盖控件区间，且随 `size` 缩放                                                 |
+| 其余（`breakpoints` / `width` / `blur` / `letterSpacing` / …） | 保留 UnoCSS 默认                | 与主题决策无关                                                                                                                |
 
 ### 5.2 颜色引用机制（实测依据，实现时不可省略）
 

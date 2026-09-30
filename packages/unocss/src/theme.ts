@@ -155,8 +155,8 @@ export function buildThemePreflight(options: ThemeOptions): string {
  * UnoCSS computes numeric spacing as `n × 0.25rem` inside preset-mini, *unless*
  * `theme.spacing[n]` exists — `directionSize` (padding / margin) and `handleGap`
  * read the theme first (`node_modules/@unocss/preset-mini/dist/utils-D9qaB-1B.mjs`).
- * Mapping `0.25` … `64` therefore routes the numeric utilities through the same
- * `--spacing-unit` the named rungs use, which is what makes one `spacing`
+ * Mapping the grid up to `64` therefore routes the numeric utilities through the
+ * same `--spacing-unit` the named rungs use, which is what makes one `spacing`
  * option move paddings, margins and gaps together.
  *
  * Deliberately not mapped: `w-*` / `h-*` / `size-*` (they read `theme.width` /
@@ -166,8 +166,26 @@ export function buildThemePreflight(options: ThemeOptions): string {
  */
 const SPACING_GRID_MAX = 64;
 
-/** the grid step the numeric keys walk — read off the engine's grid, not restated. */
-const SPACING_GRID_STEP = parseFloat(SPACING_GRID);
+/**
+ * how finely the numeric keys subdivide the grid unit.
+ *
+ * The unit (`SPACING_GRID` = `0.25rem`, the coefficient-1 length) and the
+ * *enumeration* step are two different numbers. Walking the unit alone only
+ * registers its integer multiples (`0.25`, `0.75`, `1.25`…), which leaves every
+ * half step to preset-mini's hard-coded `n × 0.25rem`: `p-0.625` emitted
+ * `0.15625rem` and ignored the `spacing` option while its neighbour `p-0.75`
+ * scaled — 77 usages (26 distinct classes, eighths and one sixteenth) across
+ * `packages/ui` were frozen that way. Subdividing by 4 (`0.0625rem`) covers the
+ * library's whole ladder; extra keys cost nothing until a utility is used,
+ * because an unused `theme.spacing` key emits no CSS. A coefficient off the
+ * lattice (`p-0.3`) still falls back — this is a fixed key list, not a catch-all,
+ * so widen the subdivisions (or switch to a rule-level fallback) if a recipe ever
+ * writes one.
+ */
+const SPACING_GRID_SUBDIVISIONS = 4;
+
+/** the enumeration step the numeric keys walk: the engine's grid unit, subdivided. */
+const SPACING_GRID_STEP = parseFloat(SPACING_GRID) / SPACING_GRID_SUBDIVISIONS;
 
 /**
  * The remaining `theme` keys that the token contract owns (docs/theme.md §5.1).
@@ -181,9 +199,11 @@ const SPACING_GRID_STEP = parseFloat(SPACING_GRID);
  *   monotonic family — a rung owned by upstream would not follow the seed;
  * - `spacing` — the whole grid, built here from `SPACING_GRID_COEFFICIENTS`: the
  *   named rungs (`gap-md`, `p-2xl`, `mt-3xs`…) and the numeric coefficients
- *   (`p-4`, `gap-2.5`) are the *same* `calc(var(--spacing-unit) * k)` shape,
- *   because the class number and the coefficient are the same number. Only the
- *   coefficients above the mapped range fall back to UnoCSS's own `n × 0.25rem`.
+ *   (`p-4`, `gap-2.5`, `p-0.625`) are the *same* `calc(var(--spacing-unit) * k)`
+ *   shape, because the class number and the coefficient are the same number; the
+ *   numeric keys subdivide the unit (`SPACING_GRID_SUBDIVISIONS`) so a half step
+ *   is a key too. Only the coefficients above the mapped range fall back to
+ *   UnoCSS's own `n × 0.25rem`.
  *
  * Deliberately left out:
  *
@@ -234,10 +254,12 @@ export function buildThemeEntries(prefix: string | false = DEFAULT_OPTIONS.prefi
   );
 
   /**
-   * the numeric coefficients (`p-4`, `gap-2.5`). Registered because preset-mini
-   * computes `n × 0.25rem` only when `theme.spacing[n]` is *absent*, so this is
-   * what routes the numeric utilities through the same unit — without it the knob
-   * would move the named rungs and leave 98.6% of the library's spacing behind.
+   * the numeric coefficients (`p-4`, `gap-2.5`, `p-0.625`). Registered because
+   * preset-mini computes `n × 0.25rem` only when `theme.spacing[n]` is *absent*,
+   * so this is what routes the numeric utilities through the same unit — without
+   * it the knob would move the named rungs and leave 98.6% of the library's
+   * spacing behind. The step is the subdivided unit, so the eighths the recipes
+   * write are keys rather than frozen fallbacks.
    */
   const numericSpacing: Record<string, string> = { 0: '0' };
 

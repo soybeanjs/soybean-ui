@@ -70,17 +70,21 @@ UnoCSS（preset-mini）的 `theme.spacing` 具名档是 `xs` 0.75rem … `9xl` 8
 
 对我们的刻度来说，这条对齐的代价与收益都很明确：代价是失去 28/32/40px 三个精确档位（§4.3 的候选 D 曾占有它们），收益是尾部平均偏差反而更低（1.04px vs 1.30px）且**与生态同名档同值**——消费者从 UnoCSS 文档里读到的 `gap-xl` 含义，在这里依然成立。
 
-### 1.4 数字工具类同源：257 个数字键
+### 1.4 数字工具类同源：1025 个数字键
 
-preset-mini 的取值链是 **`theme.spacing[key] ?? n × 0.25rem`**（`directionSize` / `handleGap` / `handleInsetValue` / `handleTranslate`）——"数字间距不读 theme"只在**没有该键**时成立。适配器因此登记 `0` … `64`、步长 `0.25` 共 **257 个数字键**，值同为 `calc(var(--spacing-unit) * k)`：
+preset-mini 的取值链是 **`theme.spacing[key] ?? n × 0.25rem`**（`directionSize` / `handleGap` / `handleInsetValue` / `handleTranslate`）——"数字间距不读 theme"只在**没有该键**时成立。适配器因此登记 `0` … `64`、**步长 `0.0625`（网格单位的 1/4）**共 **1025 个数字键**，值同为 `calc(var(--spacing-unit) * k)`：
 
 ```
 p-4      → padding: calc(var(--spacing-unit) * 4)
 px-2.5   → padding-left: calc(var(--spacing-unit) * 2.5)
+p-0.625  → padding: calc(var(--spacing-unit) * 0.625)
+my-0.4375→ margin-top: calc(var(--spacing-unit) * 0.4375)
 gap-md   → gap: calc(var(--spacing-unit) * 4)     /* 与 p-4 同值 */
 -mt-4    → margin-top: calc(calc(var(--spacing-unit) * 4) * -1)
 p-5xs    → padding: var(--spacing-unit)           /* 系数 1 发射裸引用 */
 ```
+
+**枚举步长不是网格单位**：系数 1 是 `0.25rem`（单位），但"哪些数字有键"必须比单位更细。只走单位的多重数（旧行为：`0.25` / `0.5` / `0.75` / `1` / `1.25`…，共 257 键）会把 1/8、1/16 档漏给 preset-mini 的硬编码除法——`p-0.625` 产出 `0.15625rem`（= 0.625 × 0.25rem）而隔壁 `p-0.75` 是 `calc(var(--spacing-unit) * 0.75)`。默认单位下两者数值相同，所以肉眼无差；一旦消费者拖动 `spacing`，被漏掉的那些**冻结**、其余缩放。按 `packages/ui/src`（样式 + 组件模板）全量抓取，这类用法共 **77 处 / 26 个类值**（间距族 75 处：`p-0.875` 15、`py-0.875` 11、`p-0.625` 6、`gap-0.875` 5…；偏移族 2 处：`top-1.875` / `end-1.875`）。`page-tabs` 的 `close` 梯度是典型样本：`p-0.625` / `p-0.75` / `p-0.875` / `p-1` / `p-1.125` / `p-1.25` 里只有三个跟随旋钮。未使用的键不产 CSS，所以加密步长只增加查表项（1025 键 ≈ 47KB 配置对象，构建期一次），不增加产物。步长是**固定格点**而非兜底：格点之外的系数（`p-0.3`）仍回落 UnoCSS 原生——组件作者写间距时落在 1/16 网格上即可（库内现有取值全部落在其上）。
 
 这一步是"只调间距"能否成立的前提：库里 **1,594 处**间距用法**全部是数字类**（具名档 0 处，§4.2），不登记数字键，旋钮就只会动那 0 处。
 

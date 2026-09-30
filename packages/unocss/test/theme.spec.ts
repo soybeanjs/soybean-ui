@@ -241,6 +241,24 @@ describe('theme adapter — dimension / layering keys', () => {
     expect(css).toContain('padding:calc(var(--spacing-unit) * 64)');
   });
 
+  it('registers the sub-grid coefficients so half steps follow the unit too', async () => {
+    const css = await generate({}, 'p-0.625 py-0.875 my-0.4375 gap-1.125 px-1.875');
+
+    // 网格单位（系数 1 = 0.25rem）不是枚举步长：只走单位的多重数会把库里 77 处
+    // 八分之一 / 十六分之一档漏给 preset-mini 硬编码的 `n × 0.25rem`。默认主题下
+    // 两者数值相同，所以它只在改了 `spacing` 之后显形——`p-0.625` 冻结成
+    // `0.15625rem` 而 `p-0.75` 跟着旋钮走（docs/space-control-scale.md §1.4）
+    expect(css).toContain('padding:calc(var(--spacing-unit) * 0.625)');
+    expect(css).toContain('padding-top:calc(var(--spacing-unit) * 0.875)');
+    expect(css).toContain('margin-top:calc(var(--spacing-unit) * 0.4375)');
+    expect(css).toContain('gap:calc(var(--spacing-unit) * 1.125)');
+    expect(css).toContain('padding-left:calc(var(--spacing-unit) * 1.875)');
+    // 冻结形态（`n × 0.25rem` 的字面 rem）不再产出
+    expect(css).not.toContain('0.15625rem');
+    expect(css).not.toContain('0.21875rem');
+    expect(css).not.toContain('0.109375rem');
+  });
+
   it('leaves sizes and arbitrary values out of the spacing family', async () => {
     const css = await generate({}, 'h-8 w-4 size-4 basis-4 p-[7px] p-1/2');
 
@@ -344,8 +362,8 @@ describe('theme adapter — dimension / layering keys', () => {
       'full',
       'DEFAULT'
     ]);
-    // spacing = 18 具名档 + 数字系数网格（0 … 64，0.25 步长）+ DEFAULT，全部由
-    // 引擎的系数表派生。键序不作断言：JS 会把整数形态的键排到字符串键之前。
+    // spacing = 18 具名档 + 数字系数网格（0 … 64，步长 = 网格单位的 1/4）+ DEFAULT，
+    // 全部由引擎的系数表派生。键序不作断言：JS 会把整数形态的键排到字符串键之前。
     expect(
       SPACING_RUNGS.every(rung => {
         const coefficient = SPACING_GRID_COEFFICIENTS[rung];
@@ -361,7 +379,7 @@ describe('theme adapter — dimension / layering keys', () => {
     expect(entries.spacing['4']).toBe('calc(var(--spacing-unit) * 4)');
     expect(entries.spacing['2.5']).toBe('calc(var(--spacing-unit) * 2.5)');
     expect(entries.spacing['64']).toBe('calc(var(--spacing-unit) * 64)');
-    expect(Object.keys(entries.spacing).filter(key => /^[\d.]+$/.test(key))).toHaveLength(257);
+    expect(Object.keys(entries.spacing).filter(key => /^[\d.]+$/.test(key))).toHaveLength(1025);
     // `0` 保持字面量：`p-0` / `gap-0` 的产出不该因为多了个选项而变形
     expect(entries.spacing['0']).toBe('0');
     // 具名档与数字键同源：`gap-md` 与 `gap-4` 是同一个值

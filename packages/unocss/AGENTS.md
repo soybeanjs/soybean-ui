@@ -26,6 +26,8 @@ For any AI assistant editing files under `packages/unocss/`:
 
 Registering only the named rungs would leave ~98% of the library's spacing (every `p-4`, `gap-2.5`) on the hard-coded `0.25rem` and ignore the `spacing` option entirely. So `p-4`, `gap-md`, and `spacing.DEFAULT` are all derived from the single `--spacing-unit` reference; coefficient `1` emits the bare unit reference. Keep it that way.
 
+Keep the enumeration step finer than the unit (`SPACING_GRID_SUBDIVISIONS`): walking only the unit's multiples leaves every half step to preset-mini's `n × 0.25rem`, which is numerically identical at the default unit but **frozen** once a consumer moves `spacing` (`p-0.625` emitted `0.15625rem` while `p-0.75` scaled — 77 such usages across `packages/ui`). Extra keys emit no CSS until used.
+
 The name/value parity guard against upstream UnoCSS lives in `test/theme.spec.ts` (it imports `theme as unoTheme` from `@unocss/preset-mini` to compare), which is why that guard is here and not in the theme package.
 
 ## API
