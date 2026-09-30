@@ -15,9 +15,9 @@ export const pageTabsVariants = scv({
     ],
     itemText: 'grow truncate',
     close: [
-      `outline-none rounded-full hover:text-muted-foreground group-data-[selected=true]/item:hover:bg-primary/50`,
-      `group-data-[selected=false]/item:hover:bg-accent-foreground/20`,
-      `dark:hover:text-foreground dark:group-data-[selected=true]/item:hover:bg-accent-foreground/20`
+      `flex justify-center items-center outline-none rounded-full hover:text-muted-foreground group-data-[selected=true]/item:hover:bg-primary-100`,
+      `group-data-[selected=false]/item:hover:bg-accent-foreground/10`,
+      `dark:hover:text-foreground dark:group-data-[selected=true]/item:hover:bg-accent-foreground/10`
     ],
     pin: 'outline-none',
     chromeBgLeft: [
@@ -35,34 +35,38 @@ export const pageTabsVariants = scv({
       xs: {
         root: 'text-2xs px-1.5',
         item: 'gap-2 px-1 py-1',
-        itemText: 'max-w-50'
+        itemText: 'max-w-50',
+        close: 'text-3xs size-3'
       },
       sm: {
         root: 'text-xs px-1.75',
         item: 'gap-2.5 px-1.5 py-1',
-        itemText: 'max-w-55'
+        itemText: 'max-w-55',
+        close: 'text-2xs size-4'
       },
       md: {
         root: 'text-sm px-2',
         item: 'gap-3 px-2 py-1.5',
         itemText: 'max-w-60',
-        chromeBgLeft: 'w-2 h-2',
-        chromeBgRight: 'w-2 h-2'
+        close: 'text-xs size-5'
       },
       lg: {
         root: 'text-base px-2.5',
         item: 'gap-3.5 px-2.5 py-1.5',
-        itemText: 'max-w-65'
+        itemText: 'max-w-65',
+        close: 'text-sm size-6'
       },
       xl: {
         root: 'text-lg px-3',
         item: 'gap-4 px-3 py-2',
-        itemText: 'max-w-70'
+        itemText: 'max-w-70',
+        close: 'text-base size-7'
       },
       '2xl': {
         root: 'text-xl px-4',
         item: 'gap-4.5 px-3.5 py-2.5',
-        itemText: 'max-w-75'
+        itemText: 'max-w-75',
+        close: 'text-base size-7'
       }
     },
     variant: {

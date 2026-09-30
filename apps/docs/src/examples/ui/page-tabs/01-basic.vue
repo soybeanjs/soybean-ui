@@ -170,15 +170,17 @@ const reset = (): void => {
   </Teleport>
 
   <div class="flex justify-center w-full">
-    <SPageTabs
-      v-model="modelValue"
-      v-model:items="items"
-      :variant="variant"
-      :size="size"
-      :draggable="draggable"
-      :middle-click-close="middleClickClose"
-      :menu-factory="menuFactory"
-      class="w-160 h-12 border border-border border-solid rounded-sm"
-    />
+    <div class="pt-4 border border-border rounded-sm">
+      <SPageTabs
+        v-model="modelValue"
+        v-model:items="items"
+        :variant="variant"
+        :size="size"
+        :draggable="draggable"
+        :middle-click-close="middleClickClose"
+        :menu-factory="menuFactory"
+        class="w-160"
+      />
+    </div>
   </div>
 </template>
