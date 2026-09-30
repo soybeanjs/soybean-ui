@@ -26,6 +26,7 @@ A panel that slides out from the edge of the screen. It reuses the declarative A
 - ❌ Closable — `showClose`, Escape, outside pointer/focus and the close button all dismiss
 - 🎞️ Animated — enter/exit transitions (`slide-in-from-*` / `slide-out-to-*`) driven by the open state
 - 📐 6 sizes — xs–2xl `size`; per-slot `ui` overrides
+- ⛶ Fullscreen — `showFullscreen` renders a toggle; `fullscreen`/`defaultFullscreen` drive a `v-model:fullscreen` state that grows the panel to the viewport
 - 🔘 Cancel/confirm footer — `showCancel`/`showConfirm` with localized `cancelText`/`confirmText`
 - ♿ Accessible — `role="dialog"`, focus trap + loop, focus restoration on close, `axe-core` zero violations
 
@@ -65,6 +66,7 @@ A panel that slides out from the edge of the screen. It reuses the declarative A
 - Sheet inherits the dialog contract: it is modal by default and the popup teleports to `document.body`; Escape/outside interaction dismisses it.
 - `side` only changes the slide direction and position classes; the accessible `role` remains `dialog` (a sheet is not a distinct ARIA role).
 - Left/right sheets slide in the logical direction and are mirrored under RTL (`dir`).
+- In fullscreen the panel covers the viewport from the edge it is anchored to, so `side` only decides which edge that is; the per-side size caps (`w-3/4`/`sm:max-w-sm`, and the `100dvh - 2rem` height cap) are released.
 - The imperative `dialog(...)` API also renders sheets if you pass the matching options — no separate sheet service is needed.
 
 ### Migrating from `SDrawer` (v0.50.0)
@@ -121,5 +123,15 @@ Use `pure` and fill the default slot:
 ```vue
 <SSheet v-model:open="open" pure side="bottom">
   <div class="custom">...</div>
+</SSheet>
+```
+
+### How do I make the sheet fullscreen?
+
+Render the header toggle with `show-fullscreen`, or drive the state with `v-model:fullscreen`. Either way the panel grows to the viewport from its `side` edge:
+
+```vue
+<SSheet v-model:open="open" v-model:fullscreen="fullscreen" show-fullscreen side="right" title="Settings">
+  <template #trigger><SButton>Open</SButton></template>
 </SSheet>
 ```

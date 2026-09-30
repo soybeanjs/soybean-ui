@@ -26,6 +26,7 @@ head:
 - ❌ 可关闭 — `showClose`、Escape、外部指针/焦点与关闭按钮均可关闭
 - 🎞️ 动画 — 进入/退出过渡（`slide-in-from-*` / `slide-out-to-*`）由打开状态驱动
 - 📐 6 种尺寸 — xs–2xl `size`；逐槽 `ui` 覆盖
+- ⛶ 全屏 — `showFullscreen` 渲染切换按钮；`fullscreen`/`defaultFullscreen` 驱动 `v-model:fullscreen` 状态，使面板撑满视口
 - 🔘 取消/确认底部 — `showCancel`/`showConfirm`，`cancelText`/`confirmText` 本地化
 - ♿ 无障碍 — `role="dialog"`、焦点陷阱 + 循环、关闭时焦点还原、`axe-core` 零违规
 
@@ -65,6 +66,7 @@ head:
 - 侧边面板继承 dialog 契约：默认模态，弹层传送至 `document.body`；Escape/外部交互关闭。
 - `side` 只改变滑动方向与位置类；可访问 `role` 仍为 `dialog`（侧边面板没有独立的 ARIA 角色）。
 - 左右面板沿逻辑方向滑动，并在 RTL（`dir`）下镜像。
+- 全屏时面板从所锚定的那条边撑满视口，`side` 只决定是哪条边；各方向自身的尺寸上限（`w-3/4`/`sm:max-w-sm`、以及 `100dvh - 2rem` 的高度上限）会被解除。
 - 命令式 `dialog(...)` API 在传入匹配选项时同样能渲染侧边面板——无需独立的 sheet 服务。
 
 ### 从 `SDrawer` 迁移（v0.50.0）
@@ -121,5 +123,15 @@ head:
 ```vue
 <SSheet v-model:open="open" pure side="bottom">
   <div class="custom">...</div>
+</SSheet>
+```
+
+### 如何让面板全屏？
+
+用 `show-fullscreen` 渲染头部切换按钮，或用 `v-model:fullscreen` 直接驱动状态。两种方式都会让面板从 `side` 所在一侧撑满视口：
+
+```vue
+<SSheet v-model:open="open" v-model:fullscreen="fullscreen" show-fullscreen side="right" title="设置">
+  <template #trigger><SButton>打开</SButton></template>
 </SSheet>
 ```

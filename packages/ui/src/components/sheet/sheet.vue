@@ -12,6 +12,13 @@ defineOptions({
 
 const props = withDefaults(defineProps<SheetProps>(), {
   open: undefined,
+  // `undefined` is load-bearing, not decoration: without an explicit default Vue
+  // casts the absent Boolean prop to `false`, and `DialogRoot` would then read
+  // `fullscreen` as a *controlled* `false` — the toggle would emit
+  // `update:fullscreen` and never change the rendered state. Declaring the
+  // default keeps the prop `undefined`, which is what selects the uncontrolled
+  // branch. `SDialog` declares the same default for the same reason.
+  fullscreen: undefined,
   modal: true,
   showClose: true
 });

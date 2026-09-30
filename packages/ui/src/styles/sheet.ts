@@ -51,6 +51,33 @@ const POPUP_VIEWPORT_MAX_HEIGHT =
   'max-h-[var(--soybean-drawer-max-height,calc(100dvh-2rem))] [@supports(not_(height:100dvh))]:max-h-[var(--soybean-drawer-max-height,calc(100vh-2rem))]';
 /** The horizontal counterpart, used by the `start`/`end` sides. */
 const POPUP_VIEWPORT_MAX_WIDTH = 'max-w-[var(--soybean-drawer-max-width,100%)]';
+/**
+ * Fullscreen, driven by the headless `data-fullscreen` attribute, has to be
+ * re-declared here: this recipe drops the inherited dialog `popup` slot
+ * (`extendIgnore`), so the dialog's `data-[fullscreen]:*` rules never reach the
+ * panel. Every per-side dimension needs an override, because each side sizes the
+ * panel from its own edge:
+ *
+ * - vertical panels (`top`/`bottom`) are capped by `POPUP_VIEWPORT_MAX_HEIGHT`
+ *   and sized by the gesture height growth, so here `height` is pinned and
+ *   `max-height` released. `100dvh` follows the mobile browser chrome exactly
+ *   like the resting cap does, with the same `@supports` fallback for engines
+ *   that cannot parse it.
+ * - horizontal panels (`start`/`end`) are already full height, but `w-3/4` plus
+ *   `sm:max-w-sm` and `POPUP_VIEWPORT_MAX_WIDTH` keep them narrow.
+ * - the anchored corner radius would leave two rounded corners floating inside
+ *   the viewport, so it is reset as well.
+ *
+ * `data-[fullscreen]:*` compiles to a `[data-fullscreen]`-qualified selector, so
+ * it outranks the side, `sm:` and arbitrary-property utilities by specificity —
+ * the overrides win wherever UnoCSS happens to order them.
+ */
+const POPUP_FULLSCREEN = [
+  `data-[fullscreen]:w-full data-[fullscreen]:max-w-none`,
+  `data-[fullscreen]:h-[100dvh] data-[fullscreen]:max-h-none`,
+  `[@supports(not_(height:100dvh))]:data-[fullscreen]:h-[100vh]`,
+  `data-[fullscreen]:rounded-none`
+];
 
 export const sheetVariants = scv({
   extend: [dialogVariants],
@@ -61,6 +88,7 @@ export const sheetVariants = scv({
     popup: [
       `fixed z-base flex flex-col justify-between items-stretch border bg-popover outline-none`,
       POPUP_TRANSITION,
+      ...POPUP_FULLSCREEN,
       `data-[state=open]:animate-in data-[state=open]:duration-500`,
       `data-[state=closed]:animate-out data-[state=closed]:duration-300`
     ]
