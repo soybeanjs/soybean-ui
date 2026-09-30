@@ -26,7 +26,7 @@ export const calendarRangeVariants = scv({
     headCell: 'rounded-md text-center font-normal text-muted-foreground',
     cell: [
       'flex-1 text-center align-middle focus-within:relative focus-within:z-20',
-      '[&:has([data-selected])]:bg-accent first:[&:has([data-selected])]:rounded-s-md last:[&:has([data-selected])]:rounded-e-md',
+      '[&[data-in-range]]:bg-accent first:[&[data-in-range]]:rounded-s-md last:[&[data-in-range]]:rounded-e-md',
       '[&:has([data-selection-end])]:rounded-e-md [&:has([data-selection-start])]:rounded-s-md'
     ],
     cellTrigger: [
