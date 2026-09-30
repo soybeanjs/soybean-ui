@@ -6,7 +6,12 @@ export const cardVariants = scv({
     root: 'flex flex-col items-stretch rounded-md border bg-card text-foreground shadow-sm',
     header: 'flex items-center justify-between flex-wrap',
     content: [
-      'grow transition will-change-auto outline-none data-[state=closed]:p-0',
+      // `transition-all` keeps the full default property list and owns no duration, so
+      // `transition-[height,padding]-200` supplies the duration without narrowing the list.
+      // Padding must be on it: `data-[state=closed]:p-0` otherwise collapses instantly while the
+      // `collapsible-up` keyframe still animates the height, snapping the text to the content
+      // element's top-leading corner before the box has finished shrinking.
+      'grow transition-all transition-[height,padding]-200 will-change-auto outline-none data-[state=closed]:p-0',
       `data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up`
     ],
     footer: 'flex items-center justify-between',
