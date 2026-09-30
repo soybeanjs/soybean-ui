@@ -9,7 +9,6 @@ const open = ref(false);
   <div class="flex justify-center w-full">
     <SDrawer
       v-model:open="open"
-      class="max-w-2xl"
       swipeable
       :swipe-area-props="{ 'aria-label': 'Swipe up to open the drawer' }"
       title="Swipe Drawer"

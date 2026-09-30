@@ -11,11 +11,7 @@ function closeNestedSheet() {
 
 <template>
   <div class="flex justify-center w-full">
-    <SDrawer
-      class="max-w-2xl"
-      title="Parent Drawer"
-      description="Open a nested sheet from inside the current bottom sheet."
-    >
+    <SDrawer title="Parent Drawer" description="Open a nested sheet from inside the current bottom sheet.">
       <template #trigger>
         <SButton variant="pure">Open Parent</SButton>
       </template>

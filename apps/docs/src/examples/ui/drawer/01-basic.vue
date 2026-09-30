@@ -137,7 +137,6 @@ const reset = (): void => {
 
   <div class="flex justify-center w-full">
     <SDrawer
-      class="max-w-2xl"
       :title="title"
       :description="description"
       :size="size"

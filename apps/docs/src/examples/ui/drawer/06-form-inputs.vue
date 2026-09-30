@@ -15,7 +15,6 @@ const contact = ref({
   <div class="flex justify-center w-full">
     <SDrawer
       v-model:open="open"
-      class="max-w-2xl"
       title="New contact"
       description="A form inside a sheet. Tapping a field raises the on-screen keyboard; the sheet keeps its resting position while the input is focused."
     >
