@@ -30,7 +30,7 @@ A gesture-driven panel that slides in from an edge of the screen. Unlike `SSheet
 - 🎛️ Modality tiers — `modal` accepts `true` (full modal), `'trap-focus'` (focus trapped, outside pointer events alive) or `false`
 - 🔘 Dialog footer — `showClose`/`showCancel`/`showConfirm` with localized `cancelText`/`confirmText`
 - 📐 6 sizes — xs–2xl `size`; per-slot `ui` overrides
-- ⛶ Fullscreen — `fullscreen`/`defaultFullscreen` (or `v-model:fullscreen`) grow the panel to the viewport from its anchored edge; snap points stay configured but are suspended while fullscreen
+- ⛶ Fullscreen — `fullscreen`/`defaultFullscreen` (or `v-model:fullscreen`) grow the panel to the viewport from its anchored edge; snapping and dragging are suspended while fullscreen
 - ♿ Accessible — `role="dialog"`, focus moves into the panel, `axe-core` clean
 
 ## Component family
@@ -87,7 +87,9 @@ A gesture-driven panel that slides in from an edge of the screen. Unlike `SSheet
 - `handleOnly` restricts dragging to the handle; `fixed` keeps the panel in place while inner content scrolls.
 - `swipeable` renders a gesture strip at the drawer's edge; it is inert while the drawer is open.
 - `nested` renders via `DrawerRootNested`; each nested drawer coordinates drag and release with its parent.
-- Fullscreen defines the panel's size, so it switches snapping off: a resting snap level below "fully open" would translate the panel back down and leave the half beyond its anchored edge off-screen. The drag then has a single resting position — release past `closeThreshold` dismisses, anything shorter springs back to fully open — and the handle stops cycling levels. Your `snapPoints` stay configured and resume when fullscreen is switched off.
+- Fullscreen defines the panel's size _and_ freezes its drag, matching how a dialog disables its draggable in fullscreen: a resting snap level below "fully open" would translate the panel back down and leave the half beyond its anchored edge off-screen, and a drag away from the edge would contradict the prop. Snapping and dragging resume when fullscreen is switched off; `snapPoints` stay configured throughout.
+- Because the drag is suspended, dismissal in fullscreen falls back to the explicit paths: the close button, Escape, and an outside press on a non-modal drawer. A modal fullscreen drawer with `showClose={false}` and `dismissible={false}` therefore has no way out — keep the close button (or `modal={false}`) if the user must be able to leave it.
+- The handle stops cycling snap levels while fullscreen, so it cannot rewrite `snapPoint` behind the scenes.
 - The drawer renders **no** fullscreen button of its own, so the dialog's `showFullscreen` has no effect here — drive the state with `v-model:fullscreen`/`defaultFullscreen`, or render your own control inside the panel.
 - An uncontrolled fullscreen session does not survive a close: the drawer reopens at `defaultFullscreen` (matching the dialog's reset).
 
@@ -225,7 +227,7 @@ Use the `'trap-focus'` tier:
 
 ### How do I make the drawer fullscreen?
 
-Bind `v-model:fullscreen`, or let it start fullscreen with `default-fullscreen`. The panel grows to the viewport from its `side` edge, so snapping is suspended while it lasts and resumes when you switch fullscreen off:
+Bind `v-model:fullscreen`, or let it start fullscreen with `default-fullscreen`. The panel grows to the viewport from its `side` edge and stops responding to drags, so snapping and dragging resume only once you switch fullscreen off:
 
 ```vue
 <SDrawer v-model:open="open" v-model:fullscreen="fullscreen" :snap-points="[0.6, 1]" title="Details">

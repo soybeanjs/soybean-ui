@@ -129,7 +129,7 @@ describe('SDrawer drag (e2e)', () => {
     unmount();
   });
 
-  it('springs a fullscreen drawer back to its edge instead of onto a snap level', async () => {
+  it('ignores drags while the drawer is fullscreen', async () => {
     const { unmount } = await renderComponent(SDrawer, {
       props: {
         open: true,
@@ -150,19 +150,30 @@ describe('SDrawer drag (e2e)', () => {
 
     expect(Math.round(popup.getBoundingClientRect().top)).toBeLessThan(1);
     expect(Math.round(popup.getBoundingClientRect().height)).toBeGreaterThanOrEqual(viewportHeight - 1);
-    expect(popup.style.getPropertyValue('--soybean-drawer-snap-point-offset')).toBe('');
 
     const from = popupDragPoint(popup);
 
-    // A short, slow drag stays below both the 25% travel threshold and the
-    // 0.5 px/ms fast-swipe velocity, so the release only has to decide where the
-    // panel comes to rest rather than whether to dismiss.
-    await drag(from, { x: from.x, y: from.y + 40 });
-    await sleep(700);
+    dispatchPointer('pointerdown', from.x, from.y, document.elementFromPoint(from.x, from.y) ?? undefined);
 
-    // With snapping inactive there is a single resting position — fully open —
-    // so the panel returns to the viewport edge. Were the 0.5 snap point still
-    // in play it would settle at roughly half the viewport.
+    // Far enough to dismiss an ordinary drawer — 400px against a 25% threshold on
+    // a 768px viewport — and driven in steps so the velocity stays under the
+    // fast-swipe threshold too.
+    for (let step = 1; step <= 8; step += 1) {
+      dispatchPointer('pointermove', from.x, from.y + step * 50);
+      await sleep(16);
+    }
+
+    // Mid-drag: a frozen panel has not moved and reports no gesture.
+    expect(popup.style.getPropertyValue('--soybean-drawer-swipe-movement-y')).toBe('');
+    expect(popup.getAttribute('data-soybean-swiping')).toBeNull();
+    expect(Math.round(popup.getBoundingClientRect().top)).toBeLessThan(1);
+
+    dispatchPointer('pointerup', from.x, from.y + 400);
+    await sleep(400);
+
+    // Still open and still covering the viewport; the drag-to-dismiss above is
+    // what the same gesture does when the drawer is not fullscreen.
+    expect(getPopups()).toHaveLength(1);
     expect(Math.round(getPopups()[0]!.getBoundingClientRect().top)).toBeLessThan(1);
 
     unmount();

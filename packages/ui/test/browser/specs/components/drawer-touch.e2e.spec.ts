@@ -66,6 +66,35 @@ describe('SDrawer touch scroll arbitration (e2e)', () => {
     unmount();
   });
 
+  it('leaves every touch on a fullscreen drawer to the browser', async () => {
+    const { unmount, openChanges } = await renderControlledDrawer(
+      { title: 'Fullscreen Drawer', fullscreen: true },
+      { open: true, slots: { default: () => h('p', 'Drawer body') } }
+    );
+
+    await sleep(600);
+
+    const popup = getPopups()[0]!;
+    const point = center(popup.getBoundingClientRect());
+
+    dispatchTouch('touchstart', popup, [point], { timeStamp: 1000 });
+
+    const move = dispatchTouch('touchmove', popup, [{ ...point, y: point.y + 30 }], { timeStamp: 1030 });
+
+    // A frozen drawer never claims the touch, so the capture-phase pipeline stays
+    // out of the way instead of absorbing a move that cannot drag anything.
+    expect(move.defaultPrevented).toBe(false);
+
+    dispatchTouch('touchend', popup, [{ ...point, y: point.y + 30 }], { timeStamp: 1060 });
+    await sleep(50);
+
+    expect(popup.getAttribute('data-soybean-swiping')).toBeNull();
+    expect(popup.style.getPropertyValue(MOVEMENT_Y_VAR)).toBe('');
+    expect(openChanges).toEqual([]);
+
+    unmount();
+  });
+
   it('leaves the gesture to the scroller when content is mid-scroll', async () => {
     const { unmount } = await renderScrollDrawer();
 

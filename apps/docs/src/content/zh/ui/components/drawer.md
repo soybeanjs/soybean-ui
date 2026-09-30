@@ -30,7 +30,7 @@ head:
 - 🎛️ 模态三层级 — `modal` 支持 `true`（完全模态）、`'trap-focus'`（陷阱焦点但保留外部指针事件）或 `false`
 - 🔘 dialog 底部 — `showClose`/`showCancel`/`showConfirm`，`cancelText`/`confirmText` 本地化
 - 📐 6 种尺寸 — xs–2xl `size`；逐槽 `ui` 覆盖
-- ⛶ 全屏 — `fullscreen`/`defaultFullscreen`（或 `v-model:fullscreen`）让面板从所锚定的那条边撑满视口；吸附点仍保留配置，但全屏期间暂停生效
+- ⛶ 全屏 — `fullscreen`/`defaultFullscreen`（或 `v-model:fullscreen`）让面板从所锚定的那条边撑满视口；全屏期间吸附与拖拽均暂停生效
 - ♿ 无障碍 — `role="dialog"`、焦点移入面板、`axe-core` 零违规
 
 ## 组件家族
@@ -87,7 +87,9 @@ head:
 - `handleOnly` 限制仅手柄可拖；`fixed` 保持面板固定同时内部内容滚动。
 - `swipeable` 在抽屉边缘渲染手势条；抽屉打开时该区域不生效。
 - `nested` 经 `DrawerRootNested` 渲染；每个嵌套抽屉与父级协调拖拽与释放。
-- 全屏会定义面板的尺寸，因此吸附会被关闭：低于「完全打开」的静止吸附档会把面板重新向下平移，使其越过锚定边的那一半落到屏幕外。此时拖拽只剩一个静止位——超过 `closeThreshold` 释放即关闭，否则回弹到完全打开——手柄也不再循环档位。你的 `snapPoints` 仍然保留，关闭全屏后恢复生效。
+- 全屏会定义面板的尺寸**并冻结拖拽**（与 dialog 在全屏时禁用 draggable 一致）：低于「完全打开」的静止吸附档会把面板重新向下平移，使其越过锚定边的那一半落到屏幕外，而把面板拖离该边缘也与这个 prop 的语义相矛盾。关闭全屏后吸附与拖拽恢复；`snapPoints` 始终保留配置。
+- 由于拖拽被暂停，全屏下的关闭只能走显式路径：关闭按钮、Escape，以及非模态抽屉的外部点击。因此「模态 + 全屏 + `showClose={false}` + `dismissible={false}`」会让用户无法退出——需要可退出时请保留关闭按钮（或使用 `modal={false}`）。
+- 全屏期间手柄不再循环档位，因此不会在背后改写 `snapPoint`。
 - 抽屉自身**不渲染**全屏按钮，因此 dialog 的 `showFullscreen` 在这里无效——请用 `v-model:fullscreen`/`defaultFullscreen` 驱动状态，或在面板内自行放置控件。
 - 非受控的全屏状态不会跨关闭保留：重新打开时回到 `defaultFullscreen`（与 dialog 的重置行为一致）。
 
@@ -227,7 +229,7 @@ v0.50.0 以 Base UI 风格引擎替换了 vaul 式内核，公开面变化：
 
 ### 如何让抽屉全屏？
 
-绑定 `v-model:fullscreen`，或用 `default-fullscreen` 让它初始即全屏。面板会从 `side` 那侧撑满视口，因此全屏期间吸附暂停，关闭全屏后恢复：
+绑定 `v-model:fullscreen`，或用 `default-fullscreen` 让它初始即全屏。面板会从 `side` 那侧撑满视口且不再响应拖拽，因此吸附与拖拽都要等关闭全屏后才恢复：
 
 ```vue
 <SDrawer v-model:open="open" v-model:fullscreen="fullscreen" :snap-points="[0.6, 1]" title="详情">

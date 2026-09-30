@@ -622,6 +622,106 @@ describe('SDrawer', () => {
     });
   });
 
+  describe('fullscreen drag', () => {
+    /**
+     * Opens the drawer through its trigger and returns the live popup element.
+     *
+     * The portal is disabled so the popup stays inside the wrapper: the gesture
+     * engine binds `pointerdown` to that element and resolves the move/release
+     * pair on the window, so a bubbled event dispatched on it drives the whole
+     * sequence without depending on what else is mounted in `document.body`.
+     */
+    async function openDrawer(props: Record<string, unknown>) {
+      const wrapper = mount(SDrawer, {
+        props: { title: 'Drawer', portalProps: { disabled: true }, ...props },
+        slots: {
+          trigger: '<button type="button">Open</button>',
+          default: '<div>Drawer Content</div>'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[data-soybean-drawer-trigger]').trigger('click');
+      await nextTick();
+      await nextTick();
+
+      const popup = wrapper.find<HTMLElement>('[data-soybean-drawer-popup]').element;
+
+      mockPointerCapture(popup);
+      mockRect(popup, { width: 320, height: 760 });
+
+      return { wrapper, popup };
+    }
+
+    /** Presses and drags the popup downwards by `distance` px. */
+    function dragDown(popup: HTMLElement, distance: number) {
+      dispatchPointerEvent(popup, 'pointerdown', { clientY: 100, pointerId: 1 });
+      dispatchPointerEvent(popup, 'pointermove', { clientY: 100 + distance, pointerId: 1 });
+    }
+
+    it('ignores a drag while the drawer is fullscreen', async () => {
+      const { wrapper, popup } = await openDrawer({ fullscreen: true });
+
+      dragDown(popup, 60);
+      await nextTick();
+
+      // A frozen gesture writes nothing: no movement for the CSS to read, no
+      // swiping state for the overlay to react to, and no progress reported.
+      expect(popup.style.getPropertyValue('--soybean-drawer-swipe-movement-y')).toBe('');
+      expect(popup.getAttribute('data-soybean-swiping')).toBeNull();
+      expect(wrapper.emitted('drag')).toBeUndefined();
+
+      dispatchPointerEvent(popup, 'pointerup', { clientY: 160, pointerId: 1 });
+      await nextTick();
+
+      expect(wrapper.emitted('release')).toBeUndefined();
+      expect(wrapper.emitted('update:open')).toEqual([[true]]);
+
+      wrapper.unmount();
+    });
+
+    it('tracks the same drag while the drawer is not fullscreen', async () => {
+      const { wrapper, popup } = await openDrawer({});
+
+      dragDown(popup, 60);
+      await nextTick();
+
+      // Guard for the frozen case: this is exactly what it must not produce.
+      expect(popup.style.getPropertyValue('--soybean-drawer-swipe-movement-y')).toBe('60px');
+      expect(popup.getAttribute('data-soybean-swiping')).toBe('true');
+      expect(wrapper.emitted('drag')).toHaveLength(1);
+
+      dispatchPointerEvent(popup, 'pointerup', { clientY: 160, pointerId: 1 });
+      await nextTick();
+
+      // 60px stays below the 25% threshold of the mocked 760px box, so the
+      // release settles instead of dismissing, and the drawer stays open.
+      expect(wrapper.emitted('release')).toEqual([[true]]);
+      expect(wrapper.emitted('update:open')).toEqual([[true]]);
+
+      wrapper.unmount();
+    });
+
+    it('clears an in-flight drag when fullscreen turns on', async () => {
+      const { wrapper, popup } = await openDrawer({});
+
+      dragDown(popup, 60);
+      await nextTick();
+
+      expect(popup.style.getPropertyValue('--soybean-drawer-swipe-movement-y')).toBe('60px');
+
+      await wrapper.setProps({ fullscreen: true });
+      await nextTick();
+
+      // The gesture stops being enabled from here on, so nothing else would ever
+      // clear the offset the abandoned drag already wrote: the switch has to.
+      expect(popup.style.getPropertyValue('--soybean-drawer-swipe-movement-y')).toBe('');
+      expect(popup.getAttribute('data-soybean-swiping')).toBeNull();
+
+      wrapper.unmount();
+    });
+  });
+
   describe('snap points', () => {
     it('exposes snap-point state on the popup', async () => {
       const wrapper = mount(SDrawer, {

@@ -34,6 +34,7 @@ const context = useDrawerRootContext('DrawerPopup');
 
 const {
   isOpen,
+  fullscreen,
   side,
   swipeDirection,
   dismissible,
@@ -284,7 +285,13 @@ function handleSwipeDismiss() {
 const swipe = useSwipeDismiss({
   // A nested drawer still owns its own swipe gesture; Base UI only suspends it
   // while the drawer's own child drawers are open.
-  enabled: computed(() => isOpen.value),
+  //
+  // Fullscreen suspends the gesture outright, matching how the dialog disables
+  // its draggable in fullscreen: the panel is meant to cover the viewport, so
+  // both the snap walk and the drag-to-dismiss have nothing left to move it to.
+  // Dismissal stays on the explicit paths — the close button, Escape, and an
+  // outside press on a non-modal drawer.
+  enabled: computed(() => isOpen.value && !fullscreen.value),
   elementRef: popupElement as ShallowRef<HTMLElement | null | undefined>,
   directions: computed(() => {
     const direction = swipeDirection.value;
@@ -322,6 +329,13 @@ watch(isOpen, openState => {
   if (!openState) return;
 
   if (!swipeAreaActive.value) swipe.reset();
+});
+
+// Turning fullscreen on mid-gesture has to drop what the drag already wrote:
+// with the gesture disabled nothing else clears the movement vars, so the panel
+// would keep resting at the offset of an abandoned drag.
+watch(fullscreen, isFullscreen => {
+  if (isFullscreen) swipe.reset();
 });
 
 // --- native touch pipeline ----------------------------------------------------
@@ -366,6 +380,14 @@ function handleTouchStart(event: TouchEvent) {
 
   if (!rootElement || !isOpen.value) {
     resetTouchSwipeState(false);
+    return;
+  }
+
+  // A frozen (fullscreen) drawer never claims a touch: marking the gesture as
+  // ignored keeps the move pipeline out of the way, so the panel's own content
+  // scrolls natively instead of being absorbed by a drag that cannot move.
+  if (fullscreen.value) {
+    resetTouchSwipeState(true);
     return;
   }
 
