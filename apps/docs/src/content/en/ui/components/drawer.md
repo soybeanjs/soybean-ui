@@ -30,6 +30,7 @@ A gesture-driven panel that slides in from an edge of the screen. Unlike `SSheet
 - 🎛️ Modality tiers — `modal` accepts `true` (full modal), `'trap-focus'` (focus trapped, outside pointer events alive) or `false`
 - 🔘 Dialog footer — `showClose`/`showCancel`/`showConfirm` with localized `cancelText`/`confirmText`
 - 📐 6 sizes — xs–2xl `size`; per-slot `ui` overrides
+- ⛶ Fullscreen — `fullscreen`/`defaultFullscreen` (or `v-model:fullscreen`) grow the panel to the viewport from its anchored edge
 - ♿ Accessible — `role="dialog"`, focus moves into the panel, `axe-core` clean
 
 ## Component family
@@ -86,6 +87,7 @@ A gesture-driven panel that slides in from an edge of the screen. Unlike `SSheet
 - `handleOnly` restricts dragging to the handle; `fixed` keeps the panel in place while inner content scrolls.
 - `swipeable` renders a gesture strip at the drawer's edge; it is inert while the drawer is open.
 - `nested` renders via `DrawerRootNested`; each nested drawer coordinates drag and release with its parent.
+- Fullscreen only changes the panel's box: it fills the viewport from its anchored edge and keeps its snap points and swipe-to-dismiss behaviour. The drawer renders **no** fullscreen button of its own, so the dialog's `showFullscreen` has no effect here — drive the state with `v-model:fullscreen`/`defaultFullscreen`, or render your own control inside the panel.
 
 ### Migrating from `BottomSheet`
 
@@ -214,6 +216,17 @@ Use the `'trap-focus'` tier:
 
 ```vue
 <SDrawer v-model:open="open" modal="trap-focus" title="Inspector">
+  <template #trigger><SButton>Open</SButton></template>
+  <div>Drawer content</div>
+</SDrawer>
+```
+
+### How do I make the drawer fullscreen?
+
+Bind `v-model:fullscreen`, or let it start fullscreen with `default-fullscreen`. The panel grows to the viewport from its `side` edge and keeps its snap points:
+
+```vue
+<SDrawer v-model:open="open" v-model:fullscreen="fullscreen" :snap-points="[0.6, 1]" title="Details">
   <template #trigger><SButton>Open</SButton></template>
   <div>Drawer content</div>
 </SDrawer>

@@ -13,6 +13,7 @@ import type {
   DialogContentProps,
   DialogDescriptionProps,
   DialogFooterProps,
+  DialogFullscreenStateEmits,
   DialogHeaderProps,
   DialogModal,
   DialogRootEmits,
@@ -366,24 +367,25 @@ export type DrawerRootProps = Omit<DialogRootProps, 'modal'> & {
 /**
  * Events for the DrawerRoot component.
  */
-export type DrawerRootEmits = DialogRootEmits & {
-  /**
-   * Emitted while dragging with the live progress: 0 fully open, 1 closed.
-   */
-  drag: [percentageDragged: number];
-  /**
-   * Emitted when a drag gesture releases; `true` when the drawer stays open.
-   */
-  release: [open: boolean];
-  /**
-   * Emitted when close occurs.
-   */
-  close: [];
-  /**
-   * Emitted when the snap point value changes.
-   */
-  'update:snapPoint': [val: DrawerSnapPoint | null];
-};
+export type DrawerRootEmits = DialogRootEmits &
+  DialogFullscreenStateEmits & {
+    /**
+     * Emitted while dragging with the live progress: 0 fully open, 1 closed.
+     */
+    drag: [percentageDragged: number];
+    /**
+     * Emitted when a drag gesture releases; `true` when the drawer stays open.
+     */
+    release: [open: boolean];
+    /**
+     * Emitted when close occurs.
+     */
+    close: [];
+    /**
+     * Emitted when the snap point value changes.
+     */
+    'update:snapPoint': [val: DrawerSnapPoint | null];
+  };
 
 /**
  * Slots for the DrawerRoot component.

@@ -12,6 +12,9 @@ defineOptions({
 
 const props = withDefaults(defineProps<DrawerProps>(), {
   open: undefined,
+  // Must stay `undefined` — a cast `false` would travel down to `DialogRoot` as a
+  // controlled fullscreen value and freeze the state (see headless `DrawerRoot`).
+  fullscreen: undefined,
   modal: true,
   dismissible: true,
   showClose: true,

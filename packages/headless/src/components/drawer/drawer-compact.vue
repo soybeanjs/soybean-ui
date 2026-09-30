@@ -30,6 +30,9 @@ defineOptions({
 
 const props = withDefaults(defineProps<DrawerCompactProps>(), {
   open: undefined,
+  // Must stay `undefined` — a cast `false` would reach `DrawerRoot` as a
+  // controlled fullscreen value and freeze the state (see `DrawerRoot`).
+  fullscreen: undefined,
   modal: true,
   shouldScaleBackground: true,
   setBackgroundColorOnScale: true,

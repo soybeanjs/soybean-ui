@@ -3891,6 +3891,7 @@
             "close": "Emitted when close occurs.",
             "drag": "Emitted while dragging with the live progress: 0 fully open, 1 closed.",
             "release": "Emitted when a drag gesture releases; `true` when the drawer stays open.",
+            "update_fullscreen": "Event handler called when the fullscreen state of the dialog changes.",
             "update_open": "Event handler called when the open state of the dialog changes.",
             "update_snappoint": "Emitted when the snap point value changes."
           },

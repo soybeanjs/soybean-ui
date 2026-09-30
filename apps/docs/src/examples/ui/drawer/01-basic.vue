@@ -27,6 +27,7 @@ interface CustomizerState {
   dismissible: boolean;
   handleOnly: boolean;
   swipeable: boolean;
+  fullscreen: boolean;
   closeThreshold: number | null;
 }
 
@@ -40,6 +41,7 @@ const DEFAULTS: CustomizerState = {
   dismissible: true,
   handleOnly: false,
   swipeable: false,
+  fullscreen: false,
   closeThreshold: 0.25
 };
 
@@ -61,6 +63,7 @@ const modal = shallowRef(DEFAULTS.modal);
 const dismissible = shallowRef(DEFAULTS.dismissible);
 const handleOnly = shallowRef(DEFAULTS.handleOnly);
 const swipeable = shallowRef(DEFAULTS.swipeable);
+const fullscreen = shallowRef(DEFAULTS.fullscreen);
 const closeThreshold = shallowRef(DEFAULTS.closeThreshold);
 
 /** 空输入回落到组件默认值 0.25。 */
@@ -82,6 +85,7 @@ const reset = (): void => {
   dismissible.value = DEFAULTS.dismissible;
   handleOnly.value = DEFAULTS.handleOnly;
   swipeable.value = DEFAULTS.swipeable;
+  fullscreen.value = DEFAULTS.fullscreen;
   closeThreshold.value = DEFAULTS.closeThreshold;
 };
 </script>
@@ -129,6 +133,11 @@ const reset = (): void => {
           <SSwitch v-model="swipeable" :control-props="{ 'aria-label': 'Swipeable' }" />
         </div>
       </FieldItem>
+      <FieldItem label="fullscreen">
+        <div class="h-8 flex items-center">
+          <SSwitch v-model="fullscreen" :control-props="{ 'aria-label': 'Fullscreen' }" />
+        </div>
+      </FieldItem>
       <FieldItem :label="t('playground.reset')" class="ml-auto">
         <SButtonIcon icon="lucide:rotate-cw" color="destructive" variant="soft" aria-label="Reset" @click="reset" />
       </FieldItem>
@@ -145,6 +154,7 @@ const reset = (): void => {
       :dismissible="dismissible"
       :handle-only="handleOnly"
       :swipeable="swipeable"
+      :fullscreen="fullscreen"
       :close-threshold="resolvedCloseThreshold"
     >
       <template #trigger>

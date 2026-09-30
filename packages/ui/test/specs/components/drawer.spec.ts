@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
-import { nextTick } from 'vue';
+import { defineComponent, h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import { DialogFullscreen } from '@soybeanjs/headless/dialog';
+import { DrawerPopup, DrawerRoot, DrawerRootNested } from '@soybeanjs/headless/drawer';
 import SDrawer from '@/components/drawer/drawer.vue';
 
 function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {
@@ -225,6 +227,185 @@ describe('SDrawer', () => {
       await nextTick();
 
       expect(wrapper.find('[role="dialog"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('fullscreen state', () => {
+    it('leaves the popup out of fullscreen by default', async () => {
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          title: 'Drawer',
+          portalProps: { disabled: true }
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-fullscreen')).toBeUndefined();
+
+      wrapper.unmount();
+    });
+
+    it('enters fullscreen from the uncontrolled default', async () => {
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          defaultFullscreen: true,
+          title: 'Drawer',
+          portalProps: { disabled: true }
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      // Before the wiring fix this stayed out of fullscreen: the absent Boolean
+      // prop was cast to `false` on the way down, so `DialogRoot` read a
+      // controlled `false` and ignored `defaultFullscreen` entirely.
+      expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-fullscreen')).toBeDefined();
+
+      wrapper.unmount();
+    });
+
+    it('follows the controlled fullscreen prop', async () => {
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          title: 'Drawer',
+          portalProps: { disabled: true }
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      await wrapper.setProps({ fullscreen: true });
+
+      expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-fullscreen')).toBeDefined();
+
+      await wrapper.setProps({ fullscreen: false });
+
+      expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-fullscreen')).toBeUndefined();
+
+      wrapper.unmount();
+    });
+
+    it('keeps the state uncontrolled and re-emits update:fullscreen', async () => {
+      // The drawer renders no fullscreen control of its own, so flipping an
+      // *uncontrolled* state requires a consumer to place the dialog's
+      // `DialogFullscreen` inside the drawer. It shares the drawer's dialog root
+      // context, which is exactly the path `update:fullscreen` has to travel —
+      // and it only repaints while the state stays uncontrolled.
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          title: 'Drawer',
+          portalProps: { disabled: true }
+        },
+        slots: { ...slots, default: () => h(DialogFullscreen) },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      await wrapper.find('[data-soybean-dialog-fullscreen]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-fullscreen')).toBeDefined();
+      expect(wrapper.emitted('update:fullscreen')![0][0]).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('applies the same uncontrolled default to a nested child drawer', async () => {
+      // `DrawerRootNested` forwards its whole prop object, so a cast `false`
+      // there would pin the child to a controlled non-fullscreen state while the
+      // parent was left untouched.
+      const Harness = defineComponent({
+        name: 'NestedDrawerHarness',
+        setup() {
+          return () =>
+            h(
+              SDrawer,
+              { open: true, title: 'Parent Drawer', portalProps: { disabled: true } },
+              {
+                default: () =>
+                  h(
+                    SDrawer,
+                    { nested: true, open: true, title: 'Child Drawer', portalProps: { disabled: true } },
+                    { default: () => h(DialogFullscreen) }
+                  )
+              }
+            );
+        }
+      });
+
+      const wrapper = mount(Harness, { attachTo: document.body });
+
+      await nextTick();
+      await nextTick();
+
+      await wrapper.find('[data-soybean-dialog-fullscreen]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.findAll('[data-soybean-drawer-popup]').map(node => node.attributes('data-fullscreen'))).toEqual([
+        undefined,
+        ''
+      ]);
+
+      wrapper.unmount();
+    });
+
+    it('keeps the root primitive uncontrolled when fullscreen is absent', async () => {
+      // `DrawerRoot` is a public primitive: a consumer can compose `DrawerPopup`
+      // and a toggle by hand, and then `fullscreen` never passes through another
+      // layer holding the key — so this layer has to carry its own
+      // `undefined` default rather than rely on an upstream one.
+      const wrapper = mount(DrawerRoot, {
+        props: { open: true },
+        slots: { default: () => h(DrawerPopup, {}, { default: () => h(DialogFullscreen) }) },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      await wrapper.find('[data-soybean-dialog-fullscreen]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-fullscreen')).toBeDefined();
+
+      wrapper.unmount();
+    });
+
+    it('keeps the nested root primitive uncontrolled when fullscreen is absent', async () => {
+      const wrapper = mount(DrawerRoot, {
+        props: { open: true },
+        slots: {
+          default: () =>
+            h(
+              DrawerRootNested,
+              { open: true },
+              {
+                default: () => h(DrawerPopup, {}, { default: () => h(DialogFullscreen) })
+              }
+            )
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      await wrapper.find('[data-soybean-dialog-fullscreen]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-fullscreen')).toBeDefined();
 
       wrapper.unmount();
     });

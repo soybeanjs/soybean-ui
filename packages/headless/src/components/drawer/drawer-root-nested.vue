@@ -9,7 +9,12 @@ defineOptions({
   name: 'DrawerRootNested'
 });
 
-const props = defineProps<DrawerRootProps>();
+const props = withDefaults(defineProps<DrawerRootProps>(), {
+  // The whole prop object is forwarded to `DrawerRoot`, so this layer needs the
+  // same explicit `undefined`: a cast `false` would make the nested drawer's
+  // fullscreen state controlled (see `DrawerRoot`).
+  fullscreen: undefined
+});
 
 const emit = defineEmits<DrawerRootEmits>();
 

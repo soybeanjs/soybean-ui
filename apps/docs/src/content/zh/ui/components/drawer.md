@@ -30,6 +30,7 @@ head:
 - 🎛️ 模态三层级 — `modal` 支持 `true`（完全模态）、`'trap-focus'`（陷阱焦点但保留外部指针事件）或 `false`
 - 🔘 dialog 底部 — `showClose`/`showCancel`/`showConfirm`，`cancelText`/`confirmText` 本地化
 - 📐 6 种尺寸 — xs–2xl `size`；逐槽 `ui` 覆盖
+- ⛶ 全屏 — `fullscreen`/`defaultFullscreen`（或 `v-model:fullscreen`）让面板从所锚定的那条边撑满视口
 - ♿ 无障碍 — `role="dialog"`、焦点移入面板、`axe-core` 零违规
 
 ## 组件家族
@@ -86,6 +87,7 @@ head:
 - `handleOnly` 限制仅手柄可拖；`fixed` 保持面板固定同时内部内容滚动。
 - `swipeable` 在抽屉边缘渲染手势条；抽屉打开时该区域不生效。
 - `nested` 经 `DrawerRootNested` 渲染；每个嵌套抽屉与父级协调拖拽与释放。
+- 全屏只改变面板的盒子：从所锚定的那条边撑满视口，吸附点与滑动关闭行为保持不变。抽屉自身**不渲染**全屏按钮，因此 dialog 的 `showFullscreen` 在这里无效——请用 `v-model:fullscreen`/`defaultFullscreen` 驱动状态，或在面板内自行放置控件。
 
 ### 从 `BottomSheet` 迁移
 
@@ -216,6 +218,17 @@ v0.50.0 以 Base UI 风格引擎替换了 vaul 式内核，公开面变化：
 
 ```vue
 <SDrawer v-model:open="open" modal="trap-focus" title="检查器">
+  <template #trigger><SButton>打开</SButton></template>
+  <div>抽屉内容</div>
+</SDrawer>
+```
+
+### 如何让抽屉全屏？
+
+绑定 `v-model:fullscreen`，或用 `default-fullscreen` 让它初始即全屏。面板会从 `side` 那侧撑满视口，并保留吸附点：
+
+```vue
+<SDrawer v-model:open="open" v-model:fullscreen="fullscreen" :snap-points="[0.6, 1]" title="详情">
   <template #trigger><SButton>打开</SButton></template>
   <div>抽屉内容</div>
 </SDrawer>

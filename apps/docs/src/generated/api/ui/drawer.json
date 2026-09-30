@@ -1593,7 +1593,7 @@
           {
             "name": "DrawerCompactEmits",
             "kind": "typeAlias",
-            "type": "Omit<import(\"@soybeanjs/headless\").DialogCompactEmits, 'close'> & import(\"@soybeanjs/headless\").DialogRootEmits & { drag: [percentageDragged: number]; release: [open: boolean]; close: []; 'update:snapPoint': [val: import(\"@soybeanjs/headless\").DrawerSnapPoint | null]; }",
+            "type": "Omit<import(\"@soybeanjs/headless\").DialogCompactEmits, 'close'> & import(\"@soybeanjs/headless\").DialogRootEmits & import(\"@soybeanjs/headless\").DialogFullscreenStateEmits & { drag: [percentageDragged: number]; release: [open: boolean]; close: []; 'update:snapPoint': [val: import(\"@soybeanjs/headless\").DrawerSnapPoint | null]; }",
             "resolvedType": "{ cancel: [event: MouseEvent]; click: [event: PointerEvent]; fullscreen: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; \"update:fullscreen\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:snapPoint\": [val: DrawerSnapPoint | null] }",
             "description": "Events for the DrawerCompact component.",
             "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawercompactemits",
@@ -4882,8 +4882,8 @@
       "emits": {
         "kind": "emits",
         "name": "DrawerRootEmits",
-        "type": "TypeAlias DrawerRootEmits: DialogRootEmits & { close: []; drag: [percentageDragged: number]; release: [open: boolean]; update:snapPoint: [val: DrawerSnapPoint | null] }",
-        "resolvedType": "{ \"update:open\": [value: boolean]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:snapPoint\": [val: DrawerSnapPoint | null] }",
+        "type": "TypeAlias DrawerRootEmits: DialogRootEmits & DialogFullscreenStateEmits & { close: []; drag: [percentageDragged: number]; release: [open: boolean]; update:snapPoint: [val: DrawerSnapPoint | null] }",
+        "resolvedType": "{ \"update:open\": [value: boolean]; \"update:fullscreen\": [value: boolean]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:snapPoint\": [val: DrawerSnapPoint | null] }",
         "description": "Events for the DrawerRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawerrootemits.emits",
         "sourcePath": "packages/headless/src/components/drawer/types.ts",
@@ -4897,6 +4897,16 @@
             "required": true,
             "description": "Event handler called when the open state of the dialog changes.",
             "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawerrootemits.callables.update_open",
+            "sourcePath": "packages/headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:fullscreen",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Event handler called when the fullscreen state of the dialog changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_drawer_types.drawerrootemits.callables.update_fullscreen",
             "sourcePath": "packages/headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },

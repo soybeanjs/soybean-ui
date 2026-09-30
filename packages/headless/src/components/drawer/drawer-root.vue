@@ -12,6 +12,12 @@ defineOptions({
 const props = withDefaults(defineProps<DrawerRootProps>(), {
   open: undefined,
   defaultOpen: undefined,
+  // `undefined` is load-bearing: Vue casts an absent Boolean prop to `false`, and
+  // the template hands this straight to `DialogRoot`, whose `useControllableState`
+  // reads any defined value as *controlled*. Without the explicit default the
+  // drawer would pin the fullscreen state to `false` and neither `fullscreen` nor
+  // a toggle rendered inside the drawer could ever change it.
+  fullscreen: undefined,
   fixed: undefined,
   dismissible: true,
   snapPoint: undefined,
@@ -95,7 +101,14 @@ function handleOpenChange(openState: boolean) {
        drawer immediately, in uncontrolled mode too, without waiting for a
        parent `update:open` round-trip. 
 -->
-  <DialogRoot :open="isOpen" :modal="modal" @update:open="handleOpenChange">
+  <DialogRoot
+    :open="isOpen"
+    :modal="modal"
+    :fullscreen="fullscreen"
+    :default-fullscreen="defaultFullscreen"
+    @update:open="handleOpenChange"
+    @update:fullscreen="emit('update:fullscreen', $event)"
+  >
     <slot :open="isOpen" :close="closeDrawer" />
   </DialogRoot>
 </template>
