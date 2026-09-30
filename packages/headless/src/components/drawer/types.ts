@@ -48,6 +48,14 @@ export interface UseDrawerProps {
    */
   open: Ref<boolean>;
   /**
+   * Whether the drawer is fullscreen.
+   *
+   * Fullscreen defines the panel's size, so it also switches snapping off: a
+   * resting snap point below "fully open" would translate a fullscreen panel
+   * back down and leave its far half off-screen.
+   */
+  fullscreen: Ref<boolean>;
+  /**
    * Snap points.
    */
   snapPoints: Ref<DrawerSnapPoint[] | undefined>;
@@ -111,6 +119,10 @@ export interface DrawerRootContext {
    */
   isOpen: Ref<boolean>;
   /**
+   * Whether the drawer is fullscreen (controllable).
+   */
+  fullscreen: Ref<boolean>;
+  /**
    * Modal used by the component context.
    */
   modal: Ref<DrawerModal>;
@@ -167,7 +179,9 @@ export interface DrawerRootContext {
    */
   snapPoints: Ref<DrawerSnapPoint[] | undefined>;
   /**
-   * Whether the component has snap points.
+   * Whether snapping is active: snap points are configured *and* the drawer is
+   * not fullscreen. Every snap-driven behaviour (resting offset, box cap, drag
+   * axis set, handle cycling) keys on this flag.
    */
   hasSnapPoints: Ref<boolean>;
   /**

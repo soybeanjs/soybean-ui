@@ -14,6 +14,7 @@ export const [provideDrawerRootContext, useDrawerRootContext] = useContext(
 export function useDrawer(params: DrawerRootContextParams): DrawerRootContext {
   const {
     open,
+    fullscreen,
     snapPoints,
     snapPoint,
     defaultSnapPoint,
@@ -42,7 +43,15 @@ export function useDrawer(params: DrawerRootContextParams): DrawerRootContext {
   const popupHeight = ref(0);
   const swipeAreaActive = ref(false);
   const nestedScale = ref(1);
-  const hasSnapPoints = computed(() => (snapPoints.value?.length ?? 0) > 0);
+  /**
+   * Snapping is only meaningful while the panel can rest at more than one size.
+   * Fullscreen fixes that size to the viewport, so keeping a snap point active
+   * would translate the panel back down to its resting level and leave the half
+   * beyond the anchored edge off-screen. Switching the whole snap machinery off
+   * also degrades the drag to the single-resting-position path: release past the
+   * threshold dismisses, anything shorter springs back to fully open.
+   */
+  const hasSnapPoints = computed(() => !fullscreen.value && (snapPoints.value?.length ?? 0) > 0);
 
   const resolvedSwipeDirection = computed<SwipeDirection>(() => swipeDirection.value ?? SWIPE_TO_DISMISS[side.value]);
 
@@ -53,7 +62,12 @@ export function useDrawer(params: DrawerRootContextParams): DrawerRootContext {
     side
   });
 
-  const snapPointsOffset = computed(() => resolvedSnapPoints.value.map(point => point.offset));
+  // Published for introspection only; an inactive (fullscreen) drawer reports no
+  // offsets so consumers keying on `data-soybean-snap-points-offset` stay in step
+  // with the `data-soybean-snap-points` flag they read next to it.
+  const snapPointsOffset = computed(() =>
+    hasSnapPoints.value ? resolvedSnapPoints.value.map(point => point.offset) : []
+  );
 
   const snapPointRange = computed(() => {
     const offsets = snapPointsOffset.value;
@@ -152,6 +166,7 @@ export function useDrawer(params: DrawerRootContextParams): DrawerRootContext {
 
   return {
     open,
+    fullscreen,
     isOpen,
     modal,
     hasBeenOpened,

@@ -129,6 +129,45 @@ describe('SDrawer drag (e2e)', () => {
     unmount();
   });
 
+  it('springs a fullscreen drawer back to its edge instead of onto a snap level', async () => {
+    const { unmount } = await renderComponent(SDrawer, {
+      props: {
+        open: true,
+        fullscreen: true,
+        title: 'Fullscreen Drag',
+        snapPoints: [0.5, 1]
+      },
+      slots: { default: '<div v-for="i in 40" :key="i" class="h-8">Item</div>' }
+    });
+
+    await sleep(600);
+
+    const popup = getPopups()[0];
+
+    expect(popup).toBeTruthy();
+
+    const viewportHeight = document.documentElement.clientHeight;
+
+    expect(Math.round(popup.getBoundingClientRect().top)).toBeLessThan(1);
+    expect(Math.round(popup.getBoundingClientRect().height)).toBeGreaterThanOrEqual(viewportHeight - 1);
+    expect(popup.style.getPropertyValue('--soybean-drawer-snap-point-offset')).toBe('');
+
+    const from = popupDragPoint(popup);
+
+    // A short, slow drag stays below both the 25% travel threshold and the
+    // 0.5 px/ms fast-swipe velocity, so the release only has to decide where the
+    // panel comes to rest rather than whether to dismiss.
+    await drag(from, { x: from.x, y: from.y + 40 });
+    await sleep(700);
+
+    // With snapping inactive there is a single resting position — fully open —
+    // so the panel returns to the viewport edge. Were the 0.5 snap point still
+    // in play it would settle at roughly half the viewport.
+    expect(Math.round(getPopups()[0]!.getBoundingClientRect().top)).toBeLessThan(1);
+
+    unmount();
+  });
+
   it('carries the snap offset var from the first painted frame on open', async () => {
     // Regression: the debounced first height measurement left the snap offset
     // var unset for ~150ms, so the entry animation played at the unmeasured

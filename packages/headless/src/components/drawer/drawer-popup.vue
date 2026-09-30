@@ -569,8 +569,9 @@ const popupStyle = computed(() => {
   // The box must not rest taller than the largest snap point: a resting position
   // is reached by translating the box down, so any size past the viewport edge
   // puts the end of the scrolling content below the fold, where no snap level can
-  // bring it back into view.
-  const maxSize = maxSnapPointSize.value;
+  // bring it back into view. `hasSnapPoints` also drops the cap in fullscreen,
+  // where the panel is meant to rest at the viewport edge instead.
+  const maxSize = hasSnapPoints.value ? maxSnapPointSize.value : null;
 
   if (maxSize !== null && maxSize > 0) {
     style[isVertical(side.value) ? DRAWER_CSS_VARS.maxHeight : DRAWER_CSS_VARS.maxWidth] = `${maxSize}px`;

@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { defineComponent, h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { DialogFullscreen } from '@soybeanjs/headless/dialog';
-import { DrawerPopup, DrawerRoot, DrawerRootNested } from '@soybeanjs/headless/drawer';
+import { DrawerPopup, DrawerRoot, DrawerRootNested, DrawerViewport } from '@soybeanjs/headless/drawer';
 import SDrawer from '@/components/drawer/drawer.vue';
 
 function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {
@@ -406,6 +406,217 @@ describe('SDrawer', () => {
       await nextTick();
 
       expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-fullscreen')).toBeDefined();
+
+      wrapper.unmount();
+    });
+
+    it('resets the uncontrolled fullscreen state when the drawer reopens', async () => {
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          title: 'Drawer',
+          snapPoints: [0.5, 1],
+          portalProps: { disabled: true }
+        },
+        slots: { ...slots, default: () => h(DialogFullscreen) },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      await wrapper.find('[data-soybean-dialog-fullscreen]').trigger('click');
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-drawer-popup]').attributes('data-fullscreen')).toBeDefined();
+
+      await wrapper.setProps({ open: false });
+      await wrapper.setProps({ open: true });
+      await nextTick();
+
+      const popup = wrapper.find('[data-soybean-drawer-popup]');
+
+      expect(popup.attributes('data-fullscreen')).toBeUndefined();
+      expect(popup.attributes('data-soybean-snap-points')).toBe('true');
+      expect(wrapper.emitted('update:fullscreen')!.at(-1)).toEqual([false]);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('fullscreen snapping', () => {
+    it('switches snapping off while the drawer is fullscreen', async () => {
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          fullscreen: true,
+          title: 'Drawer',
+          snapPoints: [0.5, 1],
+          portalProps: { disabled: true }
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      const popup = wrapper.find('[data-soybean-drawer-popup]');
+
+      // Fullscreen fixes the panel's size to the viewport, so a resting snap
+      // point below "fully open" would translate it back down and leave the half
+      // beyond the anchored edge off-screen. Both the flag and the box cap the
+      // panel is measured against have to drop with it.
+      expect(popup.attributes('data-soybean-snap-points')).toBe('false');
+      expect(popup.attributes('style')).not.toContain('--soybean-drawer-max-height');
+
+      wrapper.unmount();
+    });
+
+    it('keeps snapping on when the drawer is not fullscreen', async () => {
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          title: 'Drawer',
+          snapPoints: [0.5, 1],
+          portalProps: { disabled: true }
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      const popup = wrapper.find('[data-soybean-drawer-popup]');
+
+      expect(popup.attributes('data-soybean-snap-points')).toBe('true');
+      expect(popup.attributes('style')).toContain('--soybean-drawer-max-height');
+
+      wrapper.unmount();
+    });
+
+    it('follows an in-context fullscreen toggle when deciding whether snapping is active', async () => {
+      // The toggle lives in the dialog's state machine, which is why the drawer
+      // root owns the value: a snapshot of the prop alone would leave snapping on
+      // for a panel that is already rendering fullscreen.
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          title: 'Drawer',
+          snapPoints: [0.5, 1],
+          portalProps: { disabled: true }
+        },
+        slots: { ...slots, default: () => h(DialogFullscreen) },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      const popup = wrapper.find('[data-soybean-drawer-popup]');
+
+      expect(popup.attributes('data-soybean-snap-points')).toBe('true');
+
+      await wrapper.find('[data-soybean-dialog-fullscreen]').trigger('click');
+      await nextTick();
+
+      expect(popup.attributes('data-fullscreen')).toBeDefined();
+      expect(popup.attributes('data-soybean-snap-points')).toBe('false');
+      expect(popup.attributes('style')).not.toContain('--soybean-drawer-max-height');
+
+      wrapper.unmount();
+    });
+
+    it('does not cycle snap levels from the handle while fullscreen', async () => {
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          fullscreen: true,
+          title: 'Drawer',
+          snapPoints: [0.5, 1],
+          snapPoint: 0.5,
+          portalProps: { disabled: true }
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      await wrapper.find('[data-soybean-handle]').trigger('click');
+      // The handle defers its cycle behind `DOUBLE_TAP_TIMEOUT` (120ms) so a long
+      // press can still cancel it.
+      await new Promise(resolve => setTimeout(resolve, 200));
+
+      // Fullscreen has no snap levels to walk, so the handle must not rewrite
+      // `snapPoint` behind the scenes and leave the drawer resting elsewhere once
+      // fullscreen is switched off.
+      expect(wrapper.emitted('update:snapPoint')).toBeUndefined();
+
+      wrapper.unmount();
+    });
+
+    it('reports no snap-point offsets on the viewport while fullscreen', async () => {
+      const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
+
+      Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, get: () => 600 });
+
+      const innerHeightSpy = vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
+
+      try {
+        const wrapper = mount(DrawerRoot, {
+          props: { open: true, side: 'bottom', snapPoints: [0.5, 1] },
+          slots: { default: () => h(DrawerViewport, {}, { default: () => h(DrawerPopup) }) },
+          attachTo: document.body
+        });
+
+        await nextTick();
+        await nextTick();
+
+        const viewport = wrapper.find('[data-soybean-drawer-viewport]');
+
+        // 0.5 of 768 = 384 high, so the 600px box rests 216px down; 1 resolves to
+        // the whole box and rests flush.
+        expect(viewport.attributes('data-soybean-snap-points')).toBe('true');
+        expect(viewport.attributes('data-soybean-snap-points-offset')).toBe('216,0');
+
+        await wrapper.setProps({ fullscreen: true });
+        await nextTick();
+
+        // A fullscreen drawer publishes no offsets, so a consumer reading the pair
+        // of attributes never sees positions that are not being applied.
+        expect(viewport.attributes('data-soybean-snap-points')).toBe('false');
+        expect(viewport.attributes('data-soybean-snap-points-offset')).toBeUndefined();
+
+        wrapper.unmount();
+      } finally {
+        innerHeightSpy.mockRestore();
+
+        if (descriptor) {
+          Object.defineProperty(HTMLElement.prototype, 'offsetHeight', descriptor);
+        } else {
+          Reflect.deleteProperty(HTMLElement.prototype, 'offsetHeight');
+        }
+      }
+    });
+
+    it('cycles snap levels from the handle when snapping is active', async () => {
+      const wrapper = mount(SDrawer, {
+        props: {
+          open: true,
+          title: 'Drawer',
+          snapPoints: [0.5, 1],
+          snapPoint: 0.5,
+          portalProps: { disabled: true }
+        },
+        slots,
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      await wrapper.find('[data-soybean-handle]').trigger('click');
+      await new Promise(resolve => setTimeout(resolve, 200));
+
+      // Guard for the assertion above: this is the same gesture with snapping on.
+      expect(wrapper.emitted('update:snapPoint')).toEqual([[1]]);
 
       wrapper.unmount();
     });

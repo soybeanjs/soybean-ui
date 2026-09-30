@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, toRefs } from 'vue';
+import { computed, toRefs, watch } from 'vue';
 import { useControllableState } from '../../composables';
 import { DialogRoot } from '../dialog';
 import { provideDrawerRootContext } from './context';
@@ -44,6 +44,20 @@ const open = useControllableState(
   props.defaultOpen ?? false
 );
 
+/**
+ * The drawer owns the fullscreen state instead of leaving it to the dialog: the
+ * snap machinery in the context has to react to it, and a context consumer sits
+ * *below* `DialogRoot`, where the dialog's own uncontrolled state is out of
+ * reach. `DialogRoot` is therefore always bound to this value.
+ */
+const fullscreen = useControllableState(
+  () => props.fullscreen,
+  value => {
+    emit('update:fullscreen', value);
+  },
+  props.defaultFullscreen ?? false
+);
+
 const snapPoints = computed(() => props.snapPoints);
 
 const defaultSnapPoint = computed(() => props.defaultSnapPoint ?? props.snapPoints?.[0] ?? null);
@@ -71,6 +85,20 @@ function requestOpenState(openState: boolean) {
   open.value = openState;
 }
 
+/**
+ * The same controlled/uncontrolled split for the fullscreen toggle the dialog
+ * renders: it asks the drawer root to change, and the root either reports the
+ * intent upwards or adopts it.
+ */
+function requestFullscreenState(fullscreenState: boolean) {
+  if (props.fullscreen !== undefined) {
+    emit('update:fullscreen', fullscreenState);
+    return;
+  }
+
+  fullscreen.value = fullscreenState;
+}
+
 const emitHandlers = {
   emitDrag: (percentageDragged: number) => emit('drag', percentageDragged),
   emitRelease: (openState: boolean) => emit('release', openState),
@@ -85,6 +113,7 @@ const { isOpen, closeDrawer } = provideDrawerRootContext({
   ...emitHandlers,
   ...toRefs(props),
   open,
+  fullscreen,
   snapPoints,
   snapPoint,
   defaultSnapPoint
@@ -93,6 +122,15 @@ const { isOpen, closeDrawer } = provideDrawerRootContext({
 function handleOpenChange(openState: boolean) {
   requestOpenState(openState);
 }
+
+// An uncontrolled fullscreen session must not leak into the next open, matching
+// the dialog's own reset. It runs on reopen rather than on close so the exit
+// animation keeps the fullscreen surface until the popup unmounts.
+watch(isOpen, value => {
+  if (value && props.fullscreen === undefined) {
+    fullscreen.value = props.defaultFullscreen ?? false;
+  }
+});
 </script>
 
 <template>
@@ -105,9 +143,8 @@ function handleOpenChange(openState: boolean) {
     :open="isOpen"
     :modal="modal"
     :fullscreen="fullscreen"
-    :default-fullscreen="defaultFullscreen"
     @update:open="handleOpenChange"
-    @update:fullscreen="emit('update:fullscreen', $event)"
+    @update:fullscreen="requestFullscreenState"
   >
     <slot :open="isOpen" :close="closeDrawer" />
   </DialogRoot>

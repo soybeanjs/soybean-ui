@@ -30,7 +30,7 @@ A gesture-driven panel that slides in from an edge of the screen. Unlike `SSheet
 - 🎛️ Modality tiers — `modal` accepts `true` (full modal), `'trap-focus'` (focus trapped, outside pointer events alive) or `false`
 - 🔘 Dialog footer — `showClose`/`showCancel`/`showConfirm` with localized `cancelText`/`confirmText`
 - 📐 6 sizes — xs–2xl `size`; per-slot `ui` overrides
-- ⛶ Fullscreen — `fullscreen`/`defaultFullscreen` (or `v-model:fullscreen`) grow the panel to the viewport from its anchored edge
+- ⛶ Fullscreen — `fullscreen`/`defaultFullscreen` (or `v-model:fullscreen`) grow the panel to the viewport from its anchored edge; snap points stay configured but are suspended while fullscreen
 - ♿ Accessible — `role="dialog"`, focus moves into the panel, `axe-core` clean
 
 ## Component family
@@ -87,7 +87,9 @@ A gesture-driven panel that slides in from an edge of the screen. Unlike `SSheet
 - `handleOnly` restricts dragging to the handle; `fixed` keeps the panel in place while inner content scrolls.
 - `swipeable` renders a gesture strip at the drawer's edge; it is inert while the drawer is open.
 - `nested` renders via `DrawerRootNested`; each nested drawer coordinates drag and release with its parent.
-- Fullscreen only changes the panel's box: it fills the viewport from its anchored edge and keeps its snap points and swipe-to-dismiss behaviour. The drawer renders **no** fullscreen button of its own, so the dialog's `showFullscreen` has no effect here — drive the state with `v-model:fullscreen`/`defaultFullscreen`, or render your own control inside the panel.
+- Fullscreen defines the panel's size, so it switches snapping off: a resting snap level below "fully open" would translate the panel back down and leave the half beyond its anchored edge off-screen. The drag then has a single resting position — release past `closeThreshold` dismisses, anything shorter springs back to fully open — and the handle stops cycling levels. Your `snapPoints` stay configured and resume when fullscreen is switched off.
+- The drawer renders **no** fullscreen button of its own, so the dialog's `showFullscreen` has no effect here — drive the state with `v-model:fullscreen`/`defaultFullscreen`, or render your own control inside the panel.
+- An uncontrolled fullscreen session does not survive a close: the drawer reopens at `defaultFullscreen` (matching the dialog's reset).
 
 ### Migrating from `BottomSheet`
 
@@ -223,7 +225,7 @@ Use the `'trap-focus'` tier:
 
 ### How do I make the drawer fullscreen?
 
-Bind `v-model:fullscreen`, or let it start fullscreen with `default-fullscreen`. The panel grows to the viewport from its `side` edge and keeps its snap points:
+Bind `v-model:fullscreen`, or let it start fullscreen with `default-fullscreen`. The panel grows to the viewport from its `side` edge, so snapping is suspended while it lasts and resumes when you switch fullscreen off:
 
 ```vue
 <SDrawer v-model:open="open" v-model:fullscreen="fullscreen" :snap-points="[0.6, 1]" title="Details">

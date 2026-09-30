@@ -16,7 +16,7 @@ const cls = useDrawerUi('handle');
 const LONG_HANDLE_PRESS_TIMEOUT = 250;
 const DOUBLE_TAP_TIMEOUT = 120;
 
-const { swiping, snapPoints, snapPoint, dismissible, closeDrawer, setActiveSnapPoint } =
+const { swiping, snapPoints, snapPoint, hasSnapPoints, dismissible, closeDrawer, setActiveSnapPoint } =
   useDrawerRootContext('DrawerHandle');
 
 const closeTimeoutId = ref<number | null>(null);
@@ -44,7 +44,10 @@ function handleCycleSnapPoints() {
   // Make sure to clear the timeout id if the user releases the handle before the cancel timeout
   handleCancelInteraction();
 
-  if (!snapPoints.value || snapPoints.value.length === 0) {
+  // Cycling keys on the *active* flag, not the raw prop: a fullscreen drawer has
+  // no snap levels to walk, so a double-tap falls back to the no-snap-point
+  // behaviour instead of silently rewriting `snapPoint` with no visible effect.
+  if (!hasSnapPoints.value || !snapPoints.value || snapPoints.value.length === 0) {
     if (!dismissible.value) closeDrawer();
 
     return;
