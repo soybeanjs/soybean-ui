@@ -31,7 +31,7 @@ const style: CSSProperties = {
 // when closing we delay `present` to retrieve dimensions before closing
 const isOpen = computed(() => isPresent.value || open.value);
 let isMountAnimationPrevented = open.value;
-let originalStyles: Pick<CSSStyleDeclaration, 'transitionDuration' | 'animationName'>;
+let originalAnimationName: string;
 
 const hidden = computed(() => {
   if (isOpen.value) {
@@ -48,13 +48,16 @@ function handleNodeStyle() {
 
   const nodeStyle = node.style;
 
-  originalStyles ||= {
-    transitionDuration: nodeStyle.transitionDuration,
-    animationName: nodeStyle.animationName
-  };
+  originalAnimationName ||= nodeStyle.animationName;
 
-  // block any animations/transitions so the element renders at its full dimensions
-  nodeStyle.transitionDuration = '0s';
+  // Block the keyframe animation so the element renders at its full dimensions
+  // instead of at the animation's current height.
+  //
+  // Only `animation-name` is blocked. Freezing `transition-duration` here (the
+  // other half of the usual measurement dance) would cancel whatever the content
+  // element transitions on close — the card transitions its own padding — because
+  // this measurement and the closing state change land in the *same* style recalc,
+  // so the transition never survives to run.
   nodeStyle.animationName = 'none';
 
   // get width and height from full dimensions
@@ -63,9 +66,8 @@ function handleNodeStyle() {
   nodeStyle.setProperty(collapsibleContentCssVars.height, `${rect.height}px`);
 
   if (!isMountAnimationPrevented) {
-    // kick off any animations/transitions that were originally set up if it isn't the initial mount
-    nodeStyle.transitionDuration = originalStyles.transitionDuration;
-    nodeStyle.animationName = originalStyles.animationName;
+    // kick off any animations that were originally set up if it isn't the initial mount
+    nodeStyle.animationName = originalAnimationName;
   }
 }
 
