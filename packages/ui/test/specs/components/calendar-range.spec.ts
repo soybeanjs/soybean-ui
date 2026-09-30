@@ -17,6 +17,16 @@ function focusableValue(wrapper: ReturnType<typeof mountRange>, value: string) {
   return wrapper.get(`[data-soybean-calendar-range-cell-trigger][data-value="${value}"]`);
 }
 
+function rangeCell(wrapper: ReturnType<typeof mountRange>, value: string) {
+  const cell = focusableValue(wrapper, value).element.closest('[data-soybean-calendar-range-cell]');
+
+  if (!cell) {
+    throw new Error(`No range cell found for ${value}`);
+  }
+
+  return cell;
+}
+
 function lastEmitRange(wrapper: ReturnType<typeof mountRange>) {
   return wrapper.emitted('update:modelValue')?.at(-1)?.[0] as { start?: Date | null; end?: Date | null } | undefined;
 }
@@ -79,6 +89,47 @@ describe('SCalendarRange', () => {
       expect(wrapper.get('[data-value="2026-04-18"]').attributes('data-selection-start')).toBeDefined();
       expect(wrapper.get('[data-value="2026-04-20"]').attributes('data-selection-end')).toBeDefined();
       expect(wrapper.get('[data-value="2026-04-19"]').attributes('data-selected')).toBeDefined();
+      wrapper.unmount();
+    });
+
+    it('marks the cells of a committed range with data-in-range', () => {
+      const wrapper = mountRange({
+        modelValue: { start: new Date(2026, 4 - 1, 18), end: new Date(2026, 4 - 1, 20) }
+      });
+
+      expect(rangeCell(wrapper, '2026-04-18').hasAttribute('data-in-range')).toBe(true);
+      expect(rangeCell(wrapper, '2026-04-19').hasAttribute('data-in-range')).toBe(true);
+      expect(rangeCell(wrapper, '2026-04-20').hasAttribute('data-in-range')).toBe(true);
+      expect(rangeCell(wrapper, '2026-04-21').hasAttribute('data-in-range')).toBe(false);
+      wrapper.unmount();
+    });
+
+    it('withholds data-in-range until both ends are picked', async () => {
+      const wrapper = mountRange();
+
+      await wrapper.get('[data-value="2026-04-18"]').trigger('click');
+      await nextTick();
+
+      // The lone start is `selected` (its chip is filled) but draws no range band.
+      const startCell = rangeCell(wrapper, '2026-04-18');
+
+      expect(startCell.hasAttribute('data-selected')).toBe(true);
+      expect(startCell.hasAttribute('data-in-range')).toBe(false);
+      expect(wrapper.findAll('[data-in-range]').length).toBe(0);
+
+      await wrapper.get('[data-value="2026-04-21"]').trigger('click');
+
+      expect(wrapper.findAll('[data-in-range]').length).toBe(4);
+      wrapper.unmount();
+    });
+
+    it('draws no range band for a same-day range', () => {
+      const wrapper = mountRange({
+        preventDeselect: true,
+        modelValue: { start: new Date(2026, 4 - 1, 18), end: new Date(2026, 4 - 1, 18) }
+      });
+
+      expect(wrapper.findAll('[data-in-range]').length).toBe(0);
       wrapper.unmount();
     });
 
