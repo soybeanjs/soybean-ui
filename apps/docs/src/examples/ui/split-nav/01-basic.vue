@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
+import { computed, shallowRef } from 'vue';
 import { SButtonIcon, SSelect, SSplitNav, SSwitch } from '@soybeanjs/ui';
 import type { SelectOptionData, SplitNavMode, ThemeSize, TreeMenuExpandStrategy } from '@soybeanjs/ui';
 import { themeSizeOptions } from '~/constants/theme';
@@ -29,6 +29,20 @@ const DEFAULTS: CustomizerState = {
   collapsed: false
 };
 
+/**
+ * 容器布局：一级是竖直 rail 的模式把二级面板排在 rail 右侧并顶部对齐，
+ * 一级是顶栏的模式把二级面板排在顶栏下方。
+ *
+ * 混合模式的各个面板是彼此独立的片段（只有 `dual-vertical` 自带 flex 容器），
+ * 所以方向由使用方容器提供，并且必须跟着 `mode` 切换。
+ */
+const CONTAINER_LAYOUT: Record<SplitNavMode, string> = {
+  'dual-vertical': 'flex-row items-start',
+  'vertical-horizontal': 'flex-row items-start',
+  'horizontal-vertical': 'flex-col',
+  'horizontal-dual-vertical': 'flex-col'
+};
+
 /** 选项表只有「值即文案」一种形态，用一个纯函数生成，避免四份复制粘贴。 */
 const toOptions = <T extends string>(values: readonly T[]): { value: T; label: T }[] =>
   values.map(value => ({ value, label: value }));
@@ -49,6 +63,8 @@ const mode = shallowRef<SplitNavMode>(DEFAULTS.mode);
 const size = shallowRef<ThemeSize>(DEFAULTS.size);
 const expandStrategy = shallowRef<TreeMenuExpandStrategy>(DEFAULTS.expandStrategy);
 const collapsed = shallowRef(DEFAULTS.collapsed);
+
+const containerClass = computed(() => CONTAINER_LAYOUT[mode.value]);
 
 const reset = (): void => {
   active.value = 'soybean-ui';
@@ -87,7 +103,7 @@ const reset = (): void => {
     </div>
   </Teleport>
 
-  <div class="h-110 border rounded-md bg-sidebar">
+  <div class="h-110 flex border rounded-md bg-sidebar" :class="containerClass">
     <SSplitNav
       v-model="active"
       v-model:collapsed="collapsed"
