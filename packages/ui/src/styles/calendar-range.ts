@@ -40,7 +40,7 @@ export const calendarRangeVariants = scv({
       '[&[data-selection-end]:hover]:bg-primary data-[selection-end]:hover:text-primary-foreground data-[selection-end]:focus-visible:bg-primary data-[selection-end]:focus-visible:text-primary-foreground',
       '[&[data-highlighted]:not([data-selected])]:bg-accent/80 [&[data-highlighted]:not([data-selected])]:text-foreground',
       'hover:bg-accent hover:text-accent-foreground data-[outside-view]:text-muted-foreground',
-      'data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',
+      'data-[disabled]:cursor-not-allowed data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',
       'data-[unavailable]:line-through'
     ]
   },

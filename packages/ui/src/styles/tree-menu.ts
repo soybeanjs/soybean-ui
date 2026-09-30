@@ -57,7 +57,7 @@ export const treeMenuVariants = scv({
     itemAction: [
       `absolute end-0 top-1/2 -translate-y-1/2 z-2 inline-flex items-center justify-center rounded-sm text-muted-foreground outline-none transition-colors`,
       `focus-visible:bg-sidebar-accent-foreground/10 focus-visible:text-sidebar-foreground focus-visible:ring-3 focus-visible:ring-sidebar-accent-foreground/20`,
-      `disabled:pointer-events-none disabled:opacity-50`
+      `disabled:cursor-not-allowed disabled:opacity-50`
     ],
     itemAbsolute: `absolute inset-0 z-1 cursor-pointer`,
     tooltipPositioner: '',

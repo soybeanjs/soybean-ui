@@ -5,8 +5,8 @@ const sharedButtonClasses = [
   'inline-flex items-center justify-center rounded-sm font-medium transition-colors',
   'outline-none hover:bg-accent hover:text-accent-foreground',
   'focus-visible:ring-3 focus-visible:ring-primary/30',
-  'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-  'aria-disabled:pointer-events-none aria-disabled:opacity-50',
+  'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
+  'aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
   '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4'
 ];
 

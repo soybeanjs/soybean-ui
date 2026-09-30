@@ -37,7 +37,7 @@ export const autocompleteVariants = scv({
     groupLabel: 'px-2 py-1.5 text-xs font-medium text-muted-foreground',
     item: [
       'relative flex w-full items-center rounded-sm outline-none select-none',
-      'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
+      'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
     ],
     itemIndicator: 'ms-auto shrink-0 text-muted-foreground',
     separator: '-mx-1 my-1 h-px bg-border'

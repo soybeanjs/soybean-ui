@@ -46,7 +46,7 @@ export const splitNavVariants = scv({
       'data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary',
       'data-[child-selected]:text-primary',
       'data-[selected=false]:hover:bg-accent data-[selected=false]:focus:bg-accent',
-      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
+      'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
     ],
     firstLevelItemIcon: 'shrink-0',
     firstLevelItemLabel: [

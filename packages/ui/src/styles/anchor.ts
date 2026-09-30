@@ -8,7 +8,7 @@ export const anchorVariants = scv({
       'group inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-muted-foreground outline-none transition-colors',
       'hover:bg-accent/60 hover:text-accent-foreground',
       'focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-card',
-      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
       'data-[state=active]:bg-accent data-[state=active]:text-foreground'
     ],
     sub: 'ms-4 flex flex-col gap-1 border-s border-border/60 ps-3',

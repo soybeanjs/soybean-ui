@@ -8,7 +8,7 @@ export const stepperVariants = scv({
     trigger: [
       'inline-flex rounded-md transition-colors',
       'outline-none focus-visible:ring-3 focus-visible:ring-offset-card focus-visible:ring-primary/30',
-      'data-[orientation=horizontal]:mt-0.25 data-[orientation=vertical]:ms-0.25 group-data-[disabled]:pointer-events-none'
+      'data-[orientation=horizontal]:mt-0.25 data-[orientation=vertical]:ms-0.25 group-data-[disabled]:cursor-not-allowed'
     ],
     indicator: [
       'inline-flex shrink-0 items-center justify-center rounded-full border bg-card font-medium transition-colors',
