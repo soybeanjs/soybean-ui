@@ -119,6 +119,7 @@ const {
 const {
   highlightedRange,
   isDateSelected,
+  isDateInRange,
   isSelectionStart,
   isSelectionEnd,
   isHighlightedStart,
@@ -299,6 +300,7 @@ provideCalendarRangeRootContext({
   onPlaceholderChange,
   isDateDisabled,
   isDateSelected,
+  isDateInRange,
   isSelectionStart,
   isSelectionEnd,
   isHighlightedStart,

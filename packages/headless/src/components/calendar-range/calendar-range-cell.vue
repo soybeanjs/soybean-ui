@@ -14,9 +14,11 @@ const props = withDefaults(defineProps<CalendarRangeCellProps>(), {
 });
 
 const cls = useCalendarRangeUi('cell');
-const { isDateSelected, isDateDisabled, isDateUnavailable } = useCalendarRangeRootContext('CalendarRangeCell');
+const { isDateSelected, isDateInRange, isDateDisabled, isDateUnavailable } =
+  useCalendarRangeRootContext('CalendarRangeCell');
 
 const selected = computed(() => isDateSelected(toDate(props.date)));
+const inRange = computed(() => isDateInRange(toDate(props.date)));
 const disabled = computed(() => isDateDisabled(toDate(props.date)) || isDateUnavailable?.(toDate(props.date)));
 </script>
 
@@ -30,6 +32,7 @@ const disabled = computed(() => isDateDisabled(toDate(props.date)) || isDateUnav
     :aria-selected="selected ? true : undefined"
     :data-disabled="disabled ? '' : undefined"
     :data-selected="selected ? '' : undefined"
+    :data-in-range="inRange ? '' : undefined"
     role="gridcell"
   >
     <slot />

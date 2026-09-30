@@ -496,6 +496,10 @@ export interface CalendarRangeRootContext extends ToContext<
    */
   isDateSelected: DateMatcher;
   /**
+   * Whether the date belongs to the committed range band (both ends chosen).
+   */
+  isDateInRange: DateMatcher;
+  /**
    * Whether a selection start.
    */
   isSelectionStart: DateMatcher;

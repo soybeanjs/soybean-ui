@@ -103,6 +103,21 @@ export function useCalendarRangeState(props: UseCalendarRangeStateProps) {
     return isBetweenInclusive(date, props.start.value, props.end.value);
   };
 
+  /**
+   * Whether `date` belongs to the committed range band: both ends are chosen and the
+   * range spans more than one day. A lone start (the range is still being picked) is
+   * `selected` but not `inRange`, so the styled band only renders once the range is
+   * complete; a same-day range draws no band at all, since the end chips already
+   * cover it.
+   */
+  const isDateInRange = (date: DateValue) => {
+    if (!props.start.value || !props.end.value || isSameDateValue(props.start.value, props.end.value)) {
+      return false;
+    }
+
+    return isBetweenInclusive(date, props.start.value, props.end.value);
+  };
+
   const isSelectionStart = (date: DateValue) => Boolean(props.start.value && isSameDateValue(props.start.value, date));
   const isSelectionEnd = (date: DateValue) => Boolean(props.end.value && isSameDateValue(props.end.value, date));
   const isHighlightedStart = (date: DateValue) =>
@@ -136,6 +151,7 @@ export function useCalendarRangeState(props: UseCalendarRangeStateProps) {
   return {
     highlightedRange,
     isDateSelected,
+    isDateInRange,
     isSelectionStart,
     isSelectionEnd,
     isHighlightedStart,
