@@ -33,7 +33,7 @@ const DEFAULTS: CustomizerState = {
   description: 'The changelog and version tag are ready.',
   richColor: false,
   inverted: false,
-  showClose: false,
+  showClose: true,
   dismissible: true
 };
 

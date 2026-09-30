@@ -58,7 +58,18 @@ export const toastVariants = scv({
     footer: 'flex justify-end items-center',
     action: '',
     cancel: '',
-    close: 'absolute group-data-[inverted=true]:text-accent group-data-[inverted=true]:hover:bg-accent/15'
+    // The hover tint follows the surface under the close button: neutral
+    // `accent` on the default popover, the toast's own type colour on a
+    // rich-colour toast, where a neutral grey reads as a foreign patch.
+    // Chained `group-data-*` variants collapse onto one ancestor selector.
+    close: [
+      'absolute',
+      'group-data-[inverted=true]:text-accent group-data-[inverted=true]:hover:bg-accent/15',
+      'group-data-[rich-color=true]:group-data-[type=success]:hover:bg-success/15',
+      'group-data-[rich-color=true]:group-data-[type=info]:hover:bg-info/15',
+      'group-data-[rich-color=true]:group-data-[type=warning]:hover:bg-warning/15',
+      'group-data-[rich-color=true]:group-data-[type=error]:hover:bg-destructive/15'
+    ]
   },
   variants: {
     size: {

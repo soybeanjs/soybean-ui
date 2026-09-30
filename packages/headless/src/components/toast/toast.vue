@@ -103,8 +103,13 @@ const heightIndex = computed(() =>
     0
   )
 );
+
+/**
+ * The toast-level flag wins over the provider-level default, so a single toast
+ * can opt out of the close button that the provider renders everywhere else.
+ */
 const closeVisible = computed(
-  () => (props.toast.showClose || showClose.value) && dismissible.value && toastType.value !== 'loading'
+  () => (props.toast.showClose ?? showClose.value) && dismissible.value && toastType.value !== 'loading'
 );
 const duration = computed(() => props.toast.duration ?? contextDuration.value);
 const positionCoord = computed(() => {

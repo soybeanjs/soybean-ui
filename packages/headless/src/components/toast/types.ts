@@ -118,7 +118,8 @@ export interface ToastT {
    */
   onCancel?: (event: MouseEvent) => void;
   /**
-   * Whether to show a close.
+   * Whether this toast shows a close button. Takes precedence over the
+   * provider-level `showClose`.
    */
   showClose?: boolean;
   /**
@@ -265,7 +266,8 @@ export interface ToasterProps extends BaseProps<OlHTMLAttributes> {
    */
   showIcon?: boolean;
   /**
-   * Whether to show the close button on the toast.
+   * Whether toasts show a close button by default. A toast-level `showClose`
+   * takes precedence over this default.
    *
    * @default true
    */

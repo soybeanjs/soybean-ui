@@ -90,6 +90,43 @@ describe('Toaster', () => {
     wrapper.unmount();
   });
 
+  it('lets a toast-level showClose override the provider default', async () => {
+    vi.useFakeTimers();
+
+    // `SToastProvider` defaults `showClose` to `true`, so a toast has to be able
+    // to opt out on its own — otherwise the per-toast flag never reaches the UI.
+    const wrapper = mount(SToastProvider, {
+      attachTo: document.body,
+      props: { id: 'show-close-test' }
+    });
+
+    const defaultToastId = toast('Close by default', {
+      toasterId: 'show-close-test',
+      duration: Infinity,
+      testId: 'close-by-default'
+    });
+    const optedOutToastId = toast('No close button', {
+      toasterId: 'show-close-test',
+      duration: Infinity,
+      showClose: false,
+      testId: 'close-opted-out'
+    });
+
+    await vi.runAllTimersAsync();
+    await nextTick();
+
+    const defaultToast = wrapper.find('[data-testid="close-by-default"]');
+    const optedOutToast = wrapper.find('[data-testid="close-opted-out"]');
+
+    expect(defaultToast.find('[data-soybean-toast-close]').exists()).toBe(true);
+    expect(optedOutToast.find('[data-soybean-toast-close]').exists()).toBe(false);
+
+    toast.dismiss(defaultToastId);
+    toast.dismiss(optedOutToastId);
+    await vi.runAllTimersAsync();
+    wrapper.unmount();
+  });
+
   it('announces toast title and description as plain text (not JSON)', async () => {
     vi.useFakeTimers();
 
