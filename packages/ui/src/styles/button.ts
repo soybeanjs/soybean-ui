@@ -17,12 +17,12 @@ export const buttonVariants = cv({
       warning: `focus-visible:ring-warning/30`,
       info: `focus-visible:ring-info/30`,
       carbon: `focus-visible:ring-carbon/30`,
-      secondary: `focus-visible:ring-secondary-foreground/20`,
-      accent: `focus-visible:ring-accent-foreground/20`
+      secondary: `focus-visible:ring-secondary-foreground/20 text-secondary-foreground`,
+      accent: `focus-visible:ring-accent-foreground/10 text-accent-foreground`
     },
     variant: {
-      solid: `bg-primary text-primary-foreground data-[normal]:hover:bg-primary/80 data-[normal]:active:bg-primary-600`,
-      pure: 'border border-border bg-card text-accent-foreground data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent',
+      solid: '',
+      pure: 'border border-border bg-card text-accent-foreground data-[normal]:hover:bg-accent data-[normal]:active:bg-accent-foreground/10',
       plain: 'border border-border bg-card text-foreground',
       outline: 'border bg-card',
       dashed: 'border border-dashed bg-card',
@@ -57,6 +57,11 @@ export const buttonVariants = cv({
   },
   compoundVariants: [
     {
+      color: 'primary',
+      variant: 'solid',
+      class: `bg-primary text-primary-foreground data-[normal]:hover:bg-primary/80 data-[normal]:active:bg-primary-600`
+    },
+    {
       color: 'destructive',
       variant: 'solid',
       class: `bg-destructive text-destructive-foreground data-[normal]:hover:bg-destructive/80 data-[normal]:active:bg-destructive-600`
@@ -83,13 +88,13 @@ export const buttonVariants = cv({
     },
     {
       color: 'secondary',
-      variant: 'solid',
-      class: `bg-secondary text-secondary-foreground data-[normal]:hover:bg-secondary/80 data-[normal]:active:bg-secondary-foreground/20`
+      variant: ['solid', 'soft'],
+      class: `bg-secondary`
     },
     {
       color: 'accent',
-      variant: 'solid',
-      class: `bg-accent text-accent-foreground data-[normal]:hover:bg-accent/80 data-[normal]:active:bg-accent-foreground/20`
+      variant: ['solid', 'soft'],
+      class: `bg-accent`
     },
     {
       color: 'primary',
@@ -121,13 +126,6 @@ export const buttonVariants = cv({
       variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
       class: 'text-carbon'
     },
-    // 中性色的文字与交互面都由 `--accent*` 驱动：`color="secondary"` 与 `"accent"` 在无底色形态上
-    // 等价，`secondary` 的差异只留在 solid / soft 的静止填充上
-    {
-      color: ['secondary', 'accent'],
-      variant: ['outline', 'dashed', 'ghost', 'link'],
-      class: 'text-accent-foreground'
-    },
     {
       color: 'primary',
       variant: ['outline', 'dashed', 'ghost'],
@@ -158,12 +156,15 @@ export const buttonVariants = cv({
       variant: ['outline', 'dashed', 'ghost'],
       class: 'data-[normal]:hover:bg-carbon/10 data-[normal]:active:bg-carbon/20'
     },
-    // 与 `pure` 变体、`anchor.link` 共用同一条中性阶梯：hover `bg-accent/60` → active `bg-accent`，
-    // 于是 `--accent` 一个旋钮同时驱动行 hover、pure 与 icon 按钮
     {
-      color: ['secondary', 'accent'],
-      variant: ['outline', 'dashed', 'ghost'],
-      class: 'data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent'
+      color: 'secondary',
+      variant: ['solid', 'outline', 'dashed', 'soft', 'ghost'],
+      class: 'data-[normal]:hover:bg-secondary data-[normal]:active:bg-secondary-foreground/20'
+    },
+    {
+      color: 'accent',
+      variant: ['solid', 'outline', 'dashed', 'soft', 'ghost'],
+      class: 'data-[normal]:hover:bg-accent data-[normal]:active:bg-accent-foreground/10'
     },
     {
       color: 'primary',
@@ -198,12 +199,12 @@ export const buttonVariants = cv({
     {
       color: 'secondary',
       variant: 'plain',
-      class: 'data-[normal]:hover:border-secondary-foreground data-[normal]:hover:text-secondary-foreground'
+      class: 'data-[normal]:hover:border-secondary-foreground/20'
     },
     {
       color: 'accent',
       variant: 'plain',
-      class: 'data-[normal]:hover:border-accent-foreground data-[normal]:hover:text-accent-foreground'
+      class: 'data-[normal]:hover:border-accent-foreground/10'
     },
     {
       color: 'primary',
@@ -238,12 +239,12 @@ export const buttonVariants = cv({
     {
       color: 'secondary',
       variant: ['outline', 'dashed'],
-      class: 'border-secondary-foreground'
+      class: 'border-secondary-foreground/20'
     },
     {
       color: 'accent',
       variant: ['outline', 'dashed'],
-      class: 'border-accent-foreground'
+      class: 'border-accent-foreground/10'
     },
     {
       color: 'destructive',
@@ -269,14 +270,6 @@ export const buttonVariants = cv({
       color: 'carbon',
       variant: 'soft',
       class: 'bg-carbon/10 data-[normal]:hover:bg-carbon/10 data-[normal]:active:bg-carbon/20'
-    },
-    // 中性 soft：静止面是弱化块 `muted` 的洗色，hover / active 才升到交互面（与 `toggle.soft` 同一套）。
-    // `/40` 不是装饰：`muted` 与 `accent` 同档（docs/theme.md §3.2），实心 `bg-muted` 的静止面
-    // 会与 `active:bg-accent` 同色，按压态直接消失（browser e2e 守这条色差）。
-    {
-      color: ['secondary', 'accent'],
-      variant: 'soft',
-      class: 'bg-muted/40 text-foreground data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent'
     },
     {
       size: 'xs',
