@@ -55,7 +55,7 @@ const manyItems: MenuOptionData<string>[] = [
   children: [{ value: `${value}-child`, label: `${value} action` }]
 }));
 
-function renderNarrowMenubar(width: number) {
+function renderNarrowMenubar(width: number, collapsible = ref(true)) {
   return render(
     defineComponent({
       name: 'NarrowMenubarHost',
@@ -64,7 +64,7 @@ function renderNarrowMenubar(width: number) {
           h(
             'div',
             { style: { width: `${width}px`, overflow: 'hidden' } },
-            h(SMenubar, { items: manyItems, collapsible: true, moreLabel: 'More' })
+            h(SMenubar, { items: manyItems, collapsible: collapsible.value, moreLabel: 'More' })
           );
       }
     })
@@ -442,6 +442,24 @@ describe('SMenubar (e2e)', () => {
     await userEvent.click(moreTrigger);
     await expect.element(page.getByText('Support')).toBeVisible();
     await expect.element(page.getByText('Settings')).toBeVisible();
+
+    unmount();
+  });
+
+  it('restores every trigger and drops the "more" menu when collapsible is turned off', async () => {
+    const collapsible = ref(true);
+    const { unmount } = await renderNarrowMenubar(280, collapsible);
+
+    await expect.element(page.getByText('More')).toBeVisible();
+
+    collapsible.value = false;
+
+    // Regression guard: the measured overflow count used to leak out of
+    // collapsible mode, so the "more" menu survived while every trigger was
+    // rendered right next to it.
+    await expect.element(page.getByText('More')).not.toBeInTheDocument();
+    expect(document.querySelector('[data-soybean-menubar-overflow]')).toBeNull();
+    await expect.element(page.getByText('Support')).toBeInTheDocument();
 
     unmount();
   });

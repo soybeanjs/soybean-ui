@@ -144,8 +144,12 @@ async function reflow() {
 
     await nextTick();
 
+    // Both walks re-check `collapsible` on every step: a measurement that
+    // outlives the prop must not write a collapse state the non-collapsible
+    // branch cannot render.
+
     // Restore items from the "more" menu while they fit again.
-    while (collapsedCount.value > 0) {
+    while (props.collapsible && collapsedCount.value > 0) {
       collapsedCount.value -= 1;
       await nextTick();
       if (isOverflowing(container)) {
@@ -156,7 +160,7 @@ async function reflow() {
     }
 
     // Collapse trailing items while the content overflows the container.
-    while (collapsedCount.value < items.value.length && isOverflowing(container)) {
+    while (props.collapsible && collapsedCount.value < items.value.length && isOverflowing(container)) {
       collapsedCount.value += 1;
       await nextTick();
     }
@@ -187,9 +191,15 @@ watch(
 watch(
   () => props.collapsible,
   enabled => {
-    if (enabled) {
-      reflow();
+    // Leaving collapsible mode drops the overflow split entirely: the full list
+    // renders again, so the measured count must not survive as stale state and
+    // keep a trailing "more" menu alive.
+    if (!enabled) {
+      collapsedCount.value = 0;
+      return;
     }
+
+    reflow();
   }
 );
 

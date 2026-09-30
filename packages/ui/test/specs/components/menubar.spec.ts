@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
-import { mount } from '@vue/test-utils';
+import { flushPromises, mount } from '@vue/test-utils';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import type { MenuOptionData } from '@/components/menu';
 import { SMenubar } from '@/components/menubar';
@@ -343,6 +343,46 @@ describe('SMenubar', () => {
 
       expect(trigger.attributes('aria-expanded')).toBe('true');
       expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('collapsible overflow', () => {
+    it('drops the trailing "more" menu when collapsible is turned off', async () => {
+      const wrapper = mount(SMenubar, {
+        props: {
+          items: items.slice(0, 2),
+          collapsible: true,
+          moreLabel: 'More',
+          portalProps: { disabled: true }
+        },
+        attachTo: document.body
+      });
+
+      const container = wrapper.find('[data-soybean-menubar-overflow]').element as HTMLElement;
+      const root = wrapper.find('[data-soybean-menubar-root]').element as HTMLElement;
+
+      // happy-dom performs no layout, so force the measured overflow the reflow
+      // loop reads: the root always overflows its container.
+      Object.defineProperty(container, 'clientWidth', { configurable: true, get: () => 80 });
+      Object.defineProperty(root, 'scrollWidth', { configurable: true, get: () => 800 });
+
+      // A new items array re-runs the reflow, which now sees an overflowing bar.
+      await wrapper.setProps({ items });
+      await flushPromises();
+
+      expect(wrapper.text()).toContain('More');
+
+      await wrapper.setProps({ collapsible: false });
+      await flushPromises();
+
+      // Regression guard: the measured overflow count leaked out of collapsible
+      // mode and kept rendering the "more" menu over a bar that now holds every
+      // trigger.
+      expect(wrapper.find('[data-soybean-menubar-overflow]').exists()).toBe(false);
+      expect(wrapper.text()).not.toContain('More');
+      expect(wrapper.findAll('[role="menuitem"]')).toHaveLength(3);
 
       wrapper.unmount();
     });
