@@ -410,6 +410,62 @@ describe('SDrawer', () => {
       wrapper.unmount();
     });
 
+    it('does not capture the forced fullscreen height as the content height', async () => {
+      const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
+
+      // Model the browser: fullscreen forces the box to the viewport, while the
+      // resting box is only as tall as its content.
+      Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+        configurable: true,
+        get(this: HTMLElement) {
+          return this.getAttribute('data-fullscreen') === null ? 178 : 768;
+        }
+      });
+
+      try {
+        const wrapper = mount(SDrawer, {
+          props: { open: true, title: 'Drawer', portalProps: { disabled: true } },
+          slots,
+          attachTo: document.body
+        });
+
+        await nextTick();
+        await nextTick();
+
+        const heightVar = () => wrapper.find('[data-soybean-drawer-popup]').attributes('style') ?? '';
+
+        expect(heightVar()).toMatch(/--soybean-drawer-height:\s*178px/);
+
+        await wrapper.setProps({ open: false });
+        await nextTick();
+        await wrapper.setProps({ fullscreen: true, open: true });
+        await nextTick();
+        await nextTick();
+
+        // The panel is viewport-sized while fullscreen, but that size is forced
+        // by the style rather than measured from the content.
+        expect(heightVar()).toMatch(/--soybean-drawer-height:\s*178px/);
+
+        await wrapper.setProps({ open: false });
+        await nextTick();
+        await wrapper.setProps({ fullscreen: false, open: true });
+        await nextTick();
+        await nextTick();
+
+        // The published height is what the box reads back as its own height, so a
+        // captured 768 here would pin the panel to the viewport for good.
+        expect(heightVar()).toMatch(/--soybean-drawer-height:\s*178px/);
+
+        wrapper.unmount();
+      } finally {
+        if (descriptor) {
+          Object.defineProperty(HTMLElement.prototype, 'offsetHeight', descriptor);
+        } else {
+          Reflect.deleteProperty(HTMLElement.prototype, 'offsetHeight');
+        }
+      }
+    });
+
     it('resets the uncontrolled fullscreen state when the drawer reopens', async () => {
       const wrapper = mount(SDrawer, {
         props: {

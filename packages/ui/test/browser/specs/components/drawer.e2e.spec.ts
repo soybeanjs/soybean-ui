@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { h } from 'vue';
+import { defineComponent, h, ref } from 'vue';
 import { page, userEvent } from 'vitest/browser';
 import SDrawer from '@/components/drawer/drawer.vue';
 import { getA11yViolations } from '../../shared/a11y';
+import { sleep } from '../../shared/drawer';
 import { renderComponent } from '../../shared/render';
 
 /**
@@ -108,6 +109,69 @@ describe('SDrawer (e2e)', () => {
         .poll(() => Math.round(popupElement().getBoundingClientRect().height))
         .toBeGreaterThanOrEqual(height - 1);
       expect(popupElement().getAttribute('data-soybean-snap-points')).toBe('false');
+
+      unmount();
+    });
+
+    it('returns to its content height after a fullscreen round trip', async () => {
+      // Regression: the published height is what the popup reads back as its own
+      // height, so capturing the viewport-sized fullscreen box pinned the panel
+      // to it — switching fullscreen off could never shrink it back.
+      await page.viewport(1024, 768);
+
+      const open = ref(false);
+      const fullscreen = ref(false);
+
+      const Harness = defineComponent({
+        name: 'DrawerFullscreenRoundTripHarness',
+        setup() {
+          return () =>
+            h(
+              SDrawer,
+              {
+                open: open.value,
+                fullscreen: fullscreen.value,
+                title: 'Round Trip',
+                'onUpdate:open': (value: boolean) => {
+                  open.value = value;
+                }
+              },
+              { default: () => h('p', 'Drawer body text') }
+            );
+        }
+      });
+
+      const { unmount } = await renderComponent(Harness);
+
+      /** Opens, measures the resting panel, then closes it again. */
+      const measureOpenPanel = async () => {
+        open.value = true;
+        await waitForPanelToSettle();
+
+        const height = Math.round(popupElement().getBoundingClientRect().height);
+
+        open.value = false;
+        await sleep(400);
+
+        // Every step has to start from a fresh mount: the defect only shows up
+        // when the panel is measured again after the fullscreen box is gone.
+        expect(document.querySelector('[data-soybean-drawer-popup]')).toBeNull();
+
+        return height;
+      };
+
+      const firstOpen = await measureOpenPanel();
+
+      // The content is short, so the panel rests well below the viewport.
+      expect(firstOpen).toBeLessThan(document.documentElement.clientHeight - 100);
+
+      fullscreen.value = true;
+
+      expect(await measureOpenPanel()).toBeGreaterThanOrEqual(document.documentElement.clientHeight - 1);
+
+      fullscreen.value = false;
+
+      expect(await measureOpenPanel()).toBe(firstOpen);
 
       unmount();
     });

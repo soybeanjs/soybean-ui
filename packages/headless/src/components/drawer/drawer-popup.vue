@@ -100,10 +100,15 @@ watch(popupElement, element => {
   // or mid-settle-transition would feed the grown box back into the height
   // CSS var, so a measurement only lands once the size has been still for a
   // moment and no live movement is written on the element.
+  //
+  // Fullscreen is the same trap with a longer memory: the popup is forced to the
+  // viewport there, and since the published height *is* what the box reads back
+  // as its height, capturing it would pin the panel to the viewport for good —
+  // switching fullscreen off could never shrink it back to its content.
   const measure = () => {
     measureTimer = undefined;
 
-    if (swiping.value) return;
+    if (fullscreen.value || swiping.value) return;
 
     const style = element.style;
     const movementX = style.getPropertyValue(DRAWER_CSS_VARS.swipeMovementX);
