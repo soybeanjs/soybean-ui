@@ -24,6 +24,7 @@ import { renderComponent } from '../../shared/render';
 const SIDEBAR_WIDTH_PX = 240;
 const SPACING_PX = 16;
 const HALF_SPACING_PX = SPACING_PX / 2;
+const HEADER_HEIGHT_PX = 56;
 
 /**
  * `simulatedMobile` stands for a host that publishes a viewport of its own — the
@@ -78,6 +79,30 @@ async function renderLayout(props: LayoutProps, simulatedMobile?: boolean) {
   const { unmount } = await renderComponent(createHarness(props, simulatedMobile));
 
   return unmount;
+}
+
+/**
+ * The fixed tab is positioned against the root, not against the region stack it
+ * belongs to, so its `top` is the only thing tying it to the band the placeholder
+ * reserves. The layout animates that offset, hence the retry.
+ */
+async function expectTabOffset(topPx: number) {
+  await vi.waitFor(() => {
+    expect(getComputedStyle(element('[data-soybean-layout-tab]')).top).toBe(`${topPx}px`);
+  });
+}
+
+/**
+ * The observable half of the contract: whatever offset the tab carries, it has to
+ * cover the band its own placeholder reserves instead of floating away from it.
+ */
+async function expectTabAlignedWithPlaceholder() {
+  await vi.waitFor(() => {
+    const tab = element('[data-soybean-layout-tab]').getBoundingClientRect();
+    const placeholder = element('[data-soybean-layout-tab-placeholder]').getBoundingClientRect();
+
+    expect(Math.abs(tab.top - placeholder.top)).toBeLessThanOrEqual(1);
+  });
 }
 
 describe('SLayout geometry', () => {
@@ -203,6 +228,47 @@ describe('SLayout geometry', () => {
     const unmount = await renderLayout({ isMobile: false, variant: 'floating' });
 
     await expectMainGap(SIDEBAR_WIDTH_PX + SPACING_PX, 0);
+
+    unmount();
+  });
+
+  /**
+   * The baseline the collapsing cases are measured against: with the header in the
+   * flow the top band is the header's own height, and the tab starts right below it.
+   */
+  it('offsets the fixed tab below the header band', async () => {
+    const unmount = await renderLayout({ headerVisible: true });
+
+    await expectTabOffset(HEADER_HEIGHT_PX);
+    await expectTabAlignedWithPlaceholder();
+
+    unmount();
+  });
+
+  /**
+   * Hiding the header removes the region *and* its placeholder, so the top band ends
+   * at the layout's own edge and the tab has to collapse onto it. Keeping the
+   * header-height offset while the band was gone dropped the tab a header below its
+   * placeholder and left a blank strip above the content.
+   */
+  it('collapses the fixed tab onto the layout top when the header is hidden', async () => {
+    const unmount = await renderLayout({ headerVisible: false });
+
+    await expectTabOffset(0);
+    await expectTabAlignedWithPlaceholder();
+
+    unmount();
+  });
+
+  /**
+   * `inset` keeps its half-spacing on top of the band, hidden header included: the
+   * variant's own gap is what stays, the header's height is what goes.
+   */
+  it('keeps the inset half-spacing when the header is hidden', async () => {
+    const unmount = await renderLayout({ variant: 'inset', headerVisible: false });
+
+    await expectTabOffset(HALF_SPACING_PX);
+    await expectTabAlignedWithPlaceholder();
 
     unmount();
   });

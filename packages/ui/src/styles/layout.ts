@@ -77,7 +77,12 @@ export const layoutVariants = scv({
       'group-data-[fixed-top=true]/layout:absolute z-[--soybean-layout-header-z-index] top-0 inset-x-0'
     ],
     headerPlaceholder: 'shrink-0 h-[--soybean-layout-header-height] overflow-hidden',
-    tab: 'group-data-[fixed-top=true]/layout:absolute inset-x-0 top-[--soybean-layout-header-height] shrink-0 h-[--soybean-layout-tab-height] bg-card z-[--soybean-layout-tab-z-index] transition-all-200',
+    tab: [
+      'group-data-[fixed-top=true]/layout:absolute inset-x-0 top-[--soybean-layout-header-height] shrink-0 h-[--soybean-layout-tab-height] bg-card z-[--soybean-layout-tab-z-index] transition-all-200',
+      // 头部隐藏后顶部那条 header 带子不存在（区域与占位符都不渲染），fixed tab 必须顶到布局顶部：
+      // 继续按 header 高度偏移会让它和自己的占位符错位，并在顶上留一条空白带
+      'group-data-[header-visible=false]/layout:top-0'
+    ],
     tabPlaceholder: 'shrink-0 h-[--soybean-layout-tab-height] overflow-hidden',
     content: `relative grow bg-card group-data-[scroll-behavior=content]/layout:overflow-y-auto`,
     footer: [
@@ -182,7 +187,12 @@ export const layoutVariants = scv({
           `group-data-[orientation=vertical]/layout:border-0`,
           `group-data-[orientation=vertical]/layout:shadow group-data-[orientation=vertical]/layout:rounded-xl`
         ],
-        tab: `top-[calc(var(--soybean-layout-header-height)+var(--sl-half-spacing))]`,
+        tab: [
+          `top-[calc(var(--soybean-layout-header-height)+var(--sl-half-spacing))]`,
+          // 同上：头部隐藏时基准高度归零，只保留 inset 自己的半间距；full-content 下
+          // tab 走 `fixed top-0`，所以这条覆盖要排除该状态，否则会把 tab 又推下去
+          `group-data-[full-content=false]/layout:group-data-[header-visible=false]/layout:top-[--sl-half-spacing]`
+        ],
         footer: [
           'bottom-[--sl-half-spacing] rounded-b-xl',
           `group-data-[orientation=vertical]/layout:shadow group-data-[orientation=vertical]/layout:rounded-xl`,
