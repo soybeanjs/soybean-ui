@@ -93,6 +93,20 @@ async function expectTabOffset(topPx: number) {
 }
 
 /**
+ * The main column is offset by a margin while the header is positioned against
+ * the root, so "the header sits over the content" is a comparison of their start
+ * edges — the observable form of `--sl-header-gap` matching `--sl-main-gap`.
+ */
+async function expectHeaderAlignedWithMain() {
+  await vi.waitFor(() => {
+    const header = element('[data-soybean-layout-header]').getBoundingClientRect();
+    const main = element('[data-soybean-layout-main]').getBoundingClientRect();
+
+    expect(Math.abs(header.left - main.left)).toBeLessThanOrEqual(1);
+  });
+}
+
+/**
  * The observable half of the contract: whatever offset the tab carries, it has to
  * cover the band its own placeholder reserves instead of floating away from it.
  */
@@ -230,6 +244,74 @@ describe('SLayout geometry', () => {
     await expectMainGap(SIDEBAR_WIDTH_PX + SPACING_PX, 0);
 
     unmount();
+  });
+
+  /**
+   * `inset` reserves the padded wrapper plus the layout's own edge inset, so the
+   * companion case to the floating baseline above: the start gap is the sidebar
+   * width **plus** one spacing, and the end gap is the half spacing.
+   */
+  it('keeps the padded-wrapper spacing for the inset variant on desktop', async () => {
+    const unmount = await renderLayout({ isMobile: false, variant: 'inset' });
+
+    await expectMainGap(SIDEBAR_WIDTH_PX + SPACING_PX, HALF_SPACING_PX);
+
+    unmount();
+  });
+
+  /**
+   * `sidebarVisible=false` leaves the layout in the same situation as the mobile
+   * drawer: nothing reserves the start edge. The variants widen their gap to clear
+   * the padded sidebar wrapper, so that spacing has to be given back — and the
+   * header, which the same compensation pushed, has to keep sitting over the
+   * content instead of drifting away from it.
+   */
+  it('drops the sidebar-adjacent spacing when the sidebar is hidden', async () => {
+    const unmount = await renderLayout({ isMobile: false, variant: 'floating', sidebarVisible: false });
+
+    await expectMainGap(0, 0);
+    await expectHeaderAlignedWithMain();
+
+    unmount();
+  });
+
+  /**
+   * `inset` keeps its identity with the sidebar hidden for the same reason it does
+   * on mobile: the shell stays inset symmetrically, so the start gap falls back to
+   * the end gap (the half spacing) rather than to the sidebar width — and the
+   * header follows the content onto that edge.
+   */
+  it('keeps the inset shell symmetric when the sidebar is hidden', async () => {
+    const unmount = await renderLayout({ isMobile: false, variant: 'inset', sidebarVisible: false });
+
+    await expectMainGap(HALF_SPACING_PX, HALF_SPACING_PX);
+    await expectHeaderAlignedWithMain();
+
+    unmount();
+  });
+
+  /**
+   * The vertical orientation exposes the mismatch on its own: its header spans the
+   * full width, so only the start gap of the content has to collapse. A leftover
+   * sidebar compensation left the content indented by one spacing (floating) or by
+   * a full spacing instead of the half spacing (inset).
+   */
+  it('collapses the start gap of the content in a vertical layout when the sidebar is hidden', async () => {
+    for (const [variant, gapPx] of [
+      ['floating', 0],
+      ['inset', HALF_SPACING_PX]
+    ] as const) {
+      const unmount = await renderLayout({
+        isMobile: false,
+        orientation: 'vertical',
+        variant,
+        sidebarVisible: false
+      });
+
+      await expectMainGap(gapPx, gapPx);
+
+      unmount();
+    }
   });
 
   /**

@@ -34,15 +34,13 @@ export const layoutVariants = scv({
     root: [
       'group/layout relative h-full bg-background transition-all-200',
       layoutHalfSpacing,
-      '[--sl-main-gap:var(--soybean-layout-start-gap)]',
-      '[--sl-header-gap:var(--soybean-layout-header-start-gap)]',
-      '[--sl-footer-gap:var(--soybean-layout-footer-start-gap)]',
+      // 起点间距取「侧栏占位」与「末端内嵌」中的较大者。侧栏不占布局流时（移动端是抽屉、
+      // 或 sidebarVisible=false）headless 发布的起点间距已经是 0，各变体随 `max()`
+      // 回落到自身的末端间距：sidebar/floating 通栏，inset 前后对称内嵌
       '[--sl-end-gap:0px]',
-      // 移动端侧栏是抽屉、不占布局流：起点间距与末端间距对齐，
-      // sidebar/floating 收紧为 0，inset 的前后内嵌间距则保持对称
-      'data-[mobile=true]:[--sl-main-gap:var(--sl-end-gap)]',
-      'data-[mobile=true]:[--sl-header-gap:var(--sl-end-gap)]',
-      'data-[mobile=true]:[--sl-footer-gap:var(--sl-end-gap)]'
+      '[--sl-main-gap:max(var(--soybean-layout-start-gap),var(--sl-end-gap))]',
+      '[--sl-header-gap:max(var(--soybean-layout-header-start-gap),var(--sl-end-gap))]',
+      '[--sl-footer-gap:max(var(--soybean-layout-footer-start-gap),var(--sl-end-gap))]'
     ],
     main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]/layout:overflow-y-auto transition-all-200',
     // `lt-md:hidden` 是首帧兜底：SSR 没有 matchMedia，手机必须先按桌面渲染再由 CSS 藏起来。
@@ -155,13 +153,15 @@ export const layoutVariants = scv({
       },
       floating: {
         root: [
-          // 以下间距都在侧栏宽度之外再加一个 spacing，属于"侧栏在布局流内"的桌面补偿；移动端侧栏是抽屉，由 root 的 data-[mobile=true] 规则接管
-          'data-[mobile=false]:data-[state=expanded]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[mobile=false]:data-[state=expanded]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[mobile=false]:data-[collapsible=icon]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[mobile=false]:data-[collapsible=icon]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[mobile=false]:data-[state=expanded]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
-          'data-[mobile=false]:data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          // 以下间距都在侧栏宽度之外再加一个 spacing，属于「侧栏包裹层比侧栏宽」的桌面补偿：
+          // 只有桌面端且侧栏确实占位（data-sidebar-visible=true）时才成立。移动端抽屉与
+          // sidebarVisible=false 都没有内联侧栏，由 root 上的 max() 兜底规则接管
+          'data-[mobile=false]:data-[sidebar-visible=true]:data-[state=expanded]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[sidebar-visible=true]:data-[state=expanded]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[sidebar-visible=true]:data-[collapsible=icon]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[sidebar-visible=true]:data-[collapsible=icon]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[sidebar-visible=true]:data-[state=expanded]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[sidebar-visible=true]:data-[collapsible=icon]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
           'data-[mobile=false]:data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:0px]'
         ],
         sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--sl-spacing))] group-data-[collapsible=icon]/layout:group-data-[state=collapsed]/layout:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--sl-spacing))]`,
@@ -171,10 +171,12 @@ export const layoutVariants = scv({
         root: [
           'py-[--sl-half-spacing] bg-sidebar',
           // data-[variant=inset] 前缀用于保证特异性高于 base 上的默认值；
-          // 间距类规则再叠加 data-[mobile=false]，移动端改由 root 的对称内嵌间距接管
-          'data-[mobile=false]:data-[variant=inset]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
-          'data-[mobile=false]:data-[variant=inset]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
-          'data-[mobile=false]:data-[variant=inset]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          // 相同地，间距补偿只在桌面端且侧栏确实占位时成立（见 floating），
+          // 侧栏不可见时起点间距由 root 的 max() 回落到末端间距（半间距）
+          'data-[mobile=false]:data-[sidebar-visible=true]:data-[variant=inset]:[--sl-main-gap:calc(var(--soybean-layout-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[sidebar-visible=true]:data-[variant=inset]:[--sl-footer-gap:calc(var(--soybean-layout-footer-start-gap)+var(--sl-spacing))]',
+          'data-[mobile=false]:data-[sidebar-visible=true]:data-[variant=inset]:data-[orientation=horizontal]:[--sl-header-gap:calc(var(--soybean-layout-header-start-gap)+var(--sl-spacing))]',
+          // 垂直方向 header 横跨顶部（侧栏在其下方），本就与布局自身的边缘对齐，无需侧栏补偿
           'data-[mobile=false]:data-[variant=inset]:data-[orientation=vertical]:[--sl-header-gap:var(--sl-half-spacing)]',
           'data-[variant=inset]:[--sl-end-gap:var(--sl-half-spacing)]',
           'data-[mobile=false]:data-[variant=inset]:data-[orientation=vertical]:data-[stretch-footer=true]:[--sl-footer-gap:var(--sl-half-spacing)]'
