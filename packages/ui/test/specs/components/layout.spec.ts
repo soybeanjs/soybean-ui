@@ -973,6 +973,66 @@ describe('SLayout', () => {
     });
   });
 
+  /**
+   * Whether the sidebar has a column of its own.
+   *
+   * The styled layer keys the column's padding (the `floating`/`inset` wrapper is
+   * a spacing wider than the sidebar), its card chrome, and the gaps those
+   * variants add on that state, so a host that resolves the sidebar to no column
+   * — `SAppShell`'s split modes do, for a first-level leaf — declares a width of
+   * `0` and gets a column that reserves and paints nothing.
+   */
+  describe('sidebar flow state', () => {
+    it('reports the sidebar in flow while it declares a width', () => {
+      const wrapper = mount(SLayout, {
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-sidebar-flow')).toBe('true');
+
+      wrapper.unmount();
+    });
+
+    it('reports a zero-width sidebar as out of flow', () => {
+      const wrapper = mount(SLayout, {
+        props: { sidebarWidth: 0, collapsedSidebarWidth: 0 },
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      const root = wrapper.find('[data-soybean-layout-root]');
+
+      expect(root.attributes('data-sidebar-flow')).toBe('false');
+      // The region itself stays rendered: its mount targets host the panes the
+      // split modes teleport, and the menu root inside it owns their top bar.
+      expect(wrapper.find('[data-soybean-layout-sidebar]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('reports a hidden sidebar as out of flow', () => {
+      const wrapper = mount(SLayout, {
+        props: { sidebarVisible: false },
+        slots: {
+          sidebar: '<div>Sidebar</div>',
+          default: '<div>Main</div>'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-layout-root]').attributes('data-sidebar-flow')).toBe('false');
+
+      wrapper.unmount();
+    });
+  });
+
   describe('CSS variables', () => {
     it('sets sidebar width CSS variable', () => {
       const wrapper = mount(SLayout, {

@@ -118,8 +118,30 @@ const collapsed = computed(() => !isMobile.value && !open.value);
  */
 const headerHeightRem = computed(() => props.pxToRem(props.headerHeight));
 
+/**
+ * Width the sidebar column declares for itself, in rem.
+ *
+ * The styled wrapper is sized from it — `floating`/`inset` widen it by a spacing
+ * of their own padding — so a host that resolves the sidebar to no column at all
+ * declares `sidebarWidth: 0` here: the `SAppShell` split modes ask the split-nav
+ * family which panes exist and get none for a first-level leaf.
+ */
+const sidebarWidthRem = computed(() => props.pxToRem(props.sidebarWidth));
+
+/**
+ * Whether the sidebar column takes part in the layout.
+ *
+ * The styled layer paints that wrapper and adds its padding to the start gaps, so
+ * both have to stand down for a column with no width of its own: rendering it
+ * anyway left a padded strip carrying the card's border and shadow, and indented
+ * the content by a spacing no column occupied. Published as `data-sidebar-flow`,
+ * apart from `data-sidebar-visible`, because the region still renders — its mount
+ * targets have to stay in the tree — while the column itself has nothing to show.
+ */
+const isSidebarInFlow = computed(() => hasInlineSidebar.value && sidebarWidthRem.value > 0);
+
 const style = computed<CSSProperties>(() => {
-  const sidebarWidth = props.pxToRem(props.sidebarWidth);
+  const sidebarWidth = sidebarWidthRem.value;
   const collapsedSidebarWidth = isOffcanvas.value ? '0' : props.pxToRem(props.collapsedSidebarWidth);
   const currentSidebarWidth = open.value ? sidebarWidth : collapsedSidebarWidth;
 
@@ -212,6 +234,7 @@ provideLayoutRootContext({
     :data-scroll-behavior="scrollBehavior"
     :data-full-content="Boolean(fullContent)"
     :data-sidebar-visible="Boolean(sidebarVisible)"
+    :data-sidebar-flow="Boolean(isSidebarInFlow)"
     :data-header-visible="Boolean(headerVisible)"
     :data-tab-visible="Boolean(tabVisible)"
     :data-footer-visible="Boolean(footerVisible)"

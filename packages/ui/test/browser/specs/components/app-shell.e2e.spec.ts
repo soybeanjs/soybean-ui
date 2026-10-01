@@ -527,6 +527,49 @@ describe('SAppShell (e2e)', () => {
       unmount();
     });
 
+    /**
+     * The empty sidebar of a rail-less split mode, measured where the user sees it.
+     *
+     * The columns resolve to nothing, and the layout used to render the column
+     * anyway: the `floating` wrapper painted its card's border and shadow on a
+     * padding-wide strip, and the sidebar-adjacent spacing those variants add
+     * beside the sidebar width indented the content by a spacing no column
+     * occupied. The region itself stays mounted — it hosts the mount targets the
+     * split panes teleport into, and the menu root that owns the header's top bar
+     * lives inside it — so the column has to paint nothing rather than disappear
+     * from the tree.
+     */
+    it('keeps the content on its variant edge while the split sidebar has no column', async () => {
+      for (const [mode, variant, gapPx] of [
+        ['horizontal-vertical', 'floating', 0],
+        ['horizontal-vertical', 'inset', 8],
+        ['horizontal-dual-vertical', 'floating', 0],
+        ['horizontal-dual-vertical', 'inset', 8]
+      ] as const) {
+        const { unmount } = await renderComponent(
+          createHarness({ items, mode, modelValue: 'overview', layoutProps: { variant } })
+        );
+
+        await expect.element(page.getByRole('menuitem', { name: 'Overview' })).toBeVisible();
+
+        await vi.waitFor(() => {
+          const main = element('[data-soybean-layout-main]');
+          const root = element('[data-soybean-layout-root]');
+
+          expect(getComputedStyle(main).marginInlineStart).toBe(`${gapPx}px`);
+          expect(Math.abs(main.getBoundingClientRect().left - root.getBoundingClientRect().left)).toBeLessThanOrEqual(
+            gapPx + 1
+          );
+        });
+
+        // A column with no width paints nothing: no client rects at all, unlike the
+        // zero-width strip that still drew its card's border and shadow.
+        expect(element('[data-soybean-app-shell-sidebar]').getClientRects()).toHaveLength(0);
+
+        unmount();
+      }
+    });
+
     it('takes only the rail column when a first-level menu of horizontal-dual-vertical opens', async () => {
       const { unmount } = await renderComponent(
         createHarness({ items, mode: 'horizontal-dual-vertical', modelValue: 'overview' })
