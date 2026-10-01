@@ -10,7 +10,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ColorSliderProps>(), {
-  color: 'accent',
+  color: 'primary',
   size: 'md'
 });
 
