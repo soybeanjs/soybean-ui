@@ -14,7 +14,7 @@ export const calendarRangeVariants = scv({
     })
   }),
   slots: {
-    root: 'inline-flex flex-col gap-4 p-3 text-sm',
+    root: 'inline-flex flex-col rounded-md border shadow-sm',
     header: 'flex items-center justify-between',
     heading: 'flex items-center justify-center font-medium',
     prev: 'rtl:rotate-180',
