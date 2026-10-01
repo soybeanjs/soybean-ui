@@ -28,13 +28,14 @@ Usage examples for split-nav are rendered on the site.
 - 🙈 Hidden options — `hidden` drops an entry and its subtree from the first-level rail and from the nested panes; a parent whose children are all hidden renders as a leaf
 - 🎨 6 sizes + style injection — `size` from xs to 2xl; `class` / `ui` overrides across named slots
 - ✏️ Customizable — `first-level-item` / `item` / `item-leading` / `item-trailing` slots
+- 🧷 Menu brand cells — `top-left` / `top-right` render above the two columns of a dual-vertical menu: the rail cell takes the rail's width and continues its divider, the pane cell follows that column's width and fold. A host brand belongs inside the menu there, instead of in a region beside it
 - ♿ Accessibility — `role="menubar"` / `menuitem`, `data-soybean-split-nav-*` attributes, RTL-aware `dir`
 
 ## Component family
 
 - `SSplitNav` (styled) — entry wrapper; composes `SplitNavRoot` + `splitNavVariants` mode/size recipe + `provideSplitNavUi` slot-class injection
 - `SplitNavRoot` (headless) — compact aggregator; `useControllableState` for the active value, mode switch, slot forwarding
-- Internal mode components (headless) — `DualVerticalPane`, `VerticalHorizontalMenu`, `HorizontalVerticalMenu`, `HorizontalDualVerticalMenu`
+- Internal mode components (headless) — `DualVerticalMenu`, `VerticalHorizontalMenu`, `HorizontalVerticalMenu`, `HorizontalDualVerticalMenu`
 - Internal first-level menus (headless) — `VerticalFirstLevelMenu` / `HorizontalFirstLevelMenu` with shared RovingFocus items
 
 ## Demos
@@ -49,6 +50,7 @@ Interactive demos for split-nav are rendered on the site.
 - 06 Custom — override first-level and nested item content through slots
 - 07 Open Event — listen to `open` and activate the first child when a parent is clicked
 - 08 Expand Strategy — switch the nested `TreeMenuCompact` between `keep` and `selected`
+- 09 Top Slots — put a brand into the dual-vertical menu's `top-left` / `top-right` cells, and drop the title through the `collapsed` slot prop once the pane folds
 
 ## API
 
@@ -94,6 +96,8 @@ Events for the SplitNav component.
 Slots for the SplitNav component.
 
 - `first-level-item`: Custom content for a first-level item. `selected` is true for a selected leaf. `open` is true for a parent whose nested pane is showing. (type `((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any) | undefined`)
+- `top-left`: Custom content rendered above the first-level rail of a dual-vertical menu. The cell is as wide as the rail and continues its divider, so a brand can sit in the menu's own top-left corner instead of beside it. `collapsed` reports whether the nested pane is folded. (type `((props: { collapsed: boolean; }) => any) | undefined`)
+- `top-right`: Custom content rendered above the nested pane of a dual-vertical menu. The cell only renders while the pane column exists — the active first-level item has visible children — and follows that column's width, folded state included. `collapsed` reports whether the pane is folded. (type `((props: { collapsed: boolean; }) => any) | undefined`)
 - `item`: Custom content for a nested TreeMenu / TreeNav item. (type `((props: { item: T; }) => any) | undefined`)
 - `item-leading`: Custom content for a nested TreeMenu / TreeNav item leading slot. (type `((props: { item: T; }) => any) | undefined`)
 - `item-trailing`: Custom content for a nested TreeMenu / TreeNav item trailing slot. (type `((props: { item: T; }) => any) | undefined`)
@@ -135,6 +139,8 @@ Events for the SplitNavRoot component.
 Slots for the SplitNavRoot component.
 
 - `first-level-item`: Custom content for a first-level item. `selected` is true for a selected leaf. `open` is true for a parent whose nested pane is showing. (type `((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any) | undefined`)
+- `top-left`: Custom content rendered above the first-level rail of a dual-vertical menu. The cell is as wide as the rail and continues its divider, so a brand can sit in the menu's own top-left corner instead of beside it. `collapsed` reports whether the nested pane is folded. (type `((props: { collapsed: boolean; }) => any) | undefined`)
+- `top-right`: Custom content rendered above the nested pane of a dual-vertical menu. The cell only renders while the pane column exists — the active first-level item has visible children — and follows that column's width, folded state included. `collapsed` reports whether the pane is folded. (type `((props: { collapsed: boolean; }) => any) | undefined`)
 - `item`: Custom content for a nested TreeMenu / TreeNav item. (type `((props: { item: T; }) => any) | undefined`)
 - `item-leading`: Custom content for a nested TreeMenu / TreeNav item leading slot. (type `((props: { item: T; }) => any) | undefined`)
 - `item-trailing`: Custom content for a nested TreeMenu / TreeNav item trailing slot. (type `((props: { item: T; }) => any) | undefined`)
@@ -162,6 +168,7 @@ Slots for the SplitNavRoot component.
 - Activating a parent item (click or keyboard) emits `open` with the complete option data of that parent, children included; it fires only for parents with visible children and never for leaves.
 - The nested pane keeps its own expanded state while it stays mounted, so with the default `expandStrategy="keep"` a branch you expanded under one first-level item is still expanded when you come back to it. The state resets when the pane unmounts, which happens whenever the active first-level item has no visible children.
 - Flex layout per `mode` lives in the UI style recipe; the headless layer carries no layout classes.
+- `top-left` / `top-right` belong to the dual-vertical shapes: the other modes render no such cells. `top-left` is the rail column's own top cell — same width as the rail, and the rail's divider runs through it — while `top-right` is the pane column's and therefore only exists while that column does, i.e. while the active first-level item has visible children. Both receive `collapsed`, so a host that renders a title there can drop it once the pane folds.
 - The vertical columns of a sidebar only exist while the current state fills them. `resolveSplitNavSidebarColumns({ mode, items, modelValue, openPath })` answers which of them exist: `dual-vertical` and `horizontal-dual-vertical` use up to two columns (the latter's being the second and third level of the tree), `vertical-horizontal` keeps the rail alone in the sidebar, and `horizontal-vertical` the pane alone. A consumer that has to fix a container's width before rendering — `SAppShell` reserving its sidebar — derives it from there instead of measuring the DOM, which is unavailable during server rendering.
 
 ## FAQ

@@ -75,7 +75,7 @@
               {
                 "name": "SplitNavUi",
                 "kind": "typeAlias",
-                "type": "{ verticalPane: ClassValue; firstLevel: ClassValue; firstLevelItem: ClassValue; firstLevelItemIcon: ClassValue; firstLevelItemLabel: ClassValue; subVertical: ClassValue; subHorizontal: ClassValue; }",
+                "type": "{ verticalPane: ClassValue; verticalRail: ClassValue; verticalRailMenu: ClassValue; topLeft: ClassValue; topRight: ClassValue; firstLevel: ClassValue; firstLevelItem: ClassValue; firstLevelItemIcon: ClassValue; firstLevelItemLabel: ClassValue; subVertical: ClassValue; subHorizontal: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the SplitNav component.",
                 "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavui",
@@ -408,7 +408,7 @@
         "kind": "slots",
         "name": "SplitNavSlots",
         "type": "TypeAlias SplitNavSlots<T>: SplitNavRootSlots<T>",
-        "resolvedType": "{ \"first-level-item\"?: ((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-trigger-icon\"?: ((props: { item: T; }) => any); \"item-link-icon\"?: ((props: { item: T; }) => any) }",
+        "resolvedType": "{ \"first-level-item\"?: ((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any); \"top-left\"?: ((props: { collapsed: boolean; }) => any); \"top-right\"?: ((props: { collapsed: boolean; }) => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-trigger-icon\"?: ((props: { item: T; }) => any); \"item-link-icon\"?: ((props: { item: T; }) => any) }",
         "description": "Slots for the SplitNav component.",
         "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavslots.slots",
         "sourcePath": "packages/ui/src/components/split-nav/types.ts",
@@ -428,6 +428,54 @@
                 "name": "__type",
                 "kind": "typeLiteral",
                 "type": "{ item: SplitNavOptionData<T>; selected: boolean; open: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.type",
+                "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "top-left",
+            "type": "((props: { collapsed: boolean; }) => any) | undefined",
+            "parameters": "((props: { collapsed: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered above the first-level rail of a dual-vertical menu.\n\nThe cell is as wide as the rail and continues its divider, so a brand can\nsit in the menu's own top-left corner instead of beside it. `collapsed`\nreports whether the nested pane is folded.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavslots.callables.top_left",
+            "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ collapsed: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.type",
+                "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "top-right",
+            "type": "((props: { collapsed: boolean; }) => any) | undefined",
+            "parameters": "((props: { collapsed: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered above the nested pane of a dual-vertical menu.\n\nThe cell only renders while the pane column exists — the active first-level\nitem has visible children — and follows that column's width, folded state\nincluded. `collapsed` reports whether the pane is folded.",
+            "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavslots.callables.top_right",
+            "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ collapsed: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.type",
@@ -895,7 +943,7 @@
         "kind": "slots",
         "name": "SplitNavRootSlots",
         "type": "TypeAlias SplitNavRootSlots<T>",
-        "resolvedType": "{ \"first-level-item\"?: ((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-trigger-icon\"?: ((props: { item: T; }) => any); \"item-link-icon\"?: ((props: { item: T; }) => any) }",
+        "resolvedType": "{ \"first-level-item\"?: ((props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean; }) => any); \"top-left\"?: ((props: { collapsed: boolean; }) => any); \"top-right\"?: ((props: { collapsed: boolean; }) => any); item?: ((props: { item: T; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-trigger-icon\"?: ((props: { item: T; }) => any); \"item-link-icon\"?: ((props: { item: T; }) => any) }",
         "description": "Slots for the SplitNavRoot component.",
         "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootslots.slots",
         "sourcePath": "packages/headless/src/components/split-nav/types.ts",
@@ -915,6 +963,54 @@
                 "name": "__type",
                 "kind": "typeLiteral",
                 "type": "{ item: SplitNavOptionData<T>; selected: boolean; open: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.type",
+                "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "top-left",
+            "type": "((props: { collapsed: boolean; }) => any) | undefined",
+            "parameters": "((props: { collapsed: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered above the first-level rail of a dual-vertical menu.\n\nThe cell is as wide as the rail and continues its divider, so a brand can\nsit in the menu's own top-left corner instead of beside it. `collapsed`\nreports whether the nested pane is folded.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootslots.callables.top_left",
+            "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ collapsed: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.type",
+                "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "top-right",
+            "type": "((props: { collapsed: boolean; }) => any) | undefined",
+            "parameters": "((props: { collapsed: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered above the nested pane of a dual-vertical menu.\n\nThe cell only renders while the pane column exists — the active first-level\nitem has visible children — and follows that column's width, folded state\nincluded. `collapsed` reports whether the pane is folded.",
+            "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootslots.callables.top_right",
+            "sourcePath": "packages/headless/src/components/split-nav/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ collapsed: boolean; }",
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.type",

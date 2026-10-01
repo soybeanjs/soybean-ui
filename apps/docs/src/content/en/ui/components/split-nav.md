@@ -29,13 +29,14 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 - 🙈 Hidden options — `hidden` drops an entry and its subtree from the first-level rail and from the nested panes; a parent whose children are all hidden renders as a leaf
 - 🎨 6 sizes + style injection — `size` from xs to 2xl; `class` / `ui` overrides across named slots
 - ✏️ Customizable — `first-level-item` / `item` / `item-leading` / `item-trailing` slots
+- 🧷 Menu brand cells — `top-left` / `top-right` render above the two columns of a dual-vertical menu: the rail cell takes the rail's width and continues its divider, the pane cell follows that column's width and fold. A host brand belongs inside the menu there, instead of in a region beside it
 - ♿ Accessibility — `role="menubar"` / `menuitem`, `data-soybean-split-nav-*` attributes, RTL-aware `dir`
 
 ## Component family
 
 - `SSplitNav` (styled) — entry wrapper; composes `SplitNavRoot` + `splitNavVariants` mode/size recipe + `provideSplitNavUi` slot-class injection
 - `SplitNavRoot` (headless) — compact aggregator; `useControllableState` for the active value, mode switch, slot forwarding
-- Internal mode components (headless) — `DualVerticalPane`, `VerticalHorizontalMenu`, `HorizontalVerticalMenu`, `HorizontalDualVerticalMenu`
+- Internal mode components (headless) — `DualVerticalMenu`, `VerticalHorizontalMenu`, `HorizontalVerticalMenu`, `HorizontalDualVerticalMenu`
 - Internal first-level menus (headless) — `VerticalFirstLevelMenu` / `HorizontalFirstLevelMenu` with shared RovingFocus items
 
 ## Demos
@@ -50,6 +51,7 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 - 06 Custom — override first-level and nested item content through slots
 - 07 Open Event — listen to `open` and activate the first child when a parent is clicked
 - 08 Expand Strategy — switch the nested `TreeMenuCompact` between `keep` and `selected`
+- 09 Top Slots — put a brand into the dual-vertical menu's `top-left` / `top-right` cells, and drop the title through the `collapsed` slot prop once the pane folds
 
 ## API
 
@@ -76,6 +78,7 @@ Use it when a layout needs a first-level switcher plus a nested tree or horizont
 - Activating a parent item (click or keyboard) emits `open` with the complete option data of that parent, children included; it fires only for parents with visible children and never for leaves.
 - The nested pane keeps its own expanded state while it stays mounted, so with the default `expandStrategy="keep"` a branch you expanded under one first-level item is still expanded when you come back to it. The state resets when the pane unmounts, which happens whenever the active first-level item has no visible children.
 - Flex layout per `mode` lives in the UI style recipe; the headless layer carries no layout classes.
+- `top-left` / `top-right` belong to the dual-vertical shapes: the other modes render no such cells. `top-left` is the rail column's own top cell — same width as the rail, and the rail's divider runs through it — while `top-right` is the pane column's and therefore only exists while that column does, i.e. while the active first-level item has visible children. Both receive `collapsed`, so a host that renders a title there can drop it once the pane folds.
 - The vertical columns of a sidebar only exist while the current state fills them. `resolveSplitNavSidebarColumns({ mode, items, modelValue, openPath })` answers which of them exist: `dual-vertical` and `horizontal-dual-vertical` use up to two columns (the latter's being the second and third level of the tree), `vertical-horizontal` keeps the rail alone in the sidebar, and `horizontal-vertical` the pane alone. A consumer that has to fix a container's width before rendering — `SAppShell` reserving its sidebar — derives it from there instead of measuring the DOM, which is unavailable during server rendering.
 
 ## FAQ

@@ -4,7 +4,7 @@ import { keysOf } from '../../shared';
 import { toMountedTarget } from './shared';
 import { useSplitNavRootContext } from './context';
 import { useSplitNavDerived } from './hooks';
-import DualVerticalPane from './dual-vertical-pane.vue';
+import DualVerticalMenu from './dual-vertical-menu.vue';
 import HorizontalFirstLevelMenu from './horizontal-first-level-menu.vue';
 import type { SplitNavRootSlots } from './types';
 
@@ -31,10 +31,10 @@ const forwardedSlotNames = computed(() => keysOf(slots));
       </template>
     </HorizontalFirstLevelMenu>
   </Teleport>
-  <DualVerticalPane v-if="childItems.length" :items="childItems">
+  <DualVerticalMenu v-if="childItems.length" :items="childItems">
     <template v-for="slotName in forwardedSlotNames" :key="slotName" #[slotName]="slotProps">
       <!-- @vue-expect-error ignore slot type -->
       <slot :name="slotName" v-bind="slotProps" />
     </template>
-  </DualVerticalPane>
+  </DualVerticalMenu>
 </template>

@@ -80,6 +80,45 @@ function createCollapseHarness(collapsed: Ref<boolean>) {
   });
 }
 
+/**
+ * Dual-vertical with the menu's own top cells filled: the slots are the host's
+ * content, so the harness injects them the way an app shell does.
+ */
+function createTopSlotHarness(collapsed: Ref<boolean>) {
+  return defineComponent({
+    name: 'SplitNavTopSlotHarness',
+    setup() {
+      return () =>
+        h(
+          SSplitNav,
+          {
+            items,
+            mode: 'dual-vertical',
+            modelValue: 'workspace',
+            collapsed: collapsed.value,
+            'onUpdate:collapsed': (value: boolean) => {
+              collapsed.value = value;
+            }
+          },
+          {
+            'top-left': () => h('span', { 'data-top-mark': '' }, 'Mark'),
+            'top-right': () => h('span', { 'data-top-title': '' }, 'Title')
+          }
+        );
+    }
+  });
+}
+
+function element(selector: string): Element {
+  const found = document.querySelector(selector);
+
+  if (!found) {
+    throw new Error(`expected "${selector}" to be rendered`);
+  }
+
+  return found;
+}
+
 describe('SSplitNav (e2e)', () => {
   describe('keyboard', () => {
     it('moves first-level focus with ArrowDown and opens a parent with Enter', async () => {
@@ -210,6 +249,58 @@ describe('SSplitNav (e2e)', () => {
       await nextTick();
 
       await expect.poll(() => transitions).toContain('width');
+
+      unmount();
+    });
+  });
+
+  /**
+   * The `top-left` / `top-right` cells are geometry, not just markup: each has to
+   * take the width of the column it heads, the rail cell has to stack above the
+   * rail, and the pane cell has to follow the pane column into its folded width.
+   * happy-dom can only see that the nodes are there.
+   */
+  describe('top slots', () => {
+    it('sizes the dual-vertical top cells to the columns they head', async () => {
+      const collapsed = ref(false);
+      const { unmount } = await renderComponent(createTopSlotHarness(collapsed));
+
+      await expect.element(page.getByRole('menuitem', { name: 'Overview' })).toBeVisible();
+
+      const box = (selector: string) => element(selector).getBoundingClientRect();
+      const offBy = (left: number, right: number) => Math.abs(left - right);
+
+      await expect
+        .poll(() =>
+          offBy(
+            box('[data-soybean-split-nav-top-left]').width,
+            box('[data-soybean-split-nav-vertical-first-level]').width
+          )
+        )
+        .toBeLessThanOrEqual(1);
+      await expect
+        .poll(() =>
+          offBy(box('[data-soybean-split-nav-top-right]').width, box('[data-soybean-split-nav-sub-vertical]').width)
+        )
+        .toBeLessThanOrEqual(1);
+
+      // The rail cell closes the strip above the rail; the pane cell opens the
+      // pane column it belongs to.
+      expect(box('[data-soybean-split-nav-top-left]').bottom).toBeLessThanOrEqual(
+        box('[data-soybean-split-nav-vertical-first-level]').top + 1
+      );
+      expect(
+        offBy(box('[data-soybean-split-nav-top-right]').top, box('[data-soybean-split-nav-sub-vertical]').top)
+      ).toBeLessThanOrEqual(1);
+
+      collapsed.value = true;
+      await nextTick();
+
+      await expect
+        .poll(() =>
+          offBy(box('[data-soybean-split-nav-top-right]').width, box('[data-soybean-split-nav-sub-vertical]').width)
+        )
+        .toBeLessThanOrEqual(1);
 
       unmount();
     });

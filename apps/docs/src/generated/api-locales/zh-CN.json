@@ -7895,7 +7895,9 @@
             "item_leading": "用于嵌套 TreeMenu / TreeNav 项引导槽的自定义内容。",
             "item_link_icon": "针对嵌套 TreeNav 项目链接图标的自定义内容。",
             "item_trailing": "用于嵌套 TreeMenu / TreeNav 项尾部插槽的自定义内容。",
-            "item_trigger_icon": "用于嵌套 TreeNav 项触发图标的自定义内容。"
+            "item_trigger_icon": "用于嵌套 TreeNav 项触发图标的自定义内容。",
+            "top_left": "",
+            "top_right": ""
           },
           "slots": "SplitNavRoot 组件的插槽。"
         },
@@ -10319,12 +10321,12 @@
             "header": "页眉中央区域的自定义内容。",
             "header_end": "页眉末尾区域的自定义内容。",
             "header_start": "页眉引言区域的自定义内容。",
-            "logo": "品牌标识的自定义内容。\n\nShell 会将其渲染在独立的单元格中，以便品牌标识与\n菜单对齐：在轨道模式下位于一级轨道上方，而在\n侧边栏折叠时居中显示。只要提供此插槽，该区域就会立即渲染；\n`title` 为可选。",
+            "logo": "",
             "menu": "菜单的自定义内容。替换菜单实例，而非挂载目标。",
             "sidebar_end": "侧边栏底部渲染的自定义内容。",
             "sidebar_start": "侧边栏顶部渲染的自定义内容。",
             "tabs": "标签页区域的自定义内容。",
-            "title": "品牌标题的自定义内容。\n\n在“轨道”模式下，该内容显示在标记旁边，并与侧边栏的第二列（嵌套窗格）\n对齐。当侧边栏折叠时（即其对齐的\n列被折叠隐藏），以及在没有可供对齐的窗格\n列的布局中，该内容将被隐藏。"
+            "title": ""
           },
           "slots": "AppShell 组件的插槽。"
         },
@@ -13740,7 +13742,9 @@
             "item_leading": "用于嵌套 TreeMenu / TreeNav 项引导槽的自定义内容。",
             "item_link_icon": "针对嵌套 TreeNav 项目链接图标的自定义内容。",
             "item_trailing": "用于嵌套 TreeMenu / TreeNav 项尾部插槽的自定义内容。",
-            "item_trigger_icon": "用于嵌套 TreeNav 项触发图标的自定义内容。"
+            "item_trigger_icon": "用于嵌套 TreeNav 项触发图标的自定义内容。",
+            "top_left": "",
+            "top_right": ""
           },
           "slots": "SplitNav 组件的插槽。"
         }

@@ -7,7 +7,7 @@ import type { SplitNavBaseOptionData, SplitNavOptionData } from './types';
 /**
  * Derive the first-level list, active item, and child pane items for a SplitNav pane.
  *
- * Pass `items` to override the root tree (used when `DualVerticalPane` is nested
+ * Pass `items` to override the root tree (used when `DualVerticalMenu` is nested
  * under `horizontal-dual-vertical`).
  */
 export function useSplitNavDerived<T extends SplitNavBaseOptionData = SplitNavBaseOptionData>(

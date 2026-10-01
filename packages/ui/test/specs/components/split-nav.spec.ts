@@ -201,6 +201,82 @@ describe('SSplitNav', () => {
       wrapper.unmount();
     });
 
+    /**
+     * `top-left` / `top-right` are the cells above the two columns of a
+     * dual-vertical menu: the host injects a brand there and the menu keeps the
+     * column geometry — the rail's divider included — around it.
+     */
+    it('renders the top slots above the two dual-vertical columns', () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items,
+          modelValue: 'soybean-ui'
+        },
+        slots: {
+          'top-left': () => h('span', { class: 'top-left-slot' }, 'Mark'),
+          'top-right': () => h('span', { class: 'top-right-slot' }, 'Title')
+        },
+        attachTo: document.body
+      });
+
+      const topLeft = wrapper.find('[data-soybean-split-nav-vertical-rail] [data-soybean-split-nav-top-left]');
+
+      expect(topLeft.find('.top-left-slot').exists()).toBe(true);
+      // The cell is the rail column's own first child, stacked above the box the
+      // rail fills.
+      expect(topLeft.element.nextElementSibling).toBe(
+        wrapper.find('[data-soybean-split-nav-vertical-first-level]').element.parentElement
+      );
+      expect(
+        wrapper
+          .find('[data-soybean-split-nav-sub-vertical] [data-soybean-split-nav-top-right] .top-right-slot')
+          .exists()
+      ).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('drops the top-right cell while the pane column does not exist', () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items,
+          modelValue: 'overview'
+        },
+        slots: {
+          'top-left': () => h('span', { class: 'top-left-slot' }, 'Mark'),
+          'top-right': () => h('span', { class: 'top-right-slot' }, 'Title')
+        },
+        attachTo: document.body
+      });
+
+      // The active first-level menu has no children: the sidebar is the rail
+      // alone, so only its cell has a column to sit on.
+      expect(wrapper.find('[data-soybean-split-nav-top-left]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-split-nav-top-right]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('reports the pane collapsed state to the top slots', () => {
+      const wrapper = mount(SSplitNav, {
+        props: {
+          items,
+          modelValue: 'soybean-ui',
+          collapsed: true
+        },
+        slots: {
+          'top-left': ({ collapsed }: { collapsed: boolean }) => h('span', { class: 'left-state' }, String(collapsed)),
+          'top-right': ({ collapsed }: { collapsed: boolean }) => h('span', { class: 'right-state' }, String(collapsed))
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('.left-state').text()).toBe('true');
+      expect(wrapper.find('.right-state').text()).toBe('true');
+
+      wrapper.unmount();
+    });
+
     it('applies class to the standalone dual-vertical pane', () => {
       const wrapper = mount(SSplitNav, {
         props: {

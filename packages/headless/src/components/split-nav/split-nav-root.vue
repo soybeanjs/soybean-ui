@@ -5,7 +5,7 @@ import { keysOf, toContext } from '../../shared';
 import { useControllableState, useOmitProps } from '../../composables';
 import { findNode, hasVisibleChildren, toOpenPath } from './shared';
 import { provideSplitNavRootContext } from './context';
-import DualVerticalPane from './dual-vertical-pane.vue';
+import DualVerticalMenu from './dual-vertical-menu.vue';
 import HorizontalDualVerticalMenu from './horizontal-dual-vertical-menu.vue';
 import HorizontalVerticalMenu from './horizontal-vertical-menu.vue';
 import type {
@@ -82,7 +82,7 @@ const openPath = shallowRef(toOpenPath(props.items, modelValue.value));
 const railItemElements = new Map<string, HTMLElement>();
 
 const menus: Record<SplitNavMode, Component> = {
-  'dual-vertical': DualVerticalPane,
+  'dual-vertical': DualVerticalMenu,
   'vertical-horizontal': VerticalHorizontalMenu,
   'horizontal-vertical': HorizontalVerticalMenu,
   'horizontal-dual-vertical': HorizontalDualVerticalMenu

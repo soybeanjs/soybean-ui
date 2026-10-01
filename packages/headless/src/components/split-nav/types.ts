@@ -161,6 +161,22 @@ export type SplitNavRootSlots<T extends SplitNavBaseOptionData = SplitNavBaseOpt
    */
   'first-level-item'?: (props: { item: SplitNavOptionData<T>; selected: boolean; open: boolean }) => any;
   /**
+   * Custom content rendered above the first-level rail of a dual-vertical menu.
+   *
+   * The cell is as wide as the rail and continues its divider, so a brand can
+   * sit in the menu's own top-left corner instead of beside it. `collapsed`
+   * reports whether the nested pane is folded.
+   */
+  'top-left'?: (props: { collapsed: boolean }) => any;
+  /**
+   * Custom content rendered above the nested pane of a dual-vertical menu.
+   *
+   * The cell only renders while the pane column exists — the active first-level
+   * item has visible children — and follows that column's width, folded state
+   * included. `collapsed` reports whether the pane is folded.
+   */
+  'top-right'?: (props: { collapsed: boolean }) => any;
+  /**
    * Custom content for a nested TreeMenu / TreeNav item.
    */
   item?: (props: { item: T }) => any;
@@ -231,9 +247,9 @@ export interface FirstLevelItemProps {
 }
 
 /**
- * Properties for the DualVerticalPane component.
+ * Properties for the DualVerticalMenu component.
  */
-export interface DualVerticalPaneProps {
+export interface DualVerticalMenuProps {
   /**
    * Option data rendered as this dual-vertical pane's first level.
    *
@@ -291,6 +307,10 @@ export interface SplitNavRootContextParams extends ToContext<
  */
 export type SplitNavUiSlot =
   | 'verticalPane'
+  | 'verticalRail'
+  | 'verticalRailMenu'
+  | 'topLeft'
+  | 'topRight'
   | 'firstLevel'
   | 'firstLevelItem'
   | 'firstLevelItemIcon'

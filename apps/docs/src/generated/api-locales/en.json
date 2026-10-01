@@ -7895,7 +7895,9 @@
             "item_leading": "Custom content for a nested TreeMenu / TreeNav item leading slot.",
             "item_link_icon": "Custom content for a nested TreeNav item link icon.",
             "item_trailing": "Custom content for a nested TreeMenu / TreeNav item trailing slot.",
-            "item_trigger_icon": "Custom content for a nested TreeNav item trigger icon."
+            "item_trigger_icon": "Custom content for a nested TreeNav item trigger icon.",
+            "top_left": "Custom content rendered above the first-level rail of a dual-vertical menu.\n\nThe cell is as wide as the rail and continues its divider, so a brand can\nsit in the menu's own top-left corner instead of beside it. `collapsed`\nreports whether the nested pane is folded.",
+            "top_right": "Custom content rendered above the nested pane of a dual-vertical menu.\n\nThe cell only renders while the pane column exists — the active first-level\nitem has visible children — and follows that column's width, folded state\nincluded. `collapsed` reports whether the pane is folded."
           },
           "slots": "Slots for the SplitNavRoot component."
         },
@@ -13740,7 +13742,9 @@
             "item_leading": "Custom content for a nested TreeMenu / TreeNav item leading slot.",
             "item_link_icon": "Custom content for a nested TreeNav item link icon.",
             "item_trailing": "Custom content for a nested TreeMenu / TreeNav item trailing slot.",
-            "item_trigger_icon": "Custom content for a nested TreeNav item trigger icon."
+            "item_trigger_icon": "Custom content for a nested TreeNav item trigger icon.",
+            "top_left": "Custom content rendered above the first-level rail of a dual-vertical menu.\n\nThe cell is as wide as the rail and continues its divider, so a brand can\nsit in the menu's own top-left corner instead of beside it. `collapsed`\nreports whether the nested pane is folded.",
+            "top_right": "Custom content rendered above the nested pane of a dual-vertical menu.\n\nThe cell only renders while the pane column exists — the active first-level\nitem has visible children — and follows that column's width, folded state\nincluded. `collapsed` reports whether the pane is folded."
           },
           "slots": "Slots for the SplitNav component."
         }

@@ -29,13 +29,14 @@ head:
 - 🙈 隐藏项 — `hidden` 将条目及其子树从一级栏与子面板中移除；子项全部隐藏的父级按叶子渲染
 - 🎨 6 档尺寸 + 样式注入 — `size` 从 xs 到 2xl；`class` / `ui` 覆盖各命名插槽
 - ✏️ 高度可定制 — `first-level-item` / `item` / `item-leading` / `item-trailing` 插槽
+- 🧷 菜单顶部插槽 — `top-left` / `top-right` 渲染在双竖栏菜单两列之上：轨道格与轨道同宽并延续其分割线，面板格跟随该列的宽度与折叠。宿主品牌应放在菜单内，而不是菜单旁边的独立区域
 - ♿ 无障碍 — `role="menubar"` / `menuitem`、`data-soybean-split-nav-*` 数据属性、RTL `dir`
 
 ## 组件家族
 
 - `SSplitNav`（带样式）— 入口包装；组合 `SplitNavRoot` + `splitNavVariants` 模式/尺寸配方 + `provideSplitNavUi` 插槽类注入
 - `SplitNavRoot`（无样式）— 数据驱动聚合根；`useControllableState` 管理激活值、按 mode 切换、转发插槽
-- 内部模式组件（无样式）— `DualVerticalPane`、`VerticalHorizontalMenu`、`HorizontalVerticalMenu`、`HorizontalDualVerticalMenu`
+- 内部模式组件（无样式）— `DualVerticalMenu`、`VerticalHorizontalMenu`、`HorizontalVerticalMenu`、`HorizontalDualVerticalMenu`
 - 内部一级菜单（无样式）— `VerticalFirstLevelMenu` / `HorizontalFirstLevelMenu`，共享 RovingFocus 条目
 
 ## 示例
@@ -50,6 +51,7 @@ head:
 - 06 定制 — 通过插槽自定义一级与子级内容
 - 07 展开事件 — 监听 `open`，点击父级时同时激活子级第一项
 - 08 展开策略 — 在 `keep` 与 `selected` 之间切换嵌套 `TreeMenuCompact` 的展开行为
+- 09 顶部插槽 — 把品牌放进双竖栏菜单的 `top-left` / `top-right` 格，并在面板折叠时通过 `collapsed` 插槽参数移除标题
 
 ## API
 
@@ -76,6 +78,7 @@ head:
 - 激活父级（点击或键盘）会触发 `open` 事件，携带该父级的完整菜单数据（含子级）；只有带可见子级的父级会触发，叶子不会。
 - 只要子面板还挂载着，它就会保留自己的展开状态：默认 `expandStrategy="keep"` 下，你在某个一级项里展开过的分支，切回来时仍是展开的。当激活的一级项没有可见子级时子面板会卸载，该状态随之重置。
 - 各 `mode` 的 flex 布局定义在 UI 样式配方中；无样式层不携带任何布局类。
+- `top-left` / `top-right` 只属于双竖栏形态：其它模式不会渲染这两个格子。`top-left` 是轨道列自己的顶部格——与轨道同宽，轨道的分割线贯穿其中；`top-right` 属于面板列，因此只在该列存在（即当前一级项有可见子级）时渲染。两者都会收到 `collapsed`，宿主若在其中渲染标题，可在面板折叠时据此移除。
 - 侧栏里的竖栏只在当前状态真的装得下东西时才存在。`resolveSplitNavSidebarColumns({ mode, items, modelValue, openPath })` 直接回答某个模式下"轨道列 / 面板列"各自是否存在：`dual-vertical` 与 `horizontal-dual-vertical` 最多占两列（后者的两列分别是二级与三级），`vertical-horizontal` 侧栏只有轨道，`horizontal-vertical` 侧栏只有面板。需要在渲染前就定下容器宽度的消费者（例如 `SAppShell` 为布局预留侧栏宽度）用它推导，而不是去量 DOM——服务端渲染时量不到。
 
 ## 常见问题

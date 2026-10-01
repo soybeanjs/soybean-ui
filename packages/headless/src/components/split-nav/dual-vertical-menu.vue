@@ -6,21 +6,21 @@ import { TreeMenuCompact } from '../tree-menu';
 import { toMountedTarget, toTreeMenuOptions, isPaneBoundaryKey } from './shared';
 import { useSplitNavRootContext, useSplitNavUi } from './context';
 import { useSplitNavDerived, useSplitNavPaneFallback, useSplitNavTreePane } from './hooks';
-import type { DualVerticalPaneProps, SplitNavRootSlots } from './types';
+import type { DualVerticalMenuProps, SplitNavRootSlots } from './types';
 import VerticalFirstLevelMenu from './vertical-first-level-menu.vue';
 
 defineOptions({
-  name: 'SplitNavDualVerticalPane'
+  name: 'SplitNavDualVerticalMenu'
 });
 
-const props = defineProps<DualVerticalPaneProps>();
+const props = defineProps<DualVerticalMenuProps>();
 
 const slots = defineSlots<SplitNavRootSlots>();
 
 const ui = useSplitNavUi();
 
 const { dir, mode, openPath, railItemElements, rootAttrs, verticalMountedId } =
-  useSplitNavRootContext('SplitNavDualVerticalPane');
+  useSplitNavRootContext('SplitNavDualVerticalMenu');
 
 const isStandalone = computed(() => mode.value === 'dual-vertical');
 
@@ -97,11 +97,27 @@ function handlePaneKeydownCapture(event: KeyboardEvent) {
       @keydown="onPaneKeydown"
       @keydown-capture="handlePaneKeydownCapture"
     >
-      <VerticalFirstLevelMenu :items="firstLevelItems">
-        <template v-if="slots['first-level-item']" #first-level-item="slotProps">
-          <slot name="first-level-item" v-bind="slotProps" />
-        </template>
-      </VerticalFirstLevelMenu>
+      <!--
+        The first-level rail sits in a column of its own so `top-left` can carry
+        the rail's divider above the items: the cell and the rail stack into the
+        one strip the menu already draws, instead of the host faking it.
+
+        The rail keeps its height through a box of its own: the rail is
+        `shrink-0` on its width for the row layouts it is also used in, which
+        would leave it unshrinkable here and push it past the column's bottom.
+      -->
+      <div data-soybean-split-nav-vertical-rail :class="ui.verticalRail">
+        <div v-if="slots['top-left']" data-soybean-split-nav-top-left :class="ui.topLeft">
+          <slot name="top-left" :collapsed="collapsed" />
+        </div>
+        <div :class="ui.verticalRailMenu">
+          <VerticalFirstLevelMenu :items="firstLevelItems">
+            <template v-if="slots['first-level-item']" #first-level-item="slotProps">
+              <slot name="first-level-item" v-bind="slotProps" />
+            </template>
+          </VerticalFirstLevelMenu>
+        </div>
+      </div>
       <div
         v-if="treeItems.length"
         data-soybean-split-nav-sub-vertical
@@ -109,6 +125,13 @@ function handlePaneKeydownCapture(event: KeyboardEvent) {
         :data-state="treePaneState"
         :style="treePaneStyle"
       >
+        <!--
+          `top-right` rides the pane column, so it appears exactly while that
+          column does and follows its width, folded state included.
+        -->
+        <div v-if="slots['top-right']" data-soybean-split-nav-top-right :class="ui.topRight">
+          <slot name="top-right" :collapsed="collapsed" />
+        </div>
         <TreeMenuCompact
           :items="treeItems"
           :model-value="modelValue"
