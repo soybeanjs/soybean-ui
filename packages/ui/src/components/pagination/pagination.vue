@@ -18,7 +18,7 @@ const emit = defineEmits<PaginationEmits>();
 
 const slots = defineSlots<PaginationSlots>();
 
-const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'variant', 'shape', 'actionAsSelected']);
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'variant', 'shape', 'actionVariant']);
 
 const listeners = useForwardListeners(emit);
 
@@ -30,7 +30,7 @@ const ui = computed(() =>
       size: props.size,
       variant: props.variant,
       shape: props.shape,
-      actionAsSelected: props.actionAsSelected
+      actionVariant: props.actionVariant
     },
     props.ui,
     { root: props.class }

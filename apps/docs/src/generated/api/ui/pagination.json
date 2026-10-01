@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "PaginationProps",
         "type": "Interface PaginationProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<PaginationUi>; size?: ThemeSize; variant?: PaginationVariant; shape?: PaginationShape; actionAsSelected?: boolean; showFirstOrLast?: boolean; listProps?: PaginationListProps; listItemProps?: PaginationListItemProps; ellipsisProps?: PaginationEllipsisProps; firstProps?: PaginationButtonProps; prevProps?: PaginationButtonProps; nextProps?: PaginationButtonProps; lastProps?: PaginationButtonProps; page?: number; defaultPage?: number; pageSize?: number; defaultPageSize?: number; total?: number; siblingCount?: number; disabled?: boolean; showEdges?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<PaginationUi>; size?: ThemeSize; variant?: PaginationVariant; shape?: PaginationShape; actionVariant?: boolean; showFirstOrLast?: boolean; listProps?: PaginationListProps; listItemProps?: PaginationListItemProps; ellipsisProps?: PaginationEllipsisProps; firstProps?: PaginationButtonProps; prevProps?: PaginationButtonProps; nextProps?: PaginationButtonProps; lastProps?: PaginationButtonProps; page?: number; defaultPage?: number; pageSize?: number; defaultPageSize?: number; total?: number; siblingCount?: number; disabled?: boolean; showEdges?: boolean }",
         "description": "Properties for the Pagination component.",
         "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.props",
         "sourcePath": "packages/ui/src/components/pagination/types.ts",
@@ -138,11 +138,11 @@
             ]
           },
           {
-            "name": "actionAsSelected",
+            "name": "actionVariant",
             "type": "boolean",
             "required": false,
-            "description": "Whether to apply the selected state to the action button",
-            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.actionasselected",
+            "description": "Whether the first/prev/next/last action buttons also use the `variant` styling, which otherwise only paints the current page",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.actionvariant",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "packages/ui/src/components/pagination/types.ts",

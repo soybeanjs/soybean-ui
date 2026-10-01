@@ -13043,7 +13043,7 @@
         },
         "paginationprops": {
           "members": {
-            "actionasselected": "Whether to apply the selected state to the action button",
+            "actionvariant": "Whether the first/prev/next/last action buttons also use the `variant` styling, which otherwise only paints the current page",
             "class": "Additional class names applied to the root element.",
             "defaultpage": "The value of the page that should be active when initially rendered. Use when you do not need to control the value\nstate.",
             "defaultpagesize": "The default value of `pageSize` when initially rendered. Use when you do not need to control the value state.",

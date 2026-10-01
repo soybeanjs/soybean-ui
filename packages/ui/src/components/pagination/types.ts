@@ -24,8 +24,8 @@ export interface PaginationProps extends PaginationCompactProps {
   variant?: PaginationVariant;
   /** The shape of the pagination */
   shape?: PaginationShape;
-  /** Whether to apply the selected state to the action button */
-  actionAsSelected?: boolean;
+  /** Whether the first/prev/next/last action buttons also use the `variant` styling, which otherwise only paints the current page */
+  actionVariant?: boolean;
 }
 
 /**

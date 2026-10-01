@@ -30,7 +30,7 @@ interface CustomizerState {
   page: number;
   showEdges: boolean;
   showFirstOrLast: boolean;
-  actionAsSelected: boolean;
+  actionVariant: boolean;
   disabled: boolean;
 }
 
@@ -45,7 +45,7 @@ const DEFAULTS: CustomizerState = {
   page: 8,
   showEdges: true,
   showFirstOrLast: true,
-  actionAsSelected: false,
+  actionVariant: false,
   disabled: false
 };
 
@@ -69,7 +69,7 @@ const siblingCount = shallowRef<number | null>(DEFAULTS.siblingCount);
 const page = shallowRef<number | null>(DEFAULTS.page);
 const showEdges = shallowRef(DEFAULTS.showEdges);
 const showFirstOrLast = shallowRef(DEFAULTS.showFirstOrLast);
-const actionAsSelected = shallowRef(DEFAULTS.actionAsSelected);
+const actionVariant = shallowRef(DEFAULTS.actionVariant);
 const disabled = shallowRef(DEFAULTS.disabled);
 
 const resolvedTotal = computed(() => total.value ?? DEFAULTS.total);
@@ -91,7 +91,7 @@ const reset = (): void => {
   page.value = DEFAULTS.page;
   showEdges.value = DEFAULTS.showEdges;
   showFirstOrLast.value = DEFAULTS.showFirstOrLast;
-  actionAsSelected.value = DEFAULTS.actionAsSelected;
+  actionVariant.value = DEFAULTS.actionVariant;
   disabled.value = DEFAULTS.disabled;
 };
 </script>
@@ -136,9 +136,9 @@ const reset = (): void => {
           <SSwitch v-model="showFirstOrLast" :control-props="{ 'aria-label': 'Show first or last' }" />
         </div>
       </FieldItem>
-      <FieldItem label="actionAsSelected">
+      <FieldItem label="actionVariant">
         <div class="h-8 flex items-center">
-          <SSwitch v-model="actionAsSelected" :control-props="{ 'aria-label': 'Action as selected' }" />
+          <SSwitch v-model="actionVariant" :control-props="{ 'aria-label': 'Action variant' }" />
         </div>
       </FieldItem>
       <FieldItem label="disabled">
@@ -164,7 +164,7 @@ const reset = (): void => {
       :size="size"
       :show-edges="showEdges"
       :show-first-or-last="showFirstOrLast"
-      :action-as-selected="actionAsSelected"
+      :action-variant="actionVariant"
       :disabled="disabled"
       @update:page="handlePageUpdate"
     />

@@ -90,6 +90,35 @@ describe('SPagination', () => {
 
       wrapper.unmount();
     });
+
+    it('keeps the action buttons neutral while actionVariant is off', () => {
+      const wrapper = mount(SPagination, {
+        props: { total: 100, pageSize: 10, variant: 'solid' },
+        attachTo: document.body
+      });
+
+      const actionClasses = wrapper.find('[data-soybean-pagination-first]').classes();
+
+      expect(actionClasses.some(className => className.startsWith('data-[soybean-pagination-action]:'))).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('paints the action buttons with the variant styling when actionVariant is true', () => {
+      const wrapper = mount(SPagination, {
+        props: { total: 100, pageSize: 10, variant: 'solid', actionVariant: true },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-pagination-first]').classes()).toContain(
+        'data-[soybean-pagination-action]:bg-primary'
+      );
+      expect(wrapper.find('[data-soybean-pagination-last]').classes()).toContain(
+        'data-[soybean-pagination-action]:bg-primary'
+      );
+
+      wrapper.unmount();
+    });
   });
 
   describe('page navigation', () => {

@@ -10,7 +10,7 @@ import { SPagination } from '@soybeanjs/ui';
       :sibling-count="1"
       :items-per-page="10"
       :total="200"
-      action-as-selected
+      action-variant
       :show-first-or-last="false"
     />
   </div>

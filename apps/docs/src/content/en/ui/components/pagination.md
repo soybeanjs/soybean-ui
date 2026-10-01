@@ -17,7 +17,7 @@ Pagination is used for splitting up content or data into several pages, with a c
 - **Smart page windowing** — `siblingCount` controls how many page buttons surround the current page; `showEdges: true` always pins the first and last page and renders single or double ellipsis depending on where the current page sits.
 - **Boundary auto-disable** — prev/first are disabled on the first page and next/last on the last page; `disabled: true` disables the entire control and suppresses all interaction.
 - **Four visual variants** — `variant` (`pure` / `solid` / `outline` / `soft`), `shape` (`rounded` / `square`), and `size` (xs…2xl) are applied through the `paginationVariants` `scv()` recipe.
-- **`actionAsSelected`** — when enabled, the first/prev/next/last action buttons reuse the current `variant` styling instead of the neutral action style.
+- **`actionVariant`** — when enabled, the first/prev/next/last action buttons also take the current `variant` styling, which otherwise paints only the current page.
 - **Eight customization slots** — `default` (list), `leading`, `trailing`, `first`, `prev`, `next`, `last`, and `ellipsis`; dynamic slot forwarding keeps every headless slot reachable from the styled wrapper.
 - **Per-region props forwarding** — `listProps`, `listItemProps`, `ellipsisProps`, `firstProps`, `prevProps`, `nextProps`, `lastProps` forward attributes to each region.
 - **Full ARIA semantics** — the root is a `nav`; the active page carries `aria-current="page"` and the selected state attribute; every button gets a localized `aria-label`.
@@ -51,7 +51,7 @@ Pagination is used for splitting up content or data into several pages, with a c
 | Ellipsis + pinned edges      | ✅ `showEdges` + automatic single/double ellipsis                | ✅ `showEdges` on `PaginationItem`       | ✅ `showLessItems` / auto ellipsis | ✅ `pager-count`             |
 | Boundary auto-disable        | ✅ prev/first at page 1, next/last at last page                  | ✅ `disabled` on parts                   | ✅ `prevIcon`/`nextIcon` handling  | ✅ auto                      |
 | Disable entire control       | ✅ `disabled`                                                    | ✅                                       | ✅ `disabled`                      | ✅ `disabled`                |
-| Selected page styling        | ✅ `data-[selected]` + `actionAsSelected`                        | ✅ `data-[active]`                       | ✅ `current` item class            | ✅ `active`                  |
+| Selected page styling        | ✅ `data-[selected]` + `actionVariant`                           | ✅ `data-[active]`                       | ✅ `current` item class            | ✅ `active`                  |
 | Localized `aria-label`       | ✅ locale registry (13 langs, `{value}` interpolation)           | hard-coded / `aria-label` prop           | partial                            | —                            |
 | Variant system               | ✅ `pure`/`solid`/`outline`/`soft` × `rounded`/`square` × xs…2xl | ✅ size only                             | ✅ `size`                          | ✅ `small`/`default`/`large` |
 | Per-region props forwarding  | ✅ 7 props groups                                                | ✅ `asChild` per part                    | ✅ `itemRender`                    | ✅ per-part props            |
@@ -63,7 +63,7 @@ Pagination is used for splitting up content or data into several pages, with a c
 2. **`total` pages** — `pageCount` is `Math.max(1, Math.ceil(total / pageSize))`, so an empty list still yields one page; a `page` above `pageCount` renders the last window without crashing.
 3. **Controlled state sync** — when bound with `v-model:page`, clicking an item emits `update:page`; the internal window follows the prop, so external page changes (e.g. after a fetch) re-render the correct window automatically.
 4. **`showFirstOrLast`** — setting it to `false` removes the first/last buttons but keeps prev/next; page count math is unaffected.
-5. **`actionAsSelected`** — it only reuses the `variant` recipe for action buttons; the selected page item always uses the `data-[selected]` styling regardless of this flag.
+5. **`actionVariant`** — it only lets the action buttons reuse the `variant` recipe; the selected page item always uses the `data-[selected]` styling regardless of this flag.
 6. **Locale fallback** — button labels come from `useLocaleMessages`; missing keys fall back to the default English bundle; `pageLabel` supports the `{value}` placeholder via `interpolate`.
 7. **A11y output** — the active page renders with `aria-current="page"` and the `data-selected` attribute; disabled actions keep `disabled` so they are skipped by assistive technology and keyboard navigation.
 
@@ -77,9 +77,9 @@ With `showEdges: true`, the first and last page are always pinned. The current p
 
 Pass `page` (and optionally `pageSize`) together with an `@update:page` handler, or simply use `v-model:page`. For uncontrolled usage, rely on `defaultPage` / `defaultPageSize` and let the component manage its own state.
 
-### What is `actionAsSelected` for?
+### What is `actionVariant` for?
 
-By default the first/prev/next/last action buttons use a neutral action style. When `actionAsSelected` is `true`, those buttons reuse the selected `variant` styling (e.g. a solid primary look), which is useful when the active page visually merges with the action buttons.
+By default the first/prev/next/last action buttons use a neutral action style. When `actionVariant` is `true`, those buttons also take the `variant` styling — the same one the current page uses (e.g. a solid primary look) — which is useful when the active page visually merges with the action buttons.
 
 ### Why are prev/first disabled on the first page?
 

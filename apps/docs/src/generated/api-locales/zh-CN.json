@@ -13043,7 +13043,7 @@
         },
         "paginationprops": {
           "members": {
-            "actionasselected": "是否将选定状态应用到操作按钮",
+            "actionvariant": "“第一页”、“上一页”、“下一页”和“最后一页”操作按钮是否也使用 `variant` 样式（该样式通常仅用于当前页面）",
             "class": "应用于根元素的额外类名。",
             "defaultpage": "页面在初始渲染时应处于的活动值。当您无需控制 state 值时使用\nstate。",
             "defaultpagesize": "初始渲染时 `pageSize` 的默认值。当无需控制该值的状态时使用。",

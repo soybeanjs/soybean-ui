@@ -36,8 +36,8 @@ const paginationAction = cv({
 
 export const paginationVariants = scv({
   extendBase: props => {
-    const { size, shape, actionAsSelected } = props;
-    const variant = actionAsSelected ? props.variant : undefined;
+    const { size, shape, actionVariant } = props;
+    const variant = actionVariant ? props.variant : undefined;
 
     return {
       first: paginationAction({ size, variant, shape }),
@@ -116,7 +116,7 @@ export const paginationVariants = scv({
         listItem: `rounded-md`
       }
     },
-    actionAsSelected: {
+    actionVariant: {
       true: {},
       false: {}
     }
@@ -126,7 +126,7 @@ export const paginationVariants = scv({
     size: 'md',
     variant: 'pure',
     shape: 'square',
-    actionAsSelected: false
+    actionVariant: false
   }
 });
 
