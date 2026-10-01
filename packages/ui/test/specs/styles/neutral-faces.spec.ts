@@ -11,43 +11,44 @@ import { toggleGroupVariants } from '@/styles/toggle-group';
  *
  * 填充族按 **角色 × 强弱** 分档：`muted`（静态弱化面）与 `accent`（瞬时交互面）**同档**
  * （对齐 shadcn 默认，docs/theme.md §3.2），`secondary`（静态实心填充）定在强档
- * （亮 `{b}.200` / 暗 `{b}.800`）。所以**不带底色 / 弱底**的中性交互面只能靠**同一填充的
- * alpha 阶梯**承担可见性：静止 `accent/40`（或 `card` / 透明）→ hover `accent/60`
- * → 选中 / 按压 `accent`。
+ * （亮 `{b}.200` / 暗 `{b}.800`）。同档折叠之后，中性交互面靠**同一填充的 alpha 阶梯**承担
+ * 可见性：静止 `accent/40`（或 `card` / 透明）→ hover `accent/60` → 选中 / 按压 `accent`。
  *
- * 这组断言守住三件事：阶梯的类名形状稳定；**静止面与交互面相邻时必须是洗色**——
- * 一旦静止面退回实心 `bg-muted`，它与 `accent` 同色，交互态会渲染成 Δ = 0
- * （实测色差由 `packages/ui/test/browser/specs/theme/neutral-faces.e2e.spec.ts` 守）；
+ * **按钮族不走这条阶梯**（docs/theme.md §3.2 的 alpha 阶梯由 toggle / toggle-group / anchor /
+ * pagination 承担）：无底色形态的 hover **直接升到实心** `accent`（`color="secondary"` 用实心
+ * `secondary`），按压回落到前景角色的 alpha 洗色；`solid` / `soft` 的静止面本身就是实心填充。
+ *
+ * 这组断言守住三件事：两族各自的类名形状稳定；**静止弱面与交互面相邻时必须是洗色**
+ * （`toggle.soft` / `toggle-group.soft` / 斑马纹行）——一旦静止面退回实心 `bg-muted`，它与
+ * `accent` 同色，交互态会渲染成 Δ = 0（实测色差由
+ * `packages/ui/test/browser/specs/theme/neutral-faces.e2e.spec.ts` 守）；
  * 以及**强档填充与它旁边的发丝线不能撞色**（`secondary` 与 `border` 同为 `{b}.200`）。
- * 同时守住 `bg-{accent,secondary}-foreground/10` 这套旧的中性 alpha 面不会回流。
  */
 describe('neutral interaction faces', () => {
   describe('button', () => {
-    it('drives the fill-less neutral shapes from the accent fill', () => {
+    // 无底色形态：静止是 `card` / 透明，hover 升到自己的实心填充，按压缩回前景 alpha 洗色。
+    it('lifts the fill-less neutral shapes onto their own solid fill', () => {
       (['accent', 'secondary'] as const).forEach(color => {
         (['ghost', 'outline', 'dashed'] as const).forEach(variant => {
           const cls = buttonVariants({ color, variant });
 
-          expect(cls, `${color}/${variant}`).toContain('data-[normal]:hover:bg-accent/60');
-          expect(cls, `${color}/${variant}`).toContain('data-[normal]:active:bg-accent');
-          expect(cls, `${color}/${variant}`).toContain('text-accent-foreground');
-          expect(cls, `${color}/${variant}`).not.toContain('text-secondary-foreground');
-          expect(cls, `${color}/${variant}`).not.toContain('bg-accent-foreground/10');
-          expect(cls, `${color}/${variant}`).not.toContain('bg-secondary-foreground/10');
+          expect(cls, `${color}/${variant}`).toContain(`data-[normal]:hover:bg-${color}`);
+          expect(cls, `${color}/${variant}`).toContain(`data-[normal]:active:bg-${color}-foreground/`);
+          expect(cls, `${color}/${variant}`).toContain(`text-${color}-foreground`);
         });
       });
     });
 
-    it('keeps the neutral soft rest a muted wash and its interaction on accent', () => {
+    // 实心 / 洗色形态：静止面就是填充本身，文字与按压面都跟着同一个角色走。
+    it('keeps the neutral solid and soft rests on their own fill', () => {
       (['accent', 'secondary'] as const).forEach(color => {
-        const cls = buttonVariants({ color, variant: 'soft' });
+        (['solid', 'soft'] as const).forEach(variant => {
+          const cls = buttonVariants({ color, variant });
 
-        // `bg-muted/40` 而不是实心 `bg-muted`：实心静止面与 `active:bg-accent` 同色（同档折叠）
-        expect(cls, color).toContain('bg-muted/40');
-        expect(cls, color).toContain('data-[normal]:hover:bg-accent/60');
-        expect(cls, color).toContain('data-[normal]:active:bg-accent');
-        expect(cls, color).not.toContain('bg-accent-foreground/10');
-        expect(cls, color).not.toContain('bg-secondary-foreground/10');
+          expect(cls, `${color}/${variant}`).toContain(`bg-${color}`);
+          expect(cls, `${color}/${variant}`).toContain(`text-${color}-foreground`);
+          expect(cls, `${color}/${variant}`).toContain(`data-[normal]:active:bg-${color}-foreground/`);
+        });
       });
     });
   });
