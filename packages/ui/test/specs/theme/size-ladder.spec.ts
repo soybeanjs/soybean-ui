@@ -321,10 +321,10 @@ describe('size vector — the ladder wins the cascade', () => {
 
         if ((await winningClass(classes, 'height')) !== box[0]) failures.push(`button ${size}/${shape} height`);
         if ((await winningClass(classes, 'width')) !== box[1]) failures.push(`button ${size}/${shape} width`);
-        if ((await winningClass(classes, 'padding')) !== '!p-0') failures.push(`button ${size}/${shape} padding`);
+        if ((await winningClass(classes, 'padding')) !== 'p-0') failures.push(`button ${size}/${shape} padding`);
         if ((await winningClass(toggle, 'height')) !== box[0]) failures.push(`toggle ${size}/${shape} height`);
         if ((await winningClass(toggle, 'width')) !== box[1]) failures.push(`toggle ${size}/${shape} width`);
-        if ((await winningClass(toggle, 'padding')) !== '!p-0') failures.push(`toggle ${size}/${shape} padding`);
+        if ((await winningClass(toggle, 'padding')) !== 'p-0') failures.push(`toggle ${size}/${shape} padding`);
       }
     }
 
