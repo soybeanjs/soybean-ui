@@ -16,7 +16,7 @@
  * unlike `getAnimations()`, which only lists what happens to be running when it
  * is read and therefore races the animation's duration.
  */
-export function recordAnimationStarts(element: HTMLElement): string[] {
+export function recordAnimationStarts(element: Element): string[] {
   const names: string[] = [];
 
   element.addEventListener('animationstart', event => {
@@ -26,6 +26,26 @@ export function recordAnimationStarts(element: HTMLElement): string[] {
   });
 
   return names;
+}
+
+/**
+ * Record the properties `element` starts transitioning.
+ *
+ * The transition counterpart of `recordAnimationStarts`: `transitionstart` fires
+ * when the property actually begins to move, so a later poll can still assert on
+ * it. `transitionend` would race the duration, and geometry snapshots race the
+ * frame scheduler.
+ */
+export function recordTransitionStarts(element: Element): string[] {
+  const properties: string[] = [];
+
+  element.addEventListener('transitionstart', event => {
+    if (event.target === element) {
+      properties.push((event as TransitionEvent).propertyName);
+    }
+  });
+
+  return properties;
 }
 
 /**

@@ -38,6 +38,10 @@ export const treeMenuVariants = scv({
     item: 'relative m-0 p-0 group-data-[state=collapsed]:hover:bg-sidebar-accent-foreground/10 group-data-[state=collapsed]:hover:rounded-sm',
     button: [
       `group/button relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none group-data-[state=collapsed]:overflow-hidden`,
+      // 折叠态把整行换成固定图标方块。行宽本身没有过渡时，rail 在缓动、行宽却在一帧内
+      // 跳到图标尺寸，折叠看上去就是瞬变（展开方向因为 `w-full` 跟着 rail 走而没有这个问题）。
+      // 用与 `groupLabel` / `collapsibleIcon` 相同的 200ms 缓动，让行宽和 rail、标签裁剪同步推进。
+      `transition-[width]-200`,
       `data-[selected=true]:bg-sidebar-primary/10 data-[selected=true]:text-sidebar-primary`,
       `data-[selected=false]:hover:bg-sidebar-accent-foreground/10 data-[selected=false]:focus:bg-sidebar-accent-foreground/10`,
       `data-[child-selected]:text-sidebar-primary`,

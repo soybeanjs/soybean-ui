@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
+import { defineComponent, h, nextTick, ref } from 'vue';
+import type { Ref } from 'vue';
 import { page, userEvent } from 'vitest/browser';
 import SSplitNav from '@/components/split-nav/split-nav.vue';
 import { getA11yViolations } from '../../shared/a11y';
-import { recordAnimationStarts, waitForMountWindow } from '../../shared/animation';
+import { recordAnimationStarts, recordTransitionStarts, waitForMountWindow } from '../../shared/animation';
 import { renderComponent } from '../../shared/render';
 
 /**
@@ -55,6 +57,28 @@ const nestedItems = [
     ]
   }
 ];
+
+/**
+ * `SSplitNav` has no built-in collapse trigger — the consumer owns the state — so
+ * the folding tests drive it through a ref the way an app shell would.
+ */
+function createCollapseHarness(collapsed: Ref<boolean>) {
+  return defineComponent({
+    name: 'SplitNavCollapseHarness',
+    setup() {
+      return () =>
+        h(SSplitNav, {
+          items: nestedItems,
+          mode: 'horizontal-dual-vertical',
+          modelValue: 'soybean-ui',
+          collapsed: collapsed.value,
+          'onUpdate:collapsed': (value: boolean) => {
+            collapsed.value = value;
+          }
+        });
+    }
+  });
+}
 
 describe('SSplitNav (e2e)', () => {
   describe('keyboard', () => {
@@ -164,6 +188,28 @@ describe('SSplitNav (e2e)', () => {
 
       await userEvent.click(branch);
       await expect.poll(() => starts).toContain('collapsible-up');
+
+      unmount();
+    });
+
+    it('transitions the tree row width when the rail folds', async () => {
+      // The folded row is a fixed icon square (`w-8`) instead of `w-full`. Without a
+      // width transition of its own it reached that size in a single frame while the
+      // pane around it eased — and only in `horizontal-dual-vertical` was there no
+      // branch closing alongside to hide the snap.
+      const collapsed = ref(false);
+      const { unmount } = await renderComponent(createCollapseHarness(collapsed));
+
+      const row = page.getByRole('button', { name: 'Soybean UI' });
+      await expect.element(row).toBeVisible();
+      await waitForMountWindow();
+
+      const transitions = recordTransitionStarts(row.element());
+
+      collapsed.value = true;
+      await nextTick();
+
+      await expect.poll(() => transitions).toContain('width');
 
       unmount();
     });
