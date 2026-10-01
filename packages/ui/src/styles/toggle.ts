@@ -7,7 +7,7 @@ export const toggleVariants = cv({
     'inline-flex items-center justify-center rounded-md whitespace-nowrap font-medium transition-all-150',
     'outline-none focus-visible:ring-3 focus-visible:ring-offset-card',
     'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
-    '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4'
+    '[&_svg]:pointer-events-none [&_svg]:shrink-0'
   ],
   variants: {
     color: {
@@ -39,8 +39,8 @@ export const toggleVariants = cv({
     shape: {
       auto: 'rounded-md',
       rounded: 'rounded-full',
-      square: 'h-8 w-8 p-0 gap-0 rounded-md',
-      circle: 'h-8 w-8 p-0 gap-0 rounded-full'
+      square: 'rounded-md',
+      circle: 'rounded-full'
     }
   },
   compoundVariants: [
@@ -109,6 +109,10 @@ export const toggleVariants = cv({
       color: 'carbon',
       variant: 'ghost',
       class: 'data-[state=on]:bg-carbon/20 data-[state=on]:text-carbon'
+    },
+    {
+      shape: ['square', 'circle'],
+      class: 'p-0 gap-0'
     },
     {
       size: 'xs',

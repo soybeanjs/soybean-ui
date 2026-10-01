@@ -6,8 +6,8 @@ export const treeNavVariants = scv({
     overflow: 'group',
     root: 'flex w-fit items-center rounded-md bg-card group-data-[soybean-tree-nav-overflow]:min-w-max',
     item: [
-      'group/item relative flex cursor-pointer select-none items-center gap-1.5 rounded-sm px-3 py-1.5',
-      'font-medium text-sm outline-none transition-colors-200',
+      'group/item relative flex cursor-pointer select-none items-center rounded-sm',
+      'font-medium outline-none transition-colors-200',
       'data-[selected=false]:hover:bg-accent data-[selected=false]:focus-visible:bg-accent',
       'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',

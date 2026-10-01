@@ -65,7 +65,7 @@ export const colorPickerVariants = scv({
     content: 'flex flex-col',
     trigger: '',
     triggerSwatch: '',
-    triggerValue: 'min-w-0 flex-1 truncate text-start font-mono text-xs',
+    triggerValue: 'min-w-0 flex-1 truncate text-start font-mono',
     popoverTrigger: '',
     sliderSwatch: 'flex items-center',
     sliderRoot: 'flex-1',
@@ -93,6 +93,7 @@ export const colorPickerVariants = scv({
   variants: {
     size: {
       xs: {
+        triggerValue: 'text-3xs',
         popup: 'p-1.5 text-2xs',
         content: 'w-45 gap-1.5',
         areaRoot: 'h-30',
@@ -101,6 +102,7 @@ export const colorPickerVariants = scv({
         alphaField: 'w-12'
       },
       sm: {
+        triggerValue: 'text-2xs',
         popup: 'p-1.75 text-xs',
         content: 'w-52.5 gap-1.75',
         areaRoot: 'h-35',
@@ -109,6 +111,7 @@ export const colorPickerVariants = scv({
         alphaField: 'w-15'
       },
       md: {
+        triggerValue: 'text-xs',
         popup: 'p-2 text-sm',
         content: 'w-60 gap-2',
         areaRoot: 'h-40',
@@ -117,6 +120,7 @@ export const colorPickerVariants = scv({
         alphaField: 'w-16'
       },
       lg: {
+        triggerValue: 'text-sm',
         popup: 'p-2.5 text-base',
         content: 'w-63.75 gap-2.5',
         areaRoot: 'h-42.5',
@@ -125,6 +129,7 @@ export const colorPickerVariants = scv({
         alphaField: 'w-18'
       },
       xl: {
+        triggerValue: 'text-base',
         popup: 'p-3 text-lg',
         content: 'w-67.5 gap-3',
         areaRoot: 'h-45',
@@ -133,6 +138,7 @@ export const colorPickerVariants = scv({
         alphaField: 'w-20'
       },
       '2xl': {
+        triggerValue: 'text-lg',
         popup: 'p-4 text-xl',
         content: 'w-80 gap-4',
         areaRoot: 'h-50',

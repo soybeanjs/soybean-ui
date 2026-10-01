@@ -16,13 +16,13 @@ export const emptyVariants = scv({
         root: 'text-2xs gap-3',
         title: 'text-xs',
         header: 'gap-1.5',
-        media: 'my-1.5'
+        media: 'my-1.5 size-8'
       },
       sm: {
         root: 'text-xs gap-3.5',
         title: 'text-sm',
         header: 'gap-1.75',
-        media: 'my-1.75'
+        media: 'my-1.75 size-9'
       },
       md: {
         root: 'text-sm gap-4',
@@ -34,19 +34,19 @@ export const emptyVariants = scv({
         root: 'text-base gap-4.5',
         title: 'text-lg',
         header: 'gap-2.5',
-        media: 'my-2.5'
+        media: 'my-2.5 size-11'
       },
       xl: {
         root: 'text-lg gap-5',
         title: 'text-xl',
         header: 'gap-3',
-        media: 'my-3'
+        media: 'my-3 size-12'
       },
       '2xl': {
         root: 'text-xl gap-6',
         title: 'text-2xl',
         header: 'gap-3.5',
-        media: 'my-3.5'
+        media: 'my-3.5 size-14'
       }
     }
   },

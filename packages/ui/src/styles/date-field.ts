@@ -15,7 +15,7 @@ export const dateFieldVariants = scv({
       'inline-flex items-center justify-center rounded-sm text-center outline-none',
       'tabular-nums leading-none',
       'data-[segment=literal]:min-w-0 data-[segment=literal]:px-0 data-[segment=literal]:text-muted-foreground',
-      'data-[segment=timeZoneName]:min-w-fit data-[segment=timeZoneName]:px-1 data-[segment=timeZoneName]:text-muted-foreground',
+      'data-[segment=timeZoneName]:min-w-fit data-[segment=timeZoneName]:text-muted-foreground',
       'data-[placeholder]:text-muted-foreground',
       'focus-visible:bg-accent/60 focus-visible:ring-2 focus-visible:ring-primary/20',
       'data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default'

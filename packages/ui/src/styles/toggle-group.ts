@@ -14,7 +14,7 @@ export const toggleGroupVariants = scv({
       'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-all-150',
       'outline-none focus-visible:ring-3 focus-visible:ring-primary/30 focus-visible:ring-offset-card',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
-      '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4'
+      '[&_svg]:pointer-events-none [&_svg]:shrink-0'
     ]
   },
   variants: {

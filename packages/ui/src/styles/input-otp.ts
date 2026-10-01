@@ -6,7 +6,7 @@ export const inputOtpVariants = scv({
   slots: {
     root: ['relative inline-flex w-full cursor-text select-none', ...fieldDisabled],
     positioner: 'absolute inset-0',
-    group: 'grid w-full gap-2 grid-cols-[repeat(var(--columns),minmax(0,1fr))]',
+    group: 'grid w-full grid-cols-[repeat(var(--columns),minmax(0,1fr))]',
     input: [
       'absolute inset-0 h-full w-full border-0 bg-transparent p-0 outline-none shadow-none opacity-0',
       'pointer-events-auto text-transparent caret-transparent font-mono leading-none',
@@ -22,7 +22,7 @@ export const inputOtpVariants = scv({
     ],
     char: 'leading-none',
     placeholder: 'leading-none text-muted-foreground/45',
-    caret: 'h-[60%] w-px animate-pulse bg-foreground'
+    caret: 'w-px animate-pulse bg-foreground'
   },
   variants: {
     size: {

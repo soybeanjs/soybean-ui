@@ -41,8 +41,8 @@ export const buttonVariants = cv({
     shape: {
       auto: 'rounded-md',
       rounded: 'rounded-full',
-      square: 'h-8 w-8 p-0 gap-0 rounded-md',
-      circle: 'h-8 w-8 p-0 gap-0 rounded-full'
+      square: 'rounded-md',
+      circle: 'rounded-full'
     },
     shadow: {
       none: 'shadow-none',
@@ -332,6 +332,11 @@ export const buttonVariants = cv({
       class: 'h-12 px-10'
     },
     {
+      shape: ['square', 'circle'],
+      fitContent: false,
+      class: 'p-0 gap-0'
+    },
+    {
       size: 'xs',
       fitContent: false,
       shape: ['square', 'circle'],
@@ -342,6 +347,12 @@ export const buttonVariants = cv({
       fitContent: false,
       shape: ['square', 'circle'],
       class: 'w-7'
+    },
+    {
+      size: 'md',
+      fitContent: false,
+      shape: ['square', 'circle'],
+      class: 'w-8'
     },
     {
       size: 'lg',

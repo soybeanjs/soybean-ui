@@ -7,7 +7,7 @@ const sharedButtonClasses = [
   'focus-visible:ring-3 focus-visible:ring-primary/30',
   'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
   'aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
-  '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4'
+  '[&_svg]:pointer-events-none [&_svg]:shrink-0'
 ];
 
 export const toolbarVariants = scv({

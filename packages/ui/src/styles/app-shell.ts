@@ -16,7 +16,7 @@ export const appShellVariants = scv({
     root: 'h-full',
     sidebar: 'flex flex-col w-full h-full min-h-0',
     logo: [
-      'flex shrink-0 items-center gap-2 h-[--soybean-layout-header-height] px-[--sl-spacing] overflow-hidden',
+      'flex shrink-0 items-center h-[--soybean-layout-header-height] px-[--sl-spacing] overflow-hidden',
       // Aligned to the sidebar's columns: the cells carry the width and the
       // centering, so the row contributes no gap or padding of its own.
       'data-[aligned=true]:gap-0 data-[aligned=true]:px-0',
@@ -47,20 +47,20 @@ export const appShellVariants = scv({
       // an edge the trigger would run past.
       'data-[centered=true]:justify-center data-[centered=true]:px-0'
     ],
-    header: 'flex items-center w-full h-full gap-2 px-[--sl-spacing]',
+    header: 'flex items-center w-full h-full px-[--sl-spacing]',
     // The start region yields to the trailing one: its crumb is the only child that
     // may shrink, so a deep trail truncates instead of pushing the actions out.
-    headerStart: 'flex items-center gap-2 min-w-0',
+    headerStart: 'flex items-center min-w-0',
     // A menu bar that does not fit is clipped instead of overlapping the
     // trailing actions; its flyouts are portaled, so clipping is safe.
-    headerCenter: 'flex items-center gap-2 min-w-0 flex-1 overflow-hidden',
-    headerEnd: 'flex items-center gap-2 min-w-0 shrink-0',
+    headerCenter: 'flex items-center min-w-0 flex-1 overflow-hidden',
+    headerEnd: 'flex items-center min-w-0 shrink-0',
     // Phones have no room for a trail next to the trigger and the actions, and the
     // crumb would outrank both; the desktop header keeps it. A host that wants it
     // back passes `ui.breadcrumb` (e.g. `lt-md:flex`).
     breadcrumb: 'min-w-0 overflow-hidden group-data-[mobile=true]/layout:hidden',
-    breadcrumbTrigger: 'inline-flex min-w-0 items-center gap-1 [&>span]:truncate',
-    breadcrumbTriggerIcon: 'size-3 shrink-0 opacity-70',
+    breadcrumbTrigger: 'inline-flex min-w-0 items-center [&>span]:truncate',
+    breadcrumbTriggerIcon: 'shrink-0 opacity-70',
     tab: 'flex justify-between h-full',
     content: 'w-full',
     footer: 'flex items-center h-full w-full px-[--sl-spacing]',
@@ -76,27 +76,57 @@ export const appShellVariants = scv({
       // mark in the menu's icon column. Keep the two in step.
       xs: {
         root: 'text-2xs',
-        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-1.5 data-[inset=menu]:data-[placement=sidebar-bottom]:px-1.5'
+        logo: 'gap-1.5 data-[inset=menu]:data-[placement=sidebar]:px-1.5 data-[inset=menu]:data-[placement=sidebar-bottom]:px-1.5',
+        header: 'gap-1.5',
+        headerStart: 'gap-1.5',
+        headerCenter: 'gap-1.5',
+        headerEnd: 'gap-1.5',
+        breadcrumbTrigger: 'gap-0.75'
       },
       sm: {
         root: 'text-xs',
-        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-1.75 data-[inset=menu]:data-[placement=sidebar-bottom]:px-1.75'
+        logo: 'gap-1.75 data-[inset=menu]:data-[placement=sidebar]:px-1.75 data-[inset=menu]:data-[placement=sidebar-bottom]:px-1.75',
+        header: 'gap-1.75',
+        headerStart: 'gap-1.75',
+        headerCenter: 'gap-1.75',
+        headerEnd: 'gap-1.75',
+        breadcrumbTrigger: 'gap-0.875'
       },
       md: {
         root: 'text-sm',
-        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-2 data-[inset=menu]:data-[placement=sidebar-bottom]:px-2'
+        logo: 'gap-2 data-[inset=menu]:data-[placement=sidebar]:px-2 data-[inset=menu]:data-[placement=sidebar-bottom]:px-2',
+        header: 'gap-2',
+        headerStart: 'gap-2',
+        headerCenter: 'gap-2',
+        headerEnd: 'gap-2',
+        breadcrumbTrigger: 'gap-1'
       },
       lg: {
         root: 'text-base',
-        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-2.25 data-[inset=menu]:data-[placement=sidebar-bottom]:px-2.25'
+        logo: 'gap-2.25 data-[inset=menu]:data-[placement=sidebar]:px-2.25 data-[inset=menu]:data-[placement=sidebar-bottom]:px-2.25',
+        header: 'gap-2.25',
+        headerStart: 'gap-2.25',
+        headerCenter: 'gap-2.25',
+        headerEnd: 'gap-2.25',
+        breadcrumbTrigger: 'gap-1.25'
       },
       xl: {
         root: 'text-lg',
-        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-2.5 data-[inset=menu]:data-[placement=sidebar-bottom]:px-2.5'
+        logo: 'gap-2.5 data-[inset=menu]:data-[placement=sidebar]:px-2.5 data-[inset=menu]:data-[placement=sidebar-bottom]:px-2.5',
+        header: 'gap-2.5',
+        headerStart: 'gap-2.5',
+        headerCenter: 'gap-2.5',
+        headerEnd: 'gap-2.5',
+        breadcrumbTrigger: 'gap-1.5'
       },
       '2xl': {
         root: 'text-xl',
-        logo: 'data-[inset=menu]:data-[placement=sidebar]:px-3 data-[inset=menu]:data-[placement=sidebar-bottom]:px-3'
+        logo: 'gap-3 data-[inset=menu]:data-[placement=sidebar]:px-3 data-[inset=menu]:data-[placement=sidebar-bottom]:px-3',
+        header: 'gap-3',
+        headerStart: 'gap-3',
+        headerCenter: 'gap-3',
+        headerEnd: 'gap-3',
+        breadcrumbTrigger: 'gap-1.75'
       }
     }
   },

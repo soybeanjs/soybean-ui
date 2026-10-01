@@ -35,13 +35,13 @@ export const navMenuVariants = scv({
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     subTrigger: [
-      `w-full flex items-start gap-2 select-none rounded-md text-left outline-none transition-colors-200 cursor-pointer decoration-none`,
+      `w-full flex items-start select-none rounded-md text-left outline-none transition-colors-200 cursor-pointer decoration-none`,
       `focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground`,
       `data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     subTriggerIcon: 'ms-auto shrink-0',
-    subContent: ['min-w-8rem', overlaySurface, 'z-base shadow-lg will-change-transform', overlayEnter],
+    subContent: [overlaySurface, 'z-base shadow-lg will-change-transform', overlayEnter],
     linkIcon: 'shrink-0 self-start text-muted-foreground rtl:rotate-270',
     subLinkContent: `grow flex flex-col items-start`,
     subLinkLabel: `font-medium leading-none`,
@@ -52,6 +52,7 @@ export const navMenuVariants = scv({
   variants: {
     size: {
       xs: {
+        subContent: 'min-w-6rem',
         list: 'gap-1 text-2xs',
         subList: 'gap-1.5 p-1.5 text-2xs',
         trigger: 'gap-1.5 px-1.5 py-1',
@@ -63,6 +64,7 @@ export const navMenuVariants = scv({
         subLinkDescription: 'mt-1'
       },
       sm: {
+        subContent: 'min-w-7rem',
         list: 'gap-1.25 text-xs',
         subList: 'gap-1.75 p-1.75 text-xs',
         trigger: 'gap-1.75 px-1.75 py-1.25',
@@ -74,6 +76,7 @@ export const navMenuVariants = scv({
         subLinkDescription: 'mt-1.25'
       },
       md: {
+        subContent: 'min-w-8rem',
         list: 'gap-1.5 text-sm',
         subList: 'gap-2 p-2 text-sm',
         trigger: 'gap-2 px-2 py-1.5',
@@ -85,6 +88,7 @@ export const navMenuVariants = scv({
         subLinkDescription: 'mt-1.5'
       },
       lg: {
+        subContent: 'min-w-9rem',
         list: 'gap-1.75 text-base',
         subList: 'gap-2.5 p-2.5 text-base',
         trigger: 'gap-2.5 px-2.5 py-1.75',
@@ -96,6 +100,7 @@ export const navMenuVariants = scv({
         subLinkDescription: 'mt-1.75'
       },
       xl: {
+        subContent: 'min-w-10rem',
         list: 'gap-2 text-lg',
         subList: 'gap-3 p-3 text-lg',
         trigger: 'gap-3 px-3 py-2',
@@ -107,6 +112,7 @@ export const navMenuVariants = scv({
         subLinkDescription: 'mt-2'
       },
       '2xl': {
+        subContent: 'min-w-11rem',
         list: 'gap-2.5 text-xl',
         subList: 'gap-3.5 p-3.5 text-xl',
         trigger: 'gap-3.5 px-3.5 py-2.5',

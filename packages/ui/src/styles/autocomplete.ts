@@ -31,20 +31,21 @@ export const autocompleteVariants = scv({
       overlayShadow,
       ...overlayMotion
     ],
-    viewport: 'max-h-80 overflow-y-auto overflow-x-hidden p-1',
-    empty: 'py-6 text-center text-sm text-muted-foreground',
+    viewport: 'overflow-y-auto overflow-x-hidden',
+    empty: 'text-center text-muted-foreground',
     group: 'overflow-hidden',
-    groupLabel: 'px-2 py-1.5 text-xs font-medium text-muted-foreground',
+    groupLabel: 'font-medium text-muted-foreground',
     item: [
       'relative flex w-full items-center rounded-sm outline-none select-none',
       'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
     ],
     itemIndicator: 'ms-auto shrink-0 text-muted-foreground',
-    separator: '-mx-1 my-1 h-px bg-border'
+    separator: 'h-px bg-border'
   },
   variants: {
     size: {
       xs: {
+        empty: 'py-4',
         anchor: fieldSize.xs,
         inputRoot: 'gap-1',
         popup: 'text-2xs',
@@ -54,6 +55,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-0.75 my-0.75'
       },
       sm: {
+        empty: 'py-5',
         anchor: fieldSize.sm,
         inputRoot: 'gap-1.5',
         popup: 'text-xs',
@@ -63,6 +65,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-0.875 my-0.875'
       },
       md: {
+        empty: 'py-6',
         anchor: fieldSize.md,
         inputRoot: 'gap-2',
         popup: 'text-sm',
@@ -72,6 +75,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-1 my-1'
       },
       lg: {
+        empty: 'py-7',
         anchor: fieldSize.lg,
         inputRoot: 'gap-2.5',
         popup: 'text-base',
@@ -81,6 +85,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-1.25 my-1.25'
       },
       xl: {
+        empty: 'py-8',
         anchor: fieldSize.xl,
         inputRoot: 'gap-3',
         popup: 'text-lg',
@@ -90,6 +95,7 @@ export const autocompleteVariants = scv({
         separator: '-mx-1.5 my-1.5'
       },
       '2xl': {
+        empty: 'py-9',
         anchor: fieldSize['2xl'],
         inputRoot: 'gap-3.5',
         popup: 'text-xl',

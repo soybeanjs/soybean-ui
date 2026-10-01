@@ -27,7 +27,7 @@ export const commandVariants = scv({
     ],
     itemLabel: '',
     itemContent: 'flex min-w-0 flex-col',
-    itemDescription: 'text-xs text-muted-foreground line-clamp-2',
+    itemDescription: 'text-muted-foreground line-clamp-2',
     itemIcon: 'shrink-0',
     separator: `h-px bg-border`,
     shortcut: `ms-auto`
@@ -35,6 +35,7 @@ export const commandVariants = scv({
   variants: {
     size: {
       xs: {
+        itemDescription: 'text-3xs',
         root: 'text-2xs',
         inputRoot: 'gap-1 px-1.5 py-0.5',
         inputControl: 'h-6',
@@ -45,6 +46,7 @@ export const commandVariants = scv({
         separator: '-mx-1 my-0.75'
       },
       sm: {
+        itemDescription: 'text-2xs',
         root: 'text-xs',
         inputRoot: 'gap-1.5 px-2 py-0.625',
         inputControl: 'h-7',
@@ -55,6 +57,7 @@ export const commandVariants = scv({
         separator: '-mx-1.5 my-1'
       },
       md: {
+        itemDescription: 'text-xs',
         root: 'text-sm',
         inputRoot: 'gap-2 px-2.5 py-0.75',
         inputControl: 'h-8',
@@ -65,6 +68,7 @@ export const commandVariants = scv({
         separator: '-mx-2 my-1'
       },
       lg: {
+        itemDescription: 'text-sm',
         root: 'text-base',
         inputRoot: 'gap-2.5 px-3 py-0.875',
         inputControl: 'h-9',
@@ -75,6 +79,7 @@ export const commandVariants = scv({
         separator: '-mx-2.5 my-1.25'
       },
       xl: {
+        itemDescription: 'text-base',
         root: 'text-lg',
         inputRoot: 'gap-3 px-3.5 py-1',
         inputControl: 'h-10',
@@ -85,6 +90,7 @@ export const commandVariants = scv({
         separator: '-mx-3 my-1.5'
       },
       '2xl': {
+        itemDescription: 'text-lg',
         root: 'text-xl',
         inputRoot: 'gap-3.5 px-4 py-1.25',
         inputControl: 'h-12',

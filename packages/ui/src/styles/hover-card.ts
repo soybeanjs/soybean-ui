@@ -5,7 +5,7 @@ import { overlayArrow, overlayPopup } from './_overlay';
 export const hoverCardVariants = scv({
   slots: {
     positioner: 'w-max',
-    popup: ['w-64', ...overlayPopup],
+    popup: [...overlayPopup],
     arrow: overlayArrow
   },
   variants: {

@@ -66,7 +66,7 @@ export const pageTabsVariants = scv({
         root: 'text-xl px-4',
         item: 'gap-4.5 px-3.5 py-2.5',
         itemText: 'max-w-75',
-        close: 'text-base size-7'
+        close: 'text-lg size-8'
       }
     },
     variant: {
@@ -75,7 +75,7 @@ export const pageTabsVariants = scv({
         item: 'rounded-t-md'
       },
       card: {
-        root: 'items-center gap-2',
+        root: 'items-center',
         item: 'rounded-md shadow-sm border border-border'
       },
       slider: {
@@ -84,6 +84,38 @@ export const pageTabsVariants = scv({
       }
     }
   },
+  compoundVariants: [
+    {
+      variant: 'card',
+      size: 'xs',
+      class: { root: 'gap-1' }
+    },
+    {
+      variant: 'card',
+      size: 'sm',
+      class: { root: 'gap-1.5' }
+    },
+    {
+      variant: 'card',
+      size: 'md',
+      class: { root: 'gap-2' }
+    },
+    {
+      variant: 'card',
+      size: 'lg',
+      class: { root: 'gap-2.5' }
+    },
+    {
+      variant: 'card',
+      size: 'xl',
+      class: { root: 'gap-3' }
+    },
+    {
+      variant: 'card',
+      size: '2xl',
+      class: { root: 'gap-3.5' }
+    }
+  ],
   defaultVariants: {
     size: 'md',
     variant: 'chrome'

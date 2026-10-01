@@ -51,13 +51,14 @@ export const cascaderVariants = scv({
     optionText: 'grow truncate text-start',
     optionCheck: 'shrink-0 text-primary',
     optionArrow:
-      'shrink-0 rounded-sm p-0.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground',
+      'shrink-0 rounded-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground',
     empty: 'flex items-center justify-center w-full text-muted-foreground',
     arrow: overlayArrow
   },
   variants: {
     size: {
       xs: {
+        optionArrow: 'p-0.25',
         popup: 'text-2xs',
         trigger: [fieldSize.xs, fieldMultiple.xs],
         triggerIcon: 'group-data-[multiple]:end-1.5',
@@ -70,6 +71,7 @@ export const cascaderVariants = scv({
         empty: 'min-w-32 py-2.5 text-2xs'
       },
       sm: {
+        optionArrow: 'p-0.375',
         popup: 'text-xs',
         trigger: [fieldSize.sm, fieldMultiple.sm],
         triggerIcon: 'group-data-[multiple]:end-2',
@@ -82,6 +84,7 @@ export const cascaderVariants = scv({
         empty: 'min-w-36 py-3 text-xs'
       },
       md: {
+        optionArrow: 'p-0.5',
         popup: 'text-sm',
         trigger: [fieldSize.md, fieldMultiple.md],
         triggerIcon: 'group-data-[multiple]:end-2.5',
@@ -94,6 +97,7 @@ export const cascaderVariants = scv({
         empty: 'min-w-40 py-4 text-sm'
       },
       lg: {
+        optionArrow: 'p-0.625',
         popup: 'text-base',
         trigger: [fieldSize.lg, fieldMultiple.lg],
         triggerIcon: 'group-data-[multiple]:end-3',
@@ -106,6 +110,7 @@ export const cascaderVariants = scv({
         empty: 'min-w-44 py-4.5 text-base'
       },
       xl: {
+        optionArrow: 'p-0.75',
         popup: 'text-lg',
         trigger: [fieldSize.xl, fieldMultiple.xl],
         triggerIcon: 'group-data-[multiple]:end-3.5',
@@ -118,6 +123,7 @@ export const cascaderVariants = scv({
         empty: 'min-w-48 py-5 text-lg'
       },
       '2xl': {
+        optionArrow: 'p-0.875',
         popup: 'text-xl',
         trigger: [fieldSize['2xl'], fieldMultiple['2xl']],
         triggerIcon: 'group-data-[multiple]:end-4',
