@@ -33,7 +33,7 @@ const DEFAULTS: CustomizerState = {
   colorSpace: 'hsl',
   format: 'hex',
   orientation: 'horizontal',
-  color: 'accent',
+  color: 'primary',
   size: 'md',
   disabled: false,
   inverted: false
