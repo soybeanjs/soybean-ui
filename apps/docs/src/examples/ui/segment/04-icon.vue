@@ -20,7 +20,7 @@ const themeSchemas: ThemeSchema[] = [
   {
     value: 'auto',
     label: 'Auto',
-    icon: 'ic:round-hdr-auto'
+    icon: 'lucide:monitor'
   },
   {
     value: 'dark',
