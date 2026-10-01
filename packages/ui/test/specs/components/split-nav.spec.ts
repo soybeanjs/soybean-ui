@@ -277,6 +277,45 @@ describe('SSplitNav', () => {
       wrapper.unmount();
     });
 
+    /**
+     * The divider between the two columns is the pane's own leading edge, so the
+     * pane marks itself as the second column of a dual-vertical menu and the
+     * recipe hangs that border on the marker.
+     */
+    it('marks the second column of a dual-vertical menu', () => {
+      const dualVertical = mount(SSplitNav, {
+        props: {
+          items,
+          modelValue: 'soybean-ui'
+        },
+        attachTo: document.body
+      });
+
+      expect(
+        dualVertical
+          .find('[data-soybean-split-nav-sub-vertical]')
+          .attributes('data-soybean-split-nav-dual-vertical-pane')
+      ).toBeDefined();
+
+      dualVertical.unmount();
+
+      const lonePane = mount(SSplitNav, {
+        props: {
+          items,
+          mode: 'horizontal-vertical',
+          modelValue: 'soybean-ui'
+        },
+        attachTo: document.body
+      });
+
+      // Nothing precedes a lone pane, so its edge stays the host's to draw.
+      expect(
+        lonePane.find('[data-soybean-split-nav-sub-vertical]').attributes('data-soybean-split-nav-dual-vertical-pane')
+      ).toBeUndefined();
+
+      lonePane.unmount();
+    });
+
     it('applies class to the standalone dual-vertical pane', () => {
       const wrapper = mount(SSplitNav, {
         props: {

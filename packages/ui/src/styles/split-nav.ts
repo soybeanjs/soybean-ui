@@ -35,23 +35,27 @@ export const splitNavVariants = scv({
   slots: {
     verticalPane: 'flex h-full min-h-0 min-w-0 w-fit',
     // The first-level rail's own column: it stacks the `top-left` cell onto the
-    // rail so the two read as one strip.
+    // rail, so a brand can head the items it belongs to.
     verticalRail: 'flex h-full min-h-0 shrink-0 flex-col',
     // The rail's height box. The rail itself is `shrink-0` — it keeps its column
     // width in the row layouts it is shared with — so it cannot take the cell's
     // height out of the column on its own; this box takes it instead, and the
     // rail fills what is left.
     verticalRailMenu: 'flex min-h-0 flex-1 flex-col',
-    // Top cell of the rail column, on the rail's own width: it continues the
-    // rail's divider, so a brand in it sits inside the strip rather than beside
-    // it. The host's content carries the row height.
-    topLeft: 'flex shrink-0 items-center justify-center border-e border-sidebar-border',
+    // Top cell of the rail column, on the rail's own width, so a brand in it sits
+    // inside the rail's strip rather than beside it. The host's content carries
+    // the row height; the divider beside it belongs to the pane.
+    topLeft: 'flex shrink-0 items-center justify-center',
     // Top cell of the pane column: it only renders while that column does, and
     // inherits its width from it.
     topRight: 'flex min-w-0 shrink-0 items-center justify-center',
+    // The first-level rail draws no divider of its own: the column that follows
+    // it leads with one, so a lone rail (`vertical-horizontal`, and the
+    // `dual-vertical` shapes while no pane is open) has no inner edge to leave
+    // hanging over the sidebar.
     firstLevel: [
       'flex outline-none',
-      'data-[orientation=vertical]:h-full data-[orientation=vertical]:w-[--soybean-split-nav-first-level-width] data-[orientation=vertical]:shrink-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:overflow-y-auto data-[orientation=vertical]:border-e data-[orientation=vertical]:border-sidebar-border',
+      'data-[orientation=vertical]:h-full data-[orientation=vertical]:w-[--soybean-split-nav-first-level-width] data-[orientation=vertical]:shrink-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:overflow-y-auto',
       'data-[orientation=horizontal]:h-fit data-[orientation=horizontal]:w-full data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:items-center'
     ],
     firstLevelItem: [
@@ -71,7 +75,13 @@ export const splitNavVariants = scv({
     subVertical: [
       'flex h-full min-h-0 shrink-0 flex-col overflow-hidden',
       'w-[--soybean-split-nav-tree-width] data-[state=collapsed]:w-[--soybean-split-nav-tree-collapsed-width]',
-      'transition-[width]-200 ease-out'
+      'transition-[width]-200 ease-out',
+      // The second column of a dual-vertical menu leads with the divider between
+      // the two: it spans that column's whole height — the brand band above the
+      // items included — and follows it while it folds. A lone pane
+      // (`horizontal-vertical`) has no column to separate from, so its edge stays
+      // the host's to draw.
+      'data-[soybean-split-nav-dual-vertical-pane]:border-s data-[soybean-split-nav-dual-vertical-pane]:border-sidebar-border'
     ],
     subHorizontal: 'flex h-fit min-w-0 flex-1 items-center'
   },

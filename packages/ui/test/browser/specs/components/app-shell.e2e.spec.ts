@@ -716,11 +716,12 @@ describe('SAppShell (e2e)', () => {
     });
 
     /**
-     * The mark's cell is the rail column's own top cell, so it picks the rail's
-     * divider up instead of breaking the line at the brand band — and the shell
-     * draws no second one of its own.
+     * The divider between the two columns is the pane's own leading edge: it runs
+     * that column's whole height — the brand band included — instead of being
+     * picked up by the rail and its top cell, which is what keeps the shell from
+     * drawing a second line of its own.
      */
-    it('continues the rail divider through the menu mark cell', async () => {
+    it('leads the pane column with the divider, through the brand band', async () => {
       const { unmount } = await renderComponent(
         createHarness({ items, mode: 'dual-vertical', modelValue: 'projects' }, brandSlots)
       );
@@ -730,26 +731,32 @@ describe('SAppShell (e2e)', () => {
 
       const railElement = element('[data-soybean-split-nav-vertical-first-level]');
       const cellElement = element('[data-soybean-split-nav-top-left]');
-      const markElement = element('[data-soybean-app-shell-logo-mark]');
-      const cell = cellElement.getBoundingClientRect();
-      const rail = railElement.getBoundingClientRect();
-
-      // Same width and same border: the mark cell is the rail's own top cell.
-      expect(Math.abs(cell.width - rail.width)).toBeLessThanOrEqual(1);
-      expect(getComputedStyle(cellElement).borderRightWidth).toBe(getComputedStyle(railElement).borderRightWidth);
-      expect(getComputedStyle(cellElement).borderRightWidth).not.toBe('0px');
-      expect(cellElement.contains(markElement)).toBe(true);
-
-      // With no region above the menu, the cell opens at the sidebar's own top.
+      const paneElement = element('[data-soybean-split-nav-sub-vertical]');
       const menu = element('[data-soybean-app-shell-menu-sidebar]').getBoundingClientRect();
+      const rail = railElement.getBoundingClientRect();
+      const cell = cellElement.getBoundingClientRect();
+      const pane = paneElement.getBoundingClientRect();
 
+      // One border, on the pane's leading edge, at the rail's trailing edge.
+      expect(Math.abs(pane.left - rail.right)).toBeLessThanOrEqual(1);
+      expect(getComputedStyle(paneElement).borderLeftWidth).not.toBe('0px');
+      expect(getComputedStyle(railElement).borderRightWidth).toBe('0px');
+      expect(getComputedStyle(cellElement).borderRightWidth).toBe('0px');
+
+      // The brand cell is the rail's own top cell, with the mark in it.
+      expect(Math.abs(cell.width - rail.width)).toBeLessThanOrEqual(1);
+      expect(cellElement.contains(element('[data-soybean-app-shell-logo-mark]'))).toBe(true);
+
+      // With no region above the menu, both columns open at the sidebar's own top
+      // and the divider spans that whole band.
       expect(Math.abs(cell.top - menu.top)).toBeLessThanOrEqual(1);
+      expect(Math.abs(pane.top - menu.top)).toBeLessThanOrEqual(1);
+      expect(Math.abs(pane.bottom - menu.bottom)).toBeLessThanOrEqual(1);
 
       // The cell takes its height out of the column instead of pushing the rail
       // past the bottom edge the sidebar gives it.
       expect(Math.abs(rail.top - cell.bottom)).toBeLessThanOrEqual(1);
-      expect(rail.bottom).toBeLessThanOrEqual(menu.bottom + 1);
-      expect(rail.bottom).toBeGreaterThanOrEqual(menu.bottom - 1);
+      expect(Math.abs(rail.bottom - menu.bottom)).toBeLessThanOrEqual(1);
 
       unmount();
     });
@@ -813,16 +820,19 @@ describe('SAppShell (e2e)', () => {
       await waitForStableGeometry();
 
       const railElement = element('[data-soybean-split-nav-vertical-first-level]');
+      const paneElement = element('[data-soybean-split-nav-sub-vertical]');
       const railCell = element('[data-soybean-app-shell-trigger-rail]');
       const sidebar = element('[data-soybean-app-shell-sidebar]').getBoundingClientRect();
       const railBox = railElement.getBoundingClientRect();
       const cellBox = railCell.getBoundingClientRect();
+      const paneBox = paneElement.getBoundingClientRect();
 
-      // Same column width and the same border as the rail above it, carried on
-      // to the sidebar's bottom edge.
+      // Same column width, and the same divider the pane above leads with — which
+      // sits at the rail's trailing edge — carried on to the sidebar's bottom.
       expect(Math.abs(cellBox.width - railBox.width)).toBeLessThanOrEqual(1);
-      expect(getComputedStyle(railCell).borderRightWidth).toBe(getComputedStyle(railElement).borderRightWidth);
+      expect(getComputedStyle(railCell).borderRightWidth).toBe(getComputedStyle(paneElement).borderLeftWidth);
       expect(getComputedStyle(railCell).borderRightWidth).not.toBe('0px');
+      expect(Math.abs(cellBox.right - paneBox.left)).toBeLessThanOrEqual(1);
       expect(Math.abs(cellBox.bottom - sidebar.bottom)).toBeLessThanOrEqual(1);
 
       unmount();
@@ -861,14 +871,15 @@ describe('SAppShell (e2e)', () => {
 
       const menu = element('[data-soybean-app-shell-menu-sidebar]').getBoundingClientRect();
       const railElement = element('[data-soybean-split-nav-vertical-first-level]');
+      const paneElement = element('[data-soybean-split-nav-sub-vertical]');
       const rail = railElement.getBoundingClientRect();
-      const pane = element('[data-soybean-split-nav-sub-vertical]').getBoundingClientRect();
+      const pane = paneElement.getBoundingClientRect();
 
-      // The columns own the region's height, so the dividers between and beside
-      // them reach its bottom instead of stopping where the items do.
+      // The columns own the region's height, so the divider between them reaches
+      // its bottom instead of stopping where the items do.
       expect(Math.abs(rail.bottom - menu.bottom)).toBeLessThanOrEqual(1);
       expect(Math.abs(pane.bottom - menu.bottom)).toBeLessThanOrEqual(1);
-      expect(getComputedStyle(railElement).borderRightWidth).not.toBe('0px');
+      expect(getComputedStyle(paneElement).borderLeftWidth).not.toBe('0px');
 
       unmount();
 
@@ -879,10 +890,13 @@ describe('SAppShell (e2e)', () => {
       await waitForStableGeometry();
 
       const railLessMenu = element('[data-soybean-app-shell-menu-sidebar]').getBoundingClientRect();
-      const railLessPane = element('[data-soybean-split-nav-sub-vertical]').getBoundingClientRect();
+      const railLessPaneElement = element('[data-soybean-split-nav-sub-vertical]');
+      const railLessPane = railLessPaneElement.getBoundingClientRect();
 
-      // The rail-less mode has the same single pane to stretch.
+      // The rail-less mode has the same single pane to stretch — and no column
+      // before it, so its leading edge carries no divider to double the sidebar's.
       expect(Math.abs(railLessPane.bottom - railLessMenu.bottom)).toBeLessThanOrEqual(1);
+      expect(getComputedStyle(railLessPaneElement).borderLeftWidth).toBe('0px');
 
       railLess.unmount();
     });

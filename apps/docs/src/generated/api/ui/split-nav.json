@@ -444,7 +444,7 @@
             "type": "((props: { collapsed: boolean; }) => any) | undefined",
             "parameters": "((props: { collapsed: boolean; }) => any) | undefined",
             "required": false,
-            "description": "Custom content rendered above the first-level rail of a dual-vertical menu.\n\nThe cell is as wide as the rail and continues its divider, so a brand can\nsit in the menu's own top-left corner instead of beside it. `collapsed`\nreports whether the nested pane is folded.",
+            "description": "Custom content rendered above the first-level rail of a dual-vertical menu.\n\nThe cell is as wide as the rail, so a brand can sit in the menu's own\ntop-left corner instead of beside it; the divider between the two columns is\nthe pane's own leading edge, so it runs through this band as well.\n`collapsed` reports whether the nested pane is folded.",
             "descriptionKey": "api.generated.packages_ui_src_components_split_nav_types.splitnavslots.callables.top_left",
             "sourcePath": "packages/headless/src/components/split-nav/types.ts",
             "referencedTypes": [
@@ -979,7 +979,7 @@
             "type": "((props: { collapsed: boolean; }) => any) | undefined",
             "parameters": "((props: { collapsed: boolean; }) => any) | undefined",
             "required": false,
-            "description": "Custom content rendered above the first-level rail of a dual-vertical menu.\n\nThe cell is as wide as the rail and continues its divider, so a brand can\nsit in the menu's own top-left corner instead of beside it. `collapsed`\nreports whether the nested pane is folded.",
+            "description": "Custom content rendered above the first-level rail of a dual-vertical menu.\n\nThe cell is as wide as the rail, so a brand can sit in the menu's own\ntop-left corner instead of beside it; the divider between the two columns is\nthe pane's own leading edge, so it runs through this band as well.\n`collapsed` reports whether the nested pane is folded.",
             "descriptionKey": "api.generated.packages_headless_src_components_split_nav_types.splitnavrootslots.callables.top_left",
             "sourcePath": "packages/headless/src/components/split-nav/types.ts",
             "referencedTypes": [

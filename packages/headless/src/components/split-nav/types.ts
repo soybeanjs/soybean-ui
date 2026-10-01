@@ -163,9 +163,10 @@ export type SplitNavRootSlots<T extends SplitNavBaseOptionData = SplitNavBaseOpt
   /**
    * Custom content rendered above the first-level rail of a dual-vertical menu.
    *
-   * The cell is as wide as the rail and continues its divider, so a brand can
-   * sit in the menu's own top-left corner instead of beside it. `collapsed`
-   * reports whether the nested pane is folded.
+   * The cell is as wide as the rail, so a brand can sit in the menu's own
+   * top-left corner instead of beside it; the divider between the two columns is
+   * the pane's own leading edge, so it runs through this band as well.
+   * `collapsed` reports whether the nested pane is folded.
    */
   'top-left'?: (props: { collapsed: boolean }) => any;
   /**

@@ -1311,14 +1311,15 @@ describe('SAppShell', () => {
       wrapper.unmount();
     });
 
-    it('carries the rail divider into the menu mark cell', () => {
+    it('leaves the divider between the columns to the pane', () => {
       const classes = splitNavVariants({ size: 'md' });
 
-      // The mark's cell continues the rail's divider instead of the shell faking
-      // one in a region of its own.
-      expect(classes.topLeft).toContain('border-e');
-      expect(classes.topLeft).toContain('border-sidebar-border');
-      expect(classes.firstLevel).toContain('border-sidebar-border');
+      // The pane's own leading edge is the boundary, so neither the rail nor the
+      // brand cell that heads it draws a second line.
+      expect(classes.subVertical).toContain('border-s');
+      expect(classes.subVertical).toContain('border-sidebar-border');
+      expect(classes.topLeft).not.toContain('border');
+      expect(classes.firstLevel).not.toContain('border-sidebar-border');
     });
 
     it('keeps the mark on the rail while a rail sidebar is collapsed', () => {

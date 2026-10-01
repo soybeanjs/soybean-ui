@@ -98,9 +98,9 @@ function handlePaneKeydownCapture(event: KeyboardEvent) {
       @keydown-capture="handlePaneKeydownCapture"
     >
       <!--
-        The first-level rail sits in a column of its own so `top-left` can carry
-        the rail's divider above the items: the cell and the rail stack into the
-        one strip the menu already draws, instead of the host faking it.
+        The first-level rail sits in a column of its own so `top-left` can head it
+        with a brand: the rail draws no divider, because the column after it owns
+        the one between them.
 
         The rail keeps its height through a box of its own: the rail is
         `shrink-0` on its width for the row layouts it is also used in, which
@@ -121,6 +121,7 @@ function handlePaneKeydownCapture(event: KeyboardEvent) {
       <div
         v-if="treeItems.length"
         data-soybean-split-nav-sub-vertical
+        data-soybean-split-nav-dual-vertical-pane
         :class="ui.subVertical"
         :data-state="treePaneState"
         :style="treePaneStyle"

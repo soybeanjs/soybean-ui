@@ -306,6 +306,48 @@ describe('SSplitNav (e2e)', () => {
     });
   });
 
+  /**
+   * The divider between the two columns is the pane's own leading edge, so it
+   * belongs to the second column: it reaches the region's edges and follows the
+   * column as it folds, and a lone pane — which has no column before it — stays
+   * without one.
+   */
+  describe('divider', () => {
+    it('leads the second column of a dual-vertical menu with the divider', async () => {
+      const { unmount } = await renderComponent(SSplitNav, {
+        props: { items, mode: 'dual-vertical', modelValue: 'workspace' }
+      });
+
+      await expect.element(page.getByRole('menuitem', { name: 'Overview' })).toBeVisible();
+
+      const railElement = element('[data-soybean-split-nav-vertical-first-level]');
+      const paneElement = element('[data-soybean-split-nav-sub-vertical]');
+      const rail = railElement.getBoundingClientRect();
+      const pane = paneElement.getBoundingClientRect();
+
+      // One border, at the boundary: the pane leads with it, the rail carries
+      // none of its own.
+      expect(Math.abs(pane.left - rail.right)).toBeLessThanOrEqual(1);
+      expect(getComputedStyle(paneElement).borderLeftWidth).not.toBe('0px');
+      expect(getComputedStyle(railElement).borderRightWidth).toBe('0px');
+
+      unmount();
+    });
+
+    it('leaves a lone pane without the divider', async () => {
+      const { unmount } = await renderComponent(SSplitNav, {
+        props: { items, mode: 'horizontal-vertical', modelValue: 'workspace' }
+      });
+
+      await expect.element(page.getByRole('menuitem', { name: 'Overview' })).toBeVisible();
+
+      // Nothing precedes it: its edge stays the host's to draw.
+      expect(getComputedStyle(element('[data-soybean-split-nav-sub-vertical]')).borderLeftWidth).toBe('0px');
+
+      unmount();
+    });
+  });
+
   describe('accessibility', () => {
     it('has no axe violations including color-contrast', async () => {
       const { unmount } = await renderComponent(SSplitNav, {
