@@ -4,7 +4,7 @@ import { SSkeleton } from '@soybeanjs/ui';
 
 <template>
   <div class="flex justify-center w-full">
-    <div class="max-w-96 flex items-start gap-4 rounded-lg border border-border p-4">
+    <div class="w-md flex items-start gap-4 rounded-lg border border-border p-4">
       <SSkeleton class="size-12 rounded-full" />
       <div class="flex-1 space-y-3">
         <SSkeleton class="h-4 w-1/3" />
