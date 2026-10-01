@@ -149,34 +149,6 @@ export interface ThemeLocaleMessages {
       ebGaramond: string;
       instrumentSerif: string;
     };
-    palette: {
-      slate: string;
-      mist: string;
-      gray: string;
-      zinc: string;
-      neutral: string;
-      stone: string;
-      taupe: string;
-      olive: string;
-      mauve: string;
-      red: string;
-      orange: string;
-      amber: string;
-      yellow: string;
-      lime: string;
-      green: string;
-      emerald: string;
-      teal: string;
-      cyan: string;
-      sky: string;
-      blue: string;
-      indigo: string;
-      violet: string;
-      purple: string;
-      fuchsia: string;
-      pink: string;
-      rose: string;
-    };
     feedback: {
       classic: string;
       vivid: string;
@@ -201,14 +173,6 @@ export interface ThemeLocaleMessages {
     custom: string;
     /** Label for the recommended palette switch. */
     recommendedPalette: string;
-    /** Labels for the simple palette keys (inherit / current / transparent / black / white). */
-    simpleKeys: {
-      inherit: string;
-      current: string;
-      transparent: string;
-      black: string;
-      white: string;
-    };
   };
 }
 
@@ -339,34 +303,6 @@ const themeLocaleEn: ThemeLocaleMessages = {
       ebGaramond: 'EB Garamond',
       instrumentSerif: 'Instrument Serif'
     },
-    palette: {
-      slate: 'Slate',
-      mist: 'Mist',
-      gray: 'Gray',
-      zinc: 'Zinc',
-      neutral: 'Neutral',
-      stone: 'Stone',
-      taupe: 'Taupe',
-      olive: 'Olive',
-      mauve: 'Mauve',
-      red: 'Red',
-      orange: 'Orange',
-      amber: 'Amber',
-      yellow: 'Yellow',
-      lime: 'Lime',
-      green: 'Green',
-      emerald: 'Emerald',
-      teal: 'Teal',
-      cyan: 'Cyan',
-      sky: 'Sky',
-      blue: 'Blue',
-      indigo: 'Indigo',
-      violet: 'Violet',
-      purple: 'Purple',
-      fuchsia: 'Fuchsia',
-      pink: 'Pink',
-      rose: 'Rose'
-    },
     feedback: {
       classic: 'classic',
       vivid: 'vivid',
@@ -387,14 +323,7 @@ const themeLocaleEn: ThemeLocaleMessages = {
   },
   palettePicker: {
     custom: 'Custom',
-    recommendedPalette: 'Recommended palette',
-    simpleKeys: {
-      inherit: 'Inherit',
-      current: 'Current',
-      transparent: 'Transparent',
-      black: 'Black',
-      white: 'White'
-    }
+    recommendedPalette: 'Recommended palette'
   }
 };
 
@@ -525,34 +454,6 @@ const themeLocaleZh: ThemeLocaleMessages = {
       ebGaramond: 'EB Garamond',
       instrumentSerif: 'Instrument Serif'
     },
-    palette: {
-      slate: '石板灰',
-      mist: '雾灰',
-      gray: '灰',
-      zinc: '锌',
-      neutral: '中性',
-      stone: '石色',
-      taupe: '灰褐',
-      olive: '橄榄',
-      mauve: '紫红',
-      red: '红',
-      orange: '橙',
-      amber: '琥珀',
-      yellow: '黄',
-      lime: '青柠',
-      green: '绿',
-      emerald: '翠绿',
-      teal: '青',
-      cyan: '青蓝',
-      sky: '天蓝',
-      blue: '蓝',
-      indigo: '靛蓝',
-      violet: '紫罗兰',
-      purple: '紫',
-      fuchsia: '品红',
-      pink: '粉',
-      rose: '玫红'
-    },
     feedback: {
       classic: '经典',
       vivid: '鲜明',
@@ -573,14 +474,7 @@ const themeLocaleZh: ThemeLocaleMessages = {
   },
   palettePicker: {
     custom: '自定义',
-    recommendedPalette: '推荐色板',
-    simpleKeys: {
-      inherit: '继承',
-      current: '当前',
-      transparent: '透明',
-      black: '黑色',
-      white: '白色'
-    }
+    recommendedPalette: '推荐色板'
   }
 };
 

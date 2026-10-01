@@ -214,8 +214,8 @@ describe('SPalettePicker', () => {
 
     const labels = Array.from(document.body.querySelectorAll('[role="option"]')).map(node => node.textContent ?? '');
 
-    expect(labels.some(text => text.includes('Indigo'))).toBe(true);
-    expect(labels.some(text => text.includes('Black'))).toBe(true);
+    expect(labels.some(text => text.includes('indigo'))).toBe(true);
+    expect(labels.some(text => text.includes('black'))).toBe(true);
     // custom is a toggle switch, not a dropdown option
     expect(labels.some(text => text.includes('Custom'))).toBe(false);
     expect(document.body.querySelector('[data-palette-custom-toggle]')).toBeTruthy();
@@ -226,7 +226,7 @@ describe('SPalettePicker', () => {
   it('selecting a simple key updates the model value', async () => {
     const wrapper = mountPicker('indigo.500');
     await openListbox(wrapper);
-    await selectOption('Black');
+    await selectOption('black');
 
     expect(wrapper.vm.modelValue).toBe('black');
     wrapper.unmount();
@@ -293,7 +293,7 @@ describe('SPalettePicker', () => {
 
     // switch to another tailwind key
     await openListbox(wrapper);
-    await selectOption('Teal');
+    await selectOption('teal');
     await nextTick();
 
     expect(wrapper.vm.modelValue).toBe('teal.500');

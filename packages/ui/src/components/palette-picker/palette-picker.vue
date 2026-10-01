@@ -48,8 +48,6 @@ const emit = defineEmits<PalettePickerEmits>();
 
 const messages = useThemeLocale();
 const palettePickerMessages = computed(() => messages.value.palettePicker);
-const paletteLabels = computed(() => messages.value.options.palette);
-const simpleLabels = computed(() => palettePickerMessages.value.simpleKeys);
 
 // —— 顶层选择：custom（通过切换开关进入）或内置 key（通过下拉选项选择） ——
 const selectValue = ref<PaletteSelectValue>(deriveSelectValue(model.value));
@@ -91,22 +89,10 @@ const triggerLabel = computed(() => {
   return selectValue.value;
 });
 
-const optionLabelOf = (value: PaletteSelectValue): string => {
-  if (isTailwindKey(value)) {
-    return paletteLabels.value[value] ?? value;
-  }
-
-  if (isSimpleKey(value)) {
-    return simpleLabels.value[value] ?? value;
-  }
-
-  return value;
-};
-
 // 下拉选项仅包含内置 key（custom 由独立开关控制，不作为选项）
 const options = computed<SelectOptionData<PaletteSelectValue>[]>(() => [
-  ...TAILWIND_KEYS.map(key => ({ label: optionLabelOf(key), value: key })),
-  ...SIMPLE_KEYS.map(key => ({ label: optionLabelOf(key), value: key }))
+  ...TAILWIND_KEYS.map(key => ({ label: key, value: key })),
+  ...SIMPLE_KEYS.map(key => ({ label: key, value: key }))
 ]);
 
 const currentCss = computed(() => toCssColor(model.value));
