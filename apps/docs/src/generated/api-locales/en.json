@@ -10321,12 +10321,12 @@
             "header": "Custom content for the header center region.",
             "header_end": "Custom content for the header trailing region.",
             "header_start": "Custom content for the header leading region.",
-            "logo": "Custom content for the brand mark.\n\nThe shell renders it in a cell of its own so the brand lines up with the\nmenu: over the first-level rail of the rail modes, and centered while the\nsidebar is collapsed. The region renders as soon as this slot is provided;\n`title` is optional.",
+            "logo": "Custom content for the brand mark.\n\nThe shell renders it in a cell of its own so the brand lines up with the\nmenu: over the first-level rail of the rail modes, and centered while the\nsidebar is collapsed. In the sidebar placement of the dual-vertical shapes\nthat cell is the menu's own `top-left` one, so the rail's divider runs\nthrough the mark instead of the shell drawing a second one; every other\nplacement renders the region beside the menu. The region renders as soon as\nthis slot is provided; `title` is optional.",
             "menu": "Custom content for the menu. Replaces the menu instance, not the mount targets.",
             "sidebar_end": "Custom content rendered at the bottom of the sidebar.",
             "sidebar_start": "Custom content rendered at the top of the sidebar.",
             "tabs": "Custom content for the tab region.",
-            "title": "Custom content for the brand title.\n\nRendered next to the mark, and aligned to the sidebar's second (nested pane)\ncolumn in the rail modes. It is hidden while the sidebar is collapsed — the\ncolumn it aligns to is folded away — and in placements that have no pane\ncolumn to align to."
+            "title": "Custom content for the brand title.\n\nRendered next to the mark, and aligned to the sidebar's second (nested pane)\ncolumn in the rail modes — through the menu's own `top-right` cell in the\ndual-vertical shapes. It is hidden while the sidebar is collapsed — the\ncolumn it aligns to is folded away — and in placements that have no pane\ncolumn to align to."
           },
           "slots": "Slots for the AppShell component."
         },

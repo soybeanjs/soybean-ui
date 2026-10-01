@@ -26,13 +26,12 @@ export const appShellVariants = scv({
       // column — expanded, and once collapsed on the item's icon-width fold.
       'data-[aligned=true]:gap-0 data-[aligned=true]:px-0'
     ],
-    logoMark: [
-      'flex h-full shrink-0 items-center justify-center',
-      // Aligned to the rail, the mark cell continues the rail's own divider, so
-      // the first column reads as one strip from the brand down through the menu.
-      'data-[divider=true]:border-e data-[divider=true]:border-sidebar-border'
-    ],
-    logoTitle: 'flex h-full min-w-0 items-center justify-center',
+    // Both brand cells carry the row height themselves. Inside a brand region
+    // that is the same token the region is tall, so the row is unchanged; in the
+    // menu's `top-left` / `top-right` cells there is no region, and the cells are
+    // what keeps the brand band as tall as the header it lines up with.
+    logoMark: 'flex h-[--soybean-layout-header-height] shrink-0 items-center justify-center',
+    logoTitle: 'flex h-[--soybean-layout-header-height] min-w-0 items-center justify-center',
     menuSidebar: 'flex-1 min-h-0 min-w-0 flex flex-col overflow-hidden',
     // Mount target of the menu panes that teleport out of their renderer: it has
     // to stretch, or the pane inside it sizes to its content and the column

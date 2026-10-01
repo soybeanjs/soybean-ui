@@ -472,15 +472,19 @@ export interface AppShellSlots {
    *
    * The shell renders it in a cell of its own so the brand lines up with the
    * menu: over the first-level rail of the rail modes, and centered while the
-   * sidebar is collapsed. The region renders as soon as this slot is provided;
-   * `title` is optional.
+   * sidebar is collapsed. In the sidebar placement of the dual-vertical shapes
+   * that cell is the menu's own `top-left` one, so the rail's divider runs
+   * through the mark instead of the shell drawing a second one; every other
+   * placement renders the region beside the menu. The region renders as soon as
+   * this slot is provided; `title` is optional.
    */
   logo?: (props: AppShellBrandSlotProps) => any;
   /**
    * Custom content for the brand title.
    *
    * Rendered next to the mark, and aligned to the sidebar's second (nested pane)
-   * column in the rail modes. It is hidden while the sidebar is collapsed — the
+   * column in the rail modes — through the menu's own `top-right` cell in the
+   * dual-vertical shapes. It is hidden while the sidebar is collapsed — the
    * column it aligns to is folded away — and in placements that have no pane
    * column to align to.
    */

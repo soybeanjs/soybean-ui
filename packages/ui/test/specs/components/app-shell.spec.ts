@@ -1289,22 +1289,36 @@ describe('SAppShell', () => {
       title: '<span data-title>Title</span>'
     };
 
-    it('aligns the mark to the rail and the title to the pane in dual-vertical', () => {
+    /**
+     * The dual-vertical menu owns the cells above its own columns, so a sidebar
+     * brand renders inside the menu: the mark in the `top-left` cell of the rail
+     * column — the one that carries the rail's divider — and the title in the
+     * `top-right` cell of the pane column. The shell renders no region beside it.
+     */
+    it('renders the brand in the menu cells for dual-vertical', () => {
       const wrapper = mount(SAppShell, {
         props: { items, mode: 'dual-vertical', modelValue: 'soybean-ui' },
         slots: brandSlots,
         attachTo: document.body
       });
 
-      const region = wrapper.find('[data-soybean-app-shell-logo]');
-
-      expect(region.attributes('data-placement')).toBe('sidebar');
-      expect(region.attributes('data-aligned')).toBe('true');
-      expect(region.attributes('data-centered')).toBeUndefined();
-      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').attributes('style')).toContain(`width: ${rail}`);
-      expect(wrapper.find('[data-soybean-app-shell-logo-title]').attributes('style')).toContain(`width: ${pane}`);
+      expect(wrapper.find('[data-soybean-app-shell-logo]').exists()).toBe(false);
+      expect(
+        wrapper.find('[data-soybean-split-nav-vertical-rail] [data-soybean-split-nav-top-left] [data-mark]').exists()
+      ).toBe(true);
+      expect(wrapper.find('[data-soybean-split-nav-top-right] [data-title]').exists()).toBe(true);
 
       wrapper.unmount();
+    });
+
+    it('carries the rail divider into the menu mark cell', () => {
+      const classes = splitNavVariants({ size: 'md' });
+
+      // The mark's cell continues the rail's divider instead of the shell faking
+      // one in a region of its own.
+      expect(classes.topLeft).toContain('border-e');
+      expect(classes.topLeft).toContain('border-sidebar-border');
+      expect(classes.firstLevel).toContain('border-sidebar-border');
     });
 
     it('keeps the mark on the rail while a rail sidebar is collapsed', () => {
@@ -1314,14 +1328,10 @@ describe('SAppShell', () => {
         attachTo: document.body
       });
 
-      const region = wrapper.find('[data-soybean-app-shell-logo]');
-
       // The rail keeps its column, so the mark stays on it instead of centering
       // in the folded sidebar; the title's column is folded away.
-      expect(region.attributes('data-aligned')).toBe('true');
-      expect(region.attributes('data-centered')).toBeUndefined();
-      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').attributes('style')).toContain(`width: ${rail}`);
-      expect(wrapper.find('[data-soybean-app-shell-logo-title]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-split-nav-top-left] [data-mark]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-split-nav-top-right]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -1346,17 +1356,37 @@ describe('SAppShell', () => {
       wrapper.unmount();
     });
 
+    it('keeps the region for a rail sidebar the menu does not own', () => {
+      // `vertical-horizontal` keeps its rail in the sidebar but has no menu cell
+      // above it, so the shell still renders the aligned region there.
+      const wrapper = mount(SAppShell, {
+        props: { items, mode: 'vertical-horizontal', logoPlacement: 'sidebar' },
+        slots: brandSlots,
+        attachTo: document.body
+      });
+
+      const region = wrapper.find('[data-soybean-app-shell-logo]');
+
+      expect(region.attributes('data-placement')).toBe('sidebar');
+      expect(region.attributes('data-aligned')).toBe('true');
+      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').attributes('style')).toContain(`width: ${rail}`);
+      expect(wrapper.find('[data-soybean-app-shell-logo-title]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
     it('keeps its own row shape outside a single-column sidebar', () => {
-      // A rail sidebar aligns the mark to the rail column, and the header brand is
-      // a header row: neither mirrors a menu row.
+      // The menu brand is one row of the rail column, and the header brand is a
+      // header row: neither mirrors a menu row.
       const railMode = mount(SAppShell, {
         props: { items, mode: 'dual-vertical', modelValue: 'soybean-ui' },
         slots: brandSlots,
         attachTo: document.body
       });
 
-      expect(railMode.find('[data-soybean-app-shell-logo]').attributes('data-inset')).toBeUndefined();
-      expect(railMode.find('[data-soybean-tree-menu-styled-item-button]').exists()).toBe(true);
+      expect(
+        railMode.find('[data-soybean-split-nav-top-left] [data-soybean-tree-menu-styled-item-button]').exists()
+      ).toBe(true);
 
       railMode.unmount();
 
@@ -1382,8 +1412,8 @@ describe('SAppShell', () => {
 
       // The active first-level menu has no children: the sidebar is the rail
       // alone, so there is no second column for the title to sit on.
-      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-app-shell-logo-title]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-split-nav-top-left] [data-mark]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-split-nav-top-right]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -1401,6 +1431,22 @@ describe('SAppShell', () => {
       expect(region.attributes('data-placement')).toBe('sidebar-bottom');
       expect(sidebar.lastElementChild).toBe(region.element);
       expect(sidebar.lastElementChild).not.toBe(wrapper.find('[data-soybean-app-shell-menu-sidebar]').element);
+
+      wrapper.unmount();
+    });
+
+    it('keeps the bottom brand aligned to the menu columns', () => {
+      const wrapper = mount(SAppShell, {
+        props: { items, mode: 'dual-vertical', modelValue: 'soybean-ui', logoPlacement: 'sidebar-bottom' },
+        slots: brandSlots,
+        attachTo: document.body
+      });
+
+      // The bottom region sits outside the menu, so it keeps mirroring the
+      // columns with cells of its own.
+      expect(wrapper.find('[data-soybean-app-shell-logo-mark]').attributes('style')).toContain(`width: ${rail}`);
+      expect(wrapper.find('[data-soybean-app-shell-logo-title]').attributes('style')).toContain(`width: ${pane}`);
+      expect(wrapper.find('[data-soybean-split-nav-top-left]').exists()).toBe(false);
 
       wrapper.unmount();
     });
@@ -1453,31 +1499,6 @@ describe('SAppShell', () => {
       expect(wrapper.find('[data-soybean-app-shell-logo-title]').attributes('style')).toBeUndefined();
 
       wrapper.unmount();
-    });
-
-    it('continues the rail divider through the brand mark cell', () => {
-      const dualVertical = mount(SAppShell, {
-        props: { items, mode: 'dual-vertical', modelValue: 'soybean-ui' },
-        slots: brandSlots,
-        attachTo: document.body
-      });
-
-      // The rail below the brand carries the divider, so the mark cell continues
-      // it instead of breaking the line at the brand row.
-      expect(dualVertical.find('[data-soybean-app-shell-logo-mark]').attributes('data-divider')).toBe('true');
-
-      dualVertical.unmount();
-
-      const sidebar = mount(SAppShell, {
-        props: { items, modelValue: 'soybean-ui' },
-        slots: brandSlots,
-        attachTo: document.body
-      });
-
-      // A single-column sidebar has no divider to continue.
-      expect(sidebar.find('[data-soybean-app-shell-logo-mark]').attributes('data-divider')).toBeUndefined();
-
-      sidebar.unmount();
     });
 
     it('renders no brand region without the logo slot', () => {

@@ -54,6 +54,21 @@ interface Emits {
 
 const emit = defineEmits<Emits>();
 
+interface Slots {
+  /**
+   * Content for the split renderer's `top-left` cell.
+   *
+   * Only the dual-vertical shapes render it, and only through `SSplitNav`.
+   */
+  'top-left'?: () => any;
+  /**
+   * Content for the split renderer's `top-right` cell.
+   */
+  'top-right'?: () => any;
+}
+
+const slots = defineSlots<Slots>();
+
 // The shell-level strategy applies to the renderers that have one; the
 // per-renderer `menuProps` entry is spread last so it still wins.
 const treeProps = computed(() => ({
@@ -131,5 +146,12 @@ function handleSplitOpen(item: SplitNavOptionData<AppShellMenuItem>, event?: Eve
     @update:model-value="handleModelUpdate"
     @select="handleSplitSelect"
     @open="handleSplitOpen"
-  />
+  >
+    <template v-if="slots['top-left']" #top-left>
+      <slot name="top-left" />
+    </template>
+    <template v-if="slots['top-right']" #top-right>
+      <slot name="top-right" />
+    </template>
+  </SSplitNav>
 </template>

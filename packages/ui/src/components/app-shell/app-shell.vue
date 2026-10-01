@@ -18,6 +18,7 @@ import SDropdownMenu from '../dropdown-menu/dropdown-menu.vue';
 import SIcon from '../icon/icon.vue';
 import SLayout from '../layout/layout.vue';
 import SPageTabs from '../page-tabs/page-tabs.vue';
+import STreeMenuStyledItem from '../tree-menu/tree-menu-styled-item.vue';
 import {
   appShellSkeletons,
   createPxToRem,
@@ -25,6 +26,7 @@ import {
   findMenuItem,
   findMenuTrail,
   isPageTabsPayload,
+  rendersBrandInMenu,
   resolveBrandLayout,
   resolveLogoPlacement,
   resolveShellWidths,
@@ -89,6 +91,17 @@ const { isMobile: mobileView } = useIsMobile(() => props.isMobile);
 const skeleton = computed(() => (mobileView.value ? appShellSkeletons.sidebar : appShellSkeletons[props.mode]));
 
 const brandPlacement = computed(() => resolveLogoPlacement(skeleton.value, props.logoPlacement));
+
+/**
+ * Whether the brand renders inside the menu instead of a region of its own.
+ *
+ * The dual-vertical shapes hand the mark and the title to the menu's own
+ * `top-left` / `top-right` cells, so the brand lives in the rail and pane
+ * columns it lines up with — and the rail's divider runs through the mark cell
+ * without the shell drawing a second one. The region still covers every other
+ * sidebar placement, the header, and the bottom pin.
+ */
+const menuBrand = computed(() => Boolean(slots.logo) && rendersBrandInMenu(skeleton.value, brandPlacement.value));
 
 const pxToRem = computed(() => createPxToRem(props.size));
 
@@ -425,7 +438,7 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
     <template #sidebar="{ collapsed }">
       <div :class="ui.sidebar" data-soybean-app-shell-sidebar>
         <AppShellBrand
-          v-if="slots.logo && brandPlacement === 'sidebar'"
+          v-if="slots.logo && brandPlacement === 'sidebar' && !menuBrand"
           :placement="brandPlacement"
           :collapsed="collapsed"
           :layout="resolveSidebarBrandLayout(collapsed)"
@@ -471,7 +484,25 @@ function handleBreadcrumbClick(item: BreadcrumbOptionData) {
               @update:model-value="handleMenuModelUpdate"
               @select="handleMenuSelect"
               @open="handleMenuOpen"
-            />
+            >
+              <!--
+                The menu's own brand cells: the mark takes the rail column and
+                its divider, the title the pane column, which is why the title
+                only renders while that column is expanded.
+              -->
+              <template v-if="menuBrand" #top-left>
+                <div :class="ui.logoMark" data-soybean-app-shell-logo-mark>
+                  <STreeMenuStyledItem as="div" :size="size" :ui="{ button: 'justify-center' }" class="w-full">
+                    <slot name="logo" :collapsed="collapsed" :placement="brandPlacement" />
+                  </STreeMenuStyledItem>
+                </div>
+              </template>
+              <template v-if="menuBrand && slots.title && !collapsed" #top-right>
+                <div :class="ui.logoTitle" data-soybean-app-shell-logo-title>
+                  <slot name="title" :collapsed="collapsed" :placement="brandPlacement" />
+                </div>
+              </template>
+            </AppShellMenu>
           </slot>
         </div>
         <slot name="sidebar-end" />

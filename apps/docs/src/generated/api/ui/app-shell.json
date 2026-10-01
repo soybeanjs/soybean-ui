@@ -1008,7 +1008,7 @@
             "type": "((props: AppShellBrandSlotProps) => any) | undefined",
             "parameters": "((props: AppShellBrandSlotProps) => any) | undefined",
             "required": false,
-            "description": "Custom content for the brand mark.\n\nThe shell renders it in a cell of its own so the brand lines up with the\nmenu: over the first-level rail of the rail modes, and centered while the\nsidebar is collapsed. The region renders as soon as this slot is provided;\n`title` is optional.",
+            "description": "Custom content for the brand mark.\n\nThe shell renders it in a cell of its own so the brand lines up with the\nmenu: over the first-level rail of the rail modes, and centered while the\nsidebar is collapsed. In the sidebar placement of the dual-vertical shapes\nthat cell is the menu's own `top-left` one, so the rail's divider runs\nthrough the mark instead of the shell drawing a second one; every other\nplacement renders the region beside the menu. The region renders as soon as\nthis slot is provided; `title` is optional.",
             "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellslots.callables.logo",
             "sourcePath": "packages/ui/src/components/app-shell/types.ts",
             "referencedTypes": [
@@ -1032,7 +1032,7 @@
             "type": "((props: AppShellBrandSlotProps) => any) | undefined",
             "parameters": "((props: AppShellBrandSlotProps) => any) | undefined",
             "required": false,
-            "description": "Custom content for the brand title.\n\nRendered next to the mark, and aligned to the sidebar's second (nested pane)\ncolumn in the rail modes. It is hidden while the sidebar is collapsed — the\ncolumn it aligns to is folded away — and in placements that have no pane\ncolumn to align to.",
+            "description": "Custom content for the brand title.\n\nRendered next to the mark, and aligned to the sidebar's second (nested pane)\ncolumn in the rail modes — through the menu's own `top-right` cell in the\ndual-vertical shapes. It is hidden while the sidebar is collapsed — the\ncolumn it aligns to is folded away — and in placements that have no pane\ncolumn to align to.",
             "descriptionKey": "api.generated.packages_ui_src_components_app_shell_types.appshellslots.callables.title",
             "sourcePath": "packages/ui/src/components/app-shell/types.ts",
             "referencedTypes": [

@@ -586,8 +586,11 @@ describe('SAppShell (e2e)', () => {
 
     /**
      * The rail and the pane are the columns the brand has to line up with, and
-     * the injected mark and title are what a misaligned row actually displaces:
+     * the injected mark and title are what a misaligned cell actually displaces:
      * measuring the content catches a padding or gap the cells do not have.
+     *
+     * The cells belong to the menu — `top-left` / `top-right` — so this also
+     * covers the shell no longer reserving the columns in a region beside it.
      */
     it('centers the mark over the rail and the title over the pane in dual-vertical', async () => {
       const { unmount } = await renderComponent(
@@ -602,6 +605,7 @@ describe('SAppShell (e2e)', () => {
       const mark = element('[data-shell-mark]').getBoundingClientRect();
       const title = element('[data-shell-title]').getBoundingClientRect();
 
+      expect(query('[data-soybean-app-shell-logo]')).toBeNull();
       expect(Math.abs(center(mark) - center(rail))).toBeLessThanOrEqual(1);
       expect(Math.abs(center(title) - center(pane))).toBeLessThanOrEqual(1);
 
@@ -711,7 +715,12 @@ describe('SAppShell (e2e)', () => {
       top.unmount();
     });
 
-    it('continues the rail divider through the brand mark cell', async () => {
+    /**
+     * The mark's cell is the rail column's own top cell, so it picks the rail's
+     * divider up instead of breaking the line at the brand band — and the shell
+     * draws no second one of its own.
+     */
+    it('continues the rail divider through the menu mark cell', async () => {
       const { unmount } = await renderComponent(
         createHarness({ items, mode: 'dual-vertical', modelValue: 'projects' }, brandSlots)
       );
@@ -720,15 +729,27 @@ describe('SAppShell (e2e)', () => {
       await waitForStableGeometry();
 
       const railElement = element('[data-soybean-split-nav-vertical-first-level]');
+      const cellElement = element('[data-soybean-split-nav-top-left]');
       const markElement = element('[data-soybean-app-shell-logo-mark]');
+      const cell = cellElement.getBoundingClientRect();
+      const rail = railElement.getBoundingClientRect();
 
-      // Same width and same border: the mark cell picks the rail's divider up
-      // instead of breaking the line at the brand row.
-      expect(
-        Math.abs(markElement.getBoundingClientRect().width - railElement.getBoundingClientRect().width)
-      ).toBeLessThanOrEqual(1);
-      expect(getComputedStyle(markElement).borderRightWidth).toBe(getComputedStyle(railElement).borderRightWidth);
-      expect(getComputedStyle(markElement).borderRightWidth).not.toBe('0px');
+      // Same width and same border: the mark cell is the rail's own top cell.
+      expect(Math.abs(cell.width - rail.width)).toBeLessThanOrEqual(1);
+      expect(getComputedStyle(cellElement).borderRightWidth).toBe(getComputedStyle(railElement).borderRightWidth);
+      expect(getComputedStyle(cellElement).borderRightWidth).not.toBe('0px');
+      expect(cellElement.contains(markElement)).toBe(true);
+
+      // With no region above the menu, the cell opens at the sidebar's own top.
+      const menu = element('[data-soybean-app-shell-menu-sidebar]').getBoundingClientRect();
+
+      expect(Math.abs(cell.top - menu.top)).toBeLessThanOrEqual(1);
+
+      // The cell takes its height out of the column instead of pushing the rail
+      // past the bottom edge the sidebar gives it.
+      expect(Math.abs(rail.top - cell.bottom)).toBeLessThanOrEqual(1);
+      expect(rail.bottom).toBeLessThanOrEqual(menu.bottom + 1);
+      expect(rail.bottom).toBeGreaterThanOrEqual(menu.bottom - 1);
 
       unmount();
     });

@@ -115,16 +115,12 @@ const showTitle = computed(() => Boolean(slots.title) && props.layout.titleVisib
     </STreeMenuStyledItem>
 
     <!--
-      A rail sidebar: the mark keeps the rail column and the title the pane one, so
-      the divider below the brand continues through the mark cell.
+      A rail sidebar: the mark keeps the rail column and the title the pane one.
+      The divider those columns carry belongs to the menu that draws it, so this
+      placement does not fake it.
     -->
     <template v-else-if="inSidebar">
-      <div
-        :class="markClass"
-        :style="markStyle"
-        :data-divider="aligned ? 'true' : undefined"
-        data-soybean-app-shell-logo-mark
-      >
+      <div :class="markClass" :style="markStyle" data-soybean-app-shell-logo-mark>
         <STreeMenuStyledItem as="div" :size="size" :ui="{ button: 'justify-center' }" class="w-full">
           <slot name="logo" v-bind="slotProps" />
         </STreeMenuStyledItem>

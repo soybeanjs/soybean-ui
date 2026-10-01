@@ -289,6 +289,32 @@ export function resolveLogoPlacement(
 }
 
 /**
+ * Split shapes whose sidebar top is a `DualVerticalMenu` column pair.
+ */
+const menuBrandModes: readonly SplitNavMode[] = ['dual-vertical', 'horizontal-dual-vertical'];
+
+/**
+ * Whether the brand of a resolved placement is rendered by the menu itself.
+ *
+ * The dual-vertical shapes open their sidebar with the menu's own first-level
+ * rail and pane columns, and that menu owns the cells above them: `top-left`
+ * carries the rail's divider on down through the items, and `top-right` exists
+ * exactly while the pane column does. A brand region beside them could only
+ * repeat that geometry — and its mark cell had to fake the divider to do it — so
+ * a sidebar placement hands the mark and the title to those cells instead.
+ *
+ * Every other placement keeps the region: the single-column sidebars render it
+ * as a menu row, and the header and bottom placements sit outside the menu.
+ */
+export function rendersBrandInMenu(skeleton: AppShellSkeleton, placement: AppShellLogoPlacementResolved): boolean {
+  if (placement !== 'sidebar' || skeleton.splitNavMode === undefined) {
+    return false;
+  }
+
+  return menuBrandModes.includes(skeleton.splitNavMode);
+}
+
+/**
  * Cell geometry of the brand region, in rem.
  *
  * The sidebar placements mirror the columns `SSplitNav` renders — the mark cell
