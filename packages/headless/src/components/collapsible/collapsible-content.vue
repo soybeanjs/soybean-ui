@@ -31,7 +31,7 @@ const style: CSSProperties = {
 // when closing we delay `present` to retrieve dimensions before closing
 const isOpen = computed(() => isPresent.value || open.value);
 let isMountAnimationPrevented = open.value;
-let originalAnimationName: string;
+let originalAnimationName: string | undefined;
 
 const hidden = computed(() => {
   if (isOpen.value) {
@@ -48,7 +48,16 @@ function handleNodeStyle() {
 
   const nodeStyle = node.style;
 
-  originalAnimationName ||= nodeStyle.animationName;
+  // Capture the inline value to restore after the measurement freeze. It has to
+  // be captured once, before the first freeze, and it is normally the empty
+  // string — hence a nullish check, not `||=`: re-capturing on the next call
+  // would pick up the frozen `'none'` written below and turn the restore into a
+  // permanent no-op, so a content that mounted already open (default-expanded
+  // branch, deep selection, `defaultOpen`) collapsed without its animation and
+  // never animated again.
+  originalAnimationName ??= nodeStyle.animationName;
+
+  const restoreAnimationName = originalAnimationName;
 
   // Block the keyframe animation so the element renders at its full dimensions
   // instead of at the animation's current height.
@@ -67,7 +76,7 @@ function handleNodeStyle() {
 
   if (!isMountAnimationPrevented) {
     // kick off any animations that were originally set up if it isn't the initial mount
-    nodeStyle.animationName = originalAnimationName;
+    nodeStyle.animationName = restoreAnimationName;
   }
 }
 

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { page, userEvent } from 'vitest/browser';
 import SSplitNav from '@/components/split-nav/split-nav.vue';
 import { getA11yViolations } from '../../shared/a11y';
+import { recordAnimationStarts, waitForMountWindow } from '../../shared/animation';
 import { renderComponent } from '../../shared/render';
 
 /**
@@ -29,6 +30,29 @@ const items = [
   {
     value: 'settings',
     label: 'Settings'
+  }
+];
+
+/** Two levels under a rail item, so the pane has a branch to expand and collapse. */
+const nestedItems = [
+  {
+    value: 'overview',
+    label: 'Overview'
+  },
+  {
+    value: 'workspace',
+    label: 'Workspace',
+    children: [
+      {
+        value: 'projects',
+        label: 'Projects',
+        children: [
+          { value: 'soybean-ui', label: 'Soybean UI' },
+          { value: 'soybean-admin', label: 'Soybean Admin' }
+        ]
+      },
+      { value: 'tasks', label: 'Tasks' }
+    ]
   }
 ];
 
@@ -113,6 +137,35 @@ describe('SSplitNav (e2e)', () => {
 
       unmount();
       sider.remove();
+    });
+  });
+
+  describe('nested tree motion', () => {
+    it('animates collapsing the branch the pane expanded on mount', async () => {
+      // The pane renders the active level-1 item's children, and `keep` expands the
+      // selected chain before first paint — so `projects` is already open when its
+      // collapsible content mounts. That is the path that used to freeze
+      // `animation-name` and collapse with no motion.
+      const { unmount } = await renderComponent(SSplitNav, {
+        props: { items: nestedItems, mode: 'dual-vertical', modelValue: 'soybean-ui' }
+      });
+
+      const branch = page.getByRole('button', { name: 'Projects' });
+      await expect.element(branch).toBeVisible();
+      await waitForMountWindow();
+
+      const content = document.querySelector<HTMLElement>('[data-soybean-tree-menu-collapsible-content]');
+
+      if (!content) {
+        throw new Error('expected the nested tree branch content to be rendered');
+      }
+
+      const starts = recordAnimationStarts(content);
+
+      await userEvent.click(branch);
+      await expect.poll(() => starts).toContain('collapsible-up');
+
+      unmount();
     });
   });
 

@@ -1,8 +1,22 @@
 import { describe, expect, it } from 'vitest';
-import { nextTick } from 'vue';
-import { mount } from '@vue/test-utils';
+import { h, nextTick } from 'vue';
+import { flushPromises, mount } from '@vue/test-utils';
+import { SCollapsibleContent, SCollapsibleTrigger } from '@/components/collapsible';
 import SCollapsible from '@/components/collapsible/collapsible.vue';
 import { getA11yViolations } from '../../shared/a11y';
+
+function mountCollapsible(defaultOpen: boolean) {
+  return mount(SCollapsible, {
+    props: { defaultOpen },
+    slots: {
+      default: () => [
+        h(SCollapsibleTrigger, null, () => 'Toggle'),
+        h(SCollapsibleContent, null, () => h('p', 'Panel body'))
+      ]
+    },
+    attachTo: document.body
+  });
+}
 
 describe('SCollapsible', () => {
   describe('rendering', () => {
@@ -68,6 +82,30 @@ describe('SCollapsible', () => {
       });
 
       expect(wrapper.emitted('update:open')).toBeFalsy();
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('motion', () => {
+    it('releases the mount-time animation freeze on the first toggle', async () => {
+      const wrapper = mountCollapsible(true);
+
+      await flushPromises();
+
+      const content = wrapper.find<HTMLElement>('[data-soybean-collapsible-content]').element;
+
+      // Mounting open freezes the enter keyframe, so the panel does not animate in.
+      expect(content.style.animationName).toBe('none');
+
+      await wrapper.find('[data-soybean-collapsible-trigger]').trigger('click');
+      await flushPromises();
+
+      // The first toggle must hand the element back to the class-driven keyframes.
+      // A leaked `none` is what made an already-open branch collapse instantly and
+      // never animate again.
+      expect(wrapper.find('[data-soybean-collapsible-content]').attributes('data-state')).toBe('closed');
+      expect(content.style.animationName).toBe('');
 
       wrapper.unmount();
     });
