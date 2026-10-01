@@ -71,7 +71,8 @@ export const releaseChangelogNotes: Record<string, ReleaseChangelogNoteSource[]>
         'the form engine is rebuilt on @tanstack/vue-form (useForm returns a context object, initialValues becomes defaultValues). ' +
         'NavigationMenu is removed in favor of NavMenu; SDrawer renames to SSheet while SBottomSheet becomes the new gesture-driven SDrawer; ' +
         'presentation-only headless families (card/empty/list/skeleton/badge/tag) are removed, and SPopper/SArrow are no longer exported ' +
-        'from the UI package. See the upgrade guide for the full migration walkthrough.',
+        'from the UI package. The SPagination actionAsSelected prop is renamed to actionVariant (same semantics, same default). ' +
+        'See the upgrade guide for the full migration walkthrough.',
       docPath: 'ui/migration/v0.50.0'
     },
     {
