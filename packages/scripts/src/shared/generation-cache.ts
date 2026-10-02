@@ -107,6 +107,23 @@ export async function hashGenerationOutputs(directoryPath: string, rootDir: stri
   }
 }
 
+/**
+ * Fingerprint an arbitrary set of files (or directories), or `null` when none
+ * of the entries exist. Unlike `hashGenerationOutputs` this accepts individual
+ * files, for generators whose outputs are spread across several directories.
+ */
+export async function hashPathSet(entryPaths: string[], rootDir: string): Promise<string | null> {
+  const filePaths = (
+    await Promise.all(entryPaths.map(entryPath => collectAllFilePaths(path.resolve(rootDir, entryPath))))
+  ).flat();
+
+  if (!filePaths.length) {
+    return null;
+  }
+
+  return hashFilePaths(filePaths, rootDir);
+}
+
 async function collectAllFilePaths(entryPath: string): Promise<string[]> {
   let entryStat;
 

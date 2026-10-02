@@ -5,7 +5,7 @@ const isWindows = process.platform === 'win32';
 const fmtBinary = isWindows ? 'vp.cmd' : 'vp';
 
 /** Format generated paths with the workspace formatter so committed output is canonical. */
-export async function formatPaths(paths: string[]): Promise<void> {
+export async function formatPaths(paths: string[], options: { cwd?: string } = {}): Promise<void> {
   if (!paths.length) {
     return;
   }
@@ -13,6 +13,7 @@ export async function formatPaths(paths: string[]): Promise<void> {
   await new Promise<void>((resolve, reject) => {
     const child = spawn(fmtBinary, ['fmt', ...paths], {
       env: process.env,
+      cwd: options.cwd,
       stdio: 'inherit'
     });
 

@@ -56,9 +56,13 @@ function toRelativePath(filePath: string): string {
 
 async function runCatalogGen(catalogTarget: CatalogTarget | null): Promise<void> {
   const targets = catalogTarget ? [catalogTarget] : catalogTargets;
+
+  // `generateCatalog` skips the whole pass (including formatting) when its
+  // fingerprint proves the outputs are already current, so an up-to-date repo
+  // never has its source files touched — a running dev server must not see
+  // mtime-only rewrites of watched modules.
   const outputs = (await Promise.all(targets.map(target => generateCatalog(target)))).flat();
 
-  await formatPaths(outputs);
   outputs.forEach(output => {
     console.log(`generated ${toRelativePath(output)}`);
   });
