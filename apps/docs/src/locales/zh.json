@@ -545,25 +545,18 @@
     "zh": "中文"
   },
   "layout": {
-    "default": "默认布局",
-    "home": "首页布局",
-    "about": "关于布局",
     "header": {
       "search": "搜索文档",
       "search_empty": "没有找到相关文档",
-      "docs": "文档",
       "getting_started": "开始使用",
       "components": "组件",
       "chart": "图表",
       "releases": "更新日志",
       "playground": "演练场",
-      "version": "版本",
       "github": "GitHub",
       "theme": "主题",
       "theme_configurator": "主题配置",
-      "frosted_glass": "毛玻璃风格",
       "language": "语言",
-      "others": "其他",
       "headless": "Headless"
     }
   },
@@ -575,7 +568,6 @@
       "kicker": "组件目录与入口",
       "group_count": "{count} 个组件",
       "actions": {
-        "open": "打开文档",
         "start": "快速开始",
         "learn": "先看架构"
       },
@@ -719,8 +711,7 @@
           "desc": "如果你想先感受体系能力，这些组件最能代表 SoybeanUI 的常用交互面。"
         },
         "categories": {
-          "title": "按场景浏览组件",
-          "unit": "个组件"
+          "title": "按场景浏览组件"
         }
       },
       "featured": {
@@ -734,14 +725,11 @@
     }
   },
   "sidebar": {
-    "overview": "概览",
     "introduction": "介绍",
     "quick_start": "快速开始",
-    "components": "组件",
     "theming": "主题",
     "llms": "LLMs.txt",
     "skills": "Skills",
-    "common_types": "公共类型",
     "general": "通用",
     "layout": "布局",
     "navigation": "导航",
@@ -780,10 +768,7 @@
     },
     "actions": {
       "open_full_type": "查看完整类型"
-    },
-    "local_types": "本地类型",
-    "common_types_note": "通用且重复出现的类型已集中整理到",
-    "common_types_link": "公共类型页。"
+    }
   },
   "changelog": {
     "actions": {
@@ -882,15 +867,7 @@
     "changelog": {
       "desc": "版本记录按发布版本分组，便于快速查看这个组件在不同版本里的实际变更。"
     },
-    "meta": {
-      "category": "分类",
-      "import": "导入名",
-      "route": "路由"
-    },
     "actions": {
-      "demos": "查看演示",
-      "api": "查看 API",
-      "changelog": "查看更新日志",
       "catalog": "返回目录"
     },
     "sections": {
@@ -901,8 +878,7 @@
       "changelog": "更新日志"
     },
     "quick_jump": {
-      "title": "快速跳转",
-      "desc": "直接跳到当前组件最常用的阅读节点。"
+      "title": "快速跳转"
     },
     "related": {
       "title": "同分类组件",

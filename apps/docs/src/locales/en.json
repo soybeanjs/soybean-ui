@@ -545,25 +545,18 @@
     "zh": "Chinese"
   },
   "layout": {
-    "default": "Default Layout",
-    "home": "Home Layout",
-    "about": "About Layout",
     "header": {
       "search": "Search Docs",
       "search_empty": "No related documents found",
-      "docs": "Docs",
       "getting_started": "Getting Started",
       "components": "Components",
       "chart": "Chart",
       "releases": "Releases",
       "playground": "Playground",
-      "version": "Version",
       "github": "GitHub",
       "theme": "Theme",
       "theme_configurator": "Theme Configurator",
-      "frosted_glass": "Frosted Glass",
       "language": "Language",
-      "others": "Others",
       "headless": "Headless"
     }
   },
@@ -575,7 +568,6 @@
       "kicker": "Component catalog and entry points",
       "group_count": "{count} components",
       "actions": {
-        "open": "Open documentation",
         "start": "Quick Start",
         "learn": "Learn the architecture"
       },
@@ -612,8 +604,7 @@
       },
       "sections": {
         "featured": {
-          "title": "High-signal components",
-          "desc": "If you are unsure where to begin, these components best represent the system in real work."
+          "title": "High-signal components"
         }
       }
     },
@@ -720,8 +711,7 @@
           "desc": "If you want to feel the system quickly, these components show the most representative interaction surfaces."
         },
         "categories": {
-          "title": "Browse by Scenario",
-          "unit": "components"
+          "title": "Browse by Scenario"
         }
       },
       "featured": {
@@ -735,14 +725,11 @@
     }
   },
   "sidebar": {
-    "overview": "Overview",
     "introduction": "Introduction",
     "quick_start": "Quick Start",
-    "components": "Components",
     "theming": "Theming",
     "llms": "LLMs.txt",
     "skills": "Skills",
-    "common_types": "Common Types",
     "general": "General",
     "layout": "Layout",
     "navigation": "Navigation",
@@ -781,10 +768,7 @@
     },
     "actions": {
       "open_full_type": "Open full type"
-    },
-    "local_types": "Local Types",
-    "common_types_note": "Shared repeated types are centralized on the",
-    "common_types_link": "Common Types page."
+    }
   },
   "changelog": {
     "actions": {
@@ -883,15 +867,7 @@
     "changelog": {
       "desc": "Version history is grouped by release so you can quickly see what changed for this component across published versions."
     },
-    "meta": {
-      "category": "Category",
-      "import": "Import",
-      "route": "Route"
-    },
     "actions": {
-      "demos": "View demos",
-      "api": "View API",
-      "changelog": "View changelog",
       "catalog": "Back to catalog"
     },
     "sections": {
@@ -902,8 +878,7 @@
       "changelog": "Changelog"
     },
     "quick_jump": {
-      "title": "Quick jump",
-      "desc": "Jump straight to the sections most people use first."
+      "title": "Quick jump"
     },
     "related": {
       "title": "Related components",
