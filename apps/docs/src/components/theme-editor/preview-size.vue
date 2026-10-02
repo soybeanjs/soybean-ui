@@ -39,6 +39,9 @@ const segments: SegmentOptionData<string>[] = [
   { label: 'Off', value: 'off' }
 ];
 
+// bound via :src — a static src value containing `//` breaks vue-tsc's generated v-for scope (tsgo quirk)
+const avatarSrc = 'https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg?v=202609141212';
+
 const textLadder = [
   { token: 'text-4xs', class: 'text-4xs' },
   { token: 'text-3xs', class: 'text-3xs' },
@@ -125,13 +128,7 @@ const textLadder = [
       <SProgress v-for="size in sizes" :key="`progress-${size}`" :size="size" :model-value="60" />
     </div>
     <div class="flex flex-wrap items-center gap-3">
-      <SAvatar
-        v-for="size in sizes"
-        :key="`avatar-${size}`"
-        :size="size"
-        src="https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg?v=202609141212"
-        fallback-label="V"
-      />
+      <SAvatar v-for="size in sizes" :key="`avatar-${size}`" :size="size" :src="avatarSrc" fallback-label="V" />
     </div>
   </div>
 
