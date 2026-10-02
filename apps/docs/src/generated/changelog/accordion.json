@@ -1,6 +1,6 @@
 {
   "component": "accordion",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "enable collapsible behavior by default and update related props",
           "summaryKey": "changelog.generated.v0.22.0.bec18",
           "commitHash": "bec18",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bec18a46",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bec18a468",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -31,7 +31,7 @@
           "summary": "Implement AccordionCompact component and update related types and context",
           "summaryKey": "changelog.generated.v0.15.0.e05b3",
           "commitHash": "e05b3",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e05b3237",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e05b3237a",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -41,7 +41,7 @@
           "summary": "add AccordionDescription component and update related files",
           "summaryKey": "changelog.generated.v0.15.0.6506e",
           "commitHash": "6506e",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6506e753",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6506e753e",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -51,7 +51,7 @@
           "summary": "optimize slot template types",
           "summaryKey": "changelog.generated.v0.15.0.db7a1",
           "commitHash": "db7a1",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db7a1348",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db7a13480",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -61,24 +61,17 @@
           "summary": "reorganize imports and update slot structure for Accordion components",
           "summaryKey": "changelog.generated.v0.15.0.22707",
           "commitHash": "22707",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2270794d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2270794d2",
           "authors": ["soybean-js"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.3",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
-      "date": "2026-04-26",
-      "entries": [
+        },
         {
           "type": "feature",
           "scope": "accordion",
           "summary": "add AccordionDescription component and update related files",
-          "summaryKey": "changelog.generated.v0.15.0-beta.3.6506e",
+          "summaryKey": "changelog.generated.v0.15.0.6506e",
           "commitHash": "6506e",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6506e753",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6506e753e",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -86,26 +79,19 @@
           "type": "optimization",
           "scope": "accordion",
           "summary": "reorganize imports and update slot structure for Accordion components",
-          "summaryKey": "changelog.generated.v0.15.0-beta.3.22707",
+          "summaryKey": "changelog.generated.v0.15.0.22707",
           "commitHash": "22707",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2270794d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2270794d2",
           "authors": ["soybean-js"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
-      "date": "2026-04-18",
-      "entries": [
+        },
         {
           "type": "feature",
           "scope": "accordion",
           "summary": "Implement AccordionCompact component and update related types and context",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.e05b3",
+          "summaryKey": "changelog.generated.v0.15.0.e05b3",
           "commitHash": "e05b3",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e05b3237",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e05b3237a",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -113,9 +99,9 @@
           "type": "optimization",
           "scope": "accordion",
           "summary": "optimize slot template types",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.db7a1",
+          "summaryKey": "changelog.generated.v0.15.0.db7a1",
           "commitHash": "db7a1",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db7a1348",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db7a13480",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -132,7 +118,314 @@
           "summary": "add default value for unmountOnHide prop",
           "summaryKey": "changelog.generated.v0.8.0.1f86b",
           "commitHash": "1f86b",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1f86b28f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1f86b28f1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "implement accordion component structure with root, item, header, content, trigger, and context management",
+          "summaryKey": "changelog.generated.v0.0.2.183c5",
+          "commitHash": "183c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/183c56637",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "add theme context for customizable styles across accordion components",
+          "summaryKey": "changelog.generated.v0.0.2.e7600",
+          "commitHash": "e7600",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e7600f3a2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "implement Accordion component with props management, customizable slots, and theme context integration",
+          "summaryKey": "changelog.generated.v0.0.2.a0fcd",
+          "commitHash": "a0fcd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a0fcd515e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "add multiple accordion examples with custom icons and styling options, and integrate Card component examples",
+          "summaryKey": "changelog.generated.v0.0.2.c6128",
+          "commitHash": "c6128",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c61289beb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "implement Accordion component with customizable slots and props, enhancing accordion functionality and theming support",
+          "summaryKey": "changelog.generated.v0.0.2.be778",
+          "commitHash": "be778",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/be7782dfc",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "accordion",
+          "summary": "enhance content slot by wrapping description in a paragraph and update accordion variant styles for better spacing",
+          "summaryKey": "changelog.generated.v0.0.2.7a4cc",
+          "commitHash": "7a4cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a4cc9cd2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "accordion",
+          "summary": "adjust padding and gap values for trigger elements across all size variants for improved layout consistency",
+          "summaryKey": "changelog.generated.v0.0.2.db0e7",
+          "commitHash": "db0e7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db0e7aed9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "accordion",
+          "summary": "optimize accordion with useSelection",
+          "summaryKey": "changelog.generated.v0.0.2.220ac",
+          "commitHash": "220ac",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/220ac88c3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "rename root element reference for clarity and update trigger ID prefix for uniqueness",
+          "summaryKey": "changelog.generated.v0.0.2.19086",
+          "commitHash": "19086",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1908641d9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "replace direct collection item attribute usage with utility function to improve keydown handling",
+          "summaryKey": "changelog.generated.v0.0.2.5e894",
+          "commitHash": "5e894",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e89463c5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "update accordion context to use shallowRef for rootElement and improve direction handling",
+          "summaryKey": "changelog.generated.v0.0.2.273cc",
+          "commitHash": "273cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/273ccd852",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "simplify accordion component props by removing unnecessary type parameters and improving clarity in single/multiple handling",
+          "summaryKey": "changelog.generated.v0.0.2.5d201",
+          "commitHash": "5d201",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5d2012c97",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "rename toggleModelValue to onModelValueChange for improved clarity in value handling",
+          "summaryKey": "changelog.generated.v0.0.2.f3161",
+          "commitHash": "f3161",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f3161939b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "rename 'direction' to 'dir' for consistency in context handling",
+          "summaryKey": "changelog.generated.v0.0.2.99efc",
+          "commitHash": "99efc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/99efcee0e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "rename type AccordionItemData to AccordionOptionData",
+          "summaryKey": "changelog.generated.v0.0.2.13ef9",
+          "commitHash": "13ef9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/13ef95a8b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "implement accordion component structure with root, item, header, content, trigger, and context management",
+          "summaryKey": "changelog.generated.v0.0.2.183c5",
+          "commitHash": "183c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/183c56637",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "add theme context for customizable styles across accordion components",
+          "summaryKey": "changelog.generated.v0.0.2.e7600",
+          "commitHash": "e7600",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e7600f3a2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "implement Accordion component with props management, customizable slots, and theme context integration",
+          "summaryKey": "changelog.generated.v0.0.2.a0fcd",
+          "commitHash": "a0fcd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a0fcd515e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "add multiple accordion examples with custom icons and styling options, and integrate Card component examples",
+          "summaryKey": "changelog.generated.v0.0.2.c6128",
+          "commitHash": "c6128",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c61289beb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "implement Accordion component with customizable slots and props, enhancing accordion functionality and theming support",
+          "summaryKey": "changelog.generated.v0.0.2.be778",
+          "commitHash": "be778",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/be7782dfc",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "accordion",
+          "summary": "enhance content slot by wrapping description in a paragraph and update accordion variant styles for better spacing",
+          "summaryKey": "changelog.generated.v0.0.2.7a4cc",
+          "commitHash": "7a4cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a4cc9cd2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "accordion",
+          "summary": "adjust padding and gap values for trigger elements across all size variants for improved layout consistency",
+          "summaryKey": "changelog.generated.v0.0.2.db0e7",
+          "commitHash": "db0e7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db0e7aed9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "accordion",
+          "summary": "optimize accordion with useSelection",
+          "summaryKey": "changelog.generated.v0.0.2.220ac",
+          "commitHash": "220ac",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/220ac88c3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "rename root element reference for clarity and update trigger ID prefix for uniqueness",
+          "summaryKey": "changelog.generated.v0.0.2.19086",
+          "commitHash": "19086",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1908641d9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "replace direct collection item attribute usage with utility function to improve keydown handling",
+          "summaryKey": "changelog.generated.v0.0.2.5e894",
+          "commitHash": "5e894",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e89463c5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "update accordion context to use shallowRef for rootElement and improve direction handling",
+          "summaryKey": "changelog.generated.v0.0.2.273cc",
+          "commitHash": "273cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/273ccd852",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "simplify accordion component props by removing unnecessary type parameters and improving clarity in single/multiple handling",
+          "summaryKey": "changelog.generated.v0.0.2.5d201",
+          "commitHash": "5d201",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5d2012c97",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "rename toggleModelValue to onModelValueChange for improved clarity in value handling",
+          "summaryKey": "changelog.generated.v0.0.2.f3161",
+          "commitHash": "f3161",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f3161939b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "rename 'direction' to 'dir' for consistency in context handling",
+          "summaryKey": "changelog.generated.v0.0.2.99efc",
+          "commitHash": "99efc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/99efcee0e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "accordion",
+          "summary": "rename type AccordionItemData to AccordionOptionData",
+          "summaryKey": "changelog.generated.v0.0.2.13ef9",
+          "commitHash": "13ef9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/13ef95a8b",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

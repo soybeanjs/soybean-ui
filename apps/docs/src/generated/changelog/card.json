@@ -1,18 +1,28 @@
 {
   "component": "card",
-  "generatedAt": "2026-10-02T06:45:30.570Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
-      "version": "v0.50.0-beta.9",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.8...v0.50.0-beta.9",
+      "version": "v0.50.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0",
       "date": "2026-10-02",
       "entries": [
         {
           "type": "fix",
           "scope": "card",
           "summary": "animate the collapsed content padding with the height",
-          "summaryKey": "changelog.generated.v0.50.0-beta.9.db30f",
+          "summaryKey": "changelog.generated.v0.50.0.db30f",
+          "commitHash": "db30f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db30fec5a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "card",
+          "summary": "animate the collapsed content padding with the height",
+          "summaryKey": "changelog.generated.v0.50.0.db30f",
           "commitHash": "db30f",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db30fec5a",
           "authors": ["soybeanjs"],
@@ -48,7 +58,7 @@
           "summary": "implement Compact components for Card, Popover, Editable, HoverCard, NavigationMenu, Pagination and Stepper",
           "summaryKey": "changelog.generated.v0.16.0.6cbdc",
           "commitHash": "6cbdc",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee71",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -65,7 +75,7 @@
           "summary": "update content class for improved accessibility",
           "summaryKey": "changelog.generated.v0.15.3.0160d",
           "commitHash": "0160d",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0160d881",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0160d8814",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -82,7 +92,7 @@
           "summary": "update content styles",
           "summaryKey": "changelog.generated.v0.10.5.5a26c",
           "commitHash": "5a26c",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5a26ced0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5a26ced0b",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -99,7 +109,7 @@
           "summary": "add default prop 'asChild' to SCardCollapsibleTrigger",
           "summaryKey": "changelog.generated.v0.10.1.3201c",
           "commitHash": "3201c",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3201cc25",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3201cc252",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -109,7 +119,7 @@
           "summary": "add 'SCardCollapsibleTrigger' to card components",
           "summaryKey": "changelog.generated.v0.10.1.d070a",
           "commitHash": "d070a",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d070a917",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d070a9177",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -126,7 +136,7 @@
           "summary": "add collapsible functionality and update API props",
           "summaryKey": "changelog.generated.v0.10.0.e7891",
           "commitHash": "e7891",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e78917d2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e78917d2f",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -143,7 +153,194 @@
           "summary": "wrap header slot content for improved structure and rendering",
           "summaryKey": "changelog.generated.v0.4.5.c07bf",
           "commitHash": "c07bf",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c07bff3f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c07bff3f9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "introduce card component structure with header, footer, content, title, and description components along with context management",
+          "summaryKey": "changelog.generated.v0.0.2.396aa",
+          "commitHash": "396aa",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/396aa37b8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "implement Card component with customizable slots, props management, and enhanced styling variants",
+          "summaryKey": "changelog.generated.v0.0.2.c92bd",
+          "commitHash": "c92bd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c92bd1544",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "introduce Card component with customizable slots and props, enhancing card functionality and theming support",
+          "summaryKey": "changelog.generated.v0.0.2.da0c5",
+          "commitHash": "da0c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/da0c5f171",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "add scrollable prop to Card component for enhanced content management",
+          "summaryKey": "changelog.generated.v0.0.2.cfc07",
+          "commitHash": "cfc07",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cfc0732d5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "card",
+          "summary": "add overflow-auto to content slot for improved layout handling",
+          "summaryKey": "changelog.generated.v0.0.2.9845e",
+          "commitHash": "9845e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9845efe60",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "card",
+          "summary": "correct component name",
+          "summaryKey": "changelog.generated.v0.0.2.8156c",
+          "commitHash": "8156c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8156c9178",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "card",
+          "summary": "remove size examples from Card component to streamline template and enhance clarity",
+          "summaryKey": "changelog.generated.v0.0.2.d573d",
+          "commitHash": "d573d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d573decdf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "card",
+          "summary": "remove flexHeight prop and update cardVariants for cleaner implementation",
+          "summaryKey": "changelog.generated.v0.0.2.41926",
+          "commitHash": "41926",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4192636ba",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "card",
+          "summary": "remove unused 'flexHeight' prop from CardProps interface",
+          "summaryKey": "changelog.generated.v0.0.2.ae236",
+          "commitHash": "ae236",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ae2365ce0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "card",
+          "summary": "remove unused 'flexHeight' prop from CardProps interface",
+          "summaryKey": "changelog.generated.v0.0.2.ae236",
+          "commitHash": "ae236",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ae2365ce0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "introduce card component structure with header, footer, content, title, and description components along with context management",
+          "summaryKey": "changelog.generated.v0.0.2.396aa",
+          "commitHash": "396aa",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/396aa37b8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "implement Card component with customizable slots, props management, and enhanced styling variants",
+          "summaryKey": "changelog.generated.v0.0.2.c92bd",
+          "commitHash": "c92bd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c92bd1544",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "introduce Card component with customizable slots and props, enhancing card functionality and theming support",
+          "summaryKey": "changelog.generated.v0.0.2.da0c5",
+          "commitHash": "da0c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/da0c5f171",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "add scrollable prop to Card component for enhanced content management",
+          "summaryKey": "changelog.generated.v0.0.2.cfc07",
+          "commitHash": "cfc07",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cfc0732d5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "card",
+          "summary": "add overflow-auto to content slot for improved layout handling",
+          "summaryKey": "changelog.generated.v0.0.2.9845e",
+          "commitHash": "9845e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9845efe60",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "card",
+          "summary": "correct component name",
+          "summaryKey": "changelog.generated.v0.0.2.8156c",
+          "commitHash": "8156c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8156c9178",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "card",
+          "summary": "remove size examples from Card component to streamline template and enhance clarity",
+          "summaryKey": "changelog.generated.v0.0.2.d573d",
+          "commitHash": "d573d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d573decdf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "card",
+          "summary": "remove flexHeight prop and update cardVariants for cleaner implementation",
+          "summaryKey": "changelog.generated.v0.0.2.41926",
+          "commitHash": "41926",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4192636ba",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

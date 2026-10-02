@@ -1,6 +1,6 @@
 {
   "component": "hover-card",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "simplify HoverCard component by using HoverCardCompact",
           "summaryKey": "changelog.generated.v0.20.0.f23ad",
           "commitHash": "f23ad",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f23adcba",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f23adcba7",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -24,7 +24,7 @@
           "summary": "rename forwardedRootProps to forwardedProps for consistency",
           "summaryKey": "changelog.generated.v0.20.0.d2545",
           "commitHash": "d2545",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d2545dd5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d2545dd57",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -34,7 +34,7 @@
           "summary": "simplify slot handling and remove unused variables",
           "summaryKey": "changelog.generated.v0.20.0.4d747",
           "commitHash": "4d747",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d7478d4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d7478d44",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -51,7 +51,7 @@
           "summary": "add sub-area attribute for hover card positioning",
           "summaryKey": "changelog.generated.v0.17.0.130a3",
           "commitHash": "130a3",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/130a35b1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/130a35b1a",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -68,7 +68,7 @@
           "summary": "implement Compact components for Card, Popover, Editable, HoverCard, NavigationMenu, Pagination and Stepper",
           "summaryKey": "changelog.generated.v0.16.0.6cbdc",
           "commitHash": "6cbdc",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee71",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -78,7 +78,7 @@
           "summary": "add prioritizePosition prop to HoverCardPositioner",
           "summaryKey": "changelog.generated.v0.16.0.e53db",
           "commitHash": "e53db",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e53db03c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e53db03c2",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }

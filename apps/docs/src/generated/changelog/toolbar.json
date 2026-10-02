@@ -1,6 +1,6 @@
 {
   "component": "toolbar",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -31,7 +31,7 @@
           "summary": "add showIcon prop to ToolbarLink and enhance toolbar variants",
           "summaryKey": "changelog.generated.v0.20.0.e1d05",
           "commitHash": "e1d05",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e1d056e2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e1d056e22",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }

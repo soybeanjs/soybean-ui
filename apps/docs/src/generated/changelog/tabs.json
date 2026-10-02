@@ -1,18 +1,28 @@
 {
   "component": "tabs",
-  "generatedAt": "2026-09-17T14:01:29.350Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
-      "version": "v0.50.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",
-      "date": "2026-09-17",
+      "version": "v0.50.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0",
+      "date": "2026-10-02",
       "entries": [
+        {
+          "type": "style",
+          "scope": "tabs",
+          "summary": "add size prop and adjust styles for page tabs",
+          "summaryKey": "changelog.generated.v0.50.0.c6aee",
+          "commitHash": "c6aee",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c6aeed0a4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
         {
           "type": "optimization",
           "scope": "tabs",
           "summary": "add size prop and adjust styles for page tabs",
-          "summaryKey": "changelog.generated.v0.50.0-beta.1.c6aee",
+          "summaryKey": "changelog.generated.v0.50.0.c6aee",
           "commitHash": "c6aee",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c6aeed0a4",
           "authors": ["soybeanjs"],
@@ -31,7 +41,7 @@
           "summary": "add registerContentId and unregisterContentId for dynamic content management",
           "summaryKey": "changelog.generated.v0.8.0.c58fa",
           "commitHash": "c58fa",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c58fa207",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c58fa2072",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -48,7 +58,54 @@
           "summary": "add nextTick to watchEffect to get dom",
           "summaryKey": "changelog.generated.v0.5.3.00dcd",
           "commitHash": "00dcd",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/00dcd86e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/00dcd86e6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tabs",
+          "summary": "introduce tab components with customizable styles and functionality, including horizontal, vertical, and fill options",
+          "summaryKey": "changelog.generated.v0.0.2.c407c",
+          "commitHash": "c407c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c407c47a6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "tabs",
+          "summary": "rename theme variable to themeContext for consistency across tab components",
+          "summaryKey": "changelog.generated.v0.0.2.084e8",
+          "commitHash": "084e8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/084e81a76",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tabs",
+          "summary": "introduce tab components with customizable styles and functionality, including horizontal, vertical, and fill options",
+          "summaryKey": "changelog.generated.v0.0.2.c407c",
+          "commitHash": "c407c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c407c47a6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "tabs",
+          "summary": "rename theme variable to themeContext for consistency across tab components",
+          "summaryKey": "changelog.generated.v0.0.2.084e8",
+          "commitHash": "084e8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/084e81a76",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

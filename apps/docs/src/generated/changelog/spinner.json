@@ -1,6 +1,6 @@
 {
   "component": "spinner",
-  "generatedAt": "2026-09-13T16:50:13.758Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,24 +14,17 @@
           "summary": "update secondary and accent color variants to include opacity",
           "summaryKey": "changelog.generated.v0.15.0.132e9",
           "commitHash": "132e9",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/132e9896",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/132e98967",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
-      "date": "2026-04-18",
-      "entries": [
+        },
         {
           "type": "fix",
           "scope": "spinner",
           "summary": "update secondary and accent color variants to include opacity",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.132e9",
+          "summaryKey": "changelog.generated.v0.15.0.132e9",
           "commitHash": "132e9",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/132e9896",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/132e98967",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

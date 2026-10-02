@@ -1,6 +1,6 @@
 {
   "component": "avatar",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -31,7 +31,7 @@
           "summary": "add AvatarCompact component with props and emits",
           "summaryKey": "changelog.generated.v0.18.0.7d59d",
           "commitHash": "7d59d",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7d59d36a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7d59d36ae",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -48,7 +48,74 @@
           "summary": "add image source and delay properties to AvatarProps for enhanced image handling",
           "summaryKey": "changelog.generated.v0.0.7.f55e1",
           "commitHash": "f55e1",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f55e1e9d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f55e1e9df",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "avatar",
+          "summary": "introduce Avatar component with fallback and image loading features",
+          "summaryKey": "changelog.generated.v0.0.2.31a55",
+          "commitHash": "31a55",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/31a55ca45",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "avatar",
+          "summary": "introduce SAvatar component with theme context support and refactor avatar structure for improved usability",
+          "summaryKey": "changelog.generated.v0.0.2.94542",
+          "commitHash": "94542",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/945422470",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "avatar",
+          "summary": "simplify loading status change function by removing console log",
+          "summaryKey": "changelog.generated.v0.0.2.325c4",
+          "commitHash": "325c4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/325c434ac",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "avatar",
+          "summary": "introduce Avatar component with fallback and image loading features",
+          "summaryKey": "changelog.generated.v0.0.2.31a55",
+          "commitHash": "31a55",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/31a55ca45",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "avatar",
+          "summary": "introduce SAvatar component with theme context support and refactor avatar structure for improved usability",
+          "summaryKey": "changelog.generated.v0.0.2.94542",
+          "commitHash": "94542",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/945422470",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "avatar",
+          "summary": "simplify loading status change function by removing console log",
+          "summaryKey": "changelog.generated.v0.0.2.325c4",
+          "commitHash": "325c4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/325c434ac",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

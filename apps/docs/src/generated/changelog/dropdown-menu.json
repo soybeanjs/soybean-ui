@@ -1,6 +1,6 @@
 {
   "component": "dropdown-menu",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -17,19 +17,12 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/38f5e5b75",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.40.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
-      "date": "2026-09-11",
-      "entries": [
+        },
         {
           "type": "fix",
           "scope": "dropdown-menu",
           "summary": "guard empty popup id in trigger blur close",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.38f5e",
+          "summaryKey": "changelog.generated.v0.40.0.38f5e",
           "commitHash": "38f5e",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/38f5e5b75",
           "authors": ["soybeanfe"],
@@ -48,7 +41,7 @@
           "summary": "add placement prop to DropdownMenuWrapper and DropdownMenu components",
           "summaryKey": "changelog.generated.v0.0.9.04e0b",
           "commitHash": "04e0b",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/04e0bf29",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/04e0bf29e",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -65,7 +58,7 @@
           "summary": "add popupProps to dropdown menu components for enhanced functionality",
           "summaryKey": "changelog.generated.v0.0.8.ab340",
           "commitHash": "ab340",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ab340b41",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ab340b413",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -75,7 +68,214 @@
           "summary": "streamline context management by removing unused elements and updating references for improved clarity and functionality",
           "summaryKey": "changelog.generated.v0.0.8.73ac1",
           "commitHash": "73ac1",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/73ac1d11",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/73ac1d11c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "implement dropdown menu components with context management and accessibility features",
+          "summaryKey": "changelog.generated.v0.0.2.96bcd",
+          "commitHash": "96bcd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/96bcd6b3e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "add DropdownMenuExample component and integrate it into App.vue",
+          "summaryKey": "changelog.generated.v0.0.2.4a190",
+          "commitHash": "4a190",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4a190d478",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "enhance dropdown functionality with new submenus, checkbox, and radio groups",
+          "summaryKey": "changelog.generated.v0.0.2.2a8e7",
+          "commitHash": "2a8e7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2a8e702fb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "add aria-disabled attribute to dropdown menu trigger for better accessibility",
+          "summaryKey": "changelog.generated.v0.0.2.0da08",
+          "commitHash": "0da08",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0da087c2c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "dropdown-menu",
+          "summary": "update MenuAnchor syntax for improved template compatibility",
+          "summaryKey": "changelog.generated.v0.0.2.6d96c",
+          "commitHash": "6d96c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6d96cb6c0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "dropdown-menu",
+          "summary": "remove unnecessary Slot wrapper from dropdown menu trigger for cleaner markup",
+          "summaryKey": "changelog.generated.v0.0.2.0d9f3",
+          "commitHash": "0d9f3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d9f33dc5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "dropdown-menu",
+          "summary": "enhance content element management by introducing shallowRef and el-ref binding",
+          "summaryKey": "changelog.generated.v0.0.2.2c9ed",
+          "commitHash": "2c9ed",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2c9ed7165",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "dropdown-menu",
+          "summary": "implement hover functionality with delay management for improved user experience",
+          "summaryKey": "changelog.generated.v0.0.2.e24ef",
+          "commitHash": "e24ef",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e24eff62d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "add 'disabledTrigger' prop to dropdown components",
+          "summaryKey": "changelog.generated.v0.0.2.113cc",
+          "commitHash": "113cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/113ccea6d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "implement dropdown menu components with context management and accessibility features",
+          "summaryKey": "changelog.generated.v0.0.2.96bcd",
+          "commitHash": "96bcd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/96bcd6b3e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "add DropdownMenuExample component and integrate it into App.vue",
+          "summaryKey": "changelog.generated.v0.0.2.4a190",
+          "commitHash": "4a190",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4a190d478",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "enhance dropdown functionality with new submenus, checkbox, and radio groups",
+          "summaryKey": "changelog.generated.v0.0.2.2a8e7",
+          "commitHash": "2a8e7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2a8e702fb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "add aria-disabled attribute to dropdown menu trigger for better accessibility",
+          "summaryKey": "changelog.generated.v0.0.2.0da08",
+          "commitHash": "0da08",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0da087c2c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "dropdown-menu",
+          "summary": "update MenuAnchor syntax for improved template compatibility",
+          "summaryKey": "changelog.generated.v0.0.2.6d96c",
+          "commitHash": "6d96c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6d96cb6c0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "dropdown-menu",
+          "summary": "add size selection to dropdown menu component example",
+          "summaryKey": "changelog.generated.v0.0.2.75f3c",
+          "commitHash": "75f3c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/75f3c91bf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "dropdown-menu",
+          "summary": "remove unnecessary Slot wrapper from dropdown menu trigger for cleaner markup",
+          "summaryKey": "changelog.generated.v0.0.2.0d9f3",
+          "commitHash": "0d9f3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d9f33dc5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "dropdown-menu",
+          "summary": "enhance content element management by introducing shallowRef and el-ref binding",
+          "summaryKey": "changelog.generated.v0.0.2.2c9ed",
+          "commitHash": "2c9ed",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2c9ed7165",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "dropdown-menu",
+          "summary": "implement hover functionality with delay management for improved user experience",
+          "summaryKey": "changelog.generated.v0.0.2.e24ef",
+          "commitHash": "e24ef",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e24eff62d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "dropdown-menu",
+          "summary": "add 'disabledTrigger' prop to dropdown components",
+          "summaryKey": "changelog.generated.v0.0.2.113cc",
+          "commitHash": "113cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/113ccea6d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "dropdown-menu",
+          "summary": "add size selection to dropdown menu component example",
+          "summaryKey": "changelog.generated.v0.0.2.75f3c",
+          "commitHash": "75f3c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/75f3c91bf",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

@@ -1,6 +1,6 @@
 {
   "component": "badge",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "add BadgeCompact component with props, emits, and slots",
           "summaryKey": "changelog.generated.v0.18.0.49ceb",
           "commitHash": "49ceb",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/49ceb52f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/49ceb52f1",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -31,7 +31,114 @@
           "summary": "integrate useAttrs for enhanced class merging in mergeSlotVariants",
           "summaryKey": "changelog.generated.v0.0.9.1b456",
           "commitHash": "1b456",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1b456e6a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1b456e6a0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "badge",
+          "summary": "implement badge component with various examples",
+          "summaryKey": "changelog.generated.v0.0.2.04ec2",
+          "commitHash": "04ec2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/04ec2cab4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "badge",
+          "summary": "remove unused props and bind open state directly in BadgeRoot",
+          "summaryKey": "changelog.generated.v0.0.2.3a105",
+          "commitHash": "3a105",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3a10546b7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "badge",
+          "summary": "add optional 'content' prop to badge component",
+          "summaryKey": "changelog.generated.v0.0.2.c3ec9",
+          "commitHash": "c3ec9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c3ec960b9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "badge",
+          "summary": "add 'raw' variant to badge component and update size and shape styles",
+          "summaryKey": "changelog.generated.v0.0.2.15530",
+          "commitHash": "15530",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/155306b04",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "badge",
+          "summary": "implement badge component with various examples",
+          "summaryKey": "changelog.generated.v0.0.2.04ec2",
+          "commitHash": "04ec2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/04ec2cab4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "badge",
+          "summary": "remove unused props and bind open state directly in BadgeRoot",
+          "summaryKey": "changelog.generated.v0.0.2.3a105",
+          "commitHash": "3a105",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3a10546b7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "badge",
+          "summary": "adjust padding for badge sizes to improve layout consistency",
+          "summaryKey": "changelog.generated.v0.0.2.5c60f",
+          "commitHash": "5c60f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5c60f047f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "badge",
+          "summary": "add optional 'content' prop to badge component",
+          "summaryKey": "changelog.generated.v0.0.2.c3ec9",
+          "commitHash": "c3ec9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c3ec960b9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "badge",
+          "summary": "add 'raw' variant to badge component and update size and shape styles",
+          "summaryKey": "changelog.generated.v0.0.2.15530",
+          "commitHash": "15530",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/155306b04",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "badge",
+          "summary": "adjust padding for badge sizes to improve layout consistency",
+          "summaryKey": "changelog.generated.v0.0.2.5c60f",
+          "commitHash": "5c60f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5c60f047f",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

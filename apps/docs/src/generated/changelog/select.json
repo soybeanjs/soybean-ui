@@ -1,18 +1,18 @@
 {
   "component": "select",
-  "generatedAt": "2026-09-17T14:01:29.350Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
-      "version": "v0.50.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",
-      "date": "2026-09-17",
+      "version": "v0.50.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0",
+      "date": "2026-10-02",
       "entries": [
         {
           "type": "fix",
           "scope": "select",
           "summary": "stop the popup from closing right after it opens",
-          "summaryKey": "changelog.generated.v0.50.0-beta.1.7d929",
+          "summaryKey": "changelog.generated.v0.50.0.7d929",
           "commitHash": "7d929",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7d929e113",
           "authors": ["soybeanjs"],
@@ -22,46 +22,29 @@
           "type": "fix",
           "scope": "select",
           "summary": "honor the outside pointer lock and hand the page back on close",
-          "summaryKey": "changelog.generated.v0.50.0-beta.1.f873c",
+          "summaryKey": "changelog.generated.v0.50.0.f873c",
           "commitHash": "f873c",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f873cdb52",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.40.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
-      "date": "2026-09-11",
-      "entries": [
-        {
-          "type": "feature",
-          "scope": "select",
-          "summary": "add trigger clear and unify form-field chrome",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.adeee",
-          "commitHash": "adeee",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/adeee522d",
-          "authors": ["soybeanfe", "cursoragent"],
-          "source": "exact-scope"
         },
         {
-          "type": "optimization",
+          "type": "fix",
           "scope": "select",
-          "summary": "make clearable prop default value to false",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.a6d4d",
-          "commitHash": "a6d4d",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a6d4ddba9",
+          "summary": "stop the popup from closing right after it opens",
+          "summaryKey": "changelog.generated.v0.50.0.7d929",
+          "commitHash": "7d929",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7d929e113",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
         {
-          "type": "chore",
+          "type": "fix",
           "scope": "select",
-          "summary": "add clearable prop to SSelect component",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.74ba2",
-          "commitHash": "74ba2",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/74ba2d481",
+          "summary": "honor the outside pointer lock and hand the page back on close",
+          "summaryKey": "changelog.generated.v0.50.0.f873c",
+          "commitHash": "f873c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f873cdb52",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -115,24 +98,17 @@
           "summary": "fix scroll in large list",
           "summaryKey": "changelog.generated.v0.30.0.ff970",
           "commitHash": "ff970",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ff9703a4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ff9703a45",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.30.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1",
-      "date": "2026-08-19",
-      "entries": [
+        },
         {
           "type": "fix",
           "scope": "select",
           "summary": "fix scroll in large list",
-          "summaryKey": "changelog.generated.v0.30.0-beta.1.ff970",
+          "summaryKey": "changelog.generated.v0.30.0.ff970",
           "commitHash": "ff970",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ff9703a4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ff9703a45",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -149,24 +125,17 @@
           "summary": "replace singleClearable with clearable in context props",
           "summaryKey": "changelog.generated.v0.15.0.ca438",
           "commitHash": "ca438",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca438af5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca438af5f",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.3",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
-      "date": "2026-04-26",
-      "entries": [
+        },
         {
           "type": "fix",
           "scope": "select",
           "summary": "replace singleClearable with clearable in context props",
-          "summaryKey": "changelog.generated.v0.15.0-beta.3.ca438",
+          "summaryKey": "changelog.generated.v0.15.0.ca438",
           "commitHash": "ca438",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca438af5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca438af5f",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -183,7 +152,7 @@
           "summary": "omit 'disableOutsidePointerEvents' from popperPositionerProps",
           "summaryKey": "changelog.generated.v0.12.2.57e0a",
           "commitHash": "57e0a",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/57e0a5aa",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/57e0a5aa8",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -193,7 +162,7 @@
           "summary": "prevent triggering click event when dropdown is open",
           "summaryKey": "changelog.generated.v0.12.2.a26f3",
           "commitHash": "a26f3",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a26f3d25",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a26f3d253",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -210,7 +179,7 @@
           "summary": "set singleClearable prop default to true",
           "summaryKey": "changelog.generated.v0.10.4.9ebd1",
           "commitHash": "9ebd1",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9ebd10da",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9ebd10da5",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -227,8 +196,8 @@
           "summary": "add single clearable option and example",
           "summaryKey": "changelog.generated.v0.9.2.d24b2",
           "commitHash": "d24b2",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d24b2172",
-          "authors": ["Soybean"],
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d24b21722",
+          "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
       ]
@@ -244,7 +213,7 @@
           "summary": "add disableOutsidePointerEvents prop to enhance interaction and simplify arrow visibility logic",
           "summaryKey": "changelog.generated.v0.8.0.f5048",
           "commitHash": "f5048",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f5048445",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f50484458",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -261,7 +230,7 @@
           "summary": "bind slot names correctly in SSelectSingleOption",
           "summaryKey": "changelog.generated.v0.0.17.5e278",
           "commitHash": "5e278",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e278ca1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e278ca15",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -271,7 +240,7 @@
           "summary": "simplify type definitions and improve variant styles",
           "summaryKey": "changelog.generated.v0.0.17.219c5",
           "commitHash": "219c5",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/219c5344",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/219c5344b",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -281,7 +250,7 @@
           "summary": "integrate useSelectUi in various components for improved styling",
           "summaryKey": "changelog.generated.v0.0.17.088f9",
           "commitHash": "088f9",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/088f9986",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/088f9986a",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -298,7 +267,7 @@
           "summary": "update CSS variable names in select popper for consistency and clarity",
           "summaryKey": "changelog.generated.v0.0.8.13132",
           "commitHash": "13132",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/13132f4a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/13132f4a0",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -308,7 +277,194 @@
           "summary": "restructure select components by introducing SelectPopup and SelectItemAlignedPopup, updating context management, and enhancing type definitions for improved functionality and clarity",
           "summaryKey": "changelog.generated.v0.0.8.2e56e",
           "commitHash": "2e56e",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2e56e15b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2e56e15b7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "implement select component with bubble select, context management, and various sub components for enhanced functionality",
+          "summaryKey": "changelog.generated.v0.0.2.ccf79",
+          "commitHash": "ccf79",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ccf794dde",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "add select component with theme context support and various sub components for enhanced styling and functionality",
+          "summaryKey": "changelog.generated.v0.0.2.ed802",
+          "commitHash": "ed802",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ed80247ac",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "introduce new select examples and enhance select component with group options, default values, and disabled states for improved usability",
+          "summaryKey": "changelog.generated.v0.0.2.8ddf0",
+          "commitHash": "8ddf0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8ddf045e7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "add SelectSeparator component and update imports in select components",
+          "summaryKey": "changelog.generated.v0.0.2.97629",
+          "commitHash": "97629",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/97629038d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "add prioritizePosition prop to enhance positioning behavior",
+          "summaryKey": "changelog.generated.v0.0.2.1719b",
+          "commitHash": "1719b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1719b9455",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "replace onBeforeUnmount with onUnmounted for proper lifecycle handling in select-item-text component",
+          "summaryKey": "changelog.generated.v0.0.2.a4527",
+          "commitHash": "a4527",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a4527c7ce",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "extend SelectScrollButtonImplProps to include PrimitiveProps",
+          "summaryKey": "changelog.generated.v0.0.2.2f080",
+          "commitHash": "2f080",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2f0805965",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "select",
+          "summary": "optimize select with useSelection",
+          "summaryKey": "changelog.generated.v0.0.2.f813a",
+          "commitHash": "f813a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f813aa470",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "select",
+          "summary": "remove unused valueComparator and compare functions to streamline code",
+          "summaryKey": "changelog.generated.v0.0.2.26eca",
+          "commitHash": "26eca",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/26ecace49",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "implement select component with bubble select, context management, and various sub components for enhanced functionality",
+          "summaryKey": "changelog.generated.v0.0.2.ccf79",
+          "commitHash": "ccf79",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ccf794dde",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "add select component with theme context support and various sub components for enhanced styling and functionality",
+          "summaryKey": "changelog.generated.v0.0.2.ed802",
+          "commitHash": "ed802",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ed80247ac",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "introduce new select examples and enhance select component with group options, default values, and disabled states for improved usability",
+          "summaryKey": "changelog.generated.v0.0.2.8ddf0",
+          "commitHash": "8ddf0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8ddf045e7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "add SelectSeparator component and update imports in select components",
+          "summaryKey": "changelog.generated.v0.0.2.97629",
+          "commitHash": "97629",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/97629038d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "add prioritizePosition prop to enhance positioning behavior",
+          "summaryKey": "changelog.generated.v0.0.2.1719b",
+          "commitHash": "1719b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1719b9455",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "replace onBeforeUnmount with onUnmounted for proper lifecycle handling in select-item-text component",
+          "summaryKey": "changelog.generated.v0.0.2.a4527",
+          "commitHash": "a4527",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a4527c7ce",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "extend SelectScrollButtonImplProps to include PrimitiveProps",
+          "summaryKey": "changelog.generated.v0.0.2.2f080",
+          "commitHash": "2f080",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2f0805965",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "select",
+          "summary": "optimize select with useSelection",
+          "summaryKey": "changelog.generated.v0.0.2.f813a",
+          "commitHash": "f813a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f813aa470",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "select",
+          "summary": "remove unused valueComparator and compare functions to streamline code",
+          "summaryKey": "changelog.generated.v0.0.2.26eca",
+          "commitHash": "26eca",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/26ecace49",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

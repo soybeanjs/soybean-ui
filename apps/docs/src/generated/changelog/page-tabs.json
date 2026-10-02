@@ -1,52 +1,68 @@
 {
   "component": "page-tabs",
-  "generatedAt": "2026-10-02T06:45:30.570Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
-      "version": "v0.50.0-beta.9",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.8...v0.50.0-beta.9",
+      "version": "v0.50.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0",
       "date": "2026-10-02",
-      "entries": [
-        {
-          "type": "style",
-          "scope": "page-tabs",
-          "summary": "adjust layout and improve close button styles for better alignment",
-          "summaryKey": "changelog.generated.v0.50.0-beta.9.042cb",
-          "commitHash": "042cb",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/042cb0b68",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.50.0-beta.7",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.6...v0.50.0-beta.7",
-      "date": "2026-09-29",
-      "entries": [
-        {
-          "type": "style",
-          "scope": "page-tabs",
-          "summary": "update selected item color for better visibility",
-          "summaryKey": "changelog.generated.v0.50.0-beta.7.4a8ea",
-          "commitHash": "4a8ea",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4a8ea1f65",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.50.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0-beta.1",
-      "date": "2026-09-17",
       "entries": [
         {
           "type": "refactor",
           "scope": "page-tabs",
           "summary": "replace @dnd-kit with useSortableList",
-          "summaryKey": "changelog.generated.v0.50.0-beta.1.932ff",
+          "summaryKey": "changelog.generated.v0.50.0.932ff",
+          "commitHash": "932ff",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/932ff2a12",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "page-tabs",
+          "summary": "update selected item color for better visibility",
+          "summaryKey": "changelog.generated.v0.50.0.4a8ea",
+          "commitHash": "4a8ea",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4a8ea1f65",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "page-tabs",
+          "summary": "adjust layout and improve close button styles for better alignment",
+          "summaryKey": "changelog.generated.v0.50.0.042cb",
+          "commitHash": "042cb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/042cb0b68",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "page-tabs",
+          "summary": "adjust layout and improve close button styles for better alignment",
+          "summaryKey": "changelog.generated.v0.50.0.042cb",
+          "commitHash": "042cb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/042cb0b68",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "page-tabs",
+          "summary": "update selected item color for better visibility",
+          "summaryKey": "changelog.generated.v0.50.0.4a8ea",
+          "commitHash": "4a8ea",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4a8ea1f65",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "page-tabs",
+          "summary": "replace @dnd-kit with useSortableList",
+          "summaryKey": "changelog.generated.v0.50.0.932ff",
           "commitHash": "932ff",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/932ff2a12",
           "authors": ["soybeanjs"],
@@ -65,24 +81,17 @@
           "summary": "support drag",
           "summaryKey": "changelog.generated.v0.30.0.61d24",
           "commitHash": "61d24",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/61d24668",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/61d246682",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.30.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1",
-      "date": "2026-08-19",
-      "entries": [
+        },
         {
           "type": "feature",
           "scope": "page-tabs",
           "summary": "support drag",
-          "summaryKey": "changelog.generated.v0.30.0-beta.1.61d24",
+          "summaryKey": "changelog.generated.v0.30.0.61d24",
           "commitHash": "61d24",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/61d24668",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/61d246682",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -99,7 +108,7 @@
           "summary": "Implement PageTabsCmpact",
           "summaryKey": "changelog.generated.v0.19.0.93a56",
           "commitHash": "93a56",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/93a56de9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/93a56de97",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -116,7 +125,7 @@
           "summary": "omit beforeClose prop from forwardedProps",
           "summaryKey": "changelog.generated.v0.6.5.37fba",
           "commitHash": "37fba",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/37fba8dd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/37fba8ddb",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -133,7 +142,7 @@
           "summary": "fix scroll centerX value",
           "summaryKey": "changelog.generated.v0.6.2.1dadd",
           "commitHash": "1dadd",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1dadda7b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1dadda7b0",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -150,7 +159,7 @@
           "summary": "add sorting functionality for tabs based on pinned status",
           "summaryKey": "changelog.generated.v0.6.1.f5bac",
           "commitHash": "f5bac",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f5bacad3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f5bacad32",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -167,7 +176,7 @@
           "summary": "simplify context and state management, remove unused operations",
           "summaryKey": "changelog.generated.v0.6.0.ded83",
           "commitHash": "ded83",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ded83e90",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ded83e90a",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -184,7 +193,7 @@
           "summary": "fix tab closing functions",
           "summaryKey": "changelog.generated.v0.4.3.ca73e",
           "commitHash": "ca73e",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca73e49e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca73e49ec",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -201,7 +210,7 @@
           "summary": "optimize page-tabs logic",
           "summaryKey": "changelog.generated.v0.4.2.a2a1c",
           "commitHash": "a2a1c",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a2a1c3d5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a2a1c3d5d",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -218,7 +227,7 @@
           "summary": "refactor context and operations for improved tab management",
           "summaryKey": "changelog.generated.v0.4.1.2b884",
           "commitHash": "2b884",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2b884ccf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2b884ccf9",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

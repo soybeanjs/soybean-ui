@@ -1,6 +1,6 @@
 {
   "component": "toggle-group",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,24 +14,17 @@
           "summary": "fix demo class",
           "summaryKey": "changelog.generated.v0.30.0.e27e0",
           "commitHash": "e27e0",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e27e09a4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e27e09a41",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.30.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.3...v0.30.0-beta.1",
-      "date": "2026-08-19",
-      "entries": [
+        },
         {
           "type": "style",
           "scope": "toggle-group",
           "summary": "fix demo class",
-          "summaryKey": "changelog.generated.v0.30.0-beta.1.e27e0",
+          "summaryKey": "changelog.generated.v0.30.0.e27e0",
           "commitHash": "e27e0",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e27e09a4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e27e09a41",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -48,7 +41,7 @@
           "summary": "replace SToggleGroupItem import with headless component and remove unused file",
           "summaryKey": "changelog.generated.v0.19.0.45418",
           "commitHash": "45418",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/45418967",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/454189679",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -65,24 +58,17 @@
           "summary": "update variant options and remove outline example",
           "summaryKey": "changelog.generated.v0.15.0.34cf7",
           "commitHash": "34cf7",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/34cf782c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/34cf782cd",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
-      "date": "2026-04-18",
-      "entries": [
+        },
         {
           "type": "optimization",
           "scope": "toggle-group",
           "summary": "update variant options and remove outline example",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.34cf7",
+          "summaryKey": "changelog.generated.v0.15.0.34cf7",
           "commitHash": "34cf7",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/34cf782c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/34cf782cd",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

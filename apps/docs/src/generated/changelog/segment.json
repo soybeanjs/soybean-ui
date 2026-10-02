@@ -1,25 +1,8 @@
 {
   "component": "segment",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
-    {
-      "version": "v0.40.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
-      "date": "2026-09-11",
-      "entries": [
-        {
-          "type": "refactor",
-          "scope": "segment",
-          "summary": "wrap Tabs primitives and provide Segment UI",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.2da74",
-          "commitHash": "2da74",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2da74c9b7",
-          "authors": ["soybeanfe", "cursoragent"],
-          "source": "exact-scope"
-        }
-      ]
-    },
     {
       "version": "v0.31.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
@@ -33,6 +16,53 @@
           "commitHash": "2da74",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2da74c9b7",
           "authors": ["soybeanfe", "cursoragent"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "segment",
+          "summary": "add SSegment component for selecting days with customizable options and integrate into home view",
+          "summaryKey": "changelog.generated.v0.0.2.31a08",
+          "commitHash": "31a08",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/31a084dbc",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "segment",
+          "summary": "add new segment examples for orientation, shape, and icon; refactor index.vue to include new demo components",
+          "summaryKey": "changelog.generated.v0.0.2.eff24",
+          "commitHash": "eff24",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/eff24bbc3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "segment",
+          "summary": "add SSegment component for selecting days with customizable options and integrate into home view",
+          "summaryKey": "changelog.generated.v0.0.2.31a08",
+          "commitHash": "31a08",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/31a084dbc",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "segment",
+          "summary": "add new segment examples for orientation, shape, and icon; refactor index.vue to include new demo components",
+          "summaryKey": "changelog.generated.v0.0.2.eff24",
+          "commitHash": "eff24",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/eff24bbc3",
+          "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
       ]

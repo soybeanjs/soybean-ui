@@ -1,6 +1,6 @@
 {
   "component": "color-picker",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -16,33 +16,6 @@
           "commitHash": "23ad8",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/23ad8a5eb",
           "authors": ["soybeanfe"],
-          "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.40.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
-      "date": "2026-09-11",
-      "entries": [
-        {
-          "type": "optimization",
-          "scope": "color-picker",
-          "summary": "optimize style",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.3e187",
-          "commitHash": "3e187",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3e187b8ea",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope"
-        },
-        {
-          "type": "refactor",
-          "scope": "color-picker",
-          "summary": "unify nested part styles in colorPickerVariants",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.ce056",
-          "commitHash": "ce056",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ce056547c",
-          "authors": ["soybeanfe", "cursoragent"],
           "source": "exact-scope"
         }
       ]
@@ -102,7 +75,7 @@
           "summary": "update ColorPicker and ColorSwatch components for compact variants",
           "summaryKey": "changelog.generated.v0.19.0.06e60",
           "commitHash": "06e60",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/06e60e27",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/06e60e27f",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -119,7 +92,7 @@
           "summary": "add miniSize computed property for size handling",
           "summaryKey": "changelog.generated.v0.15.1.34d51",
           "commitHash": "34d51",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/34d51524",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/34d51524b",
           "authors": ["soybeanjs", "Copilot"],
           "source": "exact-scope"
         }
@@ -136,24 +109,17 @@
           "summary": "optimize style",
           "summaryKey": "changelog.generated.v0.15.0.a9d4a",
           "commitHash": "a9d4a",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a9d4abe8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a9d4abe86",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
-      "date": "2026-04-18",
-      "entries": [
+        },
         {
           "type": "optimization",
           "scope": "color-picker",
           "summary": "optimize style",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.a9d4a",
+          "summaryKey": "changelog.generated.v0.15.0.a9d4a",
           "commitHash": "a9d4a",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a9d4abe8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a9d4abe86",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

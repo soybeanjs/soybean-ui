@@ -1,35 +1,8 @@
 {
   "component": "combobox",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
-    {
-      "version": "v0.40.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
-      "date": "2026-09-11",
-      "entries": [
-        {
-          "type": "optimization",
-          "scope": "combobox",
-          "summary": "move clear action to trigger and add ComboboxValue primitive",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.8fea1",
-          "commitHash": "8fea1",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8fea1fc14",
-          "authors": ["soybeanjs"],
-          "source": "exact-scope"
-        },
-        {
-          "type": "refactor",
-          "scope": "combobox",
-          "summary": "wrap Anchor, GroupLabel, and ItemIndicator",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.77373",
-          "commitHash": "77373",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7737384c6",
-          "authors": ["soybeanfe", "cursoragent"],
-          "source": "exact-scope"
-        }
-      ]
-    },
     {
       "version": "v0.31.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.31.0",
@@ -68,7 +41,7 @@
           "summary": "reorganize component imports and remove unused files",
           "summaryKey": "changelog.generated.v0.16.0.d58a6",
           "commitHash": "d58a6",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d58a6dc3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d58a6dc36",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -78,7 +51,7 @@
           "summary": "add parentElement reference and integrate useHideOthers for improved accessibility",
           "summaryKey": "changelog.generated.v0.16.0.b83ef",
           "commitHash": "b83ef",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b83ef7dd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b83ef7ddc",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -95,7 +68,7 @@
           "summary": "fix group and item management with Maps",
           "summaryKey": "changelog.generated.v0.15.1.cb831",
           "commitHash": "cb831",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cb831b95",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cb831b951",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -112,7 +85,7 @@
           "summary": "add prioritizePosition prop to enhance positioning logic",
           "summaryKey": "changelog.generated.v0.15.0.b7a16",
           "commitHash": "b7a16",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b7a16697",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b7a166978",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -122,41 +95,27 @@
           "summary": "refactor combobox component",
           "summaryKey": "changelog.generated.v0.15.0.5dec4",
           "commitHash": "5dec4",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5dec4fd1",
-          "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5dec4fd15",
+          "authors": ["soybeanjs", "CopilotKit", "soybeanfe"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.3",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
-      "date": "2026-04-26",
-      "entries": [
+        },
         {
           "type": "refactor",
           "scope": "combobox",
           "summary": "refactor combobox component",
-          "summaryKey": "changelog.generated.v0.15.0-beta.3.5dec4",
+          "summaryKey": "changelog.generated.v0.15.0.5dec4",
           "commitHash": "5dec4",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5dec4fd1",
-          "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5dec4fd15",
+          "authors": ["soybeanjs", "CopilotKit", "soybeanfe"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
-      "date": "2026-04-18",
-      "entries": [
+        },
         {
           "type": "optimization",
           "scope": "combobox",
           "summary": "add prioritizePosition prop to enhance positioning logic",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.b7a16",
+          "summaryKey": "changelog.generated.v0.15.0.b7a16",
           "commitHash": "b7a16",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b7a16697",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b7a166978",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

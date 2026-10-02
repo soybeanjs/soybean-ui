@@ -1,6 +1,6 @@
 {
   "component": "link",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -17,19 +17,12 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3fd7f2b12",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.40.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
-      "date": "2026-09-11",
-      "entries": [
+        },
         {
           "type": "feature",
           "scope": "link",
           "summary": "add linkComponent injection via ConfigProvider",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.3fd7f",
+          "summaryKey": "changelog.generated.v0.40.0.3fd7f",
           "commitHash": "3fd7f",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3fd7f2b12",
           "authors": ["soybeanfe"],
@@ -82,7 +75,7 @@
           "summary": "get config provider can be null",
           "summaryKey": "changelog.generated.v0.25.1.866e4",
           "commitHash": "866e4",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/866e42fb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/866e42fbf",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -99,7 +92,7 @@
           "summary": "update href prop description and type",
           "summaryKey": "changelog.generated.v0.2.3.3d935",
           "commitHash": "3d935",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3d935300",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3d9353009",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -116,7 +109,7 @@
           "summary": "remove unused custom prop and simplify href handling",
           "summaryKey": "changelog.generated.v0.1.5.98386",
           "commitHash": "98386",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/98386b20",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/98386b204",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -133,7 +126,7 @@
           "summary": "enhance slot binding for Link component and update styles",
           "summaryKey": "changelog.generated.v0.1.0.d41b3",
           "commitHash": "d41b3",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d41b39e7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d41b39e78",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -150,7 +143,7 @@
           "summary": "enhance slot functionality and improve forwarded props handling",
           "summaryKey": "changelog.generated.v0.0.20.384df",
           "commitHash": "384df",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/384df908",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/384df908c",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -167,7 +160,7 @@
           "summary": "extend LinkProps to include LinkBaseProps and LinkExtraProps, and set default rel attribute",
           "summaryKey": "changelog.generated.v0.0.9.7b3f1",
           "commitHash": "7b3f1",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7b3f1596",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7b3f1596d",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -184,24 +177,264 @@
           "summary": "enhance slot functionality in link components to pass isHref prop for better context handling",
           "summaryKey": "changelog.generated.v0.0.6.d5c7a",
           "commitHash": "d5c7a",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d5c7a202",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d5c7a2029",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "enhance slot functionality in link components to pass isHref prop for better context handling",
+          "summaryKey": "changelog.generated.v0.0.6.d5c7a",
+          "commitHash": "d5c7a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d5c7a2029",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
       ]
     },
     {
-      "version": "v0.0.6-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6-beta.1",
-      "date": "2025-11-23",
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
       "entries": [
         {
           "type": "feature",
           "scope": "link",
-          "summary": "enhance slot functionality in link components to pass isHref prop for better context handling",
-          "summaryKey": "changelog.generated.v0.0.6-beta.1.d5c7a",
-          "commitHash": "d5c7a",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d5c7a202",
+          "summary": "introduce Link component for enhanced navigation and update app examples to utilize it",
+          "summaryKey": "changelog.generated.v0.0.2.3f7f3",
+          "commitHash": "3f7f3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3f7f3ef10",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "add Link component and examples for improved navigation in the playground",
+          "summaryKey": "changelog.generated.v0.0.2.b3a24",
+          "commitHash": "b3a24",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b3a245eb7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "enhance Link component with disabled state handling",
+          "summaryKey": "changelog.generated.v0.0.2.42d18",
+          "commitHash": "42d18",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/42d182b7a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "rename Link component file and implement new link.vue with props and computed class handling",
+          "summaryKey": "changelog.generated.v0.0.2.2eebf",
+          "commitHash": "2eebf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2eebfa7e3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "add target prop and refactor isExternal to isHref for improved link handling",
+          "summaryKey": "changelog.generated.v0.0.2.bd126",
+          "commitHash": "bd126",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bd126adb8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "link",
+          "summary": "update href handling to conditionally set based on Nuxt context for improved link behavior",
+          "summaryKey": "changelog.generated.v0.0.2.6c99e",
+          "commitHash": "6c99e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6c99e72ff",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "link",
+          "summary": "remove unnecessary width utility from linkVariants base styles for cleaner implementation",
+          "summaryKey": "changelog.generated.v0.0.2.cd211",
+          "commitHash": "cd211",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cd211e175",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "link",
+          "summary": "update target behavior to default to '_blank' for external links",
+          "summaryKey": "changelog.generated.v0.0.2.374d7",
+          "commitHash": "374d7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/374d7bd36",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "link",
+          "summary": "consolidate Nuxt and Router link components into a single Link component with dynamic resolution",
+          "summaryKey": "changelog.generated.v0.0.2.5812f",
+          "commitHash": "5812f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5812f4586",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "link",
+          "summary": "simplify forwarded props handling and update types for improved clarity and functionality",
+          "summaryKey": "changelog.generated.v0.0.2.b856a",
+          "commitHash": "b856a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b856adba8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "link",
+          "summary": "rename Link component to SLink for consistency with naming conventions",
+          "summaryKey": "changelog.generated.v0.0.2.20057",
+          "commitHash": "20057",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/20057e965",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "link",
+          "summary": "change LinkProps to use HTMLAttributes directly and update ButtonLinkProps to use type alias for clarity",
+          "summaryKey": "changelog.generated.v0.0.2.82304",
+          "commitHash": "82304",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/823044726",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "link",
+          "summary": "update target behavior to default to '_blank' for external links",
+          "summaryKey": "changelog.generated.v0.0.2.374d7",
+          "commitHash": "374d7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/374d7bd36",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "introduce Link component for enhanced navigation and update app examples to utilize it",
+          "summaryKey": "changelog.generated.v0.0.2.3f7f3",
+          "commitHash": "3f7f3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3f7f3ef10",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "add Link component and examples for improved navigation in the playground",
+          "summaryKey": "changelog.generated.v0.0.2.b3a24",
+          "commitHash": "b3a24",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b3a245eb7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "enhance Link component with disabled state handling",
+          "summaryKey": "changelog.generated.v0.0.2.42d18",
+          "commitHash": "42d18",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/42d182b7a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "rename Link component file and implement new link.vue with props and computed class handling",
+          "summaryKey": "changelog.generated.v0.0.2.2eebf",
+          "commitHash": "2eebf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2eebfa7e3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "link",
+          "summary": "add target prop and refactor isExternal to isHref for improved link handling",
+          "summaryKey": "changelog.generated.v0.0.2.bd126",
+          "commitHash": "bd126",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bd126adb8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "link",
+          "summary": "update href handling to conditionally set based on Nuxt context for improved link behavior",
+          "summaryKey": "changelog.generated.v0.0.2.6c99e",
+          "commitHash": "6c99e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6c99e72ff",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "link",
+          "summary": "remove unnecessary width utility from linkVariants base styles for cleaner implementation",
+          "summaryKey": "changelog.generated.v0.0.2.cd211",
+          "commitHash": "cd211",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cd211e175",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "link",
+          "summary": "consolidate Nuxt and Router link components into a single Link component with dynamic resolution",
+          "summaryKey": "changelog.generated.v0.0.2.5812f",
+          "commitHash": "5812f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5812f4586",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "link",
+          "summary": "simplify forwarded props handling and update types for improved clarity and functionality",
+          "summaryKey": "changelog.generated.v0.0.2.b856a",
+          "commitHash": "b856a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b856adba8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "link",
+          "summary": "rename Link component to SLink for consistency with naming conventions",
+          "summaryKey": "changelog.generated.v0.0.2.20057",
+          "commitHash": "20057",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/20057e965",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "link",
+          "summary": "change LinkProps to use HTMLAttributes directly and update ButtonLinkProps to use type alias for clarity",
+          "summaryKey": "changelog.generated.v0.0.2.82304",
+          "commitHash": "82304",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/823044726",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

@@ -1,6 +1,34 @@
 {
   "component": "list",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "list",
+          "summary": "implement List component",
+          "summaryKey": "changelog.generated.v0.0.2.1bc4a",
+          "commitHash": "1bc4a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1bc4a728d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "list",
+          "summary": "implement List component",
+          "summaryKey": "changelog.generated.v0.0.2.1bc4a",
+          "commitHash": "1bc4a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1bc4a728d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }

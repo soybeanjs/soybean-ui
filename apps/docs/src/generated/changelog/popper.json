@@ -1,6 +1,6 @@
 {
   "component": "popper",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "add class binding for anchor element and update PopperUiSlot type",
           "summaryKey": "changelog.generated.v0.16.0.21d02",
           "commitHash": "21d02",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/21d02afb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/21d02afb0",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -31,7 +31,7 @@
           "summary": "add hideShiftedArrow prop to control arrow visibility",
           "summaryKey": "changelog.generated.v0.8.0.6ce45",
           "commitHash": "6ce45",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6ce45594",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6ce45594a",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -48,7 +48,7 @@
           "summary": "copy z-index from popup to positioner",
           "summaryKey": "changelog.generated.v0.0.8.ffa35",
           "commitHash": "ffa35",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ffa35f3d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ffa35f3dd",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -58,7 +58,214 @@
           "summary": "restructure popper components by removing PopperContent, adding PopperPositioner and PopperPopup, and updating context usage for improved clarity and functionality",
           "summaryKey": "changelog.generated.v0.0.8.e7b76",
           "commitHash": "e7b76",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e7b76e6f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e7b76e6fc",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "popper",
+          "summary": "introduce Popper components for enhanced positioning and dynamic content management",
+          "summaryKey": "changelog.generated.v0.0.2.a5c20",
+          "commitHash": "a5c20",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a5c20dd71",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "popper",
+          "summary": "introduce PopperContentWrapper component and enhance context management for content styling and element handling",
+          "summaryKey": "changelog.generated.v0.0.2.7ab01",
+          "commitHash": "7ab01",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7ab0100fb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "popper",
+          "summary": "add sideFlip and alignFlip properties to enhance collision handling",
+          "summaryKey": "changelog.generated.v0.0.2.bc252",
+          "commitHash": "bc252",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bc2527f9c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "popper",
+          "summary": "correct floatingStyles reference in popper-content component for proper styling application",
+          "summaryKey": "changelog.generated.v0.0.2.86bd2",
+          "commitHash": "86bd2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/86bd2ece3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "popper",
+          "summary": "handle undefined arrow position values to prevent CSS errors",
+          "summaryKey": "changelog.generated.v0.0.2.1c337",
+          "commitHash": "1c337",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1c33790d1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "popper",
+          "summary": "enhance PopperAnchor to reactively update anchor element based on reference prop",
+          "summaryKey": "changelog.generated.v0.0.2.e9548",
+          "commitHash": "e9548",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e95480d70",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "popper",
+          "summary": "rename element variable to anchorElement for clarity in popper-anchor component",
+          "summaryKey": "changelog.generated.v0.0.2.6fcea",
+          "commitHash": "6fcea",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6fceadcf6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "popper",
+          "summary": "simplify Arrow component usage by consolidating style binding in popper-arrow.vue",
+          "summaryKey": "changelog.generated.v0.0.2.c7d2f",
+          "commitHash": "c7d2f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c7d2f34d0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "popper",
+          "summary": "remove PopperContentWrapper component and simplify context management; update PopperContent to enhance structure and style handling",
+          "summaryKey": "changelog.generated.v0.0.2.36021",
+          "commitHash": "36021",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/36021bec4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "popper",
+          "summary": "eliminate PopperContentWrapper across menu, popover, and tooltip components; streamline element management and enhance structure for improved clarity and performance",
+          "summaryKey": "changelog.generated.v0.0.2.aa6e8",
+          "commitHash": "aa6e8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/aa6e8bd41",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "popper",
+          "summary": "introduce Popper components for enhanced positioning and dynamic content management",
+          "summaryKey": "changelog.generated.v0.0.2.a5c20",
+          "commitHash": "a5c20",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a5c20dd71",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "popper",
+          "summary": "introduce PopperContentWrapper component and enhance context management for content styling and element handling",
+          "summaryKey": "changelog.generated.v0.0.2.7ab01",
+          "commitHash": "7ab01",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7ab0100fb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "popper",
+          "summary": "add sideFlip and alignFlip properties to enhance collision handling",
+          "summaryKey": "changelog.generated.v0.0.2.bc252",
+          "commitHash": "bc252",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bc2527f9c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "popper",
+          "summary": "correct floatingStyles reference in popper-content component for proper styling application",
+          "summaryKey": "changelog.generated.v0.0.2.86bd2",
+          "commitHash": "86bd2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/86bd2ece3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "popper",
+          "summary": "handle undefined arrow position values to prevent CSS errors",
+          "summaryKey": "changelog.generated.v0.0.2.1c337",
+          "commitHash": "1c337",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1c33790d1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "popper",
+          "summary": "enhance PopperAnchor to reactively update anchor element based on reference prop",
+          "summaryKey": "changelog.generated.v0.0.2.e9548",
+          "commitHash": "e9548",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e95480d70",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "popper",
+          "summary": "rename element variable to anchorElement for clarity in popper-anchor component",
+          "summaryKey": "changelog.generated.v0.0.2.6fcea",
+          "commitHash": "6fcea",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6fceadcf6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "popper",
+          "summary": "simplify Arrow component usage by consolidating style binding in popper-arrow.vue",
+          "summaryKey": "changelog.generated.v0.0.2.c7d2f",
+          "commitHash": "c7d2f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c7d2f34d0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "popper",
+          "summary": "remove PopperContentWrapper component and simplify context management; update PopperContent to enhance structure and style handling",
+          "summaryKey": "changelog.generated.v0.0.2.36021",
+          "commitHash": "36021",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/36021bec4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "popper",
+          "summary": "eliminate PopperContentWrapper across menu, popover, and tooltip components; streamline element management and enhance structure for improved clarity and performance",
+          "summaryKey": "changelog.generated.v0.0.2.aa6e8",
+          "commitHash": "aa6e8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/aa6e8bd41",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

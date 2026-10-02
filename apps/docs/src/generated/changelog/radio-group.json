@@ -1,6 +1,6 @@
 {
   "component": "radio-group",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,8 +14,115 @@
           "summary": "rename RadioCardGroup to RadioGroupCard and simplify RadioGroup component by using RadioGroupCompact",
           "summaryKey": "changelog.generated.v0.20.0.de602",
           "commitHash": "de602",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/de6024fc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/de6024fc5",
           "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "radio-group",
+          "summary": "introduce RadioGroup component with context management and accessibility features",
+          "summaryKey": "changelog.generated.v0.0.2.937ee",
+          "commitHash": "937ee",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/937eecf38",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "radio-group",
+          "summary": "enhance radio group components with control and label features",
+          "summaryKey": "changelog.generated.v0.0.2.ea93e",
+          "commitHash": "ea93e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ea93e7a74",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "radio-group",
+          "summary": "implement SRadioGroup and SRadioGroupItem components with theme context support and improved structure",
+          "summaryKey": "changelog.generated.v0.0.2.4f21e",
+          "commitHash": "4f21e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4f21eccbc",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "radio-group",
+          "summary": "add radio card and color examples, enhance radio group components with card support, and refactor index.vue to include new demo components",
+          "summaryKey": "changelog.generated.v0.0.2.7c817",
+          "commitHash": "7c817",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7c8172b29",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "radio-group",
+          "summary": "prevent click event when the control is disabled",
+          "summaryKey": "changelog.generated.v0.0.2.d0937",
+          "commitHash": "d0937",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d0937b471",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "radio-group",
+          "summary": "introduce RadioGroup component with context management and accessibility features",
+          "summaryKey": "changelog.generated.v0.0.2.937ee",
+          "commitHash": "937ee",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/937eecf38",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "radio-group",
+          "summary": "enhance radio group components with control and label features",
+          "summaryKey": "changelog.generated.v0.0.2.ea93e",
+          "commitHash": "ea93e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ea93e7a74",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "radio-group",
+          "summary": "implement SRadioGroup and SRadioGroupItem components with theme context support and improved structure",
+          "summaryKey": "changelog.generated.v0.0.2.4f21e",
+          "commitHash": "4f21e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4f21eccbc",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "radio-group",
+          "summary": "add radio card and color examples, enhance radio group components with card support, and refactor index.vue to include new demo components",
+          "summaryKey": "changelog.generated.v0.0.2.7c817",
+          "commitHash": "7c817",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7c8172b29",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "radio-group",
+          "summary": "prevent click event when the control is disabled",
+          "summaryKey": "changelog.generated.v0.0.2.d0937",
+          "commitHash": "d0937",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d0937b471",
+          "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
       ]

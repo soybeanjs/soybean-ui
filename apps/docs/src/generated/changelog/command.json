@@ -1,6 +1,6 @@
 {
   "component": "command",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "fix search options",
           "summaryKey": "changelog.generated.v0.9.1.2e26c",
           "commitHash": "2e26c",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2e26c75c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2e26c75c5",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -31,7 +31,7 @@
           "summary": "add placeholder prop to CommandProps",
           "summaryKey": "changelog.generated.v0.2.2.390fd",
           "commitHash": "390fd",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/390fdc43",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/390fdc43d",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -48,7 +48,7 @@
           "summary": "refactor command type definition",
           "summaryKey": "changelog.generated.v0.2.1.0e2ad",
           "commitHash": "0e2ad",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0e2ad99b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0e2ad99b1",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -65,7 +65,7 @@
           "summary": "add bottom slot to command component and refine groupLabel styles for improved layout",
           "summaryKey": "changelog.generated.v0.0.12.1f199",
           "commitHash": "1f199",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1f199dbb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1f199dbb9",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -82,24 +82,84 @@
           "summary": "remove searchTerm condition from empty state display logic",
           "summaryKey": "changelog.generated.v0.0.6.199bc",
           "commitHash": "199bc",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/199bc04e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/199bc04ee",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "command",
+          "summary": "remove searchTerm condition from empty state display logic",
+          "summaryKey": "changelog.generated.v0.0.6.199bc",
+          "commitHash": "199bc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/199bc04ee",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
       ]
     },
     {
-      "version": "v0.0.6-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6-beta.1",
-      "date": "2025-11-23",
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
       "entries": [
+        {
+          "type": "feature",
+          "scope": "command",
+          "summary": "implement SCommand component with options and dialog examples",
+          "summaryKey": "changelog.generated.v0.0.2.8f948",
+          "commitHash": "8f948",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8f948a9bd",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
         {
           "type": "fix",
           "scope": "command",
-          "summary": "remove searchTerm condition from empty state display logic",
-          "summaryKey": "changelog.generated.v0.0.6-beta.1.199bc",
-          "commitHash": "199bc",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/199bc04e",
+          "summary": "add useForwardListeners for improved event handling in ListboxRoot",
+          "summaryKey": "changelog.generated.v0.0.2.fffca",
+          "commitHash": "fffca",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fffca042b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "command",
+          "summary": "optimize command option data types",
+          "summaryKey": "changelog.generated.v0.0.2.72fc7",
+          "commitHash": "72fc7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/72fc77a67",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "command",
+          "summary": "add useForwardListeners for improved event handling in ListboxRoot",
+          "summaryKey": "changelog.generated.v0.0.2.fffca",
+          "commitHash": "fffca",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fffca042b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "command",
+          "summary": "implement SCommand component with options and dialog examples",
+          "summaryKey": "changelog.generated.v0.0.2.8f948",
+          "commitHash": "8f948",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8f948a9bd",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "command",
+          "summary": "optimize command option data types",
+          "summaryKey": "changelog.generated.v0.0.2.72fc7",
+          "commitHash": "72fc7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/72fc77a67",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

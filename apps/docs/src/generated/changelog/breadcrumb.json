@@ -1,6 +1,6 @@
 {
   "component": "breadcrumb",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "adjust padding in list variant for improved layout",
           "summaryKey": "changelog.generated.v0.0.7.88be2",
           "commitHash": "88be2",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/88be2285",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/88be22856",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

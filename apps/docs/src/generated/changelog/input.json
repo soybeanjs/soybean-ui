@@ -1,6 +1,6 @@
 {
   "component": "input",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -31,7 +31,7 @@
           "summary": "include clearProps in omitted properties for InputCompact",
           "summaryKey": "changelog.generated.v0.19.0.82f86",
           "commitHash": "82f86",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/82f86783",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/82f86783b",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -41,7 +41,7 @@
           "summary": "rename 'clearable' to 'clear' for consistency",
           "summaryKey": "changelog.generated.v0.19.0.b1072",
           "commitHash": "b1072",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b10722b2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b10722b23",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -58,7 +58,7 @@
           "summary": "add InputClear and InputCompact components with clear functionality",
           "summaryKey": "changelog.generated.v0.18.0.9f4b2",
           "commitHash": "9f4b2",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9f4b293d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9f4b293da",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -68,7 +68,7 @@
           "summary": "update type attribute handling and clear trigger in SInput tests",
           "summaryKey": "changelog.generated.v0.18.0.718f6",
           "commitHash": "718f6",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/718f6e72",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/718f6e725",
           "authors": ["soybeanjs", "Copilot"],
           "source": "exact-scope"
         }
@@ -85,7 +85,54 @@
           "summary": "add name and required props to InputControl and InputRoot for enhanced form handling",
           "summaryKey": "changelog.generated.v0.0.10.f28c6",
           "commitHash": "f28c6",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f28c6415",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f28c64153",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "input",
+          "summary": "implement Input component with various examples and context support",
+          "summaryKey": "changelog.generated.v0.0.2.2df28",
+          "commitHash": "2df28",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2df289e1e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "input",
+          "summary": "add aria-disabled attribute to input control for improved accessibility",
+          "summaryKey": "changelog.generated.v0.0.2.e1e7e",
+          "commitHash": "e1e7e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e1e7ed9f7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "input",
+          "summary": "implement Input component with various examples and context support",
+          "summaryKey": "changelog.generated.v0.0.2.2df28",
+          "commitHash": "2df28",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2df289e1e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "input",
+          "summary": "add aria-disabled attribute to input control for improved accessibility",
+          "summaryKey": "changelog.generated.v0.0.2.e1e7e",
+          "commitHash": "e1e7e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e1e7ed9f7",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

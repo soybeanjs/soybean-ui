@@ -1,6 +1,6 @@
 {
   "component": "affix",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -31,7 +31,7 @@
           "summary": "enhance target resolution to support string selectors and direct elements",
           "summaryKey": "changelog.generated.v0.15.0.7c212",
           "commitHash": "7c212",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7c2124df",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7c2124df6",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -41,7 +41,7 @@
           "summary": "reorganize type exports and clean up unused interfaces",
           "summaryKey": "changelog.generated.v0.15.0.7675b",
           "commitHash": "7675b",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7675bba7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7675bba71",
           "authors": ["soybean-js"],
           "source": "exact-scope"
         },
@@ -51,7 +51,7 @@
           "summary": "refactor Affix component: split three headless components",
           "summaryKey": "changelog.generated.v0.15.0.47d99",
           "commitHash": "47d99",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/47d994b8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/47d994b8f",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -61,41 +61,27 @@
           "summary": "add provideAffixUi for headless affix component to fix test",
           "summaryKey": "changelog.generated.v0.15.0.bf9b0",
           "commitHash": "bf9b0",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bf9b0dcc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bf9b0dcc7",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.3",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
-      "date": "2026-04-26",
-      "entries": [
+        },
         {
           "type": "optimization",
           "scope": "affix",
           "summary": "reorganize type exports and clean up unused interfaces",
-          "summaryKey": "changelog.generated.v0.15.0-beta.3.7675b",
+          "summaryKey": "changelog.generated.v0.15.0.7675b",
           "commitHash": "7675b",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7675bba7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7675bba71",
           "authors": ["soybean-js"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
-      "date": "2026-04-18",
-      "entries": [
+        },
         {
           "type": "optimization",
           "scope": "affix",
           "summary": "enhance target resolution to support string selectors and direct elements",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.7c212",
+          "summaryKey": "changelog.generated.v0.15.0.7c212",
           "commitHash": "7c212",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7c2124df",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7c2124df6",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -103,9 +89,9 @@
           "type": "refactor",
           "scope": "affix",
           "summary": "refactor Affix component: split three headless components",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.47d99",
+          "summaryKey": "changelog.generated.v0.15.0.47d99",
           "commitHash": "47d99",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/47d994b8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/47d994b8f",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -113,9 +99,9 @@
           "type": "chore",
           "scope": "affix",
           "summary": "add provideAffixUi for headless affix component to fix test",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.bf9b0",
+          "summaryKey": "changelog.generated.v0.15.0.bf9b0",
           "commitHash": "bf9b0",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bf9b0dcc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bf9b0dcc7",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

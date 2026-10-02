@@ -1,6 +1,6 @@
 {
   "component": "tags-input",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "Implement TagsInputCompact",
           "summaryKey": "changelog.generated.v0.19.0.ec340",
           "commitHash": "ec340",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ec34090d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ec34090d7",
           "authors": ["soybeanjs", "soybeanfe"],
           "source": "exact-scope"
         }

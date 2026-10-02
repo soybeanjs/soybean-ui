@@ -1,6 +1,6 @@
 {
   "component": "scroll-area",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,8 +14,8 @@
           "summary": "Implement ScrollAreaCompact",
           "summaryKey": "changelog.generated.v0.19.0.3e0e8",
           "commitHash": "3e0e8",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3e0e871a",
-          "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3e0e871a2",
+          "authors": ["soybeanjs", "CopilotKit", "soybeanfe"],
           "source": "exact-scope"
         }
       ]

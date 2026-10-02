@@ -1,6 +1,6 @@
 {
   "component": "switch",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "add direction support for switch component",
           "summaryKey": "changelog.generated.v0.20.0.f6453",
           "commitHash": "f6453",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f64533a9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f64533a9e",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -31,8 +31,115 @@
           "summary": "Implement SwitchCompact",
           "summaryKey": "changelog.generated.v0.19.0.71ab0",
           "commitHash": "71ab0",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/71ab06e4",
-          "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/71ab06e4e",
+          "authors": ["soybeanjs", "CopilotKit", "soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "switch",
+          "summary": "introduce SSwitch component along with SwitchRoot and SwitchThumb, implementing theme context and enhancing switch functionality",
+          "summaryKey": "changelog.generated.v0.0.2.aad68",
+          "commitHash": "aad68",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/aad68e9f3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "switch",
+          "summary": "enhance switch examples with new size, shape, and slot variations; update default switch value and card title",
+          "summaryKey": "changelog.generated.v0.0.2.862dd",
+          "commitHash": "862dd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/862ddb767",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "switch",
+          "summary": "add base example for SSwitch component in playground",
+          "summaryKey": "changelog.generated.v0.0.2.603cc",
+          "commitHash": "603cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/603cc2cca",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "switch",
+          "summary": "update card title from 'Separator' to 'Switch' for clarity in the switch example",
+          "summaryKey": "changelog.generated.v0.0.2.4c05d",
+          "commitHash": "4c05d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4c05d6a97",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "switch",
+          "summary": "improve type handling in context and update aria-checked logic for better accessibility",
+          "summaryKey": "changelog.generated.v0.0.2.22fcf",
+          "commitHash": "22fcf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/22fcf3680",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "switch",
+          "summary": "introduce SSwitch component along with SwitchRoot and SwitchThumb, implementing theme context and enhancing switch functionality",
+          "summaryKey": "changelog.generated.v0.0.2.aad68",
+          "commitHash": "aad68",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/aad68e9f3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "switch",
+          "summary": "enhance switch examples with new size, shape, and slot variations; update default switch value and card title",
+          "summaryKey": "changelog.generated.v0.0.2.862dd",
+          "commitHash": "862dd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/862ddb767",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "switch",
+          "summary": "add base example for SSwitch component in playground",
+          "summaryKey": "changelog.generated.v0.0.2.603cc",
+          "commitHash": "603cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/603cc2cca",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "switch",
+          "summary": "update card title from 'Separator' to 'Switch' for clarity in the switch example",
+          "summaryKey": "changelog.generated.v0.0.2.4c05d",
+          "commitHash": "4c05d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4c05d6a97",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "switch",
+          "summary": "improve type handling in context and update aria-checked logic for better accessibility",
+          "summaryKey": "changelog.generated.v0.0.2.22fcf",
+          "commitHash": "22fcf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/22fcf3680",
+          "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
       ]

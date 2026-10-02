@@ -1,6 +1,6 @@
 {
   "component": "empty",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "correct margin classes for media in size variants",
           "summaryKey": "changelog.generated.v0.20.0.bcec5",
           "commitHash": "bcec5",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bcec5907",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bcec59076",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -31,7 +31,7 @@
           "summary": "add EmptyCompact component and update empty structure",
           "summaryKey": "changelog.generated.v0.18.0.04cb4",
           "commitHash": "04cb4",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/04cb4c99",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/04cb4c990",
           "authors": ["soybeanfe", "Copilot"],
           "source": "exact-scope"
         },
@@ -41,7 +41,7 @@
           "summary": "improve header visibility logic in EmptyCompact component",
           "summaryKey": "changelog.generated.v0.18.0.8faf3",
           "commitHash": "8faf3",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8faf39cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8faf39ccb",
           "authors": ["soybeanfe", "Copilot"],
           "source": "exact-scope"
         }

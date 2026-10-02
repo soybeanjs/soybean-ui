@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-10-02T09:27:07.513Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
       "component": "accordion",
       "file": "accordion.json",
       "latestVersion": "v0.22.0",
-      "versionCount": 5,
-      "entryCount": 10
+      "versionCount": 4,
+      "entryCount": 40
     },
     "affix": {
       "component": "affix",
       "file": "affix.json",
       "latestVersion": "v0.28.2",
-      "versionCount": 4,
+      "versionCount": 2,
       "entryCount": 9
     },
     "alert": {
@@ -21,49 +21,49 @@
       "file": "alert.json",
       "latestVersion": "v0.15.0",
       "versionCount": 2,
-      "entryCount": 2
+      "entryCount": 6
     },
     "anchor": {
       "component": "anchor",
       "file": "anchor.json",
-      "latestVersion": "v0.50.0-beta.6",
-      "versionCount": 6,
-      "entryCount": 6
+      "latestVersion": "v0.50.0",
+      "versionCount": 4,
+      "entryCount": 7
     },
     "app-shell": {
       "component": "app-shell",
       "file": "app-shell.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 4,
-      "entryCount": 8
+      "latestVersion": "v0.50.0",
+      "versionCount": 1,
+      "entryCount": 16
     },
     "arrow": {
       "component": "arrow",
       "file": "arrow.json",
       "latestVersion": "v0.0.8",
-      "versionCount": 1,
-      "entryCount": 1
+      "versionCount": 2,
+      "entryCount": 5
     },
     "aspect-ratio": {
       "component": "aspect-ratio",
       "file": "aspect-ratio.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.0.2",
+      "versionCount": 1,
+      "entryCount": 2
     },
     "autocomplete": {
       "component": "autocomplete",
       "file": "autocomplete.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 5,
-      "entryCount": 5
+      "latestVersion": "v0.31.0",
+      "versionCount": 3,
+      "entryCount": 4
     },
     "avatar": {
       "component": "avatar",
       "file": "avatar.json",
       "latestVersion": "v0.40.0",
-      "versionCount": 3,
-      "entryCount": 3
+      "versionCount": 4,
+      "entryCount": 9
     },
     "backtop": {
       "component": "backtop",
@@ -76,8 +76,8 @@
       "component": "badge",
       "file": "badge.json",
       "latestVersion": "v0.18.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "versionCount": 3,
+      "entryCount": 12
     },
     "breadcrumb": {
       "component": "breadcrumb",
@@ -89,9 +89,9 @@
     "button": {
       "component": "button",
       "file": "button.json",
-      "latestVersion": "v0.50.0-beta.9",
+      "latestVersion": "v0.50.0",
       "versionCount": 7,
-      "entryCount": 7
+      "entryCount": 21
     },
     "calendar": {
       "component": "calendar",
@@ -103,51 +103,51 @@
     "calendar-range": {
       "component": "calendar-range",
       "file": "calendar-range.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 3,
-      "entryCount": 7
+      "latestVersion": "v0.50.0",
+      "versionCount": 2,
+      "entryCount": 12
     },
     "card": {
       "component": "card",
       "file": "card.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 8,
-      "entryCount": 9
+      "latestVersion": "v0.50.0",
+      "versionCount": 9,
+      "entryCount": 28
     },
     "carousel": {
       "component": "carousel",
       "file": "carousel.json",
       "latestVersion": "v0.18.0",
-      "versionCount": 4,
+      "versionCount": 3,
       "entryCount": 4
     },
     "cascader": {
       "component": "cascader",
       "file": "cascader.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 5,
-      "entryCount": 6
+      "latestVersion": "v0.31.0",
+      "versionCount": 2,
+      "entryCount": 5
     },
     "checkbox": {
       "component": "checkbox",
       "file": "checkbox.json",
       "latestVersion": "v0.19.0",
       "versionCount": 6,
-      "entryCount": 9
+      "entryCount": 35
     },
     "clipboard": {
       "component": "clipboard",
       "file": "clipboard.json",
       "latestVersion": "v0.18.0",
-      "versionCount": 3,
+      "versionCount": 2,
       "entryCount": 3
     },
     "collapsible": {
       "component": "collapsible",
       "file": "collapsible.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 1,
-      "entryCount": 2
+      "latestVersion": "v0.50.0",
+      "versionCount": 2,
+      "entryCount": 10
     },
     "color-area": {
       "component": "color-area",
@@ -167,15 +167,15 @@
       "component": "color-picker",
       "file": "color-picker.json",
       "latestVersion": "v0.40.0",
-      "versionCount": 8,
-      "entryCount": 10
+      "versionCount": 6,
+      "entryCount": 8
     },
     "color-slider": {
       "component": "color-slider",
       "file": "color-slider.json",
-      "latestVersion": "v0.50.0-beta.9",
+      "latestVersion": "v0.50.0",
       "versionCount": 1,
-      "entryCount": 1
+      "entryCount": 2
     },
     "color-swatch": {
       "component": "color-swatch",
@@ -194,30 +194,30 @@
     "combobox": {
       "component": "combobox",
       "file": "combobox.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 7,
-      "entryCount": 11
+      "latestVersion": "v0.31.0",
+      "versionCount": 4,
+      "entryCount": 9
     },
     "command": {
       "component": "command",
       "file": "command.json",
       "latestVersion": "v0.9.1",
       "versionCount": 6,
-      "entryCount": 6
+      "entryCount": 12
     },
     "config-provider": {
       "component": "config-provider",
       "file": "config-provider.json",
       "latestVersion": "v0.30.0",
-      "versionCount": 13,
-      "entryCount": 18
+      "versionCount": 10,
+      "entryCount": 30
     },
     "context-menu": {
       "component": "context-menu",
       "file": "context-menu.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.50.0",
+      "versionCount": 4,
+      "entryCount": 8
     },
     "date-field": {
       "component": "date-field",
@@ -251,28 +251,28 @@
       "component": "dialog",
       "file": "dialog.json",
       "latestVersion": "v0.40.0",
-      "versionCount": 15,
-      "entryCount": 23
+      "versionCount": 13,
+      "entryCount": 63
     },
     "drawer": {
       "component": "drawer",
       "file": "drawer.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 8,
-      "entryCount": 22
+      "latestVersion": "v0.50.0",
+      "versionCount": 7,
+      "entryCount": 48
     },
     "dropdown-menu": {
       "component": "dropdown-menu",
       "file": "dropdown-menu.json",
       "latestVersion": "v0.40.0",
       "versionCount": 4,
-      "entryCount": 5
+      "entryCount": 25
     },
     "editable": {
       "component": "editable",
       "file": "editable.json",
       "latestVersion": "v0.20.0",
-      "versionCount": 4,
+      "versionCount": 3,
       "entryCount": 5
     },
     "empty": {
@@ -285,9 +285,9 @@
     "form": {
       "component": "form",
       "file": "form.json",
-      "latestVersion": "v0.50.0-beta.1",
+      "latestVersion": "v0.50.0",
       "versionCount": 12,
-      "entryCount": 19
+      "entryCount": 30
     },
     "hover-card": {
       "component": "hover-card",
@@ -300,15 +300,15 @@
       "component": "icon",
       "file": "icon.json",
       "latestVersion": "v0.40.0",
-      "versionCount": 9,
-      "entryCount": 12
+      "versionCount": 7,
+      "entryCount": 24
     },
     "input": {
       "component": "input",
       "file": "input.json",
       "latestVersion": "v0.22.1",
-      "versionCount": 4,
-      "entryCount": 6
+      "versionCount": 5,
+      "entryCount": 10
     },
     "input-number": {
       "component": "input-number",
@@ -321,127 +321,127 @@
       "component": "input-otp",
       "file": "input-otp.json",
       "latestVersion": "v0.40.0",
-      "versionCount": 3,
-      "entryCount": 3
+      "versionCount": 2,
+      "entryCount": 2
     },
     "kbd": {
       "component": "kbd",
       "file": "kbd.json",
       "latestVersion": "v0.15.1",
-      "versionCount": 1,
-      "entryCount": 1
+      "versionCount": 2,
+      "entryCount": 7
     },
     "label": {
       "component": "label",
       "file": "label.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.0.2",
+      "versionCount": 1,
+      "entryCount": 4
     },
     "layout": {
       "component": "layout",
       "file": "layout.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 20,
-      "entryCount": 27
+      "latestVersion": "v0.50.0",
+      "versionCount": 18,
+      "entryCount": 41
     },
     "link": {
       "component": "link",
       "file": "link.json",
       "latestVersion": "v0.40.0",
-      "versionCount": 12,
-      "entryCount": 12
+      "versionCount": 11,
+      "entryCount": 36
     },
     "list": {
       "component": "list",
       "file": "list.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.0.2",
+      "versionCount": 1,
+      "entryCount": 2
     },
     "listbox": {
       "component": "listbox",
       "file": "listbox.json",
       "latestVersion": "v0.15.0",
       "versionCount": 3,
-      "entryCount": 4
+      "entryCount": 12
     },
     "menu": {
       "component": "menu",
       "file": "menu.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 11,
-      "entryCount": 22
+      "latestVersion": "v0.31.0",
+      "versionCount": 9,
+      "entryCount": 47
     },
     "menubar": {
       "component": "menubar",
       "file": "menubar.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 6,
-      "entryCount": 12
+      "latestVersion": "v0.50.0",
+      "versionCount": 4,
+      "entryCount": 14
     },
     "nav-menu": {
       "component": "nav-menu",
       "file": "nav-menu.json",
       "latestVersion": "v0.40.0",
-      "versionCount": 2,
+      "versionCount": 1,
       "entryCount": 3
     },
     "page-tabs": {
       "component": "page-tabs",
       "file": "page-tabs.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 13,
-      "entryCount": 13
+      "latestVersion": "v0.50.0",
+      "versionCount": 10,
+      "entryCount": 16
     },
     "pagination": {
       "component": "pagination",
       "file": "pagination.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 6,
-      "entryCount": 7
+      "latestVersion": "v0.50.0",
+      "versionCount": 7,
+      "entryCount": 11
     },
     "palette-picker": {
       "component": "palette-picker",
       "file": "palette-picker.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 2,
-      "entryCount": 3
+      "latestVersion": "v0.50.0",
+      "versionCount": 1,
+      "entryCount": 6
     },
     "password": {
       "component": "password",
       "file": "password.json",
       "latestVersion": "v0.22.1",
-      "versionCount": 1,
-      "entryCount": 1
+      "versionCount": 2,
+      "entryCount": 3
     },
     "popconfirm": {
       "component": "popconfirm",
       "file": "popconfirm.json",
-      "latestVersion": "v0.40.0-beta.1",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.31.0",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "popover": {
       "component": "popover",
       "file": "popover.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 7,
-      "entryCount": 11
+      "latestVersion": "v0.50.0",
+      "versionCount": 8,
+      "entryCount": 26
     },
     "popper": {
       "component": "popper",
       "file": "popper.json",
       "latestVersion": "v0.16.0",
-      "versionCount": 3,
-      "entryCount": 4
+      "versionCount": 4,
+      "entryCount": 24
     },
     "portal": {
       "component": "portal",
       "file": "portal.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.0.2",
+      "versionCount": 1,
+      "entryCount": 6
     },
     "primitive": {
       "component": "primitive",
@@ -454,15 +454,15 @@
       "component": "progress",
       "file": "progress.json",
       "latestVersion": "v0.40.0",
-      "versionCount": 8,
+      "versionCount": 5,
       "entryCount": 11
     },
     "radio-group": {
       "component": "radio-group",
       "file": "radio-group.json",
       "latestVersion": "v0.20.0",
-      "versionCount": 1,
-      "entryCount": 1
+      "versionCount": 2,
+      "entryCount": 11
     },
     "rating": {
       "component": "rating",
@@ -481,65 +481,65 @@
     "segment": {
       "component": "segment",
       "file": "segment.json",
-      "latestVersion": "v0.40.0-beta.1",
+      "latestVersion": "v0.31.0",
       "versionCount": 2,
-      "entryCount": 2
+      "entryCount": 5
     },
     "select": {
       "component": "select",
       "file": "select.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 13,
-      "entryCount": 22
+      "latestVersion": "v0.50.0",
+      "versionCount": 11,
+      "entryCount": 39
     },
     "separator": {
       "component": "separator",
       "file": "separator.json",
       "latestVersion": "v0.19.0",
-      "versionCount": 1,
-      "entryCount": 2
+      "versionCount": 2,
+      "entryCount": 6
     },
     "sheet": {
       "component": "sheet",
       "file": "sheet.json",
-      "latestVersion": "v0.50.0-beta.9",
+      "latestVersion": "v0.50.0",
       "versionCount": 1,
-      "entryCount": 2
+      "entryCount": 4
     },
     "skeleton": {
       "component": "skeleton",
       "file": "skeleton.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.50.0",
+      "versionCount": 2,
+      "entryCount": 4
     },
     "slider": {
       "component": "slider",
       "file": "slider.json",
       "latestVersion": "v0.19.0",
-      "versionCount": 3,
+      "versionCount": 2,
       "entryCount": 4
     },
     "slot": {
       "component": "slot",
       "file": "slot.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.0.2",
+      "versionCount": 1,
+      "entryCount": 2
     },
     "spinner": {
       "component": "spinner",
       "file": "spinner.json",
       "latestVersion": "v0.15.0",
-      "versionCount": 2,
+      "versionCount": 1,
       "entryCount": 2
     },
     "split-nav": {
       "component": "split-nav",
       "file": "split-nav.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 5,
-      "entryCount": 12
+      "latestVersion": "v0.50.0",
+      "versionCount": 3,
+      "entryCount": 14
     },
     "splitter": {
       "component": "splitter",
@@ -552,36 +552,36 @@
       "component": "stepper",
       "file": "stepper.json",
       "latestVersion": "v0.30.0",
-      "versionCount": 4,
+      "versionCount": 3,
       "entryCount": 4
     },
     "switch": {
       "component": "switch",
       "file": "switch.json",
       "latestVersion": "v0.20.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "versionCount": 3,
+      "entryCount": 12
     },
     "table": {
       "component": "table",
       "file": "table.json",
-      "latestVersion": "v0.50.0-beta.2",
-      "versionCount": 19,
-      "entryCount": 44
+      "latestVersion": "v0.50.0",
+      "versionCount": 14,
+      "entryCount": 46
     },
     "tabs": {
       "component": "tabs",
       "file": "tabs.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.50.0",
+      "versionCount": 4,
+      "entryCount": 8
     },
     "tag": {
       "component": "tag",
       "file": "tag.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.50.0",
+      "versionCount": 3,
+      "entryCount": 7
     },
     "tags-input": {
       "component": "tags-input",
@@ -594,22 +594,22 @@
       "component": "textarea",
       "file": "textarea.json",
       "latestVersion": "v0.19.0",
-      "versionCount": 1,
-      "entryCount": 1
+      "versionCount": 2,
+      "entryCount": 5
     },
     "theme-customizer": {
       "component": "theme-customizer",
       "file": "theme-customizer.json",
-      "latestVersion": "v0.50.0-beta.10",
-      "versionCount": 6,
-      "entryCount": 6
+      "latestVersion": "v0.50.0",
+      "versionCount": 3,
+      "entryCount": 9
     },
     "theme-mode-segment": {
       "component": "theme-mode-segment",
       "file": "theme-mode-segment.json",
-      "latestVersion": "v0.50.0-beta.10",
+      "latestVersion": "v0.50.0",
       "versionCount": 1,
-      "entryCount": 1
+      "entryCount": 2
     },
     "theme-mode-select": {
       "component": "theme-mode-select",
@@ -642,22 +642,22 @@
     "toast": {
       "component": "toast",
       "file": "toast.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 10,
-      "entryCount": 15
+      "latestVersion": "v0.50.0",
+      "versionCount": 8,
+      "entryCount": 19
     },
     "toggle": {
       "component": "toggle",
       "file": "toggle.json",
       "latestVersion": "v0.23.1",
-      "versionCount": 4,
+      "versionCount": 2,
       "entryCount": 4
     },
     "toggle-group": {
       "component": "toggle-group",
       "file": "toggle-group.json",
       "latestVersion": "v0.30.0",
-      "versionCount": 5,
+      "versionCount": 3,
       "entryCount": 5
     },
     "toolbar": {
@@ -671,43 +671,43 @@
       "component": "tooltip",
       "file": "tooltip.json",
       "latestVersion": "v0.20.0",
-      "versionCount": 6,
-      "entryCount": 8
+      "versionCount": 7,
+      "entryCount": 22
     },
     "tree": {
       "component": "tree",
       "file": "tree.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 1,
-      "entryCount": 6
+      "latestVersion": "v0.50.0",
+      "versionCount": 2,
+      "entryCount": 22
     },
     "tree-menu": {
       "component": "tree-menu",
       "file": "tree-menu.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 35,
-      "entryCount": 43
+      "latestVersion": "v0.50.0",
+      "versionCount": 30,
+      "entryCount": 57
     },
     "tree-nav": {
       "component": "tree-nav",
       "file": "tree-nav.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 3,
-      "entryCount": 5
+      "latestVersion": "v0.50.0",
+      "versionCount": 2,
+      "entryCount": 6
     },
     "virtualizer": {
       "component": "virtualizer",
       "file": "virtualizer.json",
-      "latestVersion": "v0.50.0-beta.9",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.50.0",
+      "versionCount": 2,
+      "entryCount": 4
     },
     "visually-hidden": {
       "component": "visually-hidden",
       "file": "visually-hidden.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.0.2",
+      "versionCount": 1,
+      "entryCount": 4
     },
     "watermark": {
       "component": "watermark",

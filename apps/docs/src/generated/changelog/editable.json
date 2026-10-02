@@ -1,6 +1,6 @@
 {
   "component": "editable",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "simplify Editable component by using EditableCompact",
           "summaryKey": "changelog.generated.v0.20.0.41d72",
           "commitHash": "41d72",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/41d72493",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/41d724932",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -24,7 +24,7 @@
           "summary": "make aria-label test asynchronous",
           "summaryKey": "changelog.generated.v0.20.0.106c5",
           "commitHash": "106c5",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/106c5e97",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/106c5e978",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -41,7 +41,7 @@
           "summary": "implement Compact components for Card, Popover, Editable, HoverCard, NavigationMenu, Pagination and Stepper",
           "summaryKey": "changelog.generated.v0.16.0.6cbdc",
           "commitHash": "6cbdc",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee71",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -58,24 +58,17 @@
           "summary": "update layout for consistent sizing in editable examples",
           "summaryKey": "changelog.generated.v0.15.0.c7634",
           "commitHash": "c7634",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c76340c1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c76340c1b",
           "authors": ["soybeanfe", "Copilot"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.3",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
-      "date": "2026-04-26",
-      "entries": [
+        },
         {
           "type": "style",
           "scope": "editable",
           "summary": "update layout for consistent sizing in editable examples",
-          "summaryKey": "changelog.generated.v0.15.0-beta.3.c7634",
+          "summaryKey": "changelog.generated.v0.15.0.c7634",
           "commitHash": "c7634",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c76340c1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c76340c1b",
           "authors": ["soybeanfe", "Copilot"],
           "source": "exact-scope"
         }

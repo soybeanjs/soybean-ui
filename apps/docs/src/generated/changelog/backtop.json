@@ -1,6 +1,6 @@
 {
   "component": "backtop",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "emit click event in onClick function",
           "summaryKey": "changelog.generated.v0.19.0.af273",
           "commitHash": "af273",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/af2737b6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/af2737b6d",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -24,7 +24,7 @@
           "summary": "fix aria-hidden warning when click",
           "summaryKey": "changelog.generated.v0.19.0.437fe",
           "commitHash": "437fe",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/437fe0cb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/437fe0cba",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -41,7 +41,7 @@
           "summary": "update size handling in backtopVariants and computed class",
           "summaryKey": "changelog.generated.v0.18.0.fa0df",
           "commitHash": "fa0df",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fa0dfa26",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fa0dfa263",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -51,7 +51,7 @@
           "summary": "update click event type from MouseEvent to PointerEvent for consistency",
           "summaryKey": "changelog.generated.v0.18.0.4666c",
           "commitHash": "4666c",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4666c178",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4666c1788",
           "authors": ["soybeanfe", "Copilot"],
           "source": "exact-scope"
         }

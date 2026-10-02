@@ -1,6 +1,74 @@
 {
   "component": "portal",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "portal",
+          "summary": "add Portal component with teleport functionality and associated types",
+          "summaryKey": "changelog.generated.v0.0.2.9aea3",
+          "commitHash": "9aea3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9aea3f6ce",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "portal",
+          "summary": "add default 'to' prop for improved flexibility in portal component",
+          "summaryKey": "changelog.generated.v0.0.2.d0a02",
+          "commitHash": "d0a02",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d0a025494",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "portal",
+          "summary": "extend PortalProps interface to include ForceMountProps for enhanced functionality",
+          "summaryKey": "changelog.generated.v0.0.2.ba480",
+          "commitHash": "ba480",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ba480da7d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "portal",
+          "summary": "add Portal component with teleport functionality and associated types",
+          "summaryKey": "changelog.generated.v0.0.2.9aea3",
+          "commitHash": "9aea3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9aea3f6ce",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "portal",
+          "summary": "add default 'to' prop for improved flexibility in portal component",
+          "summaryKey": "changelog.generated.v0.0.2.d0a02",
+          "commitHash": "d0a02",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d0a025494",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "portal",
+          "summary": "extend PortalProps interface to include ForceMountProps for enhanced functionality",
+          "summaryKey": "changelog.generated.v0.0.2.ba480",
+          "commitHash": "ba480",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ba480da7d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }

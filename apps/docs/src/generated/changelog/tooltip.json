@@ -1,6 +1,6 @@
 {
   "component": "tooltip",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "rename forwardedRootProps to forwardedProps for consistency",
           "summaryKey": "changelog.generated.v0.20.0.ae39f",
           "commitHash": "ae39f",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ae39f7b0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ae39f7b0d",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -31,7 +31,7 @@
           "summary": "add prioritizePosition prop for improved tooltip positioning",
           "summaryKey": "changelog.generated.v0.19.0.85b45",
           "commitHash": "85b45",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/85b4523b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/85b4523b0",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -41,8 +41,8 @@
           "summary": "Implement TooltipCompact components",
           "summaryKey": "changelog.generated.v0.19.0.dbae3",
           "commitHash": "dbae3",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/dbae3f8d",
-          "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/dbae3f8d4",
+          "authors": ["soybeanjs", "CopilotKit", "soybeanfe"],
           "source": "exact-scope"
         }
       ]
@@ -58,7 +58,7 @@
           "summary": "enhance positioner props and context integration",
           "summaryKey": "changelog.generated.v0.14.0.5ce78",
           "commitHash": "5ce78",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5ce78414",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5ce784141",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -75,7 +75,7 @@
           "summary": "add default prop for avoidCollisions in TooltipPositioner; bind triggerProps to TooltipTrigger",
           "summaryKey": "changelog.generated.v0.12.0.e024c",
           "commitHash": "e024c",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e024c231",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e024c2311",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -92,7 +92,7 @@
           "summary": "simplify ariaLabel computation and remove unused slots",
           "summaryKey": "changelog.generated.v0.8.0.2fa29",
           "commitHash": "2fa29",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2fa29ef0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2fa29ef0f",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -109,7 +109,7 @@
           "summary": "remove TooltipPositioner context and update related components for improved clarity and functionality",
           "summaryKey": "changelog.generated.v0.0.8.4d8da",
           "commitHash": "4d8da",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d8da100",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d8da1004",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         },
@@ -119,7 +119,154 @@
           "summary": "remove TooltipContent, introduce TooltipPopup and TooltipPositioner components, and enhance context management for improved structure and functionality",
           "summaryKey": "changelog.generated.v0.0.8.41a2d",
           "commitHash": "41a2d",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/41a2d630",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/41a2d630f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "add tooltip component with provider, trigger, and content implementations for enhanced UI interactions",
+          "summaryKey": "changelog.generated.v0.0.2.a132b",
+          "commitHash": "a132b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a132ba044",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "add scroll event handling to close tooltip on scroll and enhance cleanup management",
+          "summaryKey": "changelog.generated.v0.0.2.9b6de",
+          "commitHash": "9b6de",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9b6de0fce",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "implement STooltip component with customizable positioning, arrow support, and enhanced theming",
+          "summaryKey": "changelog.generated.v0.0.2.77bd5",
+          "commitHash": "77bd5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/77bd5aed2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "tooltip",
+          "summary": "enhance element management by replacing setElement functions with callback handlers and introducing PopperContentWrapper for improved structure",
+          "summaryKey": "changelog.generated.v0.0.2.13afb",
+          "commitHash": "13afb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/13afb9b11",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "tooltip",
+          "summary": "reduce delayDuration from 700 to 150 for improved tooltip responsiveness",
+          "summaryKey": "changelog.generated.v0.0.2.51bbd",
+          "commitHash": "51bbd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/51bbd6c51",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "tooltip",
+          "summary": "replace TooltipProvider with TooltipOpenDelayed context and enhance tooltip configuration management",
+          "summaryKey": "changelog.generated.v0.0.2.0eda5",
+          "commitHash": "0eda5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0eda5b4a6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "add optional 'content' prop to tooltip component",
+          "summaryKey": "changelog.generated.v0.0.2.9a5cc",
+          "commitHash": "9a5cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9a5ccc9df",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "add tooltip component with provider, trigger, and content implementations for enhanced UI interactions",
+          "summaryKey": "changelog.generated.v0.0.2.a132b",
+          "commitHash": "a132b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a132ba044",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "add scroll event handling to close tooltip on scroll and enhance cleanup management",
+          "summaryKey": "changelog.generated.v0.0.2.9b6de",
+          "commitHash": "9b6de",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9b6de0fce",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "implement STooltip component with customizable positioning, arrow support, and enhanced theming",
+          "summaryKey": "changelog.generated.v0.0.2.77bd5",
+          "commitHash": "77bd5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/77bd5aed2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "tooltip",
+          "summary": "enhance element management by replacing setElement functions with callback handlers and introducing PopperContentWrapper for improved structure",
+          "summaryKey": "changelog.generated.v0.0.2.13afb",
+          "commitHash": "13afb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/13afb9b11",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "tooltip",
+          "summary": "reduce delayDuration from 700 to 150 for improved tooltip responsiveness",
+          "summaryKey": "changelog.generated.v0.0.2.51bbd",
+          "commitHash": "51bbd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/51bbd6c51",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "tooltip",
+          "summary": "replace TooltipProvider with TooltipOpenDelayed context and enhance tooltip configuration management",
+          "summaryKey": "changelog.generated.v0.0.2.0eda5",
+          "commitHash": "0eda5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0eda5b4a6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "add optional 'content' prop to tooltip component",
+          "summaryKey": "changelog.generated.v0.0.2.9a5cc",
+          "commitHash": "9a5cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9a5ccc9df",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

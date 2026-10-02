@@ -1,6 +1,6 @@
 {
   "component": "checkbox",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,7 +14,7 @@
           "summary": "update component structure for improved readability",
           "summaryKey": "changelog.generated.v0.19.0.3a6a2",
           "commitHash": "3a6a2",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3a6a2539",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3a6a2539d",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -24,7 +24,7 @@
           "summary": "set default rovingFocus prop in CheckboxCardGroupCompact",
           "summaryKey": "changelog.generated.v0.19.0.5930e",
           "commitHash": "5930e",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5930eb01",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5930eb019",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -34,7 +34,7 @@
           "summary": "set default rovingFocus prop in CheckboxCardGroup and CheckboxGroup",
           "summaryKey": "changelog.generated.v0.19.0.d659e",
           "commitHash": "d659e",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d659ee7c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d659ee7c2",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -51,7 +51,7 @@
           "summary": "update forwardedProps to omit 'class' instead of 'label'",
           "summaryKey": "changelog.generated.v0.15.0.0d537",
           "commitHash": "0d537",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d5375c8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d5375c83",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         },
@@ -61,24 +61,17 @@
           "summary": "fix emit parameter syntax for consistency",
           "summaryKey": "changelog.generated.v0.15.0.1d2d7",
           "commitHash": "1d2d7",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1d2d7797",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1d2d7797f",
           "authors": ["soybeanjs", "Copilot"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.3",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
-      "date": "2026-04-26",
-      "entries": [
+        },
         {
           "type": "fix",
           "scope": "checkbox",
           "summary": "update forwardedProps to omit 'class' instead of 'label'",
-          "summaryKey": "changelog.generated.v0.15.0-beta.3.0d537",
+          "summaryKey": "changelog.generated.v0.15.0.0d537",
           "commitHash": "0d537",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d5375c8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d5375c83",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -95,7 +88,7 @@
           "summary": "conditionally render CheckboxLabel based on slot or label presence; update root variant style",
           "summaryKey": "changelog.generated.v0.9.0.78f2b",
           "commitHash": "78f2b",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/78f2bfbe",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/78f2bfbea",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -112,7 +105,7 @@
           "summary": "fix markdown format",
           "summaryKey": "changelog.generated.v0.0.20.762c9",
           "commitHash": "762c9",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/762c96f8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/762c96f86",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -129,7 +122,274 @@
           "summary": "support enter keyboard to toggle checked state",
           "summaryKey": "changelog.generated.v0.0.19.75ddd",
           "commitHash": "75ddd",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/75ddd2de",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/75ddd2ded",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "add Checkbox component with various states and group functionality",
+          "summaryKey": "changelog.generated.v0.0.2.3dfcb",
+          "commitHash": "3dfcb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3dfcbee82",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "refactor checkbox components to utilize new theme context and improve structure with SCheckbox and SCheckboxGroup",
+          "summaryKey": "changelog.generated.v0.0.2.81075",
+          "commitHash": "81075",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/810758ca5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "add CheckboxCard and CheckboxCardGroup components, enhancing checkbox functionality with card layouts and improved UI integration",
+          "summaryKey": "changelog.generated.v0.0.2.1b764",
+          "commitHash": "1b764",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1b7645662",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "add color and size examples, enhance checkbox card and group components with color support, and improve checkbox labels",
+          "summaryKey": "changelog.generated.v0.0.2.ac32d",
+          "commitHash": "ac32d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ac32df1d2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "introduce shape and icon examples, enhance checkbox components with shape support, and update card group styling",
+          "summaryKey": "changelog.generated.v0.0.2.bbd07",
+          "commitHash": "bbd07",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bbd0768f2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "checkbox",
+          "summary": "update click handler to check for groupContext existence before accessing modelValue",
+          "summaryKey": "changelog.generated.v0.0.2.78fda",
+          "commitHash": "78fda",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/78fda71ee",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "remove unused constants and CSS variables from shared checkbox file",
+          "summaryKey": "changelog.generated.v0.0.2.494f4",
+          "commitHash": "494f4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/494f4c35d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "consolidate CheckedState type definition and update related functions for clarity",
+          "summaryKey": "changelog.generated.v0.0.2.fac63",
+          "commitHash": "fac63",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fac63ac29",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "simplify checkbox component structure and enhance group functionality with improved state management",
+          "summaryKey": "changelog.generated.v0.0.2.4d4ec",
+          "commitHash": "4d4ec",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d4ecf588",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "enhance accessibility and state management by introducing getAriaLabel function and updating element references",
+          "summaryKey": "changelog.generated.v0.0.2.472ba",
+          "commitHash": "472ba",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/472ba7ebf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "improve type safety by ensuring modelValue updates only with non-nullable values",
+          "summaryKey": "changelog.generated.v0.0.2.1c300",
+          "commitHash": "1c300",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1c3001584",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "update checkbox context and styling to use data-state attribute for improved state management",
+          "summaryKey": "changelog.generated.v0.0.2.ca1b5",
+          "commitHash": "ca1b5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca1b53b3b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "move isIndeterminate function to shared utility and clean up imports",
+          "summaryKey": "changelog.generated.v0.0.2.61449",
+          "commitHash": "61449",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/614491682",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "add Checkbox component with various states and group functionality",
+          "summaryKey": "changelog.generated.v0.0.2.3dfcb",
+          "commitHash": "3dfcb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3dfcbee82",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "refactor checkbox components to utilize new theme context and improve structure with SCheckbox and SCheckboxGroup",
+          "summaryKey": "changelog.generated.v0.0.2.81075",
+          "commitHash": "81075",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/810758ca5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "add CheckboxCard and CheckboxCardGroup components, enhancing checkbox functionality with card layouts and improved UI integration",
+          "summaryKey": "changelog.generated.v0.0.2.1b764",
+          "commitHash": "1b764",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1b7645662",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "add color and size examples, enhance checkbox card and group components with color support, and improve checkbox labels",
+          "summaryKey": "changelog.generated.v0.0.2.ac32d",
+          "commitHash": "ac32d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ac32df1d2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "introduce shape and icon examples, enhance checkbox components with shape support, and update card group styling",
+          "summaryKey": "changelog.generated.v0.0.2.bbd07",
+          "commitHash": "bbd07",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bbd0768f2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "checkbox",
+          "summary": "update click handler to check for groupContext existence before accessing modelValue",
+          "summaryKey": "changelog.generated.v0.0.2.78fda",
+          "commitHash": "78fda",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/78fda71ee",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "remove unused constants and CSS variables from shared checkbox file",
+          "summaryKey": "changelog.generated.v0.0.2.494f4",
+          "commitHash": "494f4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/494f4c35d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "consolidate CheckedState type definition and update related functions for clarity",
+          "summaryKey": "changelog.generated.v0.0.2.fac63",
+          "commitHash": "fac63",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fac63ac29",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "simplify checkbox component structure and enhance group functionality with improved state management",
+          "summaryKey": "changelog.generated.v0.0.2.4d4ec",
+          "commitHash": "4d4ec",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d4ecf588",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "enhance accessibility and state management by introducing getAriaLabel function and updating element references",
+          "summaryKey": "changelog.generated.v0.0.2.472ba",
+          "commitHash": "472ba",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/472ba7ebf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "improve type safety by ensuring modelValue updates only with non-nullable values",
+          "summaryKey": "changelog.generated.v0.0.2.1c300",
+          "commitHash": "1c300",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1c3001584",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "update checkbox context and styling to use data-state attribute for improved state management",
+          "summaryKey": "changelog.generated.v0.0.2.ca1b5",
+          "commitHash": "ca1b5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca1b53b3b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "checkbox",
+          "summary": "move isIndeterminate function to shared utility and clean up imports",
+          "summaryKey": "changelog.generated.v0.0.2.61449",
+          "commitHash": "61449",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/614491682",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

@@ -1,18 +1,28 @@
 {
   "component": "anchor",
-  "generatedAt": "2026-09-28T14:35:37.980Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
-      "version": "v0.50.0-beta.6",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.5...v0.50.0-beta.6",
-      "date": "2026-09-28",
+      "version": "v0.50.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.40.1...v0.50.0",
+      "date": "2026-10-02",
       "entries": [
         {
           "type": "style",
           "scope": "anchor",
           "summary": "update focus-visible ring styles for link variants",
-          "summaryKey": "changelog.generated.v0.50.0-beta.6.56bdb",
+          "summaryKey": "changelog.generated.v0.50.0.56bdb",
+          "commitHash": "56bdb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/56bdba101",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "anchor",
+          "summary": "update focus-visible ring styles for link variants",
+          "summaryKey": "changelog.generated.v0.50.0.56bdb",
           "commitHash": "56bdb",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/56bdba101",
           "authors": ["soybeanjs"],
@@ -34,19 +44,12 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a2a1e97d9",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.40.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0...v0.40.0-beta.1",
-      "date": "2026-09-11",
-      "entries": [
+        },
         {
           "type": "fix",
           "scope": "anchor",
           "summary": "preserve history state in hash sync",
-          "summaryKey": "changelog.generated.v0.40.0-beta.1.a2a1e",
+          "summaryKey": "changelog.generated.v0.40.0.a2a1e",
           "commitHash": "a2a1e",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a2a1e97d9",
           "authors": ["soybeanfe"],
@@ -65,7 +68,7 @@
           "summary": "rename AnchorItemCompact component and update types",
           "summaryKey": "changelog.generated.v0.17.0.11966",
           "commitHash": "11966",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1196658c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1196658ca",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -82,24 +85,17 @@
           "summary": "enhance anchor component with location hash sync and optimize code",
           "summaryKey": "changelog.generated.v0.15.0.3b126",
           "commitHash": "3b126",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3b1267b1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3b1267b11",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
-      "date": "2026-04-18",
-      "entries": [
+        },
         {
           "type": "optimization",
           "scope": "anchor",
           "summary": "enhance anchor component with location hash sync and optimize code",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.3b126",
+          "summaryKey": "changelog.generated.v0.15.0.3b126",
           "commitHash": "3b126",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3b1267b1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3b1267b11",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

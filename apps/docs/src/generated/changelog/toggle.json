@@ -1,6 +1,6 @@
 {
   "component": "toggle",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -17,21 +17,14 @@
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7b9c4b1f0",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.23.1-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1-beta.1",
-      "date": "2026-05-19",
-      "entries": [
+        },
         {
           "type": "fix",
           "scope": "toggle",
           "summary": "fix class binding",
-          "summaryKey": "changelog.generated.v0.23.1-beta.1.7b9c4",
+          "summaryKey": "changelog.generated.v0.23.1.7b9c4",
           "commitHash": "7b9c4",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7b9c4b1f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7b9c4b1f0",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
@@ -48,24 +41,17 @@
           "summary": "add shape prop to ToggleProps and update forwardedProps",
           "summaryKey": "changelog.generated.v0.15.0.63f21",
           "commitHash": "63f21",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/63f21829",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/63f218298",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.15.0-beta.1",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
-      "date": "2026-04-18",
-      "entries": [
+        },
         {
           "type": "fix",
           "scope": "toggle",
           "summary": "add shape prop to ToggleProps and update forwardedProps",
-          "summaryKey": "changelog.generated.v0.15.0-beta.1.63f21",
+          "summaryKey": "changelog.generated.v0.15.0.63f21",
           "commitHash": "63f21",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/63f21829",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/63f218298",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

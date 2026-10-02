@@ -1,6 +1,6 @@
 {
   "component": "stepper",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -14,24 +14,17 @@
           "summary": "optimize style",
           "summaryKey": "changelog.generated.v0.30.0.0223b",
           "commitHash": "0223b",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0223b6d6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0223b6d65",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
-        }
-      ]
-    },
-    {
-      "version": "v0.30.0-beta.3",
-      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.30.0-beta.2...v0.30.0-beta.3",
-      "date": "2026-08-20",
-      "entries": [
+        },
         {
           "type": "style",
           "scope": "stepper",
           "summary": "optimize style",
-          "summaryKey": "changelog.generated.v0.30.0-beta.3.0223b",
+          "summaryKey": "changelog.generated.v0.30.0.0223b",
           "commitHash": "0223b",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0223b6d6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0223b6d65",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -48,7 +41,7 @@
           "summary": "simplify component structure using StepperCompact",
           "summaryKey": "changelog.generated.v0.20.0.b781b",
           "commitHash": "b781b",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b781b350",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b781b350f",
           "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
@@ -65,7 +58,7 @@
           "summary": "implement Compact components for Card, Popover, Editable, HoverCard, NavigationMenu, Pagination and Stepper",
           "summaryKey": "changelog.generated.v0.16.0.6cbdc",
           "commitHash": "6cbdc",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee71",
           "authors": ["soybeanjs"],
           "source": "exact-scope"
         }

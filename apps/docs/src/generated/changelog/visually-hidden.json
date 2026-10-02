@@ -1,6 +1,54 @@
 {
   "component": "visually-hidden",
-  "generatedAt": "2026-09-14T04:54:15.361Z",
+  "generatedAt": "2026-10-02T11:25:44.370Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.0.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2",
+      "date": "2025-11-18",
+      "entries": [
+        {
+          "type": "style",
+          "scope": "visually-hidden",
+          "summary": "adjust positioning styles for improved accessibility",
+          "summaryKey": "changelog.generated.v0.0.2.662d5",
+          "commitHash": "662d5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/662d5a2eb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "visually-hidden",
+          "summary": "replace FormFieldProps with FormNameValueProps and update related parsing functions",
+          "summaryKey": "changelog.generated.v0.0.2.e4eea",
+          "commitHash": "e4eea",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e4eea546a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "visually-hidden",
+          "summary": "adjust positioning styles for improved accessibility",
+          "summaryKey": "changelog.generated.v0.0.2.662d5",
+          "commitHash": "662d5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/662d5a2eb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "visually-hidden",
+          "summary": "replace FormFieldProps with FormNameValueProps and update related parsing functions",
+          "summaryKey": "changelog.generated.v0.0.2.e4eea",
+          "commitHash": "e4eea",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e4eea546a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }
