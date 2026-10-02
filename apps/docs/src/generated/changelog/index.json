@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T13:59:04.043Z",
+  "generatedAt": "2026-10-02T06:45:30.570Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -33,9 +33,9 @@
     "app-shell": {
       "component": "app-shell",
       "file": "app-shell.json",
-      "latestVersion": "v0.50.0-beta.8",
-      "versionCount": 3,
-      "entryCount": 7
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 4,
+      "entryCount": 8
     },
     "arrow": {
       "component": "arrow",
@@ -89,9 +89,9 @@
     "button": {
       "component": "button",
       "file": "button.json",
-      "latestVersion": "v0.50.0-beta.8",
-      "versionCount": 6,
-      "entryCount": 6
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 7,
+      "entryCount": 7
     },
     "calendar": {
       "component": "calendar",
@@ -103,16 +103,16 @@
     "calendar-range": {
       "component": "calendar-range",
       "file": "calendar-range.json",
-      "latestVersion": "v0.30.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 3,
+      "entryCount": 7
     },
     "card": {
       "component": "card",
       "file": "card.json",
-      "latestVersion": "v0.26.1",
-      "versionCount": 7,
-      "entryCount": 8
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 8,
+      "entryCount": 9
     },
     "carousel": {
       "component": "carousel",
@@ -145,9 +145,9 @@
     "collapsible": {
       "component": "collapsible",
       "file": "collapsible.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 1,
+      "entryCount": 2
     },
     "color-area": {
       "component": "color-area",
@@ -173,9 +173,9 @@
     "color-slider": {
       "component": "color-slider",
       "file": "color-slider.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "color-swatch": {
       "component": "color-swatch",
@@ -257,9 +257,9 @@
     "drawer": {
       "component": "drawer",
       "file": "drawer.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 7,
-      "entryCount": 17
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 8,
+      "entryCount": 22
     },
     "dropdown-menu": {
       "component": "dropdown-menu",
@@ -341,9 +341,9 @@
     "layout": {
       "component": "layout",
       "file": "layout.json",
-      "latestVersion": "v0.50.0-beta.7",
-      "versionCount": 19,
-      "entryCount": 23
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 20,
+      "entryCount": 27
     },
     "link": {
       "component": "link",
@@ -376,9 +376,9 @@
     "menubar": {
       "component": "menubar",
       "file": "menubar.json",
-      "latestVersion": "v0.50.0-beta.6",
-      "versionCount": 5,
-      "entryCount": 11
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 6,
+      "entryCount": 12
     },
     "nav-menu": {
       "component": "nav-menu",
@@ -390,23 +390,23 @@
     "page-tabs": {
       "component": "page-tabs",
       "file": "page-tabs.json",
-      "latestVersion": "v0.50.0-beta.7",
-      "versionCount": 12,
-      "entryCount": 12
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 13,
+      "entryCount": 13
     },
     "pagination": {
       "component": "pagination",
       "file": "pagination.json",
-      "latestVersion": "v0.20.0",
-      "versionCount": 5,
-      "entryCount": 5
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 6,
+      "entryCount": 7
     },
     "palette-picker": {
       "component": "palette-picker",
       "file": "palette-picker.json",
-      "latestVersion": "v0.50.0-beta.2",
-      "versionCount": 1,
-      "entryCount": 2
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 2,
+      "entryCount": 3
     },
     "password": {
       "component": "password",
@@ -425,9 +425,9 @@
     "popover": {
       "component": "popover",
       "file": "popover.json",
-      "latestVersion": "v0.19.0",
-      "versionCount": 6,
-      "entryCount": 10
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 7,
+      "entryCount": 11
     },
     "popper": {
       "component": "popper",
@@ -502,9 +502,9 @@
     "sheet": {
       "component": "sheet",
       "file": "sheet.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 1,
+      "entryCount": 2
     },
     "skeleton": {
       "component": "skeleton",
@@ -537,9 +537,9 @@
     "split-nav": {
       "component": "split-nav",
       "file": "split-nav.json",
-      "latestVersion": "v0.50.0-beta.1",
-      "versionCount": 4,
-      "entryCount": 9
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 5,
+      "entryCount": 12
     },
     "splitter": {
       "component": "splitter",
@@ -635,9 +635,9 @@
     "toast": {
       "component": "toast",
       "file": "toast.json",
-      "latestVersion": "v0.40.0",
-      "versionCount": 9,
-      "entryCount": 14
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 10,
+      "entryCount": 15
     },
     "toggle": {
       "component": "toggle",
@@ -677,23 +677,23 @@
     "tree-menu": {
       "component": "tree-menu",
       "file": "tree-menu.json",
-      "latestVersion": "v0.50.0-beta.6",
-      "versionCount": 34,
-      "entryCount": 41
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 35,
+      "entryCount": 43
     },
     "tree-nav": {
       "component": "tree-nav",
       "file": "tree-nav.json",
-      "latestVersion": "v0.40.0",
-      "versionCount": 2,
-      "entryCount": 4
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 3,
+      "entryCount": 5
     },
     "virtualizer": {
       "component": "virtualizer",
       "file": "virtualizer.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.50.0-beta.9",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "visually-hidden": {
       "component": "visually-hidden",

@@ -1,5 +1,122 @@
 # Changelog
 
+## [v0.50.0-beta.9](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.8...v0.50.0-beta.9) (2026-10-02)
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **pagination**: rename actionAsSelected to actionVariant &nbsp;-&nbsp; by @soybeanjs [<samp>(6eb3a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6eb3abe2f)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **calendar-range**: mark committed range days with data-in-range &nbsp;-&nbsp; by @soybeanjs [<samp>(2db06)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2db069e2c)
+- **layout**: expose the region visibility props in the basic example &nbsp;-&nbsp; by @soybeanjs [<samp>(b08dc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b08dc68bf)
+- **popover**: add default props for avoidCollisions and prioritizePosition &nbsp;-&nbsp; by @soybeanjs [<samp>(f86de)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f86de4248)
+- **split-nav**: add top slots to the dual-vertical menu &nbsp;-&nbsp; by @soybeanjs [<samp>(c208c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c208ca18a)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **calendar-range**:
+  - draw the range band only after both ends are picked &nbsp;-&nbsp; by @soybeanjs [<samp>(26cbd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/26cbda9fc)
+- **card**:
+  - animate the collapsed content padding with the height &nbsp;-&nbsp; by @soybeanjs [<samp>(db30f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/db30fec5a)
+- **collapsible**:
+  - stop freezing transition-duration while measuring content &nbsp;-&nbsp; by @soybeanjs [<samp>(5def1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5def12bd8)
+  - release the mount-time animation freeze on the first toggle &nbsp;-&nbsp; by @soybeanjs [<samp>(bf333)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bf3330181)
+- **drawer**:
+  - wire the fullscreen state to the panel &nbsp;-&nbsp; by @soybeanjs [<samp>(aa4b0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/aa4b0fcd2)
+  - suspend snapping while the drawer is fullscreen &nbsp;-&nbsp; by @soybeanjs [<samp>(716ac)</samp>](https://github.com/soybeanjs/soybean-ui/commit/716acfdb7)
+  - freeze the drag gesture while the drawer is fullscreen &nbsp;-&nbsp; by @soybeanjs [<samp>(336d1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/336d12c3f)
+  - keep the content height after leaving fullscreen &nbsp;-&nbsp; by @soybeanjs [<samp>(44693)</samp>](https://github.com/soybeanjs/soybean-ui/commit/44693cea0)
+- **layout**:
+  - collapse the fixed tab when the header is hidden &nbsp;-&nbsp; by @soybeanjs [<samp>(99976)</samp>](https://github.com/soybeanjs/soybean-ui/commit/999760f67)
+  - drop the sidebar-adjacent spacing when the sidebar is hidden &nbsp;-&nbsp; by @soybeanjs [<samp>(a2f34)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a2f3480cd)
+  - reserve and paint nothing for a zero-width sidebar &nbsp;-&nbsp; by @soybeanjs [<samp>(f6aef)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f6aefc8df)
+- **menubar**:
+  - drop the stale "more" menu when collapsible is disabled &nbsp;-&nbsp; by @soybeanjs [<samp>(aeac4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/aeac4b84a)
+- **sheet**:
+  - make the fullscreen toggle fill the viewport &nbsp;-&nbsp; by @soybeanjs [<samp>(60562)</samp>](https://github.com/soybeanjs/soybean-ui/commit/60562ec1e)
+- **split-nav**:
+  - lay out the basic example container per mode &nbsp;-&nbsp; by @soybeanjs [<samp>(1db19)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1db192a64)
+- **styles**:
+  - update disabled cursor styles to 'cursor-not-allowed' for better accessibility &nbsp;-&nbsp; by @soybeanjs [<samp>(d3742)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d37426c18)
+  - let the size vector own the dimensions it declares &nbsp;-&nbsp; by @soybeanjs [<samp>(b16fd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b16fd71b3)
+- **toast**:
+  - honor per-toast showClose and tint close hover for rich colors &nbsp;-&nbsp; by @soybeanjs [<samp>(69fae)</samp>](https://github.com/soybeanjs/soybean-ui/commit/69fae3faa)
+- **tree-menu**:
+  - transition the item row width when the rail folds &nbsp;-&nbsp; by @soybeanjs [<samp>(95c3f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/95c3f8489)
+- **tree-nav**:
+  - drop the stale "more" branch when collapsible is disabled &nbsp;-&nbsp; by @soybeanjs [<samp>(98589)</samp>](https://github.com/soybeanjs/soybean-ui/commit/985891b76)
+- **unocss**:
+  - route sub-grid spacing coefficients through --spacing-unit &nbsp;-&nbsp; by @soybeanjs [<samp>(0be4e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0be4eb85a)
+- **use-locale**:
+  - simplify OptionCategory type definition &nbsp;-&nbsp; by @soybeanjs [<samp>(b3cf4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b3cf47c63)
+- **virtualizer**:
+  - correct height computation for style binding &nbsp;-&nbsp; by @soybeanjs [<samp>(db553)</samp>](https://github.com/soybeanjs/soybean-ui/commit/db553a6fc)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **calendar-range**:
+  - update root style to include rounded corners and shadow &nbsp;-&nbsp; by @soybeanjs [<samp>(a9c87)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a9c8747af)
+- **color-slider**:
+  - change default color to primary and update thumb cursor style &nbsp;-&nbsp; by @soybeanjs [<samp>(1047d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1047de0e8)
+- **examples**:
+  - optimize ui examples &nbsp;-&nbsp; by @soybeanjs [<samp>(ab18f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ab18f9d8c)
+  - update card width to be responsive across examples &nbsp;-&nbsp; by @soybeanjs [<samp>(fc6d9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fc6d9bfbc)
+  - remove max-width class from SDrawer components for better responsiveness &nbsp;-&nbsp; by @soybeanjs [<samp>(208f9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/208f977ce)
+  - color-slider: change default color to primary &nbsp;-&nbsp; by @soybeanjs [<samp>(0d59c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0d59c3b96)
+  - segment: update icon for 'auto' theme to lucide:monitor &nbsp;-&nbsp; by @soybeanjs [<samp>(133b6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/133b61fef)
+  - skeleton adjust width class for custom size example &nbsp;-&nbsp; by @soybeanjs [<samp>(3e95c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3e95c394a)
+- **i18n**:
+  - update translate files &nbsp;-&nbsp; by @soybeanjs [<samp>(0c082)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0c082cd78)
+- **locales**:
+  - simplify button and chart translations in en.json and zh.json &nbsp;-&nbsp; by @soybeanjs [<samp>(e8f2e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e8f2e4285)
+- **palette-picker**:
+  - display raw palette picker keys &nbsp;-&nbsp; by @soybeanjs [<samp>(b6bf5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b6bf5fe29)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **app-shell**: render the brand in the menu's top cells &nbsp;-&nbsp; by @soybeanjs [<samp>(75ed3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/75ed3f606)
+- **split-nav**: lead the second column with the divider &nbsp;-&nbsp; by @soybeanjs [<samp>(3e4d1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3e4d13f04)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **calendar-range**:
+  - document the cell data-in-range band contract &nbsp;-&nbsp; by @soybeanjs [<samp>(ab6d0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ab6d0f8ed)
+- **drawer**:
+  - sync the generated skill with the fullscreen contract &nbsp;-&nbsp; by @soybeanjs [<samp>(32578)</samp>](https://github.com/soybeanjs/soybean-ui/commit/325780af5)
+- **pagination**:
+  - document the actionVariant rename in the v0.50.0 upgrade guide &nbsp;-&nbsp; by @soybeanjs [<samp>(b7a29)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b7a292ab8)
+- **projects**:
+  - update docs api,registry,schema &nbsp;-&nbsp; by @soybeanjs [<samp>(10049)</samp>](https://github.com/soybeanjs/soybean-ui/commit/100494f7e)
+  - update docs api &nbsp;-&nbsp; by @soybeanjs [<samp>(1274d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1274dfd34)
+- **sheet**:
+  - sync the generated skill with the fullscreen contract &nbsp;-&nbsp; by @soybeanjs [<samp>(89e33)</samp>](https://github.com/soybeanjs/soybean-ui/commit/89e33138c)
+- **tree-menu**:
+  - sync the generated skill with the current examples &nbsp;-&nbsp; by @soybeanjs [<samp>(6e7c1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6e7c17a7b)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(725e8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/725e81f67)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(b56f3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b56f3d82f)
+- **locales**:
+  - remove unused i18n keys in docs en.json and zh.json &nbsp;-&nbsp; by @soybeanjs [<samp>(d8019)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d8019f89a)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **calendar-range**: cover the committed range band state &nbsp;-&nbsp; by @soybeanjs [<samp>(963b4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/963b41873)
+- **styles**: update neutral faces tests for solid fill behavior &nbsp;-&nbsp; by @soybeanjs [<samp>(09754)</samp>](https://github.com/soybeanjs/soybean-ui/commit/09754e969)
+- **ui**: remove important flag from padding assertions &nbsp;-&nbsp; by @soybeanjs [<samp>(dd529)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dd529fc86)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **button**: refine button styles and update variant classes for better consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(95d42)</samp>](https://github.com/soybeanjs/soybean-ui/commit/95d42b3f1)
+- **page-tabs**: adjust layout and improve close button styles for better alignment &nbsp;-&nbsp; by @soybeanjs [<samp>(042cb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/042cb0b68)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.50.0-beta.8](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.7...v0.50.0-beta.8) (2026-09-29)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
