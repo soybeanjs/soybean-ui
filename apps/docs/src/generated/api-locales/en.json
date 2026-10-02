@@ -14199,6 +14199,28 @@
         },
         "themecustomizerui": "the slot-class map of the theme customizer shell."
       },
+      "packages_ui_src_components_theme_mode_segment_types": {
+        "thememodesegmentprops": {
+          "members": {
+            "activationmode": "Whether a tab is activated automatically (on focus) or manually (on click).",
+            "class": "Additional class names applied to the root element.",
+            "dir": "The direction of navigation between items.",
+            "enableindicator": "Whether to enable indicator.",
+            "fill": "Fill.",
+            "indicatorprops": "Properties forwarded to the indicator element.",
+            "listprops": "Properties forwarded to the list element.",
+            "loop": "Whether keyboard navigation should loop around",
+            "orientation": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "shape": "Shape of the component.",
+            "showlabel": "Whether to render the localized label next to the scheme icon. When\n`false`, the label stays visually hidden so each option keeps an\naccessible name.",
+            "size": "Visual size of the component.",
+            "triggerprops": "Properties forwarded to the trigger element.",
+            "ui": "Per-slot class overrides for the component.",
+            "unmountonhide": "When `true`, the element will be unmounted on closed state."
+          },
+          "props": "Properties for the ThemeModeSegment component.\n\nA context-bound segmented control bound to the active `SConfigProvider`\ntheme. It exposes the three `ThemeModePreference` options — `auto` (follows\nthe OS `prefers-color-scheme`), `light`, and `dark` — as icon-led segment\noptions. Visual props are inherited from `SegmentProps` (with `shape`\ndefaulting to `rounded`); `items`, `modelValue`, and `defaultValue` are not\nexposed — the option list is fixed and the state is owned by the theme\ncontext shared across all theme components."
+        }
+      },
       "packages_ui_src_components_theme_mode_select_types": {
         "thememodeselectprops": {
           "members": {

@@ -1,0 +1,408 @@
+{
+  "component": "theme-mode-segment",
+  "symbols": {
+    "ThemeModeSegment": {
+      "props": {
+        "kind": "props",
+        "name": "ThemeModeSegmentProps",
+        "type": "Interface ThemeModeSegmentProps",
+        "resolvedType": "{ showLabel?: boolean; unmountOnHide?: boolean; class?: string | false | Record<string, any> | ClassValue[] | null; dir?: Direction; size?: ThemeSize; fill?: SegmentFill; shape?: SegmentShape; loop?: boolean; triggerProps?: SegmentTriggerProps; orientation?: DataOrientation; listProps?: SegmentListProps; ui?: Partial<SegmentUi>; enableIndicator?: boolean; indicatorProps?: SegmentIndicatorProps; activationMode?: TabsActivationMode }",
+        "description": "Properties for the ThemeModeSegment component.\n\nA context-bound segmented control bound to the active `SConfigProvider`\ntheme. It exposes the three `ThemeModePreference` options — `auto` (follows\nthe OS `prefers-color-scheme`), `light`, and `dark` — as icon-led segment\noptions. Visual props are inherited from `SegmentProps` (with `shape`\ndefaulting to `rounded`); `items`, `modelValue`, and `defaultValue` are not\nexposed — the option list is fixed and the state is owned by the theme\ncontext shared across all theme components.",
+        "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.props",
+        "sourcePath": "packages/ui/src/components/theme-mode-segment/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "showLabel",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to render the localized label next to the scheme icon. When\n`false`, the label stays visually hidden so each option keeps an\naccessible name.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.showlabel",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/theme-mode-segment/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "unmountOnHide",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the element will be unmounted on closed state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.unmountonhide",
+            "default": "`true`",
+            "inheritedFrom": "unmountOnHide",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.class",
+            "default": null,
+            "inheritedFrom": "Omit.class",
+            "sourcePath": "packages/ui/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.dir",
+            "default": null,
+            "inheritedFrom": "Omit.dir",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.size",
+            "default": null,
+            "inheritedFrom": "Omit.size",
+            "sourcePath": "packages/ui/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "the component size / density preset.",
+                "descriptionKey": "api.generated.packages_theme_src_types.themesize",
+                "sourcePath": "packages/theme/src/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fill",
+            "type": "SegmentFill",
+            "required": false,
+            "description": "Fill.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.fill",
+            "default": null,
+            "inheritedFrom": "Omit.fill",
+            "sourcePath": "packages/ui/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsFill",
+                "kind": "typeAlias",
+                "type": "'auto' | 'full'",
+                "resolvedType": "'auto' | 'full'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_tabs.tabsfill",
+                "sourcePath": "packages/ui/src/styles/tabs.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "SegmentShape",
+            "required": false,
+            "description": "Shape of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.shape",
+            "default": null,
+            "inheritedFrom": "Omit.shape",
+            "sourcePath": "packages/ui/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsShape",
+                "kind": "typeAlias",
+                "type": "'rounded' | 'square'",
+                "resolvedType": "'rounded' | 'square'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_tabs.tabsshape",
+                "sourcePath": "packages/ui/src/styles/tabs.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "Omit.loop",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "triggerProps",
+            "type": "SegmentTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "packages/headless/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SegmentTriggerProps",
+                "kind": "interface",
+                "type": "SegmentTriggerProps",
+                "resolvedType": "{ value: string | number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the SegmentTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string | number",
+                    "required": true,
+                    "description": "A unique value that associates the trigger with a content.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the tab.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmenttriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "Omit.orientation",
+            "sourcePath": "packages/headless/src/composables/use-roving-focus.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "listProps",
+            "type": "SegmentListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.listprops",
+            "default": null,
+            "inheritedFrom": "listProps",
+            "sourcePath": "packages/headless/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SegmentListProps",
+                "kind": "interface",
+                "type": "SegmentListProps",
+                "resolvedType": null,
+                "description": "Properties for the SegmentList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentlistprops",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<SegmentUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.ui",
+            "default": null,
+            "inheritedFrom": "Omit.ui",
+            "sourcePath": "packages/ui/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SegmentUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; trigger: ClassValue; indicator: ClassValue; list: ClassValue; indicatorContent: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Segment component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentui",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "enableIndicator",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to enable indicator.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.enableindicator",
+            "default": null,
+            "inheritedFrom": "enableIndicator",
+            "sourcePath": "packages/headless/src/components/segment/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "indicatorProps",
+            "type": "SegmentIndicatorProps",
+            "required": false,
+            "description": "Properties forwarded to the indicator element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.indicatorprops",
+            "default": null,
+            "inheritedFrom": "indicatorProps",
+            "sourcePath": "packages/headless/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SegmentIndicatorProps",
+                "kind": "interface",
+                "type": "SegmentIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the SegmentIndicator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops",
+                "sourcePath": "packages/headless/src/components/segment/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_segment_types.segmentindicatorprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "activationMode",
+            "type": "TabsActivationMode",
+            "required": false,
+            "description": "Whether a tab is activated automatically (on focus) or manually (on click).",
+            "descriptionKey": "api.generated.packages_ui_src_components_theme_mode_segment_types.thememodesegmentprops.members.activationmode",
+            "default": "automatic",
+            "inheritedFrom": "activationMode",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsActivationMode",
+                "kind": "typeAlias",
+                "type": "'automatic' | 'manual'",
+                "resolvedType": "'automatic' | 'manual'",
+                "description": "Type information for TabsActivationMode.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsactivationmode",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

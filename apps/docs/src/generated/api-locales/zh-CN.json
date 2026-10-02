@@ -14199,6 +14199,28 @@
         },
         "themecustomizerui": "主题自定义器外壳的插槽类映射。"
       },
+      "packages_ui_src_components_theme_mode_segment_types": {
+        "thememodesegmentprops": {
+          "members": {
+            "activationmode": "Tab 键是自动激活（获得焦点时）还是手动激活（点击时）。",
+            "class": "已为根元素添加了额外的类名。",
+            "dir": "项目之间的导航方向。",
+            "enableindicator": "是否启用指示符。",
+            "fill": "填充。",
+            "indicatorprops": "转发给 indicator 元素的属性。",
+            "listprops": "转发给列表元素的属性。",
+            "loop": "键盘导航是否应循环往复",
+            "orientation": "该组的取向。主要是为了使箭头导航能够相应地进行（左右与上下）。",
+            "shape": "组件的结构。",
+            "showlabel": "是否在方案图标旁边显示本地化标签。当\n`false` 时，该标签在视觉上保持隐藏，以便每个选项保留\n可访问的名称。",
+            "size": "组件的视觉尺寸。",
+            "triggerprops": "转发给触发元素的属性。",
+            "ui": "该组件的按槽类重写。",
+            "unmountonhide": "当值为 `true` 时，该元素将在关闭状态下被卸载。"
+          },
+          "props": "ThemeModeSegment 组件的属性。\n\n一个与当前活动 `SConfigProvider`\n主题绑定的上下文相关分段控件。它将三个 `ThemeModePreference` 选项——`auto`（遵循\n操作系统的 `prefers-color-scheme`）、`light` 和 `dark`——以图标引导的分段\n选项形式呈现。 视觉属性从 `SegmentProps` 继承（其中 `shape`\n默认值为 `rounded`）；`items`、`modelValue` 和 `defaultValue` 不会\n公开——选项列表是固定的，且状态由所有主题组件共享的\n主题上下文管理。"
+        }
+      },
       "packages_ui_src_components_theme_mode_select_types": {
         "thememodeselectprops": {
           "members": {
