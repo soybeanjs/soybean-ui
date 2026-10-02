@@ -1,5 +1,25 @@
 # Changelog
 
+## [v0.50.0-beta.10](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.9...v0.50.0-beta.10) (2026-10-02)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **theme-customizer**: replace mode dropdown with theme mode segment &nbsp;-&nbsp; by @soybeanjs [<samp>(49748)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4974831fe)
+- **theme-mode-segment**: add context-bound icon-led theme mode segment control &nbsp;-&nbsp; by @soybeanjs [<samp>(93ca4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/93ca45b5d)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **scripts**: stop no-op catalog rewrites from breaking the dev server &nbsp;-&nbsp; by @soybeanjs [<samp>(af8d2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/af8d24e4a)
+- **use-context**: share context keys across module instances &nbsp;-&nbsp; by @soybeanjs [<samp>(dc6f1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dc6f159e1)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update registry &nbsp;-&nbsp; by @soybeanjs [<samp>(0a4b0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0a4b0394b)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.50.0-beta.9](https://github.com/soybeanjs/soybean-ui/compare/v0.50.0-beta.8...v0.50.0-beta.9) (2026-10-02)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes

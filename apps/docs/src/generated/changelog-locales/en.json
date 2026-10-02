@@ -2627,6 +2627,13 @@
               "f6aef": "reserve and paint nothing for a zero-width sidebar",
               "f86de": "add default props for avoidCollisions and prioritizePosition",
               "fc6d9": "update card width to be responsive across examples"
+            },
+            "10": {
+              "49748": "replace mode dropdown with theme mode segment",
+              "0a4b0": "update registry",
+              "93ca4": "add context-bound icon-led theme mode segment control",
+              "af8d2": "stop no-op catalog rewrites from breaking the dev server",
+              "dc6f1": "share context keys across module instances"
             }
           }
         }

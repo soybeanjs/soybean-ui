@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T07:09:26.019Z",
+  "generatedAt": "2026-10-02T09:27:07.513Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -600,16 +600,16 @@
     "theme-customizer": {
       "component": "theme-customizer",
       "file": "theme-customizer.json",
-      "latestVersion": "v0.50.0-beta.4",
-      "versionCount": 5,
-      "entryCount": 5
+      "latestVersion": "v0.50.0-beta.10",
+      "versionCount": 6,
+      "entryCount": 6
     },
     "theme-mode-segment": {
       "component": "theme-mode-segment",
       "file": "theme-mode-segment.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.50.0-beta.10",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "theme-mode-select": {
       "component": "theme-mode-select",
