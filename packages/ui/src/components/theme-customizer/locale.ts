@@ -5,7 +5,7 @@ import type { ConfigProviderContext } from '../config-provider/types';
 
 /**
  * Shared UI-layer locale messages for the theme components (`ThemeCustomizer`,
- * `ThemeModeSelect` and `PalettePicker`).
+ * `ThemeModeSelect`, `ThemeModeSegment` and `PalettePicker`).
  *
  * Only Simplified Chinese (`zh`) and English are supported: a Chinese UI locale
  * renders the `zh` labels, every other locale falls back to English.

@@ -37,7 +37,7 @@ import type { SelectOptionData } from '../select/types';
 import SSlider from '../slider/slider.vue';
 import STabs from '../tabs/tabs.vue';
 import type { TabsOptionData } from '../tabs/types';
-import ThemeModeSelect from '../theme-mode-select/theme-mode-select.vue';
+import ThemeModeSegment from '../theme-mode-segment/theme-mode-segment.vue';
 import BasePaletteSelect from './base-palette-select.vue';
 import FeedbackSchemaSelect from './feedback-schema-select.vue';
 import PrimaryPaletteSelect from './primary-palette-select.vue';
@@ -81,7 +81,7 @@ const settings = useThemeSettings({
 });
 
 // —— 基础 token 绑定 ——
-// mode 偏好由 <ThemeModeSelect> 直接绑定主题上下文，此处无需重复状态。
+// mode 偏好由 <ThemeModeSegment> 直接绑定主题上下文，此处无需重复状态。
 const baseValue = computed<PaletteKey>({
   get: () => settings.state.value.base ?? 'zinc',
   set: value => settings.setState({ base: value })
@@ -333,7 +333,7 @@ watch(mainTab, tab => {
 
 onBeforeUnmount(cancelGroupMount);
 
-// —— mode 偏好由 <ThemeModeSelect> 直接绑定主题上下文（theme.mode），settings.state.mode
+// —— mode 偏好由 <ThemeModeSegment> 直接绑定主题上下文（theme.mode），settings.state.mode
 //    仅在初始化时快照。若不随 theme.mode 同步，则任何配置改动（如切换 base）触发 commit
 //    时会把过期的 settings.state.mode（light）写回 theme，导致 mode 被重置 ——
 watch(
@@ -359,7 +359,7 @@ watch(
         <div v-if="mainValue === 'theme'" :class="ui.panel">
           <!-- mode -->
           <SectionItem v-if="sectionVisible('mode')" :title="resolveLabel('mode')">
-            <ThemeModeSelect class="w-35" />
+            <ThemeModeSegment />
           </SectionItem>
 
           <!-- palette -->
