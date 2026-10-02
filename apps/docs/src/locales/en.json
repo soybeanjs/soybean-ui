@@ -1,17 +1,4 @@
 {
-  "common": {
-    "copy_to_clipboard": "Copy to clipboard",
-    "copied": "Copied"
-  },
-  "button": {
-    "about": "About",
-    "back": "Back",
-    "go": "GO",
-    "home": "Home",
-    "toggle_dark": "Toggle dark mode",
-    "toggle_langs": "Change languages",
-    "back_to_home": "Back to Home"
-  },
   "not_found": "Not found",
   "not_found_page": "Not found page",
   "playground": {
@@ -46,29 +33,16 @@
         "custom-styling": "Custom Styling"
       },
       "area": {
-        "basic": "Basic",
-        "gradient": "Gradient",
-        "tk-basic": "Basic (TanStack)",
-        "tk-stacked": "Stacked (TanStack)"
+        "basic": "Basic"
       },
       "bar": {
-        "basic": "Basic",
-        "multiple": "Multiple",
-        "tk-basic": "Basic (TanStack)",
-        "tk-grouped": "Grouped (TanStack)"
+        "basic": "Basic"
       },
       "line": {
-        "basic": "Basic",
-        "step": "Step",
-        "tk-basic": "Basic (TanStack)",
-        "tk-multiple": "Multiple (TanStack)"
+        "basic": "Basic"
       },
       "pie": {
-        "donut": "Donut",
-        "simple": "Simple"
-      },
-      "scatter": {
-        "tk-basic": "Basic (TanStack)"
+        "donut": "Donut"
       },
       "affix": {
         "basic": "Basic",
@@ -127,14 +101,6 @@
         "item-dropdown": "Item Dropdown",
         "link": "Link",
         "separator": "Separator"
-      },
-      "button": {
-        "basic": "Basic",
-        "group": "Group",
-        "icon": "Icon",
-        "link": "Link",
-        "loading": "Loading",
-        "slot": "Slot"
       },
       "calendar": {
         "basic": "Basic",
@@ -602,9 +568,6 @@
     }
   },
   "components": {
-    "common": {
-      "demo": "Demos"
-    },
     "catalog": {
       "title": "Component Catalog",
       "description": "Browse every Soybean UI component by category and jump straight into the dedicated docs page for each one.",
@@ -641,7 +604,6 @@
         }
       },
       "featured": {
-        "button": "The starting point for actions, decisions, and primary user flows.",
         "input": "A reliable base for plain text entry and more complex form composition.",
         "select": "A high-frequency choice for filtering, picking, and structured input flows.",
         "dialog": "The core overlay for confirmations, editing, and interruptive flows.",
@@ -654,10 +616,6 @@
           "desc": "If you are unsure where to begin, these components best represent the system in real work."
         }
       }
-    },
-    "button": {
-      "title": "Button",
-      "desc": "Button component"
     },
     "home": {
       "title": "SoybeanUI",
@@ -764,10 +722,6 @@
         "categories": {
           "title": "Browse by Scenario",
           "unit": "components"
-        },
-        "architecture": {
-          "title": "Core Architecture",
-          "desc": "The two-layer split lets logic reuse and visual expression evolve independently without breaking composition."
         }
       },
       "featured": {
@@ -1050,5 +1004,8 @@
         "description": "the fill to foreground pairs, side by side"
       }
     }
+  },
+  "button": {
+    "back_to_home": "Back to Home"
   }
 }

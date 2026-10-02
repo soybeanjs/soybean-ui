@@ -1,17 +1,4 @@
 {
-  "common": {
-    "copy_to_clipboard": "复制到剪贴板",
-    "copied": "已复制"
-  },
-  "button": {
-    "about": "关于",
-    "back": "返回",
-    "go": "确定",
-    "home": "首页",
-    "toggle_dark": "切换深色模式",
-    "toggle_langs": "切换语言",
-    "back_to_home": "返回首页"
-  },
   "not_found": "未找到",
   "not_found_page": "未找到页面",
   "playground": {
@@ -46,29 +33,16 @@
         "custom-styling": "自定义样式"
       },
       "area": {
-        "basic": "基础",
-        "gradient": "渐变",
-        "tk-basic": "基础 (TanStack)",
-        "tk-stacked": "堆叠 (TanStack)"
+        "basic": "基础"
       },
       "bar": {
-        "basic": "基础",
-        "multiple": "多系列",
-        "tk-basic": "基础 (TanStack)",
-        "tk-grouped": "分组 (TanStack)"
+        "basic": "基础"
       },
       "line": {
-        "basic": "基础",
-        "step": "阶梯",
-        "tk-basic": "基础 (TanStack)",
-        "tk-multiple": "多系列 (TanStack)"
+        "basic": "基础"
       },
       "pie": {
-        "donut": "环形图",
-        "simple": "简单饼图"
-      },
-      "scatter": {
-        "tk-basic": "基础 (TanStack)"
+        "donut": "环形图"
       },
       "affix": {
         "basic": "基础",
@@ -127,14 +101,6 @@
         "item-dropdown": "条目下拉",
         "link": "链接",
         "separator": "分隔符"
-      },
-      "button": {
-        "basic": "基础",
-        "group": "分组",
-        "icon": "图标",
-        "link": "链接",
-        "loading": "加载中",
-        "slot": "插槽"
       },
       "calendar": {
         "basic": "基础",
@@ -602,9 +568,6 @@
     }
   },
   "components": {
-    "common": {
-      "demo": "演示"
-    },
     "catalog": {
       "title": "组件总览",
       "description": "按分类浏览 Soybean UI 的全部组件，并直接跳转到每个组件对应的文档页面。",
@@ -641,7 +604,6 @@
         }
       },
       "featured": {
-        "button": "按钮、操作入口和状态反馈的基础起点。",
         "input": "表单输入最常用的起始组件，可快速扩展到复杂录入场景。",
         "select": "在数据选择、筛选和组合输入场景里都很高频。",
         "dialog": "承载确认、编辑与强打断流程的核心浮层组件。",
@@ -653,10 +615,6 @@
           "title": "高频组件"
         }
       }
-    },
-    "button": {
-      "title": "按钮",
-      "desc": "按钮组件"
     },
     "home": {
       "title": "SoybeanUI",
@@ -1045,5 +1003,8 @@
         "description": "填充与其前景的配对一览"
       }
     }
+  },
+  "button": {
+    "back_to_home": "返回首页"
   }
 }
