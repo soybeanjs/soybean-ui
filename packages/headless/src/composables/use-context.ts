@@ -2,6 +2,35 @@ import { inject, provide } from 'vue';
 
 type ContextName = string | { name: string; key: string | symbol };
 
+/**
+ * Shared registry for auto-generated context keys, stored on `globalThis` so
+ * that two evaluations of this module (Vite dev HMR re-evaluation, mixed
+ * barrel/subpath imports) resolve the same context name to the same key.
+ *
+ * Without this, a dev-server hot update can leave two live copies of a
+ * provider module around: `provide` registers under the old copy's `Symbol`,
+ * `inject` looks up the new copy's — the symbols never match and the consumer
+ * throws "must be used within" in SSR, even though the tree is correct.
+ */
+const contextKeyRegistry: Map<string, symbol> = (() => {
+  const registry = globalThis as typeof globalThis & { __SOYBEAN_CONTEXT_KEYS__?: Map<string, symbol> };
+
+  registry.__SOYBEAN_CONTEXT_KEYS__ ??= new Map<string, symbol>();
+
+  return registry.__SOYBEAN_CONTEXT_KEYS__;
+})();
+
+const getSharedContextKey = (name: string): symbol => {
+  let key = contextKeyRegistry.get(name);
+
+  if (!key) {
+    key = Symbol(name);
+    contextKeyRegistry.set(name, key);
+  }
+
+  return key;
+};
+
 type AnyComposable = (...args: never[]) => unknown;
 
 export type ContextValue<T> = T extends AnyComposable ? ReturnType<T> : T;
@@ -31,7 +60,7 @@ export function useContext<T extends AnyComposable>(
 ): [ContextProvider<T>, ContextConsumer<ReturnType<T>>];
 export function useContext(contextName: ContextName, composable?: (...args: never[]) => unknown) {
   const name = typeof contextName === 'string' ? contextName : contextName.name;
-  const key = typeof contextName === 'string' ? Symbol(contextName) : contextName.key;
+  const key = typeof contextName === 'string' ? getSharedContextKey(contextName) : contextName.key;
 
   const provideContext = (...args: never[]) => {
     const value = composable?.(...args) ?? args[0];
