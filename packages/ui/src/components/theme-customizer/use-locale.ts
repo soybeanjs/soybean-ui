@@ -1,15 +1,7 @@
 import { computed } from 'vue';
 import { useThemeLocale } from './locale';
 
-export type OptionCategory =
-  | 'mode'
-  | 'size'
-  | 'spacing'
-  | 'fontFamilies'
-  | 'palette'
-  | 'feedback'
-  | 'sidebar'
-  | 'surfaceStyle';
+export type OptionCategory = 'mode' | 'size' | 'spacing' | 'fontFamilies' | 'feedback' | 'sidebar' | 'surfaceStyle';
 
 /** 把 kebab-case 选项值（如 `inverted-dark` / `noto-sans`）转换为消息对象里的 camelCase 键（`invertedDark`）。 */
 const kebabToCamel = (key: string): string => key.replace(/-([a-z0-9])/g, (_, c: string) => c.toUpperCase());
