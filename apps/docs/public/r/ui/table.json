@@ -1,7 +1,7 @@
 {
   "name": "ui/table",
   "package": "ui",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/hooks"],
+  "dependencies": ["@soybeanjs/headless"],
   "registryDependencies": ["ui/button", "ui/checkbox", "ui/empty", "ui/input", "ui/popover"],
   "files": [
     {

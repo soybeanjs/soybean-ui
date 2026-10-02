@@ -90,6 +90,48 @@
       "package": "ui"
     },
     {
+      "name": "ui/app-shell",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/headless"],
+      "registryDependencies": [
+        "ui/breadcrumb",
+        "ui/dropdown-menu",
+        "ui/icon",
+        "ui/layout",
+        "ui/page-tabs",
+        "ui/split-nav",
+        "ui/tree-menu",
+        "ui/tree-nav"
+      ],
+      "files": [
+        {
+          "path": "packages/ui/src/components/app-shell/app-shell.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/app-shell/app-shell-brand.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/app-shell/app-shell-menu.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/app-shell/shared.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/app-shell/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/app-shell/index.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "package": "ui"
+    },
+    {
       "name": "ui/aspect-ratio",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
@@ -326,6 +368,26 @@
         {
           "path": "packages/ui/src/components/carousel/carousel.vue",
           "type": "registry:ui"
+        }
+      ],
+      "package": "ui"
+    },
+    {
+      "name": "ui/cascader",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/headless"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/cascader/cascader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/cascader/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/cascader/index.ts",
+          "type": "registry:lib"
         }
       ],
       "package": "ui"
@@ -583,6 +645,14 @@
         {
           "path": "packages/ui/src/components/config-provider/index.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/config-provider/hooks.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/config-provider/use-theme.ts",
+          "type": "registry:lib"
         }
       ],
       "package": "ui"
@@ -815,7 +885,8 @@
           "type": "registry:lib"
         }
       ],
-      "package": "ui"
+      "package": "ui",
+      "registryDependencies": ["ui/icon"]
     },
     {
       "name": "ui/form",
@@ -848,6 +919,10 @@
         },
         {
           "path": "packages/ui/src/components/form/form.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/form/form-error-motion.vue",
           "type": "registry:ui"
         }
       ],
@@ -1007,10 +1082,6 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/layout/layout-classic.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "packages/ui/src/components/layout/index.ts",
           "type": "registry:lib"
         }
@@ -1057,6 +1128,10 @@
         {
           "path": "packages/ui/src/components/list/index.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/list/context.ts",
+          "type": "registry:lib"
         }
       ],
       "package": "ui"
@@ -1102,6 +1177,26 @@
       "package": "ui"
     },
     {
+      "name": "ui/nav-menu",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/headless"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/nav-menu/nav-menu.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/nav-menu/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/nav-menu/index.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "package": "ui"
+    },
+    {
       "name": "ui/page-tabs",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
@@ -1136,6 +1231,31 @@
         },
         {
           "path": "packages/ui/src/components/pagination/index.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "package": "ui"
+    },
+    {
+      "name": "ui/palette-picker",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/colord", "@soybeanjs/theme"],
+      "registryDependencies": ["ui/color-picker", "ui/select", "ui/switch", "ui/tooltip"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/palette-picker/palette-picker.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/palette-picker/shared.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/palette-picker/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/palette-picker/index.ts",
           "type": "registry:lib"
         }
       ],
@@ -1258,6 +1378,27 @@
       "package": "ui"
     },
     {
+      "name": "ui/rating",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/headless"],
+      "registryDependencies": ["ui/icon"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/rating/rating.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/rating/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/rating/index.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "package": "ui"
+    },
+    {
       "name": "ui/scroll-area",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
@@ -1338,6 +1479,26 @@
       "package": "ui"
     },
     {
+      "name": "ui/sheet",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/headless"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/sheet/sheet.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/sheet/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/sheet/index.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "package": "ui"
+    },
+    {
       "name": "ui/skeleton",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
@@ -1394,6 +1555,26 @@
         {
           "path": "packages/ui/src/components/spinner/spinner.vue",
           "type": "registry:ui"
+        }
+      ],
+      "package": "ui"
+    },
+    {
+      "name": "ui/split-nav",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/headless"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/split-nav/split-nav.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/split-nav/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/split-nav/index.ts",
+          "type": "registry:lib"
         }
       ],
       "package": "ui"
@@ -1469,7 +1650,7 @@
     {
       "name": "ui/table",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless", "@soybeanjs/hooks"],
+      "dependencies": ["@soybeanjs/headless"],
       "registryDependencies": ["ui/button", "ui/checkbox", "ui/empty", "ui/input", "ui/popover"],
       "files": [
         {
@@ -1576,6 +1757,126 @@
         {
           "path": "packages/ui/src/components/textarea/textarea.vue",
           "type": "registry:ui"
+        }
+      ],
+      "package": "ui"
+    },
+    {
+      "name": "ui/theme-customizer",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/colord", "@soybeanjs/headless", "@soybeanjs/theme"],
+      "registryDependencies": [
+        "ui/button",
+        "ui/palette-picker",
+        "ui/segment",
+        "ui/select",
+        "ui/slider",
+        "ui/tabs",
+        "ui/theme-mode-segment"
+      ],
+      "files": [
+        {
+          "path": "packages/ui/src/components/theme-customizer/theme-customizer.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/theme-customizer/base-palette-select.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/theme-customizer/color-decorator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/theme-customizer/feedback-schema-select.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/theme-customizer/primary-palette-select.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/theme-customizer/section-item.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/theme-customizer/locale.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/theme-customizer/use-locale.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/theme-customizer/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/theme-customizer/index.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "package": "ui"
+    },
+    {
+      "name": "ui/theme-mode-segment",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/theme"],
+      "registryDependencies": ["ui/icon", "ui/segment"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/theme-mode-segment/theme-mode-segment.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/theme-mode-segment/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/theme-mode-segment/index.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "package": "ui"
+    },
+    {
+      "name": "ui/theme-mode-select",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/theme"],
+      "registryDependencies": ["ui/icon", "ui/select"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/theme-mode-select/theme-mode-select.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/theme-mode-select/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/theme-mode-select/index.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "package": "ui"
+    },
+    {
+      "name": "ui/theme-mode-switch",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": ["ui/icon", "ui/switch"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/theme-mode-switch/theme-mode-switch.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/theme-mode-switch/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/theme-mode-switch/index.ts",
+          "type": "registry:lib"
         }
       ],
       "package": "ui"
@@ -1723,7 +2024,7 @@
     {
       "name": "ui/tree",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless"],
+      "dependencies": ["@soybeanjs/headless", "@tanstack/vue-virtual"],
       "files": [
         {
           "path": "packages/ui/src/components/tree/tree-virtualizer.vue",
@@ -1740,6 +2041,14 @@
         {
           "path": "packages/ui/src/components/tree/index.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/tree/tree-motion-block.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/tree/tree-virtualizer-animated.vue",
+          "type": "registry:ui"
         }
       ],
       "package": "ui"
@@ -1763,6 +2072,26 @@
         },
         {
           "path": "packages/ui/src/components/tree-menu/index.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "package": "ui"
+    },
+    {
+      "name": "ui/tree-nav",
+      "type": "registry:ui",
+      "dependencies": ["@soybeanjs/headless"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/tree-nav/tree-nav.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/tree-nav/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/tree-nav/index.ts",
           "type": "registry:lib"
         }
       ],

@@ -24,14 +24,14 @@
       "content": "export { default as SList } from './list.vue';\nexport { default as SListItem } from './list-item.vue';\n\nexport { provideListUi } from './context';\n\nexport type * from './types';\n"
     },
     {
-      "path": "packages/ui/src/styles/list.ts",
-      "type": "registry:style",
-      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const listVariants = scv({\n  slots: {\n    root: 'flex flex-col',\n    item: 'flex list-none',\n    content: 'grow flex flex-col',\n    title: 'font-medium tracking-tight m-0',\n    description: '[&_p]:leading-relaxed text-muted-foreground m-0'\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'gap-2 text-2xs',\n        item: 'gap-2',\n        content: 'gap-0.75',\n        title: 'text-xs leading-3.125'\n      },\n      sm: {\n        root: 'gap-3 text-xs',\n        item: 'gap-3',\n        content: 'gap-1',\n        title: 'text-sm leading-3.75'\n      },\n      md: {\n        root: 'gap-4 text-sm',\n        item: 'gap-4',\n        content: 'gap-1',\n        title: 'text-base leading-4.375'\n      },\n      lg: {\n        root: 'gap-5 text-base',\n        item: 'gap-5',\n        content: 'gap-1.25',\n        title: 'text-lg leading-5'\n      },\n      xl: {\n        root: 'gap-6 text-lg',\n        item: 'gap-6',\n        content: 'gap-1.5',\n        title: 'text-xl leading-5.625'\n      },\n      '2xl': {\n        root: 'gap-7 text-xl',\n        item: 'gap-7',\n        content: 'gap-2',\n        title: 'text-2xl leading-6.25'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
-    },
-    {
       "path": "packages/ui/src/components/list/context.ts",
       "type": "registry:lib",
       "content": "import { useUiContext } from '@soybeanjs/headless/composables';\nimport type { ListUiSlot } from './types';\n\n/**\n * The list family is UI-only (`list` failed headless admission), so the slot-class channel is\n * established here instead of in headless. `SList` provides the recipe, `SListItem` consumes the\n * `item` / `content` / `title` / `description` slots.\n */\nexport const [provideListUi, useListUi] = useUiContext<ListUiSlot>('ListUi');\n"
+    },
+    {
+      "path": "packages/ui/src/styles/list.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const listVariants = scv({\n  slots: {\n    root: 'flex flex-col',\n    item: 'flex list-none',\n    content: 'grow flex flex-col',\n    title: 'font-medium tracking-tight m-0',\n    description: '[&_p]:leading-relaxed text-muted-foreground m-0'\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'gap-2 text-2xs',\n        item: 'gap-2',\n        content: 'gap-0.75',\n        title: 'text-xs leading-3.125'\n      },\n      sm: {\n        root: 'gap-3 text-xs',\n        item: 'gap-3',\n        content: 'gap-1',\n        title: 'text-sm leading-3.75'\n      },\n      md: {\n        root: 'gap-4 text-sm',\n        item: 'gap-4',\n        content: 'gap-1',\n        title: 'text-base leading-4.375'\n      },\n      lg: {\n        root: 'gap-5 text-base',\n        item: 'gap-5',\n        content: 'gap-1.25',\n        title: 'text-lg leading-5'\n      },\n      xl: {\n        root: 'gap-6 text-lg',\n        item: 'gap-6',\n        content: 'gap-1.5',\n        title: 'text-xl leading-5.625'\n      },\n      '2xl': {\n        root: 'gap-7 text-xl',\n        item: 'gap-7',\n        content: 'gap-2',\n        title: 'text-2xl leading-6.25'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
     },
     {
       "path": "packages/ui/src/theme/index.ts",
