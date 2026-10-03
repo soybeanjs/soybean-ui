@@ -7,7 +7,10 @@ export default defineConfig({
   },
   fmt: {
     ...fmt,
-    ignorePatterns: ['apps/docs/src/typings']
+    // generated: `typings` is rewritten by `pnpm sui gen api`, and the Figma
+    // export is compared byte-for-byte by its generator — reformatting either
+    // makes the next generation look like a real change.
+    ignorePatterns: ['apps/docs/src/typings', 'apps/docs/public/figma']
   },
   lint,
   run: {

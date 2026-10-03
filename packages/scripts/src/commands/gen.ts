@@ -8,6 +8,7 @@ import { generateCatalog } from './catalog';
 import type { CatalogTarget } from './catalog';
 import { generateChangelogData } from './changelog';
 import { generateChangelogLocaleTemplates } from './changelog-i18n';
+import { generateFigmaAssets } from './figma';
 import { generateSkillsDistribution } from './skills';
 
 /**
@@ -16,9 +17,10 @@ import { generateSkillsDistribution } from './skills';
  * deterministic (content-aware writes, stable `generatedAt`), `sui check
  * generated` can verify the committed data by regenerating it and diffing.
  */
-export type GenTarget = 'catalog' | 'api' | 'changelog' | 'schema' | 'skills';
+export type GenTarget = 'catalog' | 'api' | 'figma' | 'changelog' | 'schema' | 'skills';
 
-const genTargets: GenTarget[] = ['catalog', 'api', 'changelog', 'schema', 'skills'];
+// `figma` follows `api` because it projects the API data it reads.
+const genTargets: GenTarget[] = ['catalog', 'api', 'figma', 'changelog', 'schema', 'skills'];
 const catalogTargets: CatalogTarget[] = ['headless', 'ui'];
 
 /**
@@ -30,6 +32,7 @@ export const generatedDataPaths = [
   'packages/headless/src/namespaced/index.ts',
   'packages/ui/src/constants/components.ts',
   'apps/docs/src/generated',
+  'apps/docs/public/figma',
   'apps/docs/public/schema',
   'skills'
 ];
@@ -43,7 +46,7 @@ export function resolveGenTargets(requested: string): GenTarget[] {
 
   if (!target) {
     throw new Error(
-      `Unknown gen target: ${requested}. Expected one of: catalog | api | changelog | schema | skills | all.`
+      `Unknown gen target: ${requested}. Expected one of: catalog | api | figma | changelog | schema | skills | all.`
     );
   }
 
@@ -98,6 +101,17 @@ async function runChangelogGen(): Promise<void> {
   );
 }
 
+async function runFigmaGen(): Promise<void> {
+  // `generateFigmaAssets` writes only what changed. The output directory is
+  // excluded from the formatter (see the root `vite.config.ts`), so what it
+  // writes is what stays on disk and a clean repo is a true no-op.
+  const outputs = await generateFigmaAssets();
+
+  outputs.forEach(output => {
+    console.log(`generated ${toRelativePath(output)}`);
+  });
+}
+
 async function runSchemaGen(): Promise<void> {
   const { generateSchemaData } = await import('../../../cli/scripts/schema');
 
@@ -121,6 +135,9 @@ export async function runGenTarget(
       return;
     case 'api':
       await runApiGen(Boolean(options.force));
+      return;
+    case 'figma':
+      await runFigmaGen();
       return;
     case 'changelog':
       await runChangelogGen();

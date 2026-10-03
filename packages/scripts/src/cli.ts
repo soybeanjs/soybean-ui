@@ -46,7 +46,7 @@ export function createCli(): CAC {
 
   cli
     .command('gen <surface> [name]', 'Generate committed artifacts (deterministic, offline)')
-    .usage('gen <catalog|api|changelog|schema|skills|all> [name] [--force]')
+    .usage('gen <catalog|api|figma|changelog|schema|skills|all> [name] [--force]')
     .option('--force', 'Regenerate even when the api fingerprint still matches')
     .action(async (surface: string, name: string | undefined, options: { force?: boolean }) => {
       const catalogTarget = toCatalogTarget(name);

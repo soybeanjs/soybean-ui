@@ -1,0 +1,934 @@
+{
+  "generatedAt": "2026-10-03T09:29:51.308Z",
+  "components": {
+    "accordion": {
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "selectionBehavior": ["toggle", "replace"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "alert": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "role": ["alert", "status"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "variant": ["solid", "pure", "outline", "soft", "ghost"]
+    },
+    "anchor": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "app-shell": {
+      "expandStrategy": ["keep", "selected"],
+      "side": ["right", "left"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "autocomplete": {
+      "align": ["start", "center", "end"],
+      "autocomplete": [
+        "search",
+        "name",
+        "email",
+        "tel",
+        "url",
+        "on",
+        "off",
+        "username",
+        "current-password",
+        "new-password",
+        "one-time-code",
+        "given-name",
+        "family-name",
+        "organization",
+        "street-address",
+        "address-level2",
+        "postal-code",
+        "country",
+        "cc-name",
+        "cc-number",
+        "cc-exp",
+        "cc-csc",
+        "transaction-amount"
+      ],
+      "dir": ["ltr", "rtl"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "position": ["inline", "popper"],
+      "positionStrategy": ["fixed", "absolute"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "avatar": {
+      "crossorigin": ["", "anonymous", "use-credentials"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "backtop": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "shadow": ["sm", "md", "lg", "none"],
+      "shape": ["auto", "rounded", "square", "circle"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "variant": ["link", "solid", "pure", "outline", "soft", "ghost", "plain", "dashed"]
+    },
+    "badge": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "position": ["top-right", "bottom-right", "top-left", "bottom-left"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "breadcrumb": {
+      "ariaCurrentValue": ["true", "false", "page", "date", "time", "step", "location"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "trailingSlash": ["append", "remove"]
+    },
+    "button": {
+      "ariaCurrentValue": ["true", "false", "page", "date", "time", "step", "location"],
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "loadingPosition": ["start", "center", "end"],
+      "orientation": ["vertical", "horizontal"],
+      "shadow": ["sm", "md", "lg", "none"],
+      "shape": ["auto", "rounded", "square", "circle"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "trailingSlash": ["append", "remove"],
+      "type": ["button", "submit", "reset"],
+      "variant": ["link", "solid", "pure", "outline", "soft", "ghost", "plain", "dashed"]
+    },
+    "calendar": {
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "weekdayFormat": ["narrow", "short", "long"]
+    },
+    "calendar-range": {
+      "dir": ["ltr", "rtl"],
+      "fixedDate": ["start", "end"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "weekdayFormat": ["narrow", "short", "long"]
+    },
+    "card": {
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "carousel": {
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "cascader": {
+      "align": ["start", "center", "end"],
+      "dir": ["ltr", "rtl"],
+      "expandTrigger": ["click", "hover"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "positionStrategy": ["fixed", "absolute"],
+      "showCheckedStrategy": ["child", "parent"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "checkbox": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "shape": ["rounded", "square"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "clipboard": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "shape": ["auto", "rounded", "square", "circle"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "variant": ["link", "solid", "pure", "outline", "soft", "ghost", "plain", "dashed"]
+    },
+    "collapsible": {
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "color-area": {
+      "colorSpace": ["hsl", "hsv", "oklch"],
+      "format": ["hsl", "oklch", "hex", "rgb"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "xChannel": ["hue", "saturation", "lightness", "brightness", "chroma"],
+      "yChannel": ["hue", "saturation", "lightness", "brightness", "chroma"]
+    },
+    "color-field": {
+      "channel": ["alpha", "hue", "saturation", "lightness", "brightness", "red", "green", "blue", "chroma"],
+      "colorSpace": ["hsl", "hsv", "oklch"],
+      "format": ["hsl", "oklch", "hex", "rgb"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "color-picker": {
+      "colorSpace": ["hsl", "hsv", "oklch"],
+      "defaultFormat": ["hsl", "oklch", "hex", "rgb"],
+      "dir": ["ltr", "rtl"],
+      "format": ["hsl", "oklch", "hex", "rgb"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "color-slider": {
+      "channel": ["alpha", "hue", "saturation", "lightness", "brightness", "red", "green", "blue", "chroma"],
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "colorSpace": ["hsl", "hsv", "oklch"],
+      "dir": ["ltr", "rtl"],
+      "format": ["hsl", "oklch", "hex", "rgb"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "color-swatch": {
+      "shape": ["square", "circle"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "color-swatch-picker": {
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "selectionBehavior": ["toggle", "replace"],
+      "shape": ["square", "circle"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "combobox": {
+      "align": ["start", "center", "end"],
+      "autocomplete": [
+        "search",
+        "name",
+        "email",
+        "tel",
+        "url",
+        "on",
+        "off",
+        "username",
+        "current-password",
+        "new-password",
+        "one-time-code",
+        "given-name",
+        "family-name",
+        "organization",
+        "street-address",
+        "address-level2",
+        "postal-code",
+        "country",
+        "cc-name",
+        "cc-number",
+        "cc-exp",
+        "cc-csc",
+        "transaction-amount"
+      ],
+      "dir": ["ltr", "rtl"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "position": ["inline", "popper"],
+      "positionStrategy": ["fixed", "absolute"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "command": {
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "selectionBehavior": ["toggle", "replace"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "config-provider": {
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "context-menu": {
+      "dir": ["ltr", "rtl"],
+      "indicatorPosition": ["start", "end"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "positionStrategy": ["fixed", "absolute"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "type": ["button", "submit", "reset"]
+    },
+    "date-field": {
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "date-picker": {
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "weekdayFormat": ["narrow", "short", "long"]
+    },
+    "date-range-field": {
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["start", "end"]
+    },
+    "date-range-picker": {
+      "dir": ["ltr", "rtl"],
+      "fixedDate": ["start", "end"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "weekdayFormat": ["narrow", "short", "long"]
+    },
+    "dialog": {
+      "alertType": ["success", "warning", "info", "error", "DialogConfirm"],
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "drawer": {
+      "alertType": ["success", "warning", "info", "error", "DialogConfirm"],
+      "dir": ["ltr", "rtl"],
+      "side": ["top", "right", "bottom", "left"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "swipeDirection": ["right", "left", "up", "down"],
+      "type": ["button", "submit", "reset"]
+    },
+    "dropdown-menu": {
+      "align": ["start", "center", "end"],
+      "dir": ["ltr", "rtl"],
+      "indicatorPosition": ["start", "end"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "positionStrategy": ["fixed", "absolute"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "trigger": ["click", "hover"],
+      "type": ["button", "submit", "reset"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "editable": {
+      "activationMode": ["none", "focus", "dblclick"],
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "submitMode": ["none", "enter", "both", "blur"],
+      "type": ["button", "submit", "reset"]
+    },
+    "empty": {
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "form": {
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "hover-card": {
+      "align": ["start", "center", "end"],
+      "dir": ["ltr", "rtl"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "positionStrategy": ["fixed", "absolute"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "input": {
+      "autocomplete": [
+        "search",
+        "name",
+        "email",
+        "tel",
+        "url",
+        "on",
+        "off",
+        "username",
+        "current-password",
+        "new-password",
+        "one-time-code",
+        "given-name",
+        "family-name",
+        "organization",
+        "street-address",
+        "address-level2",
+        "postal-code",
+        "country",
+        "cc-name",
+        "cc-number",
+        "cc-exp",
+        "cc-csc",
+        "transaction-amount"
+      ],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "input-number": {
+      "autocomplete": [
+        "search",
+        "name",
+        "email",
+        "tel",
+        "url",
+        "on",
+        "off",
+        "username",
+        "current-password",
+        "new-password",
+        "one-time-code",
+        "given-name",
+        "family-name",
+        "organization",
+        "street-address",
+        "address-level2",
+        "postal-code",
+        "country",
+        "cc-name",
+        "cc-number",
+        "cc-exp",
+        "cc-csc",
+        "transaction-amount"
+      ],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "input-otp": {
+      "align": ["start", "center", "end"],
+      "inputmode": ["text", "numeric"],
+      "pushPasswordManagerStrategy": ["none", "increase-width"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "kbd": {
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "variant": ["solid", "outline", "ghost"]
+    },
+    "label": {
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "layout": {
+      "collapsible": ["icon", "offcanvas"],
+      "orientation": ["vertical", "horizontal"],
+      "scrollBehavior": ["content", "wrapper"],
+      "side": ["right", "left"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["header", "tab", "footer", "button", "submit", "reset"],
+      "variant": ["sidebar", "floating", "inset"]
+    },
+    "link": {
+      "ariaCurrentValue": ["true", "false", "page", "date", "time", "step", "location"],
+      "trailingSlash": ["append", "remove"]
+    },
+    "list": {
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "listbox": {
+      "autocomplete": [
+        "search",
+        "name",
+        "email",
+        "tel",
+        "url",
+        "on",
+        "off",
+        "username",
+        "current-password",
+        "new-password",
+        "one-time-code",
+        "given-name",
+        "family-name",
+        "organization",
+        "street-address",
+        "address-level2",
+        "postal-code",
+        "country",
+        "cc-name",
+        "cc-number",
+        "cc-exp",
+        "cc-csc",
+        "transaction-amount"
+      ],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "selectionBehavior": ["toggle", "replace"]
+    },
+    "menu": {
+      "align": ["start", "center", "end"],
+      "dir": ["ltr", "rtl"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "positionStrategy": ["fixed", "absolute"],
+      "sticky": ["partial", "always"],
+      "type": ["button", "submit", "reset"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "menubar": {
+      "align": ["start", "center", "end"],
+      "dir": ["ltr", "rtl"],
+      "indicatorPosition": ["start", "end"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "positionStrategy": ["fixed", "absolute"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "trigger": ["click", "hover"],
+      "type": ["button", "submit", "reset"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "nav-menu": {
+      "align": ["start", "center", "end"],
+      "ariaCurrentValue": ["true", "false", "page", "date", "time", "step", "location"],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "trailingSlash": ["append", "remove"]
+    },
+    "page-tabs": {
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "variant": ["chrome", "card", "slider"]
+    },
+    "pagination": {
+      "shape": ["rounded", "square"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "variant": ["solid", "pure", "outline", "soft"]
+    },
+    "palette-picker": {
+      "format": ["hsl", "oklch"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "password": {
+      "autocomplete": [
+        "search",
+        "name",
+        "email",
+        "tel",
+        "url",
+        "on",
+        "off",
+        "username",
+        "current-password",
+        "new-password",
+        "one-time-code",
+        "given-name",
+        "family-name",
+        "organization",
+        "street-address",
+        "address-level2",
+        "postal-code",
+        "country",
+        "cc-name",
+        "cc-number",
+        "cc-exp",
+        "cc-csc",
+        "transaction-amount"
+      ],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "popconfirm": {
+      "align": ["start", "center", "end"],
+      "ariaMode": ["none", "controls", "describedby"],
+      "dir": ["ltr", "rtl"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "positionStrategy": ["fixed", "absolute"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "trigger": ["contextmenu", "click", "hover"],
+      "type": ["success", "warning", "info", "error", "button", "submit", "reset"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "popover": {
+      "align": ["start", "center", "end"],
+      "dir": ["ltr", "rtl"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "positionStrategy": ["fixed", "absolute"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "type": ["button", "submit", "reset"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "progress": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "direction": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "radio-group": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "variant": ["outline", "dot"]
+    },
+    "rating": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "variant": ["outline", "filled"]
+    },
+    "scroll-area": {
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["auto", "always", "hover", "scroll", "glimpse"]
+    },
+    "segment": {
+      "activationMode": ["automatic", "manual"],
+      "dir": ["ltr", "rtl"],
+      "fill": ["auto", "full"],
+      "orientation": ["vertical", "horizontal"],
+      "shape": ["rounded", "square"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "select": {
+      "align": ["start", "center", "end"],
+      "dir": ["ltr", "rtl"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "position": ["popper", "item-aligned"],
+      "positionStrategy": ["fixed", "absolute"],
+      "selectionBehavior": ["toggle", "replace"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "type": ["button", "submit", "reset"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "separator": {
+      "align": ["start", "center", "end"],
+      "border": ["solid", "dashed", "dotted"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "sheet": {
+      "alertType": ["success", "warning", "info", "error", "DialogConfirm"],
+      "dir": ["ltr", "rtl"],
+      "side": ["top", "right", "bottom", "left"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "skeleton": {
+      "shape": ["auto", "rounded"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "slider": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "thumbAlignment": ["overflow", "contain"]
+    },
+    "spinner": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "split-nav": {
+      "dir": ["ltr", "rtl"],
+      "expandStrategy": ["keep", "selected"],
+      "mode": ["dual-vertical", "vertical-horizontal", "horizontal-vertical", "horizontal-dual-vertical"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "splitter": {
+      "dir": ["ltr", "rtl"],
+      "direction": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "stepper": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "switch": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "shape": ["rounded", "square"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "table": {
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "variant": ["TableVirtualSpacerRow", "simple"]
+    },
+    "tabs": {
+      "activationMode": ["automatic", "manual"],
+      "dir": ["ltr", "rtl"],
+      "fill": ["auto", "full"],
+      "orientation": ["vertical", "horizontal"],
+      "shape": ["rounded", "square"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "tag": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "shape": ["auto", "rounded"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "variant": ["solid", "pure", "outline", "soft", "ghost", "raw"]
+    },
+    "tags-input": {
+      "autocomplete": [
+        "search",
+        "name",
+        "email",
+        "tel",
+        "url",
+        "on",
+        "off",
+        "username",
+        "current-password",
+        "new-password",
+        "one-time-code",
+        "given-name",
+        "family-name",
+        "organization",
+        "street-address",
+        "address-level2",
+        "postal-code",
+        "country",
+        "cc-name",
+        "cc-number",
+        "cc-exp",
+        "cc-csc",
+        "transaction-amount"
+      ],
+      "dir": ["ltr", "rtl"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "textarea": {
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "theme-customizer": {
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "theme-mode-segment": {
+      "activationMode": ["automatic", "manual"],
+      "dir": ["ltr", "rtl"],
+      "fill": ["auto", "full"],
+      "orientation": ["vertical", "horizontal"],
+      "shape": ["rounded", "square"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "theme-mode-select": {
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "theme-mode-switch": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "time-field": {
+      "dir": ["ltr", "rtl"],
+      "granularity": ["hour", "minute", "second"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "time-range-field": {
+      "dir": ["ltr", "rtl"],
+      "granularity": ["hour", "minute", "second"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["start", "end"]
+    },
+    "toast": {
+      "dir": ["ltr", "rtl"],
+      "position": ["top-right", "bottom-right", "top-left", "bottom-left", "top-center", "bottom-center"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "toggle": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "shape": ["auto", "rounded", "square", "circle"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "variant": ["outline", "soft", "ghost"]
+    },
+    "toggle-group": {
+      "color": ["primary", "secondary", "accent", "destructive", "success", "warning", "info", "carbon"],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "selectionBehavior": ["toggle", "replace"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"],
+      "variant": ["outline", "soft", "ghost"]
+    },
+    "toolbar": {
+      "ariaCurrentValue": ["true", "false", "page", "date", "time", "step", "location"],
+      "dir": ["ltr", "rtl"],
+      "orientation": ["vertical", "horizontal"],
+      "selectionBehavior": ["toggle", "replace"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "trailingSlash": ["append", "remove"],
+      "type": ["button", "submit", "reset"]
+    },
+    "tooltip": {
+      "align": ["start", "center", "end"],
+      "dir": ["ltr", "rtl"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "positionStrategy": ["fixed", "absolute"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "sticky": ["partial", "always"],
+      "updatePositionStrategy": ["always", "optimized"]
+    },
+    "tree": {
+      "dir": ["ltr", "rtl"],
+      "selectionBehavior": ["toggle", "replace"],
+      "toggleBehavior": ["multiple", "single"]
+    },
+    "tree-menu": {
+      "expandStrategy": ["keep", "selected"],
+      "side": ["right", "left"],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "type": ["button", "submit", "reset"]
+    },
+    "tree-nav": {
+      "dir": ["ltr", "rtl"],
+      "placement": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-start",
+        "top-end",
+        "right-start",
+        "right-end",
+        "bottom-start",
+        "bottom-end",
+        "left-start",
+        "left-end"
+      ],
+      "size": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "trigger": ["click", "hover"]
+    }
+  }
+}

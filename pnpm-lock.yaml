@@ -433,6 +433,12 @@ importers:
 
   packages/scripts:
     devDependencies:
+      '@soybeanjs/colord':
+        specifier: ^0.8.1
+        version: 0.8.1
+      '@soybeanjs/theme':
+        specifier: workspace:^
+        version: link:../theme
       '@types/node':
         specifier: ^26.6.4
         version: 26.6.4

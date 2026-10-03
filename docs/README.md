@@ -15,6 +15,7 @@ docs/
 ├── optimize.md          # 工程质量评估（F1–F11 改进项与验收，2026-09-06 基线）
 ├── theme.md      # 主题引擎唯一权威文档（新旧差异与优势 + token 契约 + 引擎 API + 接入手册 + 验收）
 ├── space-control-scale.md  # 维度刻度契约：spacing / radius 的取值与实测依据 + 什么不该成为刻度族
+├── figma.md             # Figma 设计资源：DTCG token + 组件取值词汇表的生成、导入步骤与已知边界
 ├── roadmap.md           # 总路线图 + 组件评估明细（核心组件 / 核心内领域 / 未来提案 / 优化）
 ├── ui-ai-roadmap.md     # AI/chat 组件路线图（核心 headless/ui 内实现）
 ├── ui-shell-roadmap.md  # 中后台壳组件路线图（核心 headless/ui 内实现）
@@ -36,6 +37,7 @@ docs/
 | **架构与质量** | [architecture.md](./architecture.md) · [optimize.md](./optimize.md)                    | 仓库现状真相源 + 工程质量评估                                                                                                           | 架构师、新成员               |
 | **主题引擎**   | [theme.md](./theme.md)                                                                 | 唯一权威：新旧引擎差异与优势 / token 契约 / 引擎 API / 运行时接线 / 验收（首帧见 §6.3、为何没有对比度护栏见 §4.3）                      | 主题维护者、架构师、AI Agent |
 | **维度刻度**   | [space-control-scale.md](./space-control-scale.md)                                     | ✅ 与代码同步：spacing / radius 两条刻度族的取值、与 UnoCSS 的关系、实测覆盖率，以及"什么不该成为刻度族"（字面量全表见 theme.md §3.11） | 主题维护者、组件作者         |
+| **设计交付**   | [figma.md](./figma.md)                                                                 | ✅ 已实施：`sui gen figma` 的产物清单 / 分组结构 / Figma 变量导入步骤 / 投影决定与已知边界（token 契约见 theme.md）                     | 设计维护者、前端维护者       |
 | **路线与规划** | [roadmap.md](./roadmap.md)                                                             | 总路线图 + 组件评估明细                                                                                                                 | 规划者、贡献者               |
 | **核心内领域** | [ui-ai-roadmap.md](./ui-ai-roadmap.md) · [ui-shell-roadmap.md](./ui-shell-roadmap.md)  | AI/chat 与中后台壳组件的回迁规划（headless 准入）                                                                                       | 组件开发者                   |
 | **决策记录**   | [adr/](./adr/README.md)                                                                | 架构决策（含已 superseded 的外围包分层 ADR）                                                                                            | 架构师                       |
@@ -75,6 +77,7 @@ roadmap.md（组件路线图 + 评估明细）◄──► optimize.md（工程�
 - **「主题 token 怎么设计 / 该参照哪个组件库 / 为什么这么分层」** → [theme.md](./theme.md)
 - **「主题引擎重构前有哪些问题 / 当时的实测数据」** → [info/theme-system-audit.md](./info/theme-system-audit.md)（重构前快照，现状以 [theme.md](./theme.md) 为准）
 - **「间距 / 控件高度该用哪个值 / 刻度为什么这么定」** → [space-control-scale.md](./space-control-scale.md)（§3.1 为什么控件高度不是刻度族）
+- **「设计资源怎么来 / token 怎么导进 Figma 变量 / 导进去颜色不对」** → [figma.md](./figma.md)（§3 导入步骤、§4 投影决定、§5 已知边界、§6 排查）
 
 ## 命名规范（摘要）
 

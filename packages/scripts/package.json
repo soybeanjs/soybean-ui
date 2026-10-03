@@ -13,6 +13,8 @@
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
   "devDependencies": {
+    "@soybeanjs/colord": "^0.8.1",
+    "@soybeanjs/theme": "workspace:^",
     "@types/node": "^26.6.4",
     "cac": "^7.0.0",
     "esbuild": "^0.28.2",
