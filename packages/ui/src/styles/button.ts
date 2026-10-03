@@ -26,7 +26,7 @@ export const buttonVariants = cv({
       plain: 'border border-border bg-card text-foreground',
       outline: 'border bg-card',
       dashed: 'border border-dashed bg-card',
-      soft: 'bg-primary/10 data-[normal]:hover:bg-primary/10 data-[normal]:active:bg-primary/20',
+      soft: '',
       ghost: 'bg-transparent',
       link: 'bg-transparent underline-offset-4 data-[normal]:hover:underline'
     },
@@ -245,6 +245,11 @@ export const buttonVariants = cv({
       color: 'accent',
       variant: ['outline', 'dashed'],
       class: 'border-accent-foreground/10'
+    },
+    {
+      color: 'primary',
+      variant: 'soft',
+      class: 'bg-primary/10 data-[normal]:hover:bg-primary/10 data-[normal]:active:bg-primary/20'
     },
     {
       color: 'destructive',
