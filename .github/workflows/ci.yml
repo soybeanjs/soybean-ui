@@ -71,6 +71,10 @@ jobs:
         with:
           name: size-report
           path: .size-report
+          # `.size-report` is a dot-directory, and upload-artifact skips hidden
+          # files by default — without this the artifact is never created and
+          # the `size-comment` job has nothing to download.
+          include-hidden-files: true
 
       - name: Stage size baseline
         if: github.event_name == 'push'
