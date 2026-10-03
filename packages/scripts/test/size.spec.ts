@@ -365,6 +365,8 @@ describe.skipIf(!existsSync(uiStyles) || !existsSync(uiDistEntry))('measurement 
   });
 
   it('bundles one component far below the whole barrel', async () => {
+    // Two real esbuild passes over the built barrel: ~2.5s locally, but close
+    // enough to Vitest's 5s default that a CI runner trips it.
     const manifests = discoverWorkspacePackages(repoRoot);
     const measure = (importClause: string | null): Promise<{ brotli?: number }> =>
       measureBundleMetrics({
@@ -382,5 +384,5 @@ describe.skipIf(!existsSync(uiStyles) || !existsSync(uiDistEntry))('measurement 
     expect(componentBytes).toBeGreaterThan(1024);
     expect(componentBytes).toBeLessThan(200 * 1024);
     expect(barrelBytes).toBeGreaterThan(componentBytes * 10);
-  });
+  }, 30_000);
 });
