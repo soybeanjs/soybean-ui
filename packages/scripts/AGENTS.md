@@ -16,14 +16,15 @@ Declared with **cac** in `src/cli.ts` — not hand-dispatched. Every action rece
 
 `createCli()` returns the `CAC` instance so `test/cli.spec.ts` can inspect `commands.map(c => c.name)` and each command's `args` / `options` arrays. Adding a command means: add the declaration in `cli.ts`, add a `src/commands/<name>.ts`, and pin the new surface in `cli.spec.ts`.
 
-Three groups plus one-off workspace commands:
+Three groups plus workspace commands:
 
-| Group                                               | Nature                                                                         |
-| --------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `gen`                                               | **Deterministic, offline.** Never touches the network.                         |
-| `translate`                                         | **The only networked group** (DeepL) and the only one needing `DEEPL_API_KEY`. |
-| `check`                                             | Verification gates; exit 1 on drift.                                           |
-| `stub`, `reorder-imports`, `sync-template-versions` | One-off workspace helpers.                                                     |
+| Group                                               | Nature                                                                          |
+| --------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `gen`                                               | **Deterministic, offline.** Never touches the network.                          |
+| `translate`                                         | **The only networked group** (DeepL) and the only one needing `DEEPL_API_KEY`.  |
+| `check`                                             | Verification gates; exit 1 on drift.                                            |
+| `size`                                              | Measures shipped artifacts and consumer imports; `check size` is the gate form. |
+| `stub`, `reorder-imports`, `sync-template-versions` | One-off workspace helpers.                                                      |
 
 ## DETERMINISM IS A CONTRACT, NOT A NICETY
 
@@ -41,6 +42,24 @@ Two mechanisms make it work, and both must be preserved when you touch generatio
 `gen api` hashes its inputs (ui/headless/theme/scripts sources, tsconfigs, lockfile) plus the on-disk output, and skips the TypeDoc pass (**~40s → ~0.15s**) only when both match the recorded entry. The entry lives in `node_modules/.cache/sui/` and is never committed. `--force` bypasses the check — which is exactly what `check generated` passes.
 
 Consequence: if you change what `gen api` _consumes_ without changing those hashed inputs, a stale cache entry can serve old output. Add the new input to the fingerprint rather than relying on `--force`.
+
+## SIZE MEASUREMENT (`size` / `check size`)
+
+`size` measures two layers, and `check size` gates on the same numbers:
+
+- **artifact layer** — `dist/styles.css`, entry chunks, `pnpm pack` tarballs;
+- **consumer layer** — a real `esbuild` bundle of `import { SButton } from '@soybeanjs/ui'`, tree-shaken and minified, in two views: `deps: bundled` (what a consumer's app pays) and `deps: external` (the library layer alone, always `gate: false`).
+
+`size-budget.json` (hand-authored, one entry per check, calibrated with ~20 % headroom) is the only thing that can fail a run. Growth is judged separately against a baseline report: warn past `delta.warnRatio`/`warnBytes`, fail past `delta.failRatio`/`failBytes`, with the byte floor keeping small checks quiet. A baseline whose bundler version differs is reported but never gated, so a toolchain bump does not read as a regression.
+
+Two rules to preserve:
+
+- **Measure published output, never source.** `packages/{ui,headless,cli}` `exports` point at `./src/*.ts`, so resolution is derived from `publishConfig.exports` by `resolvePublishedSpecifier`, and the bundler plugin refuses a path under `src/`. A specifier absent from the exports map is an error, not a silent fallback to source.
+- **Layering.** `shared/size.ts` is pure (parsing, resolution, verdicts, rendering) and unit tested; `shared/size-measure.ts` owns the I/O (zlib, `pnpm pack`, esbuild); `commands/size.ts` only wires them together and sets the exit code. Keep new rules in the pure module so they stay testable without a build.
+
+CI reuses the report written by the previous main-branch run as a pull request's baseline (Actions cache keyed by the base SHA), so no second build is needed, and a missing baseline degrades to budget-only reporting. The command also appends the Markdown table to `$GITHUB_STEP_SUMMARY` whenever that variable is set, which is what makes fork pull requests work without a write token.
+
+**Not the same thing as the ui bundle fixture.** `packages/ui/test/specs/bundle/bundle-fixture.spec.ts` bundles the same `import { SButton } from '@soybeanjs/ui'` **from source** with Vite/Rolldown and asserts the retained _module graph_ contains no heavy-engine code (table, form, date-fns, embla, markstream). This command measures **bytes** from published `dist`. A tree-shaking regression fails both; a slow size creep only shows up here, and a module-graph leak shows up there first. Do not merge them.
 
 ## SCHEMA GENERATION IS NOT HERE
 

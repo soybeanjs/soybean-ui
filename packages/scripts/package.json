@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/node": "^26.6.4",
     "cac": "^7.0.0",
+    "esbuild": "^0.28.2",
     "tsx": "^4.23.15",
     "typedoc": "^0.28.20",
     "typescript": "catalog:",

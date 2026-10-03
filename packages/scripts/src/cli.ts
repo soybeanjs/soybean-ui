@@ -10,9 +10,10 @@ import type { CatalogTarget } from './commands/catalog';
  *
  * Three command groups: `gen` (deterministic, offline), `translate`
  * (DeepL-backed, needs DEEPL_API_KEY), and `check` (verification gates that
- * exit 1 on drift), plus one-off workspace commands (`stub`,
- * `reorder-imports`, `sync-template-versions`). Do not merge with the
- * consumer-facing `sbean` CLI.
+ * exit 1 on drift), plus one-off workspace commands (`size`, `stub`,
+ * `reorder-imports`, `sync-template-versions`). `size` measures published
+ * artifact and consumer-import bytes; `check size` is the same measurement as a
+ * gate. Do not merge with the consumer-facing `sbean` CLI.
  *
  * Commands are declared here, not hand-dispatched: each action receives parsed
  * options, so no command re-parses `process.argv`, and `--help` / `--version` /
@@ -41,6 +42,7 @@ export function createCli(): CAC {
   cli.example('pnpm sui gen all');
   cli.example('pnpm sui translate api --locale zh-CN');
   cli.example('pnpm sui check generated');
+  cli.example('pnpm sui check size');
 
   cli
     .command('gen <surface> [name]', 'Generate committed artifacts (deterministic, offline)')
@@ -77,11 +79,28 @@ export function createCli(): CAC {
 
   cli
     .command('check <target>', 'Verification gates; exits 1 when the repository is not release-ready')
-    .usage('check <generated|deps|all>')
+    .usage('check <generated|deps|size|all>')
     .action(async (target: string) => {
       const { runCheck } = await import('./commands/check');
 
       await runCheck(target);
+    });
+
+  cli
+    .command('size', 'Measure published artifact and consumer-import sizes')
+    .option('--budget <file>', 'Budget file, default: size-budget.json')
+    .option('--baseline <file>', 'Report to compare against, default: .size-cache/size-baseline.json')
+    .option('--report-dir <dir>', 'Where size-report.{json,md} are written, default: .size-report')
+    .option('--no-write', 'Measure and print without writing report files')
+    .action(async (options: { baseline?: string; budget?: string; reportDir?: string; write?: boolean }) => {
+      const { runSize } = await import('./commands/size');
+
+      await runSize({
+        baselinePath: options.baseline,
+        budgetPath: options.budget,
+        reportDir: options.reportDir,
+        write: options.write
+      });
     });
 
   cli

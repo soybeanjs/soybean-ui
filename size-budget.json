@@ -1,0 +1,140 @@
+{
+  "engine": {
+    "bundler": "esbuild",
+    "external": ["vue"]
+  },
+  "delta": {
+    "warnRatio": 0.01,
+    "warnBytes": 512,
+    "failRatio": 0.05,
+    "failBytes": 2048
+  },
+  "checks": [
+    {
+      "id": "ui/styles.css",
+      "kind": "file",
+      "path": "packages/ui/dist/styles.css",
+      "budget": {
+        "gzip": 36864,
+        "brotli": 29696
+      }
+    },
+    {
+      "id": "ui/entry",
+      "kind": "file",
+      "path": "packages/ui/dist/index.js",
+      "budget": {
+        "gzip": 3584
+      }
+    },
+    {
+      "id": "headless/entry",
+      "kind": "file",
+      "path": "packages/headless/dist/index.js",
+      "budget": {
+        "gzip": 11264
+      }
+    },
+    {
+      "id": "ui/tarball",
+      "kind": "pack",
+      "packageDir": "packages/ui",
+      "budget": {
+        "raw": 294912
+      }
+    },
+    {
+      "id": "headless/tarball",
+      "kind": "pack",
+      "packageDir": "packages/headless",
+      "budget": {
+        "raw": 816128
+      }
+    },
+    {
+      "id": "consumer/button",
+      "kind": "bundle",
+      "entry": "packages/ui/dist/index.js",
+      "import": "{ SButton }",
+      "budget": {
+        "brotli": 29696
+      }
+    },
+    {
+      "id": "consumer/dialog",
+      "kind": "bundle",
+      "entry": "packages/ui/dist/index.js",
+      "import": "{ SDialog }",
+      "budget": {
+        "brotli": 49152
+      }
+    },
+    {
+      "id": "consumer/table",
+      "kind": "bundle",
+      "entry": "packages/ui/dist/index.js",
+      "import": "{ STable }",
+      "budget": {
+        "brotli": 110592
+      }
+    },
+    {
+      "id": "consumer/date-picker",
+      "kind": "bundle",
+      "entry": "packages/ui/dist/index.js",
+      "import": "{ SDatePicker }",
+      "budget": {
+        "brotli": 97280
+      }
+    },
+    {
+      "id": "consumer/headless-dialog",
+      "kind": "bundle",
+      "entry": "packages/headless/dist/index.js",
+      "import": "{ DialogRoot, DialogContent }",
+      "budget": {
+        "brotli": 4608
+      }
+    },
+    {
+      "id": "library/button",
+      "kind": "bundle",
+      "entry": "packages/ui/dist/index.js",
+      "import": "{ SButton }",
+      "deps": "external",
+      "gate": false,
+      "budget": {
+        "brotli": 2560
+      }
+    },
+    {
+      "id": "library/table",
+      "kind": "bundle",
+      "entry": "packages/ui/dist/index.js",
+      "import": "{ STable }",
+      "deps": "external",
+      "gate": false,
+      "budget": {
+        "brotli": 11264
+      }
+    },
+    {
+      "id": "worstcase/ui-barrel",
+      "kind": "bundle",
+      "entry": "packages/ui/dist/index.js",
+      "gate": false,
+      "budget": {
+        "brotli": 415744
+      }
+    },
+    {
+      "id": "worstcase/headless-barrel",
+      "kind": "bundle",
+      "entry": "packages/headless/dist/index.js",
+      "gate": false,
+      "budget": {
+        "brotli": 313344
+      }
+    }
+  ]
+}

@@ -8,9 +8,9 @@ import { generatedDataPaths, runGenAll } from './gen';
  * it decides whether the repository is in a releasable state and reports drift
  * with a non-zero exit code.
  */
-export type CheckTarget = 'generated' | 'deps';
+export type CheckTarget = 'generated' | 'deps' | 'size';
 
-const checkTargets: CheckTarget[] = ['generated', 'deps'];
+const checkTargets: CheckTarget[] = ['generated', 'deps', 'size'];
 
 export function resolveCheckTargets(requested: string): CheckTarget[] {
   if (requested === 'all') {
@@ -20,7 +20,7 @@ export function resolveCheckTargets(requested: string): CheckTarget[] {
   const target = checkTargets.find(checkTarget => checkTarget === requested);
 
   if (!target) {
-    throw new Error(`Unknown check target: ${requested}. Expected one of: generated | deps | all.`);
+    throw new Error(`Unknown check target: ${requested}. Expected one of: generated | deps | size | all.`);
   }
 
   return [target];
@@ -69,6 +69,14 @@ export async function runCheck(requested: string): Promise<void> {
   for (const target of resolveCheckTargets(requested)) {
     if (target === 'generated') {
       await runCheckGenerated();
+      continue;
+    }
+
+    if (target === 'size') {
+      // Imported lazily so a `check deps` / `check generated` run never loads the bundler.
+      const { runCheckSize } = await import('./size');
+
+      await runCheckSize();
       continue;
     }
 

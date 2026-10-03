@@ -338,11 +338,24 @@ Pull requests and pushes to `main`/`master` run:
 1. recursive typecheck;
 2. lint;
 3. unit tests;
-4. Playwright Chromium browser tests.
+4. the `check` gates — `pnpm check:deps`, `pnpm check:generated`, `pnpm check:size`;
+5. Playwright Chromium browser tests.
 
 CI runs `pnpm install --frozen-lockfile && pnpm build` (all packages) in both
-jobs before typecheck/lint/test; browser tests run as a separate `e2e` job. CI
-still does not build the docs site or verify generated-output drift.
+jobs before typecheck/lint/test; browser tests run as a separate `e2e` job.
+
+`pnpm check:size` measures shipped artifacts (`dist/styles.css`, entry chunks,
+`pnpm pack` tarballs) and consumer-import bundles against the hand-authored
+`size-budget.json`. It diffs against the report written by the previous
+main-branch run, restored from the Actions cache keyed by the pull request's base
+SHA, so no second base build is needed; a missing baseline degrades to
+budget-only reporting. The gate writes `.size-report/size-report.{json,md}` and
+appends the table to the job summary; a separate `size-comment` job — which never
+checks out pull-request code, so the job that runs it holds no write token —
+posts it as a sticky comment for same-repository pull requests. Fork pull
+requests get the job summary only.
+
+CI still does not build the docs site.
 Tag pushes (`v*`) install, build, and publish public workspaces to npm with
 provenance; the release workflow itself does not rerun unit or browser tests
 and installs with `--no-frozen-lockfile`.

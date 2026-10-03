@@ -14,6 +14,11 @@ dist-ssr
 coverage
 *.local
 
+# `sui size` output: the report is disposable and the baseline is restored from
+# the CI cache, so neither belongs in git.
+.size-cache/
+.size-report/
+
 /cypress/videos/
 /cypress/screenshots/
 .vitest-attachments/

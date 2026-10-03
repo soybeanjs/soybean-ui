@@ -48,6 +48,72 @@ jobs:
       - name: Test
         run: pnpm test
 
+      # Size gate. The baseline is the report written by the previous main-branch
+      # run (same runner, same lockfile), so a PR compares against an
+      # apples-to-apples build without building the base branch a second time.
+      # A missing baseline degrades to budget-only reporting instead of failing.
+      - name: Restore size baseline
+        if: github.event_name == 'pull_request'
+        uses: actions/cache/restore@v6
+        with:
+          key: size-baseline-${{ github.event.pull_request.base.sha }}
+          path: .size-cache/size-baseline.json
+          restore-keys: size-baseline-
+
+      - name: Size budget gate
+        run: pnpm check:size
+
+      # Runs even when the gate failed, so the report (and its job summary,
+      # written by the step above) is still available for review.
+      - name: Upload size report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: size-report
+          path: .size-report
+
+      - name: Stage size baseline
+        if: github.event_name == 'push'
+        run: |
+          mkdir -p .size-cache
+          cp .size-report/size-report.json .size-cache/size-baseline.json
+
+      - name: Save size baseline
+        if: github.event_name == 'push'
+        uses: actions/cache/save@v6
+        with:
+          key: size-baseline-${{ github.sha }}
+          path: .size-cache/size-baseline.json
+
+  # Split from `ci` so the job that executes pull-request code never holds a
+  # write token: this job only downloads the report artifact.
+  size-comment:
+    name: Size report comment
+    needs: ci
+    if: always() && !cancelled() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Download size report
+        # A missing report (build failed before the measurement) must not turn
+        # into a second, unrelated failure on the pull request.
+        id: download
+        continue-on-error: true
+        uses: actions/download-artifact@v8
+        with:
+          name: size-report
+          path: .size-report
+
+      - name: Comment size report
+        if: steps.download.outcome == 'success'
+        uses: marocchino/sticky-pull-request-comment@v3
+        with:
+          header: bundle-size
+          path: .size-report/size-report.md
+
   e2e:
     name: Browser e2e
     runs-on: ubuntu-latest

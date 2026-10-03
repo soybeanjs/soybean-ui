@@ -11,6 +11,7 @@ describe('cli declaration', () => {
       'gen',
       'translate',
       'check',
+      'size',
       'stub',
       'reorder-imports',
       'sync-template-versions'
@@ -47,6 +48,16 @@ describe('cli declaration', () => {
     ]);
     expect(translate?.options.find(option => option.name === 'overwrite')?.isBoolean).toBe(true);
     expect(translate?.options.find(option => option.name === 'batchSize')?.isBoolean).toBeUndefined();
+  });
+
+  it('declares every option the size driver consumes', () => {
+    const size = createCli().commands.find(command => command.name === 'size');
+
+    expect(size?.args).toEqual([]);
+    expect(size?.options.map(option => option.name)).toEqual(['budget', 'baseline', 'reportDir', 'write']);
+    // `--no-write` is normalized by cac to a boolean `write` that defaults to true.
+    expect(size?.options.find(option => option.name === 'write')?.isBoolean).toBe(true);
+    expect(size?.options.find(option => option.name === 'reportDir')?.isBoolean).toBeUndefined();
   });
 
   it('exposes the version and help flags', () => {

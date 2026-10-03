@@ -75,7 +75,7 @@ Private packages and applications:
 | Token CSS generation               | `packages/theme/src/`                                                     | `resolveThemeMap(options)` → `emitThemeCss(map)`（Layer 2）/ `generatePaletteCss()`（Layer 1）   |
 | UnoCSS adapter                     | `packages/unocss/`                                                        | `presetUi()` / `presetSbean()`                                                                   |
 | Source-distribution CLI            | `packages/cli/`                                                           | commands → registry/schema/templates/MCP                                                         |
-| Repo-service CLI (`sui`)           | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `stub`, `reorder-imports`                |
+| Repo-service CLI (`sui`)           | `packages/scripts/`                                                       | `gen` (offline) / `translate` (DeepL) / `check` groups, `size`, `stub`, `reorder-imports`        |
 | Utility functions                  | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                                      |
 | Global types                       | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                              |
 | Generated API data                 | `apps/docs/src/generated/api/`                                            | `pnpm sui gen api` baseline + `pnpm sui translate api --locale <locale>` locale text             |
@@ -84,6 +84,7 @@ Private packages and applications:
 | Demo source                        | `apps/docs/src/examples/ui/[component]/`                                  | Vue SFCs referenced by docs (chart demos under `examples/chart/`)                                |
 | Browser e2e tests                  | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)               |
 | Workspace architecture             | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                           |
+| Size budgets / PR size report      | `size-budget.json` + `packages/scripts/src/commands/size.ts`              | Artifact + consumer-import bytes; PR baseline is the main-branch CI report, not a second build   |
 | Architecture assessment            | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                        |
 | Component dev skill                | `.agents/skills/soybean-ui-develop/`                                      | SKILL.md + layers.md (admission) + surfaces.md + e2e.md + process.md + audit.md                  |
 | Headless admission reference       | `.agents/skills/soybean-ui-develop/layers.md`                             | Violation shapes, known-compliant families, and pre-classified roadmap items                     |
@@ -122,14 +123,16 @@ pnpm sui gen all               # Regenerate every surface above
 pnpm sui translate <api|changelog|locale|all> [--locale <locale>]  # Fill pending translations via DeepL (needs DEEPL_API_KEY)
 pnpm sui check generated       # Regenerate every surface and diff it against git (also a CI gate)
 pnpm sui check deps            # Enforce the dependency gate: banned import scan + runtime dependency whitelists
+pnpm sui size                  # Measure shipped artifacts + consumer-import bytes against size-budget.json
 pnpm check:deps                # CI alias of `pnpm sui check deps`
 pnpm check:generated           # CI alias of `pnpm sui check generated`
+pnpm check:size                # CI alias of `pnpm sui check size` (fails on a budget breach, reports deltas)
 pnpm sui reorder-imports [--check] [targets...]  # Reorder Props before Emits in .vue import type blocks
 pnpm sui sync-template-versions  # Sync the @soybeanjs/* version constant used by project templates
 ```
 
 - **Pre-commit hook** (Vite Plus, `.vite-hooks/pre-commit`): `vp staged`
-- **CI** (`.github/workflows/ci.yml`, on PRs and pushes to `main`/`master`): install + `pnpm build` → `pnpm check:deps` → `pnpm check:generated` → typecheck → lint → test, plus a separate `e2e` job (Playwright chromium). It does not build the docs site; `release.yml` handles tag-triggered build and release.
+- **CI** (`.github/workflows/ci.yml`, on PRs and pushes to `main`/`master`): install + `pnpm build` → `pnpm check:deps` → `pnpm check:generated` → typecheck → lint → test → `pnpm check:size`, plus a `size-comment` job (sticky PR comment) and a separate `e2e` job (Playwright chromium). It does not build the docs site; `release.yml` handles tag-triggered build and release.
 - **Formatter**: `vp fmt`
 
 **Release** (`pnpm release` → `soy release -e 'pnpm release-execute'`): versions are bumped across all workspaces in lockstep from the root `package.json`, then `release-execute` runs `soy changelog && sui gen skills && sui translate all && sync-template-versions`. Two consequences: never hand-edit a single package's version (they must stay equal), and `sui translate all` means a release **requires** `DEEPL_API_KEY` — the chain is not offline. `sync-template-versions` rewrites `packages/cli/src/templates/versions.ts`, a generated constant, so scaffolder versions follow the root bump automatically.
